@@ -1,0 +1,20 @@
+=button($color, $background-color)
+  animation-fill-mode: forwards
+  animation-direction: normal
+  display: inline-block
+  cursor: pointer
+  min-height: 1em
+  font-family: $font-stack
+  color: $color
+  margin: 0 .25em 0 0
+  padding: .78571429em 1.5em .78571429em
+  text-shadow: none
+  font-weight: 700
+  background: $background-color none
+  border-radius: .28571429rem
+  line-height: 1em
+  transition: all 0.1s
+  &:hover
+    background-color: darken($background-color, 10%)
+    // filter: brightness(90%)
+

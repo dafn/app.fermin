@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const ListElement = props => {
+const ListElement = ({ index, value, active, setActive }) => {
+
   return (
-    <ul>
-      <li>Coffee</li>
-      <li>Tea</li>
-      <li>Milk</li>
-    </ul>
+    <div id='ListElement_main_container' className={active ? 'active' : ''} onClick={() => setActive(index)}>
+      <div id='ListElement_title_container'>
+        {value.substring(0, 20)}
+      </div>
+      <div id='ListElement_summary' >
+        {value}
+      </div>
+    </div>
   )
 }
 
