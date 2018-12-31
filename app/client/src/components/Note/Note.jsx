@@ -1,9 +1,20 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useEffect } from 'react'
+import update from 'immutability-helper'
 import ReactQuill from 'react-quill'
+
+import Context from '../../context'
 
 const Note = props => {
 
-  const [text, setText] = useState('')
+  const [note, setNote] = useState(props.Note)
+
+  useEffect(() => {
+    note !== props.Note && setNote(props.Note)
+    console.log(note !== props.Note)
+    console.log('note: --', note)
+    console.log('Note: --', props.Note)
+    // setNote(props.Note)
+  })
 
   const modules = {
     toolbar: [
@@ -16,11 +27,35 @@ const Note = props => {
   }
 
   return (
-    <div id='Note_main_container'>
-      <ReactQuill id='editor' value={text}
-        onChange={value => setText(value)} modules={modules} />
-    </div>
+    <Context.Consumer>
+      {
+        ({ store, store: { notes, activeKey }, setStore }) => {
+
+          const handleChange = value => console.log(value)
+
+          return (
+            <div id='Note_main_container'>
+              <ReactQuill id='editor'
+                value={note}
+                onChange={value => {
+                  setStore(update(store, { notes: { [activeKey]: { $set: value } } }))
+                }
+                } modules={modules} />
+            </div>
+          )
+        }
+      }
+    </Context.Consumer>
   )
 }
 
 export default Note
+
+// setStore(update(store, { notes: { [activeKey]: { $set: value } } }))
+// update(store, { notes: { [activeKey]: { $set: value } } })
+
+/**
+ * <ReactQuill id='editor'
+                value={note}
+                onChange={value => setStore(update(store, { notes: { [activeKey]: { $set: value } } }))} modules={modules} />
+ */

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-const ListElement = ({ index, value, active, setActive }) => {
+const ListElement = ({ index, value, active, setActiveKey }) => {
 
   return (
-    <div id='ListElement_main_container' className={active ? 'active' : ''} onClick={() => setActive(index)}>
+    <div id='ListElement_main_container' className={active ? 'active' : ''} onClick={() => setActiveKey(index)}>
       <div id='ListElement_title_container'>
-        {value.substring(0, 20)}
+        hi
       </div>
       <div id='ListElement_summary' >
         {value}

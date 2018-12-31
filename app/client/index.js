@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useState, Component } from 'react'
 import reactDom from 'react-dom'
 
 import List from './src/components/List'
 import Note from './src/components/Note'
+
+import Context, { store } from './src/context'
 
 import 'semantic-ui-css/semantic.min.css'
 import 'react-quill/dist/quill.snow.css'
 import './src/sass/main.sass'
 
 const App = () => {
+
+  const [state, setState] = useState(store)
+
   return (
-    <div id="wrapper">
-      <List />
-      <Note />
-    </div>
+    <Context.Provider value={{ store: state, setStore: setState }}>
+      <div id="wrapper">
+        <List />
+        <Note Note={state.notes[state.activeKey]} />
+      </div>
+    </Context.Provider>
   )
 }
 
