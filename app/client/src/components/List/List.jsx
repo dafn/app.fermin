@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-
-import { Card } from 'semantic-ui-react'
+import React from 'react'
 import ListElement from './ListElement'
 
 import Context from '../../context'

@@ -1,5 +1,4 @@
-import React, { useState, Component } from 'react'
-import update from 'immutability-helper'
+import React, { useState } from 'react'
 import reactDom from 'react-dom'
 
 import List from './src/components/List'

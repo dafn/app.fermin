@@ -3,14 +3,13 @@
     "serve": "cd app/client && parcel serve index.pug"
   },
   "dependencies": {
-    "draft-js": "^0.10.5",
     "express": "^4.16.4",
-    "immutability-helper": "^2.9.0",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
     "react-quill": "^1.3.3",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.84.0"
+    "semantic-ui-react": "^0.84.0",
+    "immutability-helper": "^2.9.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.11.0",

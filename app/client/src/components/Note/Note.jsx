@@ -1,6 +1,8 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import update from 'immutability-helper'
 import ReactQuill from 'react-quill'
+
+import UserLabel from '../UserLabel'
 
 import Context from '../../context'
 
@@ -28,6 +30,7 @@ const Note = props => {
         ({ store, store: { activeKey }, setStore }) => {
           return (
             <div id='Note_main_container'>
+              <UserLabel />
               <ReactQuill id='editor'
                 value={note}
                 onChange={value => {
