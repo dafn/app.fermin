@@ -23,10 +23,3 @@ const UserLabel = props => {
 }
 
 export default UserLabel
-
-/*
-              <div id='UserLabel_main_container'>
-                👤 Veronika
-                <div id='UserLabel_detail'>Friend</div>
-              </div>
-*/

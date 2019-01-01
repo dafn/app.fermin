@@ -4,17 +4,30 @@
   display: inline-block
   cursor: pointer
   min-height: 1em
-  font-family: $font-stack
   color: $text-color
   margin: 0 .25em 0 0
   padding: .78571429em 1.5em .78571429em
   text-shadow: none
-  font-weight: 700
+  font: 700 90% $font-stack
   background: $background-color none
   border-radius: .28571429rem
   line-height: 1em
   transition: all 0.1s
   &:hover
     background-color: darken($background-color, 10%)
-    // filter: brightness(90%)
 
+=animation_fade-in($seconds)
+  animation: fade-in $seconds
+  @keyframes fade-in
+    0%
+      opacity: 0
+    100%
+      opacity: 1
+
+=animation_fade-out($seconds)
+  animation: fade-out $seconds
+  @keyframes fade-out
+    0%
+      opacity: 1
+    100%
+      opacity: 0

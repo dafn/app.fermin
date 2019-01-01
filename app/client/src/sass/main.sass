@@ -1,10 +1,14 @@
+@import shared/mixins
+
 @import list
 @import note
 @import userLabel
+@import modal
 
 body
   background-color: #f2f2f2
   margin: 0 auto
+  +animation_fade-in(0.5s)
 
 #wrapper
   display: flex

@@ -9,22 +9,44 @@
   align-items: center
 
 #ListElement_main_container
+  display: flex
   background-color: $card-color
   border-radius: .28571429rem
   padding: 15px
   margin-top: 1em
   font-family: $font-stack
+  border-right: 5px solid white
   transition: border-right 0.2s
   width: 90%
   min-width: 300px
+  +animation_fade-in(0.5s)
   &.active
     border-right: 5px solid #21ba45
+    #ListElement_delete_button
+      display: flex
   &:hover
     filter: brightness(90%)
-    cursor: pointer
+    cursor: pointer  
+  #ListElement_text_container
+    flex: 1
   #ListElement_title_container
-    font: 700 130% $font-stack
+    font: 700 100% $font-stack
     margin-bottom: 1em
+  #ListElement_summary
+    font: normal 90% $font-stack
+    overflow: hidden
+    max-height: 3.6em
+#ListElement_delete_button
+  transition: display 0.2s
+  flex: 0.1
+  display: none
+  p
+    font: normal 120% $font-stack
+    margin: auto
+    color: lightgray
+    &:hover
+      color: red
+    
 
 #List_add_element_button_container
   #List_add_element_button

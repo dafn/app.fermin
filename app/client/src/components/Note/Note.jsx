@@ -8,7 +8,7 @@ import Context from '../../context'
 
 const Note = props => {
 
-  const [note, setNote] = useState(props.Note)
+  const [note, setNote] = useState()
 
   useEffect(() => {
     setNote(props.Note)

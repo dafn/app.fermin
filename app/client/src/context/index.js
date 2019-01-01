@@ -7,7 +7,7 @@ export const store = {
     '<p>this is some example text</p>',
     '<p>this is some example text halla balla</p>'
   ],
-  activeKey: 1,
+  activeKey: 0,
   user: 'Daniel Nilsen'
 }
 
