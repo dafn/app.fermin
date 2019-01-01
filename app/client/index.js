@@ -17,8 +17,7 @@ const App = () => {
 
   const actions = {
     setActiveKey: newActiveKey => {
-      setState({ ...state, activeKey: newActiveKey },
-        console.log('setActiveKey', state))
+      setState({ ...state, activeKey: newActiveKey })
     },
     showModal: () => {
       setState({ ...store, alert: true })
@@ -27,14 +26,8 @@ const App = () => {
       setState(update(state, { notes: { $push: [''] } }))
     },
     deleteNote: () => {
-
-      let newNotes = state.notes
-      newNotes.splice(state.activeKey, 1)
-
-      setState({
-        ...store,
-        notes: newNotes
-      })
+      state.notes.splice(state.activeKey, 1)
+      setState({ ...store, notes: state.notes, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
     }
   }
 
@@ -50,7 +43,10 @@ const App = () => {
               positiveButtonText='Delete'
               negativeButtonText='Cancel'
               onNegative={() => setState({ ...store, alert: false })}
-              onPositive={actions.deleteNote}
+              onPositive={() => {
+                // actions.deleteNote()
+                // setState({ ...store, alert: false })
+              }}
             />
           )
         }
