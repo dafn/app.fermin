@@ -20,14 +20,14 @@ const App = () => {
       setState({ ...state, activeKey: newActiveKey })
     },
     showModal: () => {
-      setState({ ...store, alert: true })
+      setState({ ...state, alert: true })
     },
     addNewNote: () => {
       setState(update(state, { notes: { $push: [''] } }))
     },
     deleteNote: () => {
       state.notes.splice(state.activeKey, 1)
-      setState({ ...store, notes: state.notes, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+      setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
     }
   }
 
@@ -39,14 +39,11 @@ const App = () => {
         {
           state.alert && (
             <Modal
-              message='Are you sure you want to delete the Note?'
+              message='Are you sure you want to delete this note?'
               positiveButtonText='Delete'
               negativeButtonText='Cancel'
-              onNegative={() => setState({ ...store, alert: false })}
-              onPositive={() => {
-                // actions.deleteNote()
-                // setState({ ...store, alert: false })
-              }}
+              onNegative={() => setState({ ...state, alert: false })}
+              onPositive={() => { actions.deleteNote() }}
             />
           )
         }

@@ -9,7 +9,7 @@ const List = props => {
   return (
     <Context.Consumer>
       {
-        ({ store: { notes, activeKey }, actions: { setActiveKey, addNewNote, deleteNote } }) => {
+        ({ store: { notes, activeKey }, actions: { addNewNote } }) => {
           return (
             <div id='List_main_container'>
               {
@@ -19,8 +19,6 @@ const List = props => {
                     index={key}
                     value={value}
                     active={key === activeKey ? true : false}
-                    setActiveKey={setActiveKey}
-                    deleteNote={deleteNote}
                   />
                 )
               }
@@ -32,7 +30,6 @@ const List = props => {
         }
       }
     </Context.Consumer>
-
   )
 }
 

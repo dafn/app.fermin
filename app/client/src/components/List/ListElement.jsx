@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Context from '../../context';
 
-const ListElement = ({ index, value, active, setActiveKey, deleteNote }) => {
+const ListElement = ({ index, value, active }) => {
 
   const [parsedNote, setParsedNote] = useState(value.replace(/<\/?[^>]+(>|$)/g, ''))
 
@@ -12,7 +12,7 @@ const ListElement = ({ index, value, active, setActiveKey, deleteNote }) => {
   return (
     <Context.Consumer>
       {
-        ({ actions: { showModal } }) => {
+        ({ actions: { setActiveKey, showModal } }) => {
           return (
             <div id='ListElement_main_container' className={active ? 'active' : ''} onClick={() => setActiveKey(index)}>
               <div id='ListElement_text_container'>
@@ -28,9 +28,7 @@ const ListElement = ({ index, value, active, setActiveKey, deleteNote }) => {
                 </div>
               </div>
               <div id='ListElement_delete_button' >
-                <p onClick={event => {
-                  event.stopPropagation(); showModal()
-                }}>x</p>
+                <p onClick={event => { event.stopPropagation(); showModal() }}>x</p>
               </div>
             </div>
           )

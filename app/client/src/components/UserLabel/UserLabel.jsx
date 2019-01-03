@@ -9,7 +9,7 @@ const UserLabel = props => {
           return (
             <div>
               <div id='UserLabel_main_container'>
-                { user }
+                {user}
                 <div id='UserLabel_detail'>Log out</div>
               </div>
             </div>

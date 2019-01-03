@@ -8,7 +8,7 @@ export const store = {
     '<p>this is some example text halla balla</p>'
   ],
   activeKey: 0,
-  user: 'Daniel Nilsen'
+  user: 'Daniel Alexander Nilsen'
 }
 
 const Context = React.createContext()
