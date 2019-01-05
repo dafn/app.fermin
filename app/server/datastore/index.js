@@ -1,5 +1,6 @@
 datastore = new require('@google-cloud/datastore')({
   projectId: 'no-fermin',
+  keyFilename: 'keys/datastore-service-account-key.json'
 })
 
 exports.addNote = async function (user, content) {
@@ -73,5 +74,5 @@ exports.listNotes = async function (user) {
 
   console.log(`Listed notes from user ${user}`)
 
-  return result
+  return { result }
 }

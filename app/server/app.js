@@ -10,7 +10,8 @@ const
 const port = process.env.PORT || 8002
 
 app.use(compression())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(express.static(path.resolve(__dirname, '../client/dist/')))
 
 app.use('/', main)

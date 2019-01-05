@@ -1,9 +1,8 @@
 {
   "scripts": {
-    "serve": "parcel watch app/client/index.pug & yarn setcred && nodemon app/server/app.js",
+    "serve": "parcel watch app/client/index.pug -d app/client/dist & nodemon app/server/app.js",
     "build": "rm -rf app/client/dist && parcel build app/client/index.pug -d app/client/dist",
-    "build:run": "yarn setcred && yarn build && node app/server/app.js",
-    "setcred": "export GOOGLE_APPLICATION_CREDENTIALS=keys/datastore-service-account-key.json"
+    "build:run": "yarn build && node app/server/app.js"
   },
   "dependencies": {
     "@google-cloud/datastore": "^2.0.0",

@@ -2,7 +2,6 @@ const router = require('express').Router(),
   { addNote, updateNote, deleteNote, listNotes } = require('../datastore'),
   path = require('path')
 
-
 router.post('/add', async (req, res) => {
   console.log(req.body)
   res.send('add')
