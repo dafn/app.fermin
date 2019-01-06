@@ -3,6 +3,7 @@ import update from 'immutability-helper'
 import ReactQuill from 'react-quill'
 
 import UserLabel from '../UserLabel'
+import SaveButton from '../SaveButton'
 
 import Context from '../../context'
 
@@ -30,6 +31,7 @@ const Note = props => {
         ({ store, store: { activeKey }, setStore }) => {
           return (
             <div id='Note_main_container'>
+              <SaveButton />
               <UserLabel />
               {
                 note &&

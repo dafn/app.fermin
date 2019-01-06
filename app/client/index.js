@@ -24,25 +24,30 @@ const App = () => {
       setState({ ...state, alert: true })
     },
     addNewNote: () => {
-      setState(update(state, {
-        notes: {
-          $push: [{
-            id: '',
-            content: ''
-          }]
-        }
-      }))
+      setState(update(state, { notes: { $push: [{ id: '', content: '' }] } }))
     },
     saveNote: key => {
-      database.add(state.user, state.notes[key])
-        .then(response => {
-          if (response.status === 200) return
-          else setState({ ...state, error: 'Could not Save the Note ( Status 500 )' })
-        })
-        .catch(err => {
-          setState({ ...state, error: 'Could not Save the Note, see console error' })
-          console.log(err)
-        })
+      if (state.notes[key].id) {
+        database.update(state.notes[key].id, state.notes[key].content)
+          .then(response => {
+            if (response.status === 200) return
+            else setState({ ...state, error: 'Could not Save the Note ( Status 500 )' })
+          })
+          .catch(err => {
+            setState({ ...state, error: 'Could not Save the Note, see console error' })
+            console.log(err)
+          })
+      } else {
+        database.add(state.user, state.notes[key].content)
+          .then(response => {
+            if (response.status === 200) return
+            else setState({ ...state, error: 'Could not Save the Note ( Status 500 )' })
+          })
+          .catch(err => {
+            setState({ ...state, error: 'Could not Save the Note, see console error' })
+            console.log(err)
+          })
+      }
     },
     deleteNote: key => {
       if (state.notes[key].id)
