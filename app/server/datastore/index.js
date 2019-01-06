@@ -21,9 +21,11 @@ exports.addNote = async function (user, content) {
         }
       ]
     })
-    console.log(`Note ${key.id} added successfully.`);
+    console.log(`Note ${key.id} added successfully.`)
+    return 200
   } catch (err) {
-    console.error('Error when adding note', err);
+    console.error('Error when adding note', err)
+    return 500
   }
 }
 
@@ -43,9 +45,11 @@ exports.updateNote = async function (id, content) {
     })
     await transaction.commit()
     console.log(`Note ${id} updated successfully.`)
+    return 200
   } catch (err) {
     console.log(`Error when updating Note ${id}`, err)
     transaction.rollback()
+    return 500
   }
 }
 
@@ -53,8 +57,10 @@ exports.deleteNote = async function (id) {
   try {
     await datastore.delete(datastore.key(['Note', parseInt(id)]))
     console.log(`Note ${id} deleted successfully.`)
+    return 200
   } catch (error) {
     console.log(`error when deleting Note ${id}`, error)
+    return 500
   }
 }
 
@@ -68,7 +74,7 @@ exports.listNotes = async function (user) {
     result.push({
       user: note.user,
       content: note.content,
-      key: note[datastore.KEY].id
+      id: note[datastore.KEY].id
     })
   })
 

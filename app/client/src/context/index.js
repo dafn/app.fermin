@@ -1,14 +1,13 @@
 import React from 'react'
 
+import { database } from '../api'
 
 export const store = {
-  notes: [
-    '<p>this is some example text tet7654</p>',
-    '<p>this is some example text</p>',
-    '<p>this is some example text halla balla</p>'
-  ],
+  notes: [''],
   activeKey: 0,
-  user: 'Daniel Alexander Nilsen'
+  updateList: true,
+  error: '',
+  user: 'dafn@outlook.com'
 }
 
 const Context = React.createContext()

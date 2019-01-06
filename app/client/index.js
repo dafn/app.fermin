@@ -7,6 +7,7 @@ import Note from './src/components/Note'
 import Modal from './src/components/Modal'
 
 import Context, { store } from './src/context'
+import { database } from './src/api'
 
 import 'react-quill/dist/quill.snow.css'
 import './src/sass/main.sass'
@@ -25,11 +26,38 @@ const App = () => {
     addNewNote: () => {
       setState(update(state, { notes: { $push: [''] } }))
     },
+    saveNote: key => {
+      database.add(state.user, state.notes[key])
+        .then(response => {
+          if (response.status === 200) return
+          else setState({ ...state, error: 'Could not Save the Note ( Status 500 )' })
+        })
+        .catch(err => {
+          setState({ ...state, error: 'Could not Save the Note, see console error' })
+          console.log(err)
+        })
+    },
     deleteNote: () => {
       state.notes.splice(state.activeKey, 1)
       setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
     }
   }
+
+  if (state.updateList)
+    database.list(state.user)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response.result)
+        let notes = []
+        for (let note of response.result)
+          notes.push(note.content)
+
+        setState({ ...state, updateList: false, notes: notes })
+      })
+      .catch(err => {
+        setState({ ...state, error: 'Could not get list of notes, see console error' })
+        console.log(err)
+      })
 
   return (
     <Context.Provider value={{ store: state, setStore: setState, actions }}>
