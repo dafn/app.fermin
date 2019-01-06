@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative }) => {
+const Modal = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative, activeKey }) => {
   return (
     <div id='Modal_main_container'>
       <div id='Modal_dark_screen'></div>
@@ -9,7 +9,7 @@ const Modal = ({ message, positiveButtonText, negativeButtonText, onPositive, on
           {message}
         </p>
         <div id='Modal_buttons_container'>
-          <div id='Modal_content_delete_button' onClick={onPositive}>
+          <div id='Modal_content_delete_button' onClick={() => onPositive(activeKey)}>
             {positiveButtonText}
           </div>
           <div id='Modal_content_cancel_button' onClick={onNegative}>

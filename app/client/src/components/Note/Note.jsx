@@ -31,14 +31,17 @@ const Note = props => {
           return (
             <div id='Note_main_container'>
               <UserLabel />
-              <ReactQuill id='editor'
-                value={note}
-                onChange={value => {
-                  if (value === note) return
-                  setNote(value)
-                  setStore(update(store, { notes: { [activeKey]: { $set: value } } }))
-                }
-                } modules={modules} />
+              {
+                note &&
+                <ReactQuill id='editor'
+                  value={note.content}
+                  onChange={value => {
+                    if (value === note.content) return
+                    setNote({ ...note, id: props.Note.id, content: value })
+                    setStore(update(store, { notes: { [activeKey]: { content: { $set: value } } } }))
+                  }
+                  } modules={modules} />
+              }
             </div>
           )
         }

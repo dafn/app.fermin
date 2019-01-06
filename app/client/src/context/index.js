@@ -3,7 +3,10 @@ import React from 'react'
 import { database } from '../api'
 
 export const store = {
-  notes: [''],
+  notes: [{
+    id: '',
+    content: ''
+  }],
   activeKey: 0,
   updateList: true,
   error: '',

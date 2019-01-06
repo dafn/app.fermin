@@ -24,7 +24,14 @@ const App = () => {
       setState({ ...state, alert: true })
     },
     addNewNote: () => {
-      setState(update(state, { notes: { $push: [''] } }))
+      setState(update(state, {
+        notes: {
+          $push: [{
+            id: '',
+            content: ''
+          }]
+        }
+      }))
     },
     saveNote: key => {
       database.add(state.user, state.notes[key])
@@ -37,9 +44,25 @@ const App = () => {
           console.log(err)
         })
     },
-    deleteNote: () => {
-      state.notes.splice(state.activeKey, 1)
-      setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+    deleteNote: key => {
+      if (state.notes[key].id)
+        database.delete(state.notes[key].id)
+          .then(response => {
+            if (response.status === 200) {
+              state.notes.splice(state.activeKey, 1)
+              setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+            }
+            else
+              setState({ ...state, error: 'Could not delete the Note ( Status 500 )' })
+          })
+          .catch(err => {
+            setState({ ...state, error: 'Could not delete the Note, see console error' })
+            console.log(err)
+          })
+      else {
+        state.notes.splice(state.activeKey, 1)
+        setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+      }
     }
   }
 
@@ -47,10 +70,14 @@ const App = () => {
     database.list(state.user)
       .then(response => response.json())
       .then(response => {
-        console.log(response.result)
+        console.log('response.result', response.result)
         let notes = []
         for (let note of response.result)
-          notes.push(note.content)
+          notes.push({
+            id: note.id,
+            content: note.content
+          })
+        console.log('notes', notes)
 
         setState({ ...state, updateList: false, notes: notes })
       })
@@ -71,7 +98,8 @@ const App = () => {
               positiveButtonText='Delete'
               negativeButtonText='Cancel'
               onNegative={() => setState({ ...state, alert: false })}
-              onPositive={() => { actions.deleteNote() }}
+              onPositive={key => { actions.deleteNote(key) }}
+              activeKey={state.activeKey}
             />
           )
         }

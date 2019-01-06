@@ -17,7 +17,7 @@ const List = props => {
                   <ListElement
                     key={key}
                     index={key}
-                    value={value}
+                    value={value.content}
                     active={key === activeKey ? true : false}
                   />
                 )
