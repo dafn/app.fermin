@@ -20,27 +20,38 @@ const Note = props => {
       [{ 'header': [1, 2, false] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-      ['link'],
-      ['clean']
+      ['link'], ['clean']
     ],
   }
 
   return (
     <Context.Consumer>
       {
-        ({ store, store: { activeKey }, setStore }) => {
+        ({ store, store: { activeKey, saving }, setStore, actions }) => {
           return (
             <div id='Note_main_container'>
-              <SaveButton />
-              <UserLabel />
+              <div id='Note_buttons' >
+                <div onClick={() => !saving && actions.saveNote(activeKey)}>
+                  <div className={saving ? 'saving' : ''} id='Note_save_button_button'>
+                    Save
+                </div>
+                </div>
+                <div>
+                  <div id='Note_logout_button'>
+                    Log out
+                  </div>
+                </div>
+              </div>
               {
                 note &&
                 <ReactQuill id='editor'
                   value={note.content}
                   onChange={value => {
                     if (value === note.content) return
+                    console.log('value', value, 'note', props.Note)
                     setNote({ ...note, id: props.Note.id, content: value })
                     setStore(update(store, { notes: { [activeKey]: { content: { $set: value } } } }))
+
                   }
                   } modules={modules} />
               }

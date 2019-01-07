@@ -1,4 +1,5 @@
 @import shared/constants
+@import shared/mixins
 
 #Note_main_container
   background-color: $card-color
@@ -7,7 +8,18 @@
   flex: 0.75
   display: flex
   justify-content: center
-
+  #Note_buttons
+    position: absolute
+    display: flex
+    top: 2.2em
+    right: 2.2em
+    #Note_logout_button
+      +button(white, $theme-blue)
+    #Note_save_button_button
+      &.saving
+        opacity: 0.1
+      +button(white, $theme-green)
+      margin-right: 1em
   #editor
     flex: 1
     display: flex

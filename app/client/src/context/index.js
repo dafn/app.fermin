@@ -10,6 +10,7 @@ export const store = {
   activeKey: 0,
   updateList: true,
   error: '',
+  saving: false,
   user: 'dafn@outlook.com'
 }
 

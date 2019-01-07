@@ -28,23 +28,24 @@ const App = () => {
     },
     saveNote: key => {
       if (state.notes[key].id) {
+        setState({ ...state, saving: true })
         database.update(state.notes[key].id, state.notes[key].content)
           .then(response => {
-            if (response.status === 200) return
-            else setState({ ...state, error: 'Could not Save the Note ( Status 500 )' })
+            if (response.status === 200) setState({ ...state, saving: false })
+            else setState({ ...state, error: 'Could not Save the Note ( Status 500 )', saving: false })
           })
           .catch(err => {
-            setState({ ...state, error: 'Could not Save the Note, see console error' })
+            setState({ ...state, error: 'Could not Save the Note, see console error', saving: false })
             console.log(err)
           })
       } else {
         database.add(state.user, state.notes[key].content)
           .then(response => {
-            if (response.status === 200) return
-            else setState({ ...state, error: 'Could not Save the Note ( Status 500 )' })
+            if (response.status === 200) setState({ ...state, saving: false })
+            else setState({ ...state, error: 'Could not Save the Note ( Status 500 )', saving: false })
           })
           .catch(err => {
-            setState({ ...state, error: 'Could not Save the Note, see console error' })
+            setState({ ...state, error: 'Could not Save the Note, see console error', saving: false })
             console.log(err)
           })
       }
@@ -75,15 +76,12 @@ const App = () => {
     database.list(state.user)
       .then(response => response.json())
       .then(response => {
-        console.log('response.result', response.result)
         let notes = []
         for (let note of response.result)
           notes.push({
             id: note.id,
             content: note.content
           })
-        console.log('notes', notes)
-
         setState({ ...state, updateList: false, notes: notes })
       })
       .catch(err => {
