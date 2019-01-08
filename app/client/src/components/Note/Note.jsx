@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react'
 import update from 'immutability-helper'
 import ReactQuill from 'react-quill'
 
-import UserLabel from '../UserLabel'
-import SaveButton from '../SaveButton'
-
 import Context from '../../context'
 
 const Note = props => {
@@ -36,11 +33,13 @@ const Note = props => {
                     Save
                 </div>
                 </div>
-                <div>
-                  <div id='Note_logout_button'>
-                    Log out
+                { /*
+                  <div>
+                    <div id='Note_logout_button'>
+                      Log out
+                    </div>
                   </div>
-                </div>
+                */}
               </div>
               {
                 note &&
@@ -48,7 +47,6 @@ const Note = props => {
                   value={note.content}
                   onChange={value => {
                     if (value === note.content) return
-                    console.log('value', value, 'note', props.Note)
                     setNote({ ...note, id: props.Note.id, content: value })
                     setStore(update(store, { notes: { [activeKey]: { content: { $set: value } } } }))
 
