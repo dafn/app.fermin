@@ -39,7 +39,7 @@ const Note = props => {
                       Log out
                     </div>
                   </div>
-                */}
+                */ }
               </div>
               {
                 note &&
