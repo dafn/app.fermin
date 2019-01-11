@@ -1,7 +1,5 @@
 import React from 'react'
 import ListElement from './ListElement'
-import update from 'immutability-helper'
-import Button from './Button'
 
 import Context from '../../context'
 
@@ -23,7 +21,9 @@ const List = props => {
                 )
               }
               <div id='List_add_element_button_container'>
-                <Button addNewNote={addNewNote} />
+                <div id='List_add_element_button' onClick={addNewNote}>
+                  +
+                </div>
               </div>
             </div>
           )
