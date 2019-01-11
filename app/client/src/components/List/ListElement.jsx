@@ -18,7 +18,7 @@ const ListElement = ({ index, value, active }) => {
               <div id='ListElement_text_container'>
                 <div id='ListElement_title_container'>
                   {
-                    parsedNote ? parsedNote.split('\n')[0].slice(0, 20) : '< Empty note >'
+                    parsedNote ? value.substring(3, 20).split('</p><p>')[0].replace(/<\/?[^>]+(>|$)/g, '') : '< Empty note >'
                   }
                 </div>
                 <div id='ListElement_summary' >
