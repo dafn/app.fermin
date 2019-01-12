@@ -3,6 +3,7 @@
     "serve": "parcel watch app/client/index.pug -d app/client/dist & nodemon app/server/app.js",
     "build": "rm -rf app/client/dist && parcel build app/client/index.pug -d app/client/dist",
     "build:run": "yarn build && node app/server/app.js",
+    
     "docker:build": "docker build -t fermin-notes .",
     "docker:run": "docker run -p 8002:8002 fermin-notes",
     "docker:kill": "docker kill $(docker ps -q)",

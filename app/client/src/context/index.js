@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { database } from '../api'
-
 export const store = {
   notes: [{
     id: '',

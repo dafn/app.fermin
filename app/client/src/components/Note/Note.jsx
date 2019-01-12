@@ -31,7 +31,7 @@ const Note = props => {
                 <div onClick={() => !saving && actions.saveNote(activeKey)}>
                   <div className={saving ? 'saving' : ''} id='Note_save_button_button'>
                     Save
-                </div>
+                  </div>
                 </div>
                 { /*
                   <div>
@@ -49,9 +49,8 @@ const Note = props => {
                     if (value === note.content) return
                     setNote({ ...note, id: props.Note.id, content: value })
                     setStore(update(store, { notes: { [activeKey]: { content: { $set: value } } } }))
-
-                  }
-                  } modules={modules} />
+                  }}
+                  modules={modules} />
               }
             </div>
           )

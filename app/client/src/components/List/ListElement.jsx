@@ -3,7 +3,7 @@ import Context from '../../context';
 
 const ListElement = ({ index, value, active }) => {
 
-  const [parsedNote, setParsedNote] = useState(value.replace(/<\/?[^>]+(>|$)/g, ''))
+  const [parsedNote, setParsedNote] = useState()
 
   useEffect(() => {
     setParsedNote(value.replace(/<\/?[^>]+(>|$)/g, ''))

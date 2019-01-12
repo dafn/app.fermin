@@ -1,15 +1,6 @@
 const router = require('express').Router(),
   { addNote, updateNote, deleteNote, listNotes } = require('../datastore')
 
-router.get('/add2', async (req, res) => {
-
-  await addNote('dafn@outlook.com', '<p>this is some example text tet7654</p>')
-  await addNote('dafn@outlook.com', '<p>this is some example text</p>')
-  await addNote('dafn@outlook.com', '<p>this is some example text halla balla</p>')
-
-  res.send('okidoki')
-})
-
 router.post('/add', async (req, res) => {
 
   let transaction = await addNote(req.body.user, req.body.content)

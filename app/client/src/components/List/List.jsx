@@ -16,7 +16,7 @@ const List = props => {
                     key={key}
                     index={key}
                     value={value.content}
-                    active={key === activeKey ? true : false}
+                    active={key === activeKey}
                   />
                 )
               }
