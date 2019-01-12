@@ -5,8 +5,12 @@
   flex: 0.25
   display: flex
   margin-left: 1em
+  padding-right: 1em
+  height: 100vh
+  min-width: min-content
   flex-direction: column
   align-items: center
+  overflow: scroll
 
 #ListElement_main_container
   display: flex
@@ -19,6 +23,7 @@
   transition: border-right 0.2s
   width: 90%
   min-width: 300px
+  min-height: fit-content
   +animation_fade-in(0.5s)
   &.active
     border-right: 5px solid #21ba45
@@ -53,3 +58,4 @@
   #List_add_element_button
     +button(white, #21ba45)
     margin-top: 2vh
+    margin-bottom: 1em
