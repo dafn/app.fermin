@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Context from '../../context';
+import ReactQuill from 'react-quill'
+
 
 const ListElement = ({ index, value, active }) => {
 
@@ -9,6 +11,10 @@ const ListElement = ({ index, value, active }) => {
     setParsedNote(value.replace(/<\/?[^>]+(>|$)/g, ''))
   }, [value])
 
+  const modules = {
+    toolbar: null
+  }
+
   return (
     <Context.Consumer>
       {
@@ -17,14 +23,10 @@ const ListElement = ({ index, value, active }) => {
             <div id='ListElement_main_container' className={active ? 'active' : ''} onClick={() => setActiveKey(index)}>
               <div id='ListElement_text_container'>
                 <div id='ListElement_title_container'>
-                  {
-                    parsedNote ? value.substring(3, 20).split('</p><p>')[0].replace(/<\/?[^>]+(>|$)/g, '') : '< Empty note >'
-                  }
+                  <ReactQuill id='List_element_editor' value={value && value.match(/[^<p>].+?(?=<)/g)[0]} readOnly modules={modules} />
                 </div>
                 <div id='ListElement_summary' >
-                  {
-                    parsedNote
-                  }
+                  <ReactQuill id='List_element_editor' value={value} readOnly modules={modules} />
                 </div>
               </div>
               <div id='ListElement_delete_button' >
