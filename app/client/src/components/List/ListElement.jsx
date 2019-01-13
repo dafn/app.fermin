@@ -5,12 +5,6 @@ import ReactQuill from 'react-quill'
 
 const ListElement = ({ index, value, active }) => {
 
-  const [parsedNote, setParsedNote] = useState()
-
-  useEffect(() => {
-    setParsedNote(value.replace(/<\/?[^>]+(>|$)/g, ''))
-  }, [value])
-
   const modules = {
     toolbar: null
   }
@@ -37,7 +31,6 @@ const ListElement = ({ index, value, active }) => {
         }
       }
     </Context.Consumer>
-
   )
 }
 
