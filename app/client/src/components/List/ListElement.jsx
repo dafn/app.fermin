@@ -17,7 +17,11 @@ const ListElement = ({ index, value, active }) => {
             <div id='ListElement_main_container' className={active ? 'active' : ''} onClick={() => setActiveKey(index)}>
               <div id='ListElement_text_container'>
                 <div id='ListElement_title_container'>
-                  <ReactQuill id='List_element_editor' value={value && value.match(/[^<p>].+?(?=<)/g)[0]} readOnly modules={modules} />
+                {
+                  value
+                  ? <ReactQuill id='List_element_editor' value={value.match(/[^<p>].*?(?=<)/g)[0]} readOnly modules={modules} />
+                  : 'Untitled Note'
+                }
                 </div>
                 <div id='ListElement_summary' >
                   <ReactQuill id='List_element_editor' value={value} readOnly modules={modules} />
