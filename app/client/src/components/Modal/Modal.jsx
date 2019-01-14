@@ -3,7 +3,7 @@ import React from 'react'
 const Modal = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative, activeKey }) => {
   return (
     <div id='Modal_main_container'>
-      <div id='Modal_dark_screen'></div>
+      <div id='Modal_dark_screen' onClick={onNegative}></div>
       <div id='Modal_content_container'>
         <p id='Modal_text'>
           {message}
