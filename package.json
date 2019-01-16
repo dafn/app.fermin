@@ -7,7 +7,9 @@
     "docker:build": "docker build -t fermin-notes .",
     "docker:run": "docker run -p 8002:8002 fermin-notes",
     "docker:kill": "docker kill $(docker ps -q)",
-    "docker:prune": "docker system prune -a"
+    "docker:prune": "docker system prune -a",
+
+    "deploy": "gcloud app deploy"
   },
   "dependencies": {
     "@google-cloud/datastore": "^2.0.0",

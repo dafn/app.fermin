@@ -18,7 +18,7 @@ const ListElement = ({ index, value, active }) => {
               <div id='ListElement_text_container'>
                 <div id='ListElement_title_container'>
                 {
-                  value
+                  value && value.match(/[^<p>].*?(?=<)/g)[0] !== 'br>'
                   ? <ReactQuill id='List_element_editor' value={value.match(/[^<p>].*?(?=<)/g)[0]} readOnly modules={modules} />
                   : 'Untitled Note'
                 }
