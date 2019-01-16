@@ -4,9 +4,8 @@ export const database = {
     return fetch('/notes/add', {
       method: "POST",
       mode: "cors",
-      cache: "no-cache",
       credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Cache-Control": "no-cache" },
       redirect: "follow",
       referrer: "no-referrer",
       body: `{
@@ -27,9 +26,8 @@ export const database = {
     return fetch('/notes/update', {
       method: "POST",
       mode: "cors",
-      cache: "no-cache",
       credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Cache-Control": "no-cache" },
       redirect: "follow",
       referrer: "no-referrer",
       body: `{
