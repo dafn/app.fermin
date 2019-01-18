@@ -3,13 +3,13 @@
   "name": "Fermin",
   "icons": [
     {
-      "src": "/assets/favicon.png",
+      "src": "/assets/splashicon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": "/",
-  "background_color": "#f2f2f2",
+  "background_color": "#FFFFFF",
   "display": "standalone",
   "scope": "/",
   "theme_color": "#FFFFFF"

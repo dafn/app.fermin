@@ -5,8 +5,3 @@ runtime: custom
 env: flex
 automatic_scaling:
    min_num_instances: 1
-handlers:
-- url: /.*
-  secure: always
-  redirect_http_response_code: 301
-  script: auto
