@@ -10,9 +10,10 @@ const
 
 app.use((req, res, next) =>
   req.protocol != 'https' && process.env.NODE_ENV !== 'development' 
-    ? res.redirect('https://' + req.hostname + ':' + port + req.baseUrl)
+    ? res.redirect('https://' + req.hostname + req.baseUrl)
     : next()
 )
+
 app.enable('trust proxy')
 
 app.use(compression())
