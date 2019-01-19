@@ -3,10 +3,7 @@ const router = require('express').Router(),
 
 router.post('/add', async (req, res) => {
   if (req.body.user && req.body.content)
-    if (await addNote(req.body.user, req.body.content) === 500)
-      res.sendStatus(500)
-    else
-      res.send({ id: transaction })
+    res.sendStatus(await addNote(req.body.user, req.body.content))
   else
     res.sendStatus(400)
 })

@@ -28,10 +28,9 @@ const App = () => {
         setState({ ...state, saving: true })
         database.update(state.notes[key].id, state.notes[key].content,
           () => setState({ ...state, saving: false }), err => setState({ ...state, error: err, saving: false }))
-      } else {
+      } else 
         database.add(state.user, state.notes[key].content,
-          () => setState({ ...state, saving: false }), err => setState({ ...state, error: err, saving: false }))
-      }
+          () => setState({ ...state, saving: false, updateList: true }), err => setState({ ...state, error: err, saving: false }))
     },
     deleteNote: key => {
       if (state.notes[key].id)
@@ -83,10 +82,11 @@ const App = () => {
 
 reactDom.render(<App />, document.getElementById('app'))
 
-
+/*
 if ('serviceWorker' in navigator)
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js')
       .then(registration => console.log('ServiceWorker registration successful with scope: ', registration.scope))
       .catch(err => console.error('ServiceWorker registration failed: ', err))
   })
+*/

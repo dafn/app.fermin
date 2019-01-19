@@ -1,7 +1,7 @@
 
 export const database = {
   add: (user, content, onSuccess, onError) => {
-    return fetch('/notes/add', {
+    fetch('/notes/add', {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",
@@ -23,7 +23,7 @@ export const database = {
       })
   },
   update: (id, content, onSuccess, onError) => {
-    return fetch('/notes/update', {
+    fetch('/notes/update', {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",
@@ -45,7 +45,7 @@ export const database = {
       })
   },
   delete: (id, onSuccess, onError) => {
-    return fetch(`/notes/delete/${id}`)
+    fetch(`/notes/delete/${id}`)
       .then(response => {
         if (response.status === 200) onSuccess()
         else onError('Could not Save the Note ( Status 500 )')
@@ -56,7 +56,7 @@ export const database = {
       })
   },
   list: (user, onSuccess, onError) => {
-    return fetch(`/notes/list/${user}`)
+    fetch(`/notes/list/${user}`)
       .then(response => response.json())
       .then(response => onSuccess(response))
       .catch(err => {
