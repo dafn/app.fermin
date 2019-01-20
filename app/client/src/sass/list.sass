@@ -12,7 +12,7 @@
   align-items: center
   overflow: scroll
 
-#ListElement_main_container
+.ListElement_main_container
   display: flex
   background-color: $card-color
   border-radius: .28571429rem
@@ -27,44 +27,42 @@
   +animation_fade-in(0.5s)
   &.active
     border-right: 5px solid #21ba45
-    #ListElement_delete_button
+    .ListElement_delete_button
       display: flex
   &:hover
     filter: brightness(90%)
     cursor: pointer  
-  #ListElement_text_container
+  .ListElement_text_container
     flex: 1
-  #ListElement_title_container
+  .ListElement_title_container
     font: 700 100% $font-stack
     margin-bottom: 1em
-  #ListElement_summary
+  .ListElement_summary
     font: normal 90% $font-stack
     overflow: hidden
     max-height: 3.5em
-
-#List_element_editor
-  .ql-toolbar
-    border: none
-  .ql-container
-    border: none
-    font-size: 14px
-    .ql-editor
-      p
-        cursor: pointer
-      padding: 0
-      line-height: normal
-
-#ListElement_delete_button
-  transition: display 0.2s
-  flex: 0.1
-  display: none
-  p
-    font: normal 120% $font-stack
-    margin: auto
-    color: lightgray
-    transition: color 0.2s
-    &:hover
-      color: red
+  .ListElement_editor
+    .ql-toolbar
+      border: none
+    .ql-container
+      border: none
+      font-size: 14px
+      .ql-editor
+        p
+          cursor: pointer
+        padding: 0
+        line-height: normal
+  .ListElement_delete_button
+    transition: display 0.2s
+    flex: 0.1
+    display: none
+    p
+      font: normal 120% $font-stack
+      margin: auto
+      color: lightgray
+      transition: color 0.2s
+      &:hover
+        color: red
     
 
 #List_add_element_button_container
