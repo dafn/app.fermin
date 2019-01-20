@@ -13,18 +13,20 @@ const ListElement = ({ index, value, active }) => {
     <Context.Consumer>
       {
         ({ actions: { setActiveKey, showModal } }) => {
+          let title = value ? value.match(/[^<p>].*?(?=<)/g)[0] : '',
+            content = title ? (() => value.replace(title, '').replace(value.match(/<p><br><\/p>/g)[0], ''))() : ''
           return (
-            <div className={active ? 'ListElement_main_container active' : 'ListElement_main_container'} onClick={() => setActiveKey(index)}>
+            <div className={`ListElement_main_container ${active ? 'active' : ''}`} onClick={() => setActiveKey(index)}>
               <div className='ListElement_text_container'>
                 <div className='ListElement_title_container'>
-                {
-                  value && value.match(/[^<p>].*?(?=<)/g)[0] !== 'br>'
-                  ? <ReactQuill className='ListElement_editor' value={value.match(/[^<p>].*?(?=<)/g)[0]} readOnly modules={modules} />
-                  : 'Untitled Note'
-                }
+                  {
+                    title && title !== 'br>'
+                      ? <ReactQuill className='ListElement_editor' value={title} readOnly modules={modules} />
+                      : 'Untitled Note'
+                  }
                 </div>
                 <div className='ListElement_summary' >
-                  <ReactQuill className='ListElement_editor' value={value ? value.replace(value.match(/[^<p>].*?(?=<)/g)[0], '') : ''} readOnly modules={modules} />
+                  <ReactQuill className='ListElement_editor' value={content} readOnly modules={modules} />
                 </div>
               </div>
               <div className='ListElement_delete_button' >
