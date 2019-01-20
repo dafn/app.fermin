@@ -24,7 +24,7 @@ const ListElement = ({ index, value, active }) => {
                 }
                 </div>
                 <div id='ListElement_summary' >
-                  <ReactQuill id='List_element_editor' value={value} readOnly modules={modules} />
+                  <ReactQuill id='List_element_editor' value={value ? value.replace(value.match(/[^<p>].*?(?=<)/g)[0], '') : ''} readOnly modules={modules} />
                 </div>
               </div>
               <div id='ListElement_delete_button' >
