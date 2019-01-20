@@ -56,7 +56,7 @@ const App = () => {
           notes.push({ id: note.id, content: note.content })
         setState({ ...state, updateList: false, notes: notes })
       },
-      err => setState({ ...state, error: err, saving: false })
+      err => setState({ ...state, error: err, saving: false, updateList: false })
     )
 
   return (
