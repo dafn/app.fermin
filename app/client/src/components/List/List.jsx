@@ -9,7 +9,7 @@ const List = props => {
       {
         ({ store: { notes, activeKey }, actions: { addNewNote } }) => {
           return (
-            <div id='List_main_container'>
+            <nav id='List_main_container'>
               {
                 notes.map((value, key) =>
                   <ListElement
@@ -25,7 +25,7 @@ const List = props => {
                   +
                 </div>
               </div>
-            </div>
+            </nav>
           )
         }
       }

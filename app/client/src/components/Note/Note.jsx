@@ -26,7 +26,7 @@ const Note = props => {
       {
         ({ store, store: { activeKey, saving }, setStore, actions }) => {
           return (
-            <div id='Note_main_container'>
+            <section id='Note_main_container'>
               <div id='Note_buttons' >
                 <div onClick={() => !saving && actions.saveNote(activeKey)}>
                   <div className={saving ? 'saving' : ''} id='Note_save_button_button'>
@@ -52,7 +52,7 @@ const Note = props => {
                   }}
                   modules={modules} />
               }
-            </div>
+            </section>
           )
         }
       }
