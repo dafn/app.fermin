@@ -2,7 +2,6 @@
 @import shared/mixins
 
 #List_main_container
-  flex: 0.25
   display: flex
   margin-left: 1em
   padding-right: 1em
@@ -21,7 +20,7 @@
   font-family: $font-stack
   border-right: 5px solid white
   transition: border-right 0.2s
-  width: 90%
+  max-width: 300px
   min-width: 300px
   min-height: fit-content
   +animation_fade-in(0.5s)
@@ -48,10 +47,11 @@
       border: none
       font-size: 14px
       .ql-editor
-        p
-          cursor: pointer
         padding: 0
         line-height: normal
+        p
+          cursor: pointer
+          word-break: break-all
   .ListElement_delete_button
     transition: display 0.2s
     flex: 0.1
