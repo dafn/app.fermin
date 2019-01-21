@@ -23,7 +23,7 @@ app.use('/notes', notes)
 app.use('/auth', authenticate)
 
 app.use((req, res, next) =>
-  req.protocol != 'https' && process.env.NODE_ENV !== 'development'
+  req.protocol != 'https' && process.env.NODE_ENV === 'production'
     ? res.redirect('https://' + req.hostname + req.baseUrl)
     : next()
 )

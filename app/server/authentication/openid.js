@@ -9,19 +9,17 @@ passport.deserializeUser((user, done) => done(null, user))
 
 Issuer.discover('https://accounts.google.com')
   .then(discoveredIssuer => {
-    // console.log('Discovered issuer %s %O', discoveredIssuer.issuer, discoveredIssuer.metadata)
-
     const params = {
       access_type: 'offline',
-      redirect_uri: 'https://fermin-notes-dot-no-fermin.appspot.com/auth/cb',
-      scope: 'openid email'
+      scope: 'openid email',
+      redirect_uri: process.env.NODE_ENV === 'production' 
+        ? 'https://fermin-notes-dot-no-fermin.appspot.com/auth/cb'
+        : 'http://localhost:8002/auth/cb'
     }
 
-    passport.use('oidc', new Strategy({ client: new discoveredIssuer.Client({ client_id: clientId, client_secret: clientSecret }), params }, (tokenset, userinfo, done) => {
-      console.log('userinfo --------------------', userinfo)
-
+    passport.use('oidc', new Strategy({ client: new discoveredIssuer.Client({ client_id: clientId, client_secret: clientSecret }), params }, (tokenset, userinfo, done) => {      
       if (userinfo)
-        return done(null, userinfo)
+        return done(null, userinfo.email)
       return done(null, false)
     }))
   })

@@ -2,8 +2,8 @@ const router = require('express').Router(),
   { addNote, updateNote, deleteNote, listNotes } = require('../datastore')
 
 router.post('/add', async (req, res) => {
-  if (req.body.user && req.body.content)
-    res.sendStatus(await addNote(req.body.user, req.body.content))
+  if (req.user && req.body.content)
+    res.sendStatus(await addNote(req.user, req.body.content))
   else
     res.sendStatus(400)
 })
@@ -23,8 +23,8 @@ router.get('/delete/:id', async (req, res) => {
 })
 
 router.get('/list/:user', async (req, res) => {
-  if (req.params.user)
-    res.send(await listNotes(req.params.user))
+  if (req.user)
+    res.send(await listNotes(req.user))
   else
     res.sendStatus(400)
 })
