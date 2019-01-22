@@ -25,7 +25,7 @@
   min-height: fit-content
   +animation_fade-in(0.5s)
   &.active
-    border-right: 5px solid #21ba45
+    border-right: 5px solid $theme-blue
     .ListElement_delete_button
       display: flex
   &:hover
@@ -59,7 +59,7 @@
     p
       font: normal 120% $font-stack
       margin: auto
-      color: lightgray
+      color: $theme-darkgray
       transition: color 0.2s
       &:hover
         color: red
@@ -67,6 +67,6 @@
 
 #List_add_element_button_container
   #List_add_element_button
-    +button(white, #21ba45)
+    +button(white, $theme-blue)
     margin-top: 2vh
     margin-bottom: 1em
