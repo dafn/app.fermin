@@ -7,6 +7,7 @@ const
 passport.serializeUser((user, done) => done(null, user))
 passport.deserializeUser((user, done) => done(null, user))
 
+Issuer.defaultHttpOptions.timeout = 10000
 Issuer.discover('https://accounts.google.com')
   .then(discoveredIssuer => {
     const params = {
