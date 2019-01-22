@@ -24,6 +24,7 @@ Issuer.discover('https://accounts.google.com')
         return done(null, false)
       }))
   })
+  .catch(err => console.log(err))
 
 router.get('/', passport.authenticate('oidc'))
 router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureRedirect: '/error' }))
