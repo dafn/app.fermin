@@ -1,9 +1,9 @@
 const
-  express = require('express'),
-  bodyParser = require('body-parser'),
+  { authenticate, isAuthenticated } = require('./authentication/openid'),
+  { session_store_key } = require('../../keys/session-store')
+express = require('express'),
   path = require('path'),
   notes = require('./routes/notes'),
-  authenticate = require('./authentication/openid'),
   passport = require('passport'),
   port = process.env.PORT || 8002,
   app = express()
@@ -11,13 +11,13 @@ const
 app.enable('trust proxy')
 
 app.use(require('compression')())
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-app.use(require('express-session')({ secret: 'keyboard cat' }))
-app.use(require('cookie-parser')())
+app.use(require('body-parser').json())
+app.use(require('express-session')({ secret: session_store_key }))
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use((req, res, next) => { console.log(req.protocol + '://' + req.get('host') + req.originalUrl); next() })
 
 app.use('/notes', notes)
 app.use('/auth', authenticate)
@@ -28,13 +28,11 @@ app.use((req, res, next) =>
     : next()
 )
 
-app.use(
-  (req, res, next) => { req.isAuthenticated() ? next() : res.redirect('/auth') },
-  express.static(path.resolve(__dirname, '../client/dist/'), {
-    setHeaders: res => {
-      res.set('X-XSS-Protection', '1; mode=block')
-      res.set('X-Frame-Options', 'DENY')
-    }
-  }))
+app.use(isAuthenticated, express.static(path.resolve(__dirname, '../client/dist/'), {
+  setHeaders: res => {
+    res.set('X-XSS-Protection', '1; mode=block')
+    res.set('X-Frame-Options', 'DENY')
+  }
+}))
 
 app.listen(port, () => console.log(`listening on port ${port}`))

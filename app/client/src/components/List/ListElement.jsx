@@ -14,7 +14,7 @@ const ListElement = ({ index, value, active }) => {
       {
         ({ actions: { setActiveKey, showModal } }) => {
           let title = value ? value.match(/[^<p>].*?(?=<)/g)[0] : '',
-            content = title ? (() => value.replace(title, '').replace(value.match(/<p><br><\/p>/g)[0], ''))() : ''
+            content = title ? value.replace(title, '').replace(value.match(/<p><br><\/p>/), '') : ''
           return (
             <div className={`ListElement_main_container ${active ? 'active' : ''}`} onClick={() => setActiveKey(index)}>
               <div className='ListElement_text_container'>
@@ -26,7 +26,7 @@ const ListElement = ({ index, value, active }) => {
                   }
                 </div>
                 <div className='ListElement_summary' >
-                  <ReactQuill className='ListElement_editor' value={content} readOnly modules={modules} />
+                  <ReactQuill className='ListElement_editor' value={content !== '<p><</p>' ? content : ''} readOnly modules={modules} />
                 </div>
               </div>
               <div className='ListElement_delete_button' >

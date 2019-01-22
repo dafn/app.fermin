@@ -12,22 +12,23 @@ Issuer.discover('https://accounts.google.com')
     const params = {
       access_type: 'offline',
       scope: 'openid email',
-      redirect_uri: process.env.NODE_ENV === 'production' 
+      redirect_uri: process.env.NODE_ENV === 'production'
         ? 'https://fermin-notes-dot-no-fermin.appspot.com/auth/cb'
         : 'http://localhost:8002/auth/cb'
     }
 
-    passport.use('oidc', new Strategy({ client: new discoveredIssuer.Client({ client_id: clientId, client_secret: clientSecret }), params }, (tokenset, userinfo, done) => {      
-      if (userinfo)
-        return done(null, userinfo.email)
-      return done(null, false)
-    }))
+    passport.use('oidc', new Strategy({ client: new discoveredIssuer.Client({ client_id: clientId, client_secret: clientSecret }), params },
+      (tokenset, userinfo, done) => {
+        if (userinfo)
+          return done(null, userinfo.email)
+        return done(null, false)
+      }))
   })
 
 router.get('/', passport.authenticate('oidc'))
-router.get('/cb', passport.authenticate('oidc', {
-  successRedirect: '/',
-  failureRedirect: '/error'
-}))
+router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureRedirect: '/error' }))
 
-module.exports = router
+module.exports = {
+  authenticate: router,
+  isAuthenticated: (req, res, next) => { console.log(req.isAuthenticated()); req.isAuthenticated() ? next() : res.redirect('/auth') }
+}

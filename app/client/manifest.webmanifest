@@ -3,7 +3,7 @@
   "name": "Fermin",
   "icons": [
     {
-      "src": "/assets/splashicon.png",
+      "src": "/assets/favicon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
