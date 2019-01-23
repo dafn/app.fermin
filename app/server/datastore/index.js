@@ -11,14 +11,8 @@ exports.addNote = async function (user, content) {
     await datastore.save({
       key,
       data: [
-        {
-          name: 'user',
-          value: user
-        },
-        {
-          name: 'content',
-          value: content
-        }
+        { name: 'user', value: user },
+        { name: 'content', value: content }
       ]
     })
     console.log(`Note ${key.id} added successfully.`)

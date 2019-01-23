@@ -32,5 +32,8 @@ router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureR
 
 module.exports = {
   authenticate: router,
-  isAuthenticated: (req, res, next) => { console.log(req.isAuthenticated()); req.isAuthenticated() ? next() : res.redirect('/auth') }
+  isAuthenticated: (req, res, next) => {
+    console.log(`${req.isAuthenticated() ? '\033[92m Granted' : '\033[93m Denied '} ${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`)
+    req.isAuthenticated() ? next() : res.redirect('/auth')
+  }
 }
