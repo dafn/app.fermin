@@ -3,6 +3,8 @@ const
   { session_store_key } = require('../../keys/session-store'),
   session = require('express-session'),
   express = require('express'),
+  datastore = require('@google-cloud/datastore'),
+  sessionstore = require('@google-cloud/connect-datastore')(session),
   path = require('path'),
   notes = require('./routes/notes'),
   passport = require('passport'),
@@ -14,7 +16,14 @@ app.enable('trust proxy')
 app.use(require('compression')())
 app.use(require('body-parser').json())
 app.use(session({
-  
+  store: new sessionstore({
+    dataset: new datastore({
+      kind: 'express-sessions',
+      projectId: 'no-fermin',
+      keyFilename: 'keys/datastore-service-account-key.json'
+    })
+  }),
+  secret: session_store_key
 }))
 
 app.use(passport.initialize())
