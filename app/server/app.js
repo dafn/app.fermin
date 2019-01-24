@@ -1,11 +1,7 @@
 const
   { authenticate, isAuthenticated } = require('./authentication/openid'),
   { session_store_key } = require('../../keys/session-store'),
-  redis = process.env.NODE_ENV !== 'development'
-    ? require('redis').createClient(6379, 'redis')
-    : require('redis').createClient(),
   session = require('express-session'),
-  redisSessionStore = require('connect-redis')(session),
   express = require('express'),
   path = require('path'),
   notes = require('./routes/notes'),
@@ -18,10 +14,7 @@ app.enable('trust proxy')
 app.use(require('compression')())
 app.use(require('body-parser').json())
 app.use(session({
-  store: new redisSessionStore({ client: redis, logErrors: true }),
-  secret: session_store_key,
-  saveUninitialized: false,
-  resave: false
+  
 }))
 
 app.use(passport.initialize())
