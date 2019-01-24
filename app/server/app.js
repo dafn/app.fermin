@@ -11,8 +11,6 @@ const
   port = process.env.PORT || 8002,
   app = express()
 
-app.enable('trust proxy')
-
 app.use(require('compression')())
 app.use(require('body-parser').json())
 app.use(session({
@@ -23,20 +21,28 @@ app.use(session({
       keyFilename: 'keys/datastore-service-account-key.json'
     })
   }),
-  secret: session_store_key
+  secret: session_store_key,
+  resave: false,
+  saveUninitialized: false,
+  unset: 'destroy',
+  cookie: { secure: process.env.NODE_ENV === 'production' },
+  maxAge: 2628000
 }))
+
+if (process.env.NODE_ENV === 'production') {
+  app.enable('trust proxy')
+
+  app.use((req, res, next) => req.protocol != 'https'
+    ? res.redirect('https://' + req.hostname + req.baseUrl)
+    : next()
+  )
+}
 
 app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/notes', notes)
 app.use('/auth', authenticate)
-
-app.use((req, res, next) =>
-  req.protocol != 'https' && process.env.NODE_ENV === 'production'
-    ? res.redirect('https://' + req.hostname + req.baseUrl)
-    : next()
-)
 
 app.use(isAuthenticated, express.static(path.resolve(__dirname, '../client/dist/'), {
   setHeaders: res => {
