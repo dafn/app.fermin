@@ -11,6 +11,15 @@ const
   port = process.env.PORT || 8002,
   app = express()
 
+if (process.env.NODE_ENV === 'production') {
+  app.enable('trust proxy')
+
+  app.use((req, res, next) => req.protocol != 'https'
+    ? res.redirect('https://' + req.hostname + req.baseUrl)
+    : next()
+  )
+}
+
 app.use(require('compression')())
 app.use(require('body-parser').json())
 app.use(session({
@@ -28,15 +37,6 @@ app.use(session({
   cookie: { secure: process.env.NODE_ENV === 'production' },
   maxAge: 2628000
 }))
-
-if (process.env.NODE_ENV === 'production') {
-  app.enable('trust proxy')
-
-  app.use((req, res, next) => req.protocol != 'https'
-    ? res.redirect('https://' + req.hostname + req.baseUrl)
-    : next()
-  )
-}
 
 app.use(passport.initialize())
 app.use(passport.session())

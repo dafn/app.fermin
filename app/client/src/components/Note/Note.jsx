@@ -33,13 +33,11 @@ const Note = props => {
                     Save
                   </div>
                 </div>
-                { /*
-                  <div>
-                    <div id='Note_logout_button'>
-                      Log out
-                    </div>
+                <a href='/auth/logout'>
+                  <div id='Note_logout_button'>
+                    Log out
                   </div>
-                */ }
+                </a>
               </div>
               {
                 note &&
