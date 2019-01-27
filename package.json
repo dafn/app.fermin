@@ -9,6 +9,12 @@
     "docker:prune": "docker system prune -a",
     "deploy": "gcloud app deploy"
   },
+  "sw-precache": {
+    "runtimeCaching": [{
+      "urlPattern": "/(.*)",
+      "handler": "networkFirst"
+    }]
+  },
   "dependencies": {
     "@google-cloud/connect-datastore": "^2.0.1",
     "@google-cloud/datastore": "^2.0.0",
