@@ -33,11 +33,11 @@ const Note = props => {
                     Save
                   </div>
                 </div>
-                <a href='/auth/logout'>
+                <div onClick={() => actions.logout()}>
                   <div id='Note_logout_button'>
                     Log out
                   </div>
-                </a>
+                </div>
               </div>
               {
                 note &&
