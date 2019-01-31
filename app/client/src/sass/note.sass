@@ -2,6 +2,7 @@
 @import shared/mixins
 
 #Note_main_container
+  position: relative
   background-color: $card-color
   border-radius: .28571429rem
   margin: 1em
@@ -12,15 +13,15 @@
   #Note_buttons
     position: absolute
     display: flex
-    top: 2.2em
-    right: 2.2em
+    top: 1em
+    right: 1em
     #Note_logout_button
-      +button(white, $theme-red)
+      +button(white, $theme-red, 'inverted')
       margin-left: 1em
     #Note_save_button_button
       &.saving
         opacity: 0.1
-      +button(white, $theme-blue)
+      +button(white, $theme-blue, '')
   #editor
     flex: 1
     display: flex
