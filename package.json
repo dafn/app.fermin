@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "serve": "parcel watch app/client/index.pug -d app/client/dist & NODE_ENV=development nodemon app/server/app.js",
+    "serve": "rm -rf app/client/dist && parcel watch app/client/index.pug -d app/client/dist & NODE_ENV=development nodemon app/server/app.js",
     "build": "rm -rf app/client/dist && parcel build app/client/index.pug -d app/client/dist",
     "build:run": "yarn build && NODE_ENV=production node app/server/app.js",
     "docker:build": "docker build -t fermin-notes .",
@@ -8,12 +8,6 @@
     "docker:kill": "docker kill $(docker ps -q)",
     "docker:prune": "docker system prune -a",
     "deploy": "gcloud app deploy"
-  },
-  "sw-precache": {
-    "runtimeCaching": [{
-      "urlPattern": "/(.*)",
-      "handler": "networkFirst"
-    }]
   },
   "dependencies": {
     "@google-cloud/connect-datastore": "^2.0.1",

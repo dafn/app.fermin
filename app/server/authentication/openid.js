@@ -16,7 +16,7 @@ const params = {
 }
 
 Issuer.defaultHttpOptions.timeout = 10000
-const OIDC_Provider = new Issuer({
+const OIDC_RP = new Issuer({
   issuer: 'https://accounts.google.com',
   authorization_endpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
   token_endpoint: 'https://www.googleapis.com/oauth2/v4/token',
@@ -25,7 +25,7 @@ const OIDC_Provider = new Issuer({
   end_session_endpoint: 'https://accounts.google.com/logout'
 })
 
-const client = new OIDC_Provider.Client({ client_id: clientId, client_secret: clientSecret })
+const client = new OIDC_RP.Client({ client_id: clientId, client_secret: clientSecret })
 
 passport.use('oidc', new Strategy({ client, params },
   (tokenset, userinfo, done) => {
@@ -43,10 +43,20 @@ router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureR
 
 module.exports = {
   authenticate: router,
-  isAuthenticated: (req, res, next) =>
-    req.originalUrl.endsWith('.webmanifest')
-      ? (console.log('\033[92m Granted', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`), next())
-      : (req.isAuthenticated())
-        ? (console.log('\033[92m Granted', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`), next())
-        : (console.log('\033[93m Denied ', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`), res.redirect('/auth/login'))
+  isAuthenticated: (req, res, next) => {
+    if (req.originalUrl.endsWith('.webmanifest')) {
+      console.log('\033[92m Granted', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`)
+      next()
+    }
+    else {
+      if (req.isAuthenticated()) {
+        console.log('\033[92m Granted', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`)
+        next()
+      }
+      else {
+        console.log('\033[93m Denied ', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`)
+        res.redirect('/auth/login')
+      }
+    }
+  }
 }
