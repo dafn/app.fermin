@@ -23,7 +23,7 @@ router.get('/delete/:id', isAuthenticated, async (req, res) => {
     res.sendStatus(400)
 })
 
-router.get('/list/:user', isAuthenticated, async (req, res) => {
+router.get('/list/', isAuthenticated, async (req, res) => {
   if (req.user)
     res.send(await listNotes(req.user))
   else

@@ -36,7 +36,7 @@ const App = () => {
         database.update(state.notes[key].id, state.notes[key].content,
           () => setState({ ...state, saving: false }), err => setState({ ...state, error: err, saving: false }))
       } else
-        database.add(state.user, state.notes[key].content,
+        database.add(state.notes[key].content,
           () => setState({ ...state, saving: false, updateList: true }), err => setState({ ...state, error: err, saving: false }))
     },
     deleteNote: key => {
@@ -55,7 +55,7 @@ const App = () => {
   }
 
   if (state.updateList)
-    database.list(state.user,
+    database.list(
       response => {
         let notes = []
         for (let note of response.result)

@@ -9,8 +9,7 @@ export const store = {
   updateList: true,
   error: '',
   offline: false,
-  saving: false,
-  user: 'dafn@outlook.com'
+  saving: false
 }
 
 const Context = React.createContext()

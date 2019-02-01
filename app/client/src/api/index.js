@@ -1,6 +1,6 @@
 
 export const database = {
-  add: (user, content, onSuccess, onError) => {
+  add: (content, onSuccess, onError) => {
     fetch('/notes/add', {
       method: "POST",
       mode: "cors",
@@ -9,7 +9,6 @@ export const database = {
       redirect: "follow",
       referrer: "no-referrer",
       body: `{
-        "user": "${user}",
         "content": "${content}"
       }`
     })
@@ -55,8 +54,8 @@ export const database = {
         console.log(err)
       })
   },
-  list: (user, onSuccess, onError) => {
-    fetch(`/notes/list/${user}`)
+  list: (onSuccess, onError) => {
+    fetch(`/notes/list/`)
       .then(response => response.json())
       .then(response => onSuccess(response))
       .catch(err => {
