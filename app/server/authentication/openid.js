@@ -46,20 +46,20 @@ module.exports = {
   authenticate: router,
   isAuthenticated: (req, res, next) => {
     if (process.env.NODE_ENV === 'testing') {
-      console.log(`${Terminal.BLUE} Granted`, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
+      console.log(`${Terminal.BLUE} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
       next()
     }
     if (req.originalUrl.endsWith('.webmanifest')) {
-      console.log(`${Terminal.OK} Granted`, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
+      console.log(`${Terminal.OK} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
       next()
     }
     else {
       if (req.isAuthenticated()) {
-        console.log(`${Terminal.OK} Granted`, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
+        console.log(`${Terminal.OK} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
         next()
       }
       else {
-        console.log(`${Terminal.WARNING} Denied `, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
+        console.log(`${Terminal.WARNING} Denied ${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
         res.redirect('/auth/login')
       }
     }
