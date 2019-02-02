@@ -8,7 +8,6 @@ export const store = {
   activeKey: 0,
   updateList: true,
   error: '',
-  offline: false,
   saving: false
 }
 
