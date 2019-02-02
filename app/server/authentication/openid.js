@@ -1,6 +1,7 @@
 const
   router = require('express').Router(),
   passport = require('passport'),
+  { Terminal } = require('../terminal/colors'),
   { Issuer, Strategy } = require('openid-client'),
   { clientId, clientSecret } = require('../../../keys/gcp-iam')
 
@@ -44,17 +45,21 @@ router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureR
 module.exports = {
   authenticate: router,
   isAuthenticated: (req, res, next) => {
+    if (process.env.NODE_ENV === 'testing') {
+      console.log(`${Terminal.BLUE} Granted`, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
+      next()
+    }
     if (req.originalUrl.endsWith('.webmanifest')) {
-      console.log('\033[92m Granted', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`)
+      console.log(`${Terminal.OK} Granted`, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
       next()
     }
     else {
       if (req.isAuthenticated()) {
-        console.log('\033[92m Granted', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`)
+        console.log(`${Terminal.OK} Granted`, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
         next()
       }
       else {
-        console.log('\033[93m Denied ', `${req.protocol}://${req.get('host')}${req.originalUrl}${'\033[0m'}`)
+        console.log(`${Terminal.WARNING} Denied `, `${req.protocol}://${req.get('host')}${req.originalUrl}`, Terminal.RESET)
         res.redirect('/auth/login')
       }
     }
