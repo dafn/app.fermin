@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "serve": "rm -rf app/client/dist && parcel watch app/client/index.pug -d app/client/dist & NODE_ENV=development nodemon app/server/app.js",
+    "serve": "rm -rf app/client/dist && redis/src/redis-server & parcel watch app/client/index.pug -d app/client/dist & NODE_ENV=development nodemon app/server/app.js",
     "build": "rm -rf app/client/dist && parcel build app/client/index.pug -d app/client/dist",
-    "build:run": "yarn build && NODE_ENV=production node app/server/app.js",
+    "build:run": "yarn build && redis/src/redis-server & NODE_ENV=production node app/server/app.js",
     "docker:build": "docker build -t fermin-notes .",
     "docker:run": "docker run -p 8002:8002 fermin-notes",
     "docker:kill": "docker kill $(docker ps -q)",
@@ -10,10 +10,10 @@
     "deploy": "gcloud app deploy"
   },
   "dependencies": {
-    "@google-cloud/connect-datastore": "^2.0.1",
     "@google-cloud/datastore": "^2.0.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
+    "connect-redis": "^3.4.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "immutability-helper": "^2.9.0",
