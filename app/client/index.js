@@ -7,7 +7,7 @@ import Note from './src/components/Note'
 import Modal from './src/components/Modal'
 
 import Context, { store } from './src/context'
-import { database } from './src/api'
+import { database, auth } from './src/api'
 
 import 'react-quill/dist/quill.snow.css'
 import './src/sass/main.sass'
@@ -17,15 +17,7 @@ const App = () => {
   const [state, setState] = useState(store)
 
   const actions = {
-    logout: () =>
-      fetch('/auth/logout', { mode: 'no-cors' })
-        .then(() =>
-          navigator.serviceWorker.getRegistrations().then(registrations => {
-            for (let registration of registrations)
-              registration.unregister()
-            window.location.reload(true)
-          })
-        ),
+    logout: () => auth.logout(),
     setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
     showModal: () => setState({ ...state, alert: true }),
     addNewNote: () => setState(update(state, { notes: { $push: [{ id: '', content: '' }] } })),
@@ -33,10 +25,10 @@ const App = () => {
       if (state.notes[key].id) {
         setState({ ...state, saving: true })
         database.update(state.notes[key].id, state.notes[key].content,
-          () => setState({ ...state, saving: false }), err => setState({ ...state, error: err, saving: false }))
+          () => setState({ ...state, saving: false }), err => setState({ ...state, saving: false }))
       } else
         database.add(state.notes[key].content,
-          () => setState({ ...state, saving: false, updateList: true }), err => setState({ ...state, error: err, saving: false }))
+          () => setState({ ...state, saving: false, updateList: true }), err => setState({ ...state, saving: false }))
     },
     deleteNote: key => {
       if (state.notes[key].id)
@@ -45,7 +37,7 @@ const App = () => {
             state.notes.splice(state.activeKey, 1)
             setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
           },
-          err => setState({ ...state, error: err, alert: false }))
+          err => setState({ ...state, alert: false }))
       else {
         state.notes.splice(state.activeKey, 1)
         setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
@@ -61,7 +53,7 @@ const App = () => {
           notes.push({ id: note.id, content: note.content })
         setState({ ...state, updateList: false, notes: notes })
       },
-      err => setState({ ...state, error: err, saving: false, updateList: false })
+      err => setState({ ...state, saving: false, updateList: false })
     )
 
   return (
