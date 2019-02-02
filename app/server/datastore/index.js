@@ -41,7 +41,7 @@ exports.updateNote = async function (id, content) {
     console.log(`Note ${id} updated successfully.`)
     return 200
   } catch (err) {
-    console.log(`Error when updating Note ${id}`, err)
+    console.error(`Error when updating Note ${id}`, err)
     transaction.rollback()
     return 500
   }
@@ -53,7 +53,7 @@ exports.deleteNote = async function (id) {
     console.log(`Note ${id} deleted successfully.`)
     return 200
   } catch (error) {
-    console.log(`error when deleting Note ${id}`, error)
+    console.error(`error when deleting Note ${id}`, error)
     return 500
   }
 }

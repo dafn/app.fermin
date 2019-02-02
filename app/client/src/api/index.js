@@ -18,7 +18,7 @@ export const database = {
       })
       .catch(err => {
         onError('Could not Save the Note, see console error')
-        console.log(err)
+        console.error(err)
       })
   },
   update: (id, content, onSuccess, onError) => {
@@ -40,7 +40,7 @@ export const database = {
       })
       .catch(err => {
         onError('Could not Save the Note, see console error')
-        console.log(err)
+        console.error(err)
       })
   },
   delete: (id, onSuccess, onError) => {
@@ -51,7 +51,7 @@ export const database = {
       })
       .catch(err => {
         onError('Could not Save the Note, see console error')
-        console.log(err)
+        console.error(err)
       })
   },
   list: (onSuccess, onError) => {
@@ -60,7 +60,7 @@ export const database = {
       .then(response => onSuccess(response))
       .catch(err => {
         onError('Could not get list of notes, see console error')
-        console.log(err)
+        console.error(err)
       })
   }
 }
@@ -75,5 +75,5 @@ export const auth = {
           window.location.reload(true)
         })
       )
-      .catch(err => console.log('Could not logout', err))
+      .catch(err => console.error('Could not logout', err))
 }
