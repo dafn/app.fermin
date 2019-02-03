@@ -1,7 +1,6 @@
 const
   { authenticate, isAuthenticated } = require('./authentication/openid'),
   { session_store_key } = require('../../keys/session-store'),
-  { Terminal } = require('./terminal/colors'),
   express = require('express'),
   session = require('express-session'),
   redis = require('connect-redis')(session),
