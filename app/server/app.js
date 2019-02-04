@@ -3,7 +3,7 @@ const
   { session_store_key } = require('../../keys/session-store'),
   express = require('express'),
   session = require('express-session'),
-  redis = require('connect-redis')(session),
+  memorystore = require('memorystore')(session),
   path = require('path'),
   notes = require('./routes/notes'),
   passport = require('passport'),
@@ -23,7 +23,7 @@ app.use(require('compression')())
 app.use(require('body-parser').json())
 
 app.use(session({
-  store: new redis({ port: 6379 }),
+  store: new memorystore({ checkPeriod: 86400000 }),
   secret: session_store_key,
   resave: false,
   saveUninitialized: false,
