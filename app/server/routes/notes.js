@@ -4,14 +4,14 @@ const router = require('express').Router(),
 
 router.post('/add', isAuthenticated, async (req, res) => {
   if (req.user && req.body.content)
-    res.sendStatus(await addNote(req.user, req.body.content))
+    res.sendStatus(await addNote(req.user, decodeURI(req.body.content)))
   else
     res.sendStatus(400)
 })
 
 router.post('/update', isAuthenticated, async (req, res) => {
   if (req.user && req.body.id && req.body.content)
-    res.sendStatus(await updateNote(req.body.id, req.body.content))
+    res.sendStatus(await updateNote(decodeURI(req.body.id), decodeURI(req.body.content)))
   else
     res.sendStatus(400)
 })

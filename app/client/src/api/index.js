@@ -9,7 +9,7 @@ export const database = {
       redirect: "follow",
       referrer: "no-referrer",
       body: `{
-        "content": "${content}"
+        "content": "${encodeURI(content)}"
       }`
     })
       .then(response => {
@@ -30,8 +30,8 @@ export const database = {
       redirect: "follow",
       referrer: "no-referrer",
       body: `{
-        "id": "${id}",
-        "content": "${content}"
+        "id": "${encodeURI(id)}",
+        "content": "${encodeURI(content)}"
       }`
     })
       .then(response => {
