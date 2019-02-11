@@ -22,13 +22,13 @@ const App = () => {
     setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
     showModal: () => setState({ ...state, modal: true }),
     addNewNote: () => setState(update(state, { notes: { $push: [{ id: '', content: '' }] } })),
-    saveNote: key => {
+    saveNote: (key, content) => {
       if (state.notes[key].id) {
         setState({ ...state, saving: true })
-        database.update(state.notes[key].id, state.notes[key].content,
+        database.update(state.notes[key].id, content,
           () => setState({ ...state, saving: false, saved: true }), err => setState({ ...state, saving: false }))
       } else
-        database.add(state.notes[key].content,
+        database.add(content,
           () => setState({ ...state, saving: false, updateList: true, saved: true }), err => setState({ ...state, saving: false }))
     },
     deleteNote: key => {

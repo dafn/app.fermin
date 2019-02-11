@@ -19,6 +19,9 @@
       +button(white, $theme-red, 'inverted')
       margin-left: 1em
     #Note_save_button_button
+      &.disabled
+        opacity: 0.2
+        cursor: not-allowed
       &.saving
         opacity: 0.1
       +button(white, $theme-blue, '')

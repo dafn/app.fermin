@@ -26,12 +26,12 @@ const Note = props => {
       {
         ({ store, store: { activeKey, saving, saved }, setStore, actions }) => {
 
-          saved && window.setTimeout(() => actions.endAlert(), 3000)
+          saved && window.setTimeout(() => actions.endAlert(), 1000)
 
           return (
             <section id='Note_main_container'>
               <div id='Note_buttons' >
-                <div onClick={() => !saving && actions.saveNote(activeKey)}>
+                <div onClick={() => !saving && actions.saveNote(activeKey, note.content)}>
                   <div className={`${saving ? 'saving' : ''} ${saved ? 'saved' : ''}`} id='Note_save_button_button'>
                     {
                       saved ? 'saved!' : 'Save'
@@ -51,7 +51,6 @@ const Note = props => {
                   onChange={value => {
                     if (value === note.content) return
                     setNote({ ...note, id: props.Note.id, content: value })
-                    setStore(update(store,{ notes: { [activeKey]: { content: { $set: value } } } }))
                   }}
                   modules={modules} />
               }
