@@ -7,23 +7,20 @@
   border-radius: .28571429rem
   margin-left: 0
   flex: 1
-  display: flex
-  justify-content: center
-  #Note_buttons
+  #Note_save_button_button
+    +button(black, white, '')
+    &:hover
+      background: white
+      color: $theme-green
     position: absolute
-    display: flex
-    top: 1em
-    right: 1em
-    #Note_logout_button
-      +button(white, $theme-red, 'inverted')
-      margin-left: 1em
-    #Note_save_button_button
-      &.disabled
-        opacity: 0.2
-        cursor: not-allowed
-      &.saving
-        opacity: 0.1
-      +button(white, $theme-blue, '')
+    top: 1.2em
+    left: 520px
+
+    &.disabled
+      opacity: 0.2
+      cursor: not-allowed
+    &.saving
+      opacity: 0.1
   #editor
     flex: 1
     display: flex

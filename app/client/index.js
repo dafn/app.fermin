@@ -5,6 +5,7 @@ import update from 'immutability-helper'
 import List from './src/components/List'
 import Note from './src/components/Note'
 import Modal from './src/components/Modal'
+import Header from './src/components/Header'
 
 import Context, { store } from './src/context'
 import { database, auth } from './src/api'
@@ -59,7 +60,7 @@ const App = () => {
 
   return (
     <Context.Provider value={{ store: state, setStore: setState, actions }}>
-      <header> FERMIN </header>
+      <Header />
       <div id="wrapper">
         <List />
         <Note Note={state.notes[state.activeKey]} />

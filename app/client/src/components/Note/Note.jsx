@@ -30,19 +30,10 @@ const Note = props => {
 
           return (
             <section id='Note_main_container'>
-              <div id='Note_buttons' >
-                <div onClick={() => !saving && actions.saveNote(activeKey, note.content)}>
-                  <div className={`${saving ? 'saving' : ''} ${saved ? 'saved' : ''}`} id='Note_save_button_button'>
-                    {
-                      saved ? 'saved!' : 'Save'
-                    }
-                  </div>
-                </div>
-                <div onClick={() => actions.logout()}>
-                  <div id='Note_logout_button'>
-                    Log out
-                  </div>
-                </div>
+              <div className={`${saving ? 'saving' : ''} ${saved ? 'saved' : ''}`} id='Note_save_button_button' onClick={() => !saving && !saved && actions.saveNote(activeKey, note.content)}>
+                {
+                  saved ? 'Saved' : 'Save'
+                }
               </div>
               {
                 note &&
