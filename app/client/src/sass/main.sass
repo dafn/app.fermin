@@ -3,17 +3,25 @@
 @import list
 @import note
 @import modal
+@import header
 
 body
   background-color: #f2f2f2
+  min-height: 100vh
   margin: 0 auto
   +animation_fade-in(0.5s)
 
+#app
+  min-height: 100vh
+  max-height: 100vh
+  display: flex
+  flex-direction: column
+
 #wrapper
+  flex: 1
   display: flex
   flex-direction: row
   min-width: 1100px
-  min-height: 100vh
 
 .hidden
   display: none

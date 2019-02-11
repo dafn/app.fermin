@@ -59,6 +59,7 @@ const App = () => {
 
   return (
     <Context.Provider value={{ store: state, setStore: setState, actions }}>
+      <header> FERMIN </header>
       <div id="wrapper">
         <List />
         <Note Note={state.notes[state.activeKey]} />
