@@ -17,30 +17,31 @@ const App = () => {
   const [state, setState] = useState(store)
 
   const actions = {
+    endAlert: () => setState({ ...state, saved: false }),
     logout: () => auth.logout(),
     setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
-    showModal: () => setState({ ...state, alert: true }),
+    showModal: () => setState({ ...state, modal: true }),
     addNewNote: () => setState(update(state, { notes: { $push: [{ id: '', content: '' }] } })),
     saveNote: key => {
       if (state.notes[key].id) {
         setState({ ...state, saving: true })
         database.update(state.notes[key].id, state.notes[key].content,
-          () => setState({ ...state, saving: false }), err => setState({ ...state, saving: false }))
+          () => setState({ ...state, saving: false, saved: true }), err => setState({ ...state, saving: false }))
       } else
         database.add(state.notes[key].content,
-          () => setState({ ...state, saving: false, updateList: true }), err => setState({ ...state, saving: false }))
+          () => setState({ ...state, saving: false, updateList: true, saved: true }), err => setState({ ...state, saving: false }))
     },
     deleteNote: key => {
       if (state.notes[key].id)
         database.delete(state.notes[key].id,
           () => {
             state.notes.splice(state.activeKey, 1)
-            setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+            setState({ ...state, notes: state.notes, modal: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
           },
-          err => setState({ ...state, alert: false }))
+          err => setState({ ...state, modal: false }))
       else {
         state.notes.splice(state.activeKey, 1)
-        setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+        setState({ ...state, notes: state.notes, modal: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
       }
     }
   }
@@ -62,16 +63,15 @@ const App = () => {
         <List />
         <Note Note={state.notes[state.activeKey]} />
         {
-          state.alert && (
-            <Modal
-              message='Are you sure you want to delete this note?'
-              positiveButtonText='Delete'
-              negativeButtonText='Cancel'
-              onPositive={key => { actions.deleteNote(key) }}
-              onNegative={() => setState({ ...state, alert: false })}
-              activeKey={state.activeKey}
-            />
-          )
+          state.modal &&
+          <Modal
+            message='Are you sure you want to delete this note?'
+            positiveButtonText='Delete'
+            negativeButtonText='Cancel'
+            onPositive={key => { actions.deleteNote(key) }}
+            onNegative={() => setState({ ...state, modal: false })}
+            activeKey={state.activeKey}
+          />
         }
       </div>
     </Context.Provider>
@@ -80,9 +80,11 @@ const App = () => {
 
 reactDom.render(<App />, document.getElementById('app'))
 
+/*
 if ('serviceWorker' in navigator)
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js')
       .then(registration => console.log('ServiceWorker registration successful with scope: ', registration.scope))
       .catch(err => console.error('ServiceWorker registration failed: ', err))
   })
+*/

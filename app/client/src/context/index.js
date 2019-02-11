@@ -7,7 +7,8 @@ export const store = {
   }],
   activeKey: 0,
   updateList: true,
-  saving: false
+  saving: false,
+  saved: false
 }
 
 const Context = React.createContext()
