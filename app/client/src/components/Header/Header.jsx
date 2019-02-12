@@ -3,7 +3,7 @@ import { auth } from '../../api'
 
 const Header = props => {
   return (
-    <header>
+    <header id='fermin_header'>
       <h1>FERMIN</h1>
       <div onClick={() => auth.logout()}>
         <div id='Header_logout_button'>

@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import reactDom from 'react-dom'
 
 import Header from './src/components/Header'
 import Notes from './src/apps/notes'
+import Hub from './src/apps/hub'
 
 import './src/sass/main.sass'
 
 const App = () => {
+
+  const [state, setState] = useState()
+
   return (
     <div id='fermin_apps_container' >
       <Header />
-      <Notes />
+      <Hub />
     </div>
   )
 }
