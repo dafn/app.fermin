@@ -9,7 +9,7 @@ const Header = props => {
         ({ actions: { logout } }) => {
           return (
             <header>
-              <p>FERMIN</p>
+              <h1>FERMIN</h1>
               <div onClick={() => logout()}>
                 <div id='Header_logout_button'>
                   Log out
