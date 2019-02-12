@@ -11,12 +11,7 @@ const List = props => {
             <nav id='List_main_container'>
               {
                 notes.map((value, key) =>
-                  <Element
-                    key={key}
-                    index={key}
-                    value={value.content}
-                    active={key === activeKey}
-                  />
+                  <Element key={key} index={key} value={value.content} active={key === activeKey} />
                 )
               }
               <div id='List_add_element_button_container'>
