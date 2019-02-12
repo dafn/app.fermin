@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Context from '../../context';
 import ReactQuill from 'react-quill'
 
-
-const ListElement = ({ index, value, active }) => {
+const Element = ({ index, value, active }) => {
 
   const modules = {
     toolbar: null
@@ -40,4 +39,4 @@ const ListElement = ({ index, value, active }) => {
   )
 }
 
-export default ListElement
+export default Element

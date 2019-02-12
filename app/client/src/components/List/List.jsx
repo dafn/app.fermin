@@ -1,6 +1,5 @@
 import React from 'react'
-import ListElement from './ListElement'
-
+import Element from '../Element'
 import Context from '../../context'
 
 const List = props => {
@@ -12,7 +11,7 @@ const List = props => {
             <nav id='List_main_container'>
               {
                 notes.map((value, key) =>
-                  <ListElement
+                  <Element
                     key={key}
                     index={key}
                     value={value.content}
