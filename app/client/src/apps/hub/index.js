@@ -15,6 +15,13 @@ const App = props => {
           <Card />
         </section>
       </section>
+      <section className='section' >
+        <header>
+          <h2> External Applications </h2>
+        </header>
+        <section id='card_container'>
+        </section>
+      </section>
     </div>
   )
 }
