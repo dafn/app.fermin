@@ -42,6 +42,7 @@ const Note = props => {
                   onChange={value => {
                     if (value === note.content) return
                     setNote({ ...note, id: props.Note.id, content: value })
+                    setStore(update(store,{ notes: { [activeKey]: { content: { $set: value } } } }))
                   }}
                   modules={modules} />
               }
