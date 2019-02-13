@@ -1,14 +1,16 @@
 import React from 'react'
 
-const Card = props => {
+const Card = ({ image, title, color, cover, href, onClick }) => {
   return (
-    <article className='hub_card'>
-      <div className='hub_card_image'>
-        <img src={require('../../../assets/pen.png')} />
-      </div>
-      <div className='hub_card_text'>
-        <p>Notes</p>
-      </div>
+    <article onClick={onClick}>
+      <a className='card' href={href} name='github' target='_blank' rel="noreferrer">
+        <div className={`card_image ${cover ? 'cover' : ''}`} style={{ background: `${color ? color : '#333333'}` }}>
+          <img src={image} />
+        </div>
+        <div className='card_text'>
+          <p>{title}</p>
+        </div>
+      </a>
     </article>
   )
 }

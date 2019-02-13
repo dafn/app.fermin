@@ -1,46 +1,37 @@
-.section
-  width: 100vw
-  margin-bottom: 50px
-  header
-    border-bottom: 1px solid rgba(34,36,38,.15)
-    padding-bottom: 1em
-    h2
-      margin: 20px 0 0 30px
-      color: #333333
-      font: normal 16pt Helvetica
-  #card_container
+.card
+  display: flex
+  flex-direction: column
+  cursor: pointer
+  min-width: 160px
+  max-width: 160px
+  min-height: 200px
+  max-height: 200px
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5
+  transition: all 0.1s
+  border-radius: .28571429rem
+  margin: 5px 20px 5px 0px
+  background-color: white
+  &:link
+    text-decoration: none
+  &:hover
+    background-color: darken(white, 5%)
+  .card_image
+    flex: 3
     display: flex
-    flex-direction: row
-    padding: 10px 10px 10px 30px
-    .hub_card
-      display: flex
-      flex-direction: column
-      cursor: pointer
-      width: 180px
-      height: 200px
-      box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5
-      border-radius: .28571429rem
-      margin: 5px 20px 5px 0px
-      &:hover
-        filter: brightness(80%)
-      .hub_card_image
-        flex: 2
-        display: flex
-        justify-content: center
-        align-items: center
-        background: #333333
-        border-top-left-radius: inherit
-        border-top-right-radius: inherit
-        img
-          height: 50px
-      .hub_card_text
-        flex: 1
-        display: flex
-        align-items: center
-        justify-content: flex-start
+    justify-content: center
+    align-items: center
+    border-top-left-radius: inherit
+    border-top-right-radius: inherit
+    img
+      height: 50px
+  .card_text
+    display: flex
+    align-items: center
+    justify-content: center
 
-        p
-          margin: 0 10px 0 10px
-          font: normal 12pt Helvetica
-          word-wrap: break-word
-          overflow: hidden
+    p
+      font: bold 12pt Helvetica, Areal
+      letter-spacing: .1em
+      word-wrap: break-word
+      overflow: hidden
+      color: #333333
