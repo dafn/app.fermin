@@ -17,7 +17,6 @@ const App = () => {
 
   const actions = {
     endAlert: () => setState({ ...state, saved: false }),
-    logout: () => auth.logout(),
     setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
     showModal: () => setState({ ...state, modal: true }),
     addNewNote: () => setState(update(state, { notes: { $push: [{ id: '', content: '' }] } })),

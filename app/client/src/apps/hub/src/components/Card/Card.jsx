@@ -2,14 +2,14 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-const Card = ({ image, title, color, cover, internal, href, onClick }) => {
+const Card = ({ image, title, color, internal, href }) => {
   return (
-    <article onClick={onClick}>
+    <article>
       {
         internal
           ?
           <Link to={href} className='card' name={title}>
-            <div className={`card_image ${cover ? 'cover' : ''}`} style={{ background: `${color ? color : '#333333'}` }}>
+            <div className='card_image' style={{ background: `${color ? color : '#333333'}` }}>
               <img src={image} />
             </div>
             <div className='card_text'>
@@ -18,7 +18,7 @@ const Card = ({ image, title, color, cover, internal, href, onClick }) => {
           </Link>
           :
           <a className='card' href={href} name={title} target='_blank' rel="noreferrer">
-            <div className={`card_image ${cover ? 'cover' : ''}`} style={{ background: `${color ? color : '#333333'}` }}>
+            <div className='card_image' style={{ background: `${color ? color : '#333333'}` }}>
               <img src={image} />
             </div>
             <div className='card_text'>

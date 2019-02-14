@@ -34,7 +34,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/notes', notes)
+app.use('/api/notes', notes)
 app.use('/auth', authenticate)
 
 app.use(isAuthenticated, express.static(path.resolve(__dirname, '../client/dist/'), {

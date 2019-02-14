@@ -1,7 +1,7 @@
 
 export const database = {
   add: (content, onSuccess, onError) => {
-    fetch('/notes/add', {
+    fetch('/api/notes/add', {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",
@@ -22,7 +22,7 @@ export const database = {
       })
   },
   update: (id, content, onSuccess, onError) => {
-    fetch('/notes/update', {
+    fetch('/api/notes/update', {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",
@@ -44,7 +44,7 @@ export const database = {
       })
   },
   delete: (id, onSuccess, onError) => {
-    fetch(`/notes/delete/${id}`)
+    fetch(`/api/notes/delete/${id}`)
       .then(response => {
         if (response.status === 200) onSuccess()
         else onError('Could not Save the Note ( Status 500 )')
@@ -55,7 +55,7 @@ export const database = {
       })
   },
   list: (onSuccess, onError) => {
-    fetch(`/notes/list/`)
+    fetch(`/api/notes/list/`)
       .then(response => response.json())
       .then(response => onSuccess(response))
       .catch(err => {
@@ -63,17 +63,4 @@ export const database = {
         console.error(err)
       })
   }
-}
-
-export const auth = {
-  logout: () =>
-    fetch('/auth/logout', { mode: 'no-cors' })
-      .then(() =>
-        navigator.serviceWorker.getRegistrations().then(registrations => {
-          for (let registration of registrations)
-            registration.unregister()
-          window.location.reload(true)
-        })
-      )
-      .catch(err => console.error('Could not logout', err))
 }
