@@ -5,6 +5,8 @@ import Header from './src/components/Header'
 import Notes from './src/apps/notes'
 import Hub from './src/apps/hub'
 
+import { BrowserRouter, Route } from 'react-router-dom'
+
 import './src/sass/main.sass'
 
 const App = () => {
@@ -12,9 +14,14 @@ const App = () => {
   const [state, setState] = useState()
 
   return (
-    <div id='fermin_apps_container' >
+    <div id='fermin_main_container' >
       <Header />
-      <Hub />
+      <BrowserRouter>
+        <div id='fermin_apps_container'>
+          <Route exact path="/" component={Hub} />
+          <Route exact path="/app/notes" component={Notes} />
+        </div>
+      </BrowserRouter>
     </div>
   )
 }

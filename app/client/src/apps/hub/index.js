@@ -9,7 +9,7 @@ const App = props => {
   return (
     <div id='fermin_hub'>
       <Section title='Internal Applications' >
-        <Card title='Notes' image={require(`./assets/pen.png`)} />
+        <Card title='Notes' internal href='app/notes' image={require(`./assets/pen.png`)} />
       </Section>
       <Section title='External Applications'>
         <Card title='Dashlane' href='https://www.dashlane.com/' color='linear-gradient(180deg,#005a7d,#007c97)' image={require('./assets/dashlane.png')} />
