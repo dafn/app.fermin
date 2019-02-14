@@ -36,7 +36,6 @@ app.use(passport.session())
 
 app.use('/api/notes', notes)
 app.use('/auth', authenticate)
-app.use('/app', (req, res) => res.redirect('/'))
 
 app.use(isAuthenticated, express.static(path.resolve(__dirname, '../client/dist/'), {
   setHeaders: res => {
