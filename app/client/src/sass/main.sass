@@ -1,15 +1,11 @@
+@import shared/mixins
 @import components/header
 
 body
   background-color: #f2f2f2
   min-height: 100vh
   margin: 0 auto
-  animation: fade-in 0.5s
-  @keyframes fade-in
-    0%
-      opacity: 0
-    100%
-      opacity: 1
+  +animation_fade-in(0.5s)
 
 #fermin_main_container
   display: flex
