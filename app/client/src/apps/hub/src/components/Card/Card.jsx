@@ -2,27 +2,27 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-const Card = ({ image, title, color, internal, href }) => {
+const Card = ({ image, title, background, color, internal, href }) => {
   return (
     <article>
       {
         internal
           ?
-          <Link to={href} className='card' name={title}>
-            <div className='card_image' style={{ background: `${color ? color : '#333333'}` }}>
+          <Link to={href} className='card' name={title} style={{ background: `${background ? background : 'white'}` }}>
+            <div className='card_image' >
               <img src={image} />
             </div>
             <div className='card_text'>
-              <p>{title}</p>
+              <p style={{ color: `${color ? color : 'black'}` }}>{title}</p>
             </div>
           </Link>
           :
-          <a className='card' href={href} name={title} target='_blank' rel="noreferrer">
-            <div className='card_image' style={{ background: `${color ? color : '#333333'}` }}>
+          <a className='card' href={href} name={title} target='_blank' rel="noreferrer" style={{ background: `${background ? background : 'white'}` }}>
+            <div className='card_image'>
               <img src={image} />
             </div>
             <div className='card_text'>
-              <p>{title}</p>
+              <p style={{ color: `${color ? color : 'black'}` }}>{title}</p>
             </div>
           </a>
       }
