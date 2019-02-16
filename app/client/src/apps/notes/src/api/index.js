@@ -23,7 +23,7 @@ export const database = {
           console.error(err)
         })
   },
-  deleteNote: (id, onSuccess, onError) => {
+  deleteNote: ({id, onSuccess, onError}) => {
     if (!id)
       onError('Could not delete the Note. No id provided')
     else
@@ -36,7 +36,7 @@ export const database = {
           console.error(err)
         })
   },
-  getNotes: (onSuccess, onError) => {
+  getNotes: ({onSuccess, onError}) => {
     graphQL.request(` { Notes { id, content } } `)
       .then(response => {
         onSuccess(response)

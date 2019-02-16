@@ -21,9 +21,7 @@ const App = () => {
     addNewNote: () => setState(update(state, { notes: { $push: [{ id: '', content: '' }] } })),
     setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
     saveNote: (key, content) => {
-      console.log('init')
       if (state.notes[key].id) {
-        console.log('update note')
         setState({ ...state, saving: true })
         database.setNote({
           id: state.notes[key].id,
@@ -32,7 +30,6 @@ const App = () => {
           onError: err => setState({ ...state, saving: false })
         })
       } else {
-        console.log('new note')
         database.setNote({
           content,
           onSuccess: () => setState({ ...state, saving: false, updateList: true, saved: true }),
@@ -42,12 +39,14 @@ const App = () => {
     },
     deleteNote: key => {
       if (state.notes[key].id)
-        database.deleteNote(state.notes[key].id,
-          () => {
+        database.deleteNote({
+          id: state.notes[key].id,
+          onSuccess: () => {
             state.notes.splice(state.activeKey, 1)
             setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
           },
-          err => setState({ ...state, alert: false }))
+          onError: err => setState({ ...state, alert: false })
+        })
       else {
         state.notes.splice(state.activeKey, 1)
         setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
@@ -56,10 +55,10 @@ const App = () => {
   }
 
   if (state.updateList)
-    database.getNotes(
-      response => setState({ ...state, updateList: false, notes: response.Notes }),
-      err => setState({ ...state, saving: false, updateList: false })
-    )
+    database.getNotes({
+      onSuccess: response => setState({ ...state, updateList: false, notes: response.Notes }),
+      onError: err => setState({ ...state, saving: false, updateList: false })
+    })
 
   return (
     <Context.Provider value={{ store: state, setStore: setState, actions }}>

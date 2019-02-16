@@ -3,7 +3,7 @@ datastore = new require('@google-cloud/datastore')({
   keyFilename: 'keys/datastore-service-account-key.json'
 })
 
-exports.addNote = async function (user, content) {
+exports.addNote = async (user, content) => {
 
   const key = datastore.key('Note')
 
@@ -23,7 +23,7 @@ exports.addNote = async function (user, content) {
   }
 }
 
-exports.updateNote = async function (id, content) {
+exports.updateNote = async (id, content) => {
 
   const transaction = datastore.transaction()
 
@@ -47,7 +47,7 @@ exports.updateNote = async function (id, content) {
   }
 }
 
-exports.deleteNote = async function (id) {
+exports.deleteNote = async id => {
   try {
     await datastore.delete(datastore.key(['Note', parseInt(id)]))
     console.log(`Note ${id} deleted successfully.`)
@@ -58,7 +58,7 @@ exports.deleteNote = async function (id) {
   }
 }
 
-exports.getNote = async function (id) {
+exports.getNote = async id => {
   const query = datastore.createQuery('Note').filter('__key__', '=', datastore.key(['Note', parseInt(id)])),
     note = await datastore.runQuery(query)
 
@@ -71,7 +71,7 @@ exports.getNote = async function (id) {
   }
 }
 
-exports.listNotes = async function (user) {
+exports.listNotes = async user => {
   const query = datastore.createQuery('Note').filter('user', user),
     [notes] = await datastore.runQuery(query)
 
@@ -88,4 +88,19 @@ exports.listNotes = async function (user) {
   console.log(`Listed notes from user ${user}`)
 
   return result
+}
+
+
+const Cards = [
+  {
+    title: '',
+    href: '',
+    image: '',
+    color: '',
+    internal: '',
+  }
+]
+
+exports.getCards = () => {
+  return Cards
 }
