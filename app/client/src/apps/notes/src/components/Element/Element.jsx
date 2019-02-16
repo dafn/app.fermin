@@ -12,7 +12,6 @@ const Element = ({ index, value, active }) => {
     <Context.Consumer>
       {
         ({ actions: { setActiveKey, showModal } }) => {
-          console.log('value', value)
           let title = value ? value.match(/[^<p>].*?(?=<)/g) : '',
             content = title ? value.replace(title[0], '').replace(value.match(/<p><br><\/p>/), '') : ''
           return (

@@ -6,7 +6,7 @@ import Note from './src/components/Note'
 import Alert from './src/components/Alert'
 
 import Context, { store } from './src/context'
-import { database, auth } from './src/api'
+import { database } from './src/api'
 
 import 'react-quill/dist/quill.snow.css'
 import './src/sass/main.sass'
@@ -17,21 +17,32 @@ const App = () => {
 
   const actions = {
     endAlert: () => setState({ ...state, saved: false }),
-    setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
     showModal: () => setState({ ...state, alert: true }),
     addNewNote: () => setState(update(state, { notes: { $push: [{ id: '', content: '' }] } })),
+    setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
     saveNote: (key, content) => {
+      console.log('init')
       if (state.notes[key].id) {
+        console.log('update note')
         setState({ ...state, saving: true })
-        database.update(state.notes[key].id, content,
-          () => setState({ ...state, saving: false, saved: true }), err => setState({ ...state, saving: false }))
-      } else
-        database.add(content,
-          () => setState({ ...state, saving: false, updateList: true, saved: true }), err => setState({ ...state, saving: false }))
+        database.setNote({
+          id: state.notes[key].id,
+          content,
+          onSuccess: () => setState({ ...state, saving: false, saved: true }),
+          onError: err => setState({ ...state, saving: false })
+        })
+      } else {
+        console.log('new note')
+        database.setNote({
+          content,
+          onSuccess: () => setState({ ...state, saving: false, updateList: true, saved: true }),
+          onError: err => setState({ ...state, saving: false })
+        })
+      }
     },
     deleteNote: key => {
       if (state.notes[key].id)
-        database.delete(state.notes[key].id,
+        database.deleteNote(state.notes[key].id,
           () => {
             state.notes.splice(state.activeKey, 1)
             setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
@@ -45,10 +56,8 @@ const App = () => {
   }
 
   if (state.updateList)
-    database.list(
-      response => {
-        setState({ ...state, updateList: false, notes: response })
-      },
+    database.getNotes(
+      response => setState({ ...state, updateList: false, notes: response.Notes }),
       err => setState({ ...state, saving: false, updateList: false })
     )
 
