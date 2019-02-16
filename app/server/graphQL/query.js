@@ -1,7 +1,7 @@
 const
   { Note, Card } = require('./model'),
   { GraphQLList, GraphQLObjectType, GraphQLString, GraphQLNonNull } = require('graphql'),
-  { getNote, listNotes } = require('../datastore')
+  { getNote, listNotes, getCards } = require('../datastore')
 
 const query = new GraphQLObjectType({
   name: 'Query',
@@ -19,6 +19,12 @@ const query = new GraphQLObjectType({
       type: new GraphQLList(Note),
       resolve: async (parent, args, req) => {
         return await listNotes(req.user)
+      }
+    },
+    Cards: {
+      type: new GraphQLList(Card),
+      resolve: async (parent, args, req) => {
+        return await getCards()
       }
     }
   }

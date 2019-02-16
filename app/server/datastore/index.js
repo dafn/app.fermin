@@ -98,6 +98,7 @@ const Cards = [
     image: '',
     color: '',
     internal: '',
+    user: ''
   }
 ]
 
