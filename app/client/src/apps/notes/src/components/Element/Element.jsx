@@ -12,15 +12,16 @@ const Element = ({ index, value, active }) => {
     <Context.Consumer>
       {
         ({ actions: { setActiveKey, showModal } }) => {
-          let title = value ? value.match(/[^<p>].*?(?=<)/g)[0] : '',
-            content = title ? value.replace(title, '').replace(value.match(/<p><br><\/p>/), '') : ''
+          console.log('value', value)
+          let title = value ? value.match(/[^<p>].*?(?=<)/g) : '',
+            content = title ? value.replace(title[0], '').replace(value.match(/<p><br><\/p>/), '') : ''
           return (
             <div className={`ListElement_main_container ${active ? 'active' : ''}`} onClick={() => setActiveKey(index)}>
               <div className='ListElement_text_container'>
                 <div className='ListElement_title_container'>
                   {
-                    title && title !== 'br>'
-                      ? <ReactQuill className='ListElement_editor' value={title} readOnly modules={modules} />
+                    title && title[0] !== 'br>'
+                      ? <ReactQuill className='ListElement_editor' value={title[0]} readOnly modules={modules} />
                       : 'Untitled Note'
                   }
                 </div>

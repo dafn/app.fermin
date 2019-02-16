@@ -58,6 +58,19 @@ exports.deleteNote = async function (id) {
   }
 }
 
+exports.getNote = async function (id) {
+  const query = datastore.createQuery('Note').filter('__key__', '=', datastore.key(['Note', parseInt(id)])),
+    note = await datastore.runQuery(query)
+
+  console.log(`Got note ${id}`)
+
+  return {
+    user: note[0][0].user,
+    content: note[0][0].content,
+    id: note[0][0][datastore.KEY].id
+  }
+}
+
 exports.listNotes = async function (user) {
   const query = datastore.createQuery('Note').filter('user', user),
     [notes] = await datastore.runQuery(query)
@@ -74,5 +87,5 @@ exports.listNotes = async function (user) {
 
   console.log(`Listed notes from user ${user}`)
 
-  return { result }
+  return result
 }

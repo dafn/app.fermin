@@ -4,6 +4,7 @@ const
   express = require('express'),
   session = require('express-session'),
   memorystore = require('memorystore')(session),
+  schema = require('./graphQL')
   path = require('path'),
   notes = require('./routes/notes'),
   passport = require('passport'),
@@ -31,11 +32,17 @@ app.use(session({
   cookie: { secure: process.env.NODE_ENV === 'production' },
   maxAge: 2628000
 }))
+
 app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/api/notes', notes)
 app.use('/auth', authenticate)
+
+app.use('/gql', isAuthenticated, require('express-graphql')({
+  schema,
+  graphiql: true
+}))
 
 app.use(isAuthenticated, express.static(path.resolve(__dirname, '../client/dist/'), {
   setHeaders: res => {

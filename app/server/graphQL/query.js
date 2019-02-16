@@ -1,0 +1,27 @@
+const
+  { Note, Card } = require('./model'),
+  { GraphQLList, GraphQLObjectType, GraphQLString, GraphQLNonNull } = require('graphql'),
+  { getNote, listNotes } = require('../datastore')
+
+const query = new GraphQLObjectType({
+  name: 'Query',
+  fields: {
+    Note: {
+      type: Note,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLString) }
+      },
+      resolve: async (parent, args) => {
+        return await getNote(args.id)
+      }
+    },
+    Notes: {
+      type: new GraphQLList(Note),
+      resolve: async (parent, args, req) => {
+        return await listNotes(req.user)
+      }
+    }
+  }
+})
+
+module.exports = query

@@ -47,10 +47,7 @@ const App = () => {
   if (state.updateList)
     database.list(
       response => {
-        let notes = []
-        for (let note of response.result)
-          notes.push({ id: note.id, content: note.content })
-        setState({ ...state, updateList: false, notes: notes })
+        setState({ ...state, updateList: false, notes: response })
       },
       err => setState({ ...state, saving: false, updateList: false })
     )
