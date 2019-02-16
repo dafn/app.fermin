@@ -6,7 +6,6 @@ const
   memorystore = require('memorystore')(session),
   schema = require('./graphQL')
   path = require('path'),
-  notes = require('./routes/notes'),
   passport = require('passport'),
   port = process.env.PORT || 8002,
   app = express()
@@ -36,13 +35,8 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/api/notes', notes)
 app.use('/auth', authenticate)
-
-app.use('/gql', isAuthenticated, require('express-graphql')({
-  schema,
-  graphiql: true
-}))
+app.use('/gql', isAuthenticated, require('express-graphql')({ schema, graphiql: true }))
 
 app.use(isAuthenticated, express.static(path.resolve(__dirname, '../client/dist/'), {
   setHeaders: res => {
