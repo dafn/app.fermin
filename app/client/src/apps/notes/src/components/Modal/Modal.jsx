@@ -5,6 +5,7 @@ const Modal = ({ message, positiveButtonText, negativeButtonText, onPositive, on
     <div id='Modal_main_container'>
       <div id='Modal_dark_screen' onClick={onNegative}></div>
       <div id='Modal_content_container'>
+        <img src={require('../../../assets/alert.png')} />
         <p id='Modal_text'>
           {message}
         </p>

@@ -3,6 +3,7 @@
 
 #Modal_main_container
   position: absolute
+  height: 100%
   +animation_fade-in(0.2s)
   &.removing
     transition: display 2.2s
@@ -20,10 +21,14 @@
     justify-content: flex-end
     top: 50%
     left:50%
-    height: 10em
+    height: 190px
     width: 30em
     border-radius: .28571429rem
     background-color: $card-color
+    img
+      height: 50px
+      width: 50px
+      align-self: center
     #Modal_text
       font: 500 100% $font-stack
       text-align: center

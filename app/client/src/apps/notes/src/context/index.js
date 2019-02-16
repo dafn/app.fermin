@@ -8,7 +8,8 @@ export const store = {
   activeKey: 0,
   updateList: true,
   saving: false,
-  saved: false
+  saved: false,
+  modal: true
 }
 
 const Context = React.createContext()
