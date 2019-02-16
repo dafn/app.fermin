@@ -9,7 +9,7 @@ export const store = {
   updateList: true,
   saving: false,
   saved: false,
-  modal: true
+  alert: false
 }
 
 const Context = React.createContext()

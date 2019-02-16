@@ -3,7 +3,7 @@ import update from 'immutability-helper'
 
 import List from './src/components/List'
 import Note from './src/components/Note'
-import Modal from './src/components/Modal'
+import Alert from './src/components/Alert'
 
 import Context, { store } from './src/context'
 import { database, auth } from './src/api'
@@ -18,7 +18,7 @@ const App = () => {
   const actions = {
     endAlert: () => setState({ ...state, saved: false }),
     setActiveKey: newActiveKey => setState({ ...state, activeKey: newActiveKey }),
-    showModal: () => setState({ ...state, modal: true }),
+    showModal: () => setState({ ...state, alert: true }),
     addNewNote: () => setState(update(state, { notes: { $push: [{ id: '', content: '' }] } })),
     saveNote: (key, content) => {
       if (state.notes[key].id) {
@@ -34,12 +34,12 @@ const App = () => {
         database.delete(state.notes[key].id,
           () => {
             state.notes.splice(state.activeKey, 1)
-            setState({ ...state, notes: state.notes, modal: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+            setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
           },
-          err => setState({ ...state, modal: false }))
+          err => setState({ ...state, alert: false }))
       else {
         state.notes.splice(state.activeKey, 1)
-        setState({ ...state, notes: state.notes, modal: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
+        setState({ ...state, notes: state.notes, alert: false, activeKey: state.activeKey - 1 > 0 ? state.activeKey - 1 : 0 })
       }
     }
   }
@@ -61,13 +61,13 @@ const App = () => {
         <List />
         <Note Note={state.notes[state.activeKey]} />
         {
-          state.modal &&
-          <Modal
+          state.alert &&
+          <Alert
             message='Are you sure you want to delete this note?'
             positiveButtonText='Delete'
             negativeButtonText='Cancel'
             onPositive={key => { actions.deleteNote(key) }}
-            onNegative={() => setState({ ...state, modal: false })}
+            onNegative={() => setState({ ...state, alert: false })}
             activeKey={state.activeKey}
           />
         }

@@ -1,21 +1,22 @@
 @import ../shared/mixins
 @import ../shared/constants
 
-#Modal_main_container
-  position: absolute
+#Alert_main_container
+  position: fixed
   height: 100%
   +animation_fade-in(0.2s)
   &.removing
     transition: display 2.2s
     display: none
-  #Modal_dark_screen
+  #Alert_dark_screen
     min-width: 100vw
     min-height: 100vh
     background-color: black
     opacity: 0.5
-  #Modal_content_container
+  #Alert_content_container
     position: absolute
     transform: translate(-50%, -50%)
+    box-shadow: inset 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5
     display: flex
     flex-direction: column
     justify-content: flex-end
@@ -29,16 +30,16 @@
       height: 50px
       width: 50px
       align-self: center
-    #Modal_text
+    #Alert_text
       font: 500 100% $font-stack
       text-align: center
       white-space: pre-wrap
-    #Modal_buttons_container
+    #Alert_buttons_container
       padding: 1em
       display: flex
       justify-content: flex-end
-      #Modal_content_delete_button
-        +button(white, $theme-red, '')
+      #Alert_content_delete_button
+        +button(white, $theme-red, 'inverted')
         margin-right: 0.25em
-      #Modal_content_cancel_button
+      #Alert_content_cancel_button
         +button(white, darkgray, '')
