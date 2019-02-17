@@ -1,5 +1,3 @@
-const Cards = require('./hub')
-
 datastore = new require('@google-cloud/datastore')({
   projectId: 'no-fermin',
   keyFilename: 'keys/datastore-service-account-key.json'
