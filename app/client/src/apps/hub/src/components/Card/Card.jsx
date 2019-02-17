@@ -8,7 +8,7 @@ const Card = ({ image, title, background, color, internal, href }) => {
       {
         internal
           ?
-          <Link to={href} className='card' name={title} style={{ background: `${background ? background : 'white'}` }}>
+          <Link to={href || '/'} className='card' name={title} style={{ background: `${background ? background : 'white'}` }}>
             <div className='card_image' >
               <img src={image} />
             </div>
@@ -17,7 +17,7 @@ const Card = ({ image, title, background, color, internal, href }) => {
             </div>
           </Link>
           :
-          <a className='card' href={href} name={title} target='_blank' rel="noreferrer" style={{ background: `${background ? background : 'white'}` }}>
+          <a className='card' href={href || '#'} name={title} target={href && '_blank'} style={{ background: `${background ? background : 'white'}` }}>
             <div className='card_image'>
               <img src={image} />
             </div>
