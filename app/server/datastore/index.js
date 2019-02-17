@@ -1,3 +1,5 @@
+const Cards = require('./hub')
+
 datastore = new require('@google-cloud/datastore')({
   projectId: 'no-fermin',
   keyFilename: 'keys/datastore-service-account-key.json'
@@ -89,18 +91,6 @@ exports.listNotes = async user => {
 
   return result
 }
-
-
-const Cards = [
-  {
-    title: '',
-    href: '',
-    image: '',
-    color: '',
-    internal: '',
-    user: ''
-  }
-]
 
 exports.getCards = () => {
   return Cards

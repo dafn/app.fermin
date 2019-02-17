@@ -14,6 +14,7 @@ const model = {
     fields: () => ({
       title: { type: GraphQLString },
       href: { type: GraphQLString },
+      background: { type: GraphQLString },
       image: { type: GraphQLString },
       color: { type: GraphQLString },
       internal: { type: GraphQLBoolean },
