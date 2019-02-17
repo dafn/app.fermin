@@ -92,6 +92,50 @@ exports.listNotes = async user => {
   return result
 }
 
-exports.getCards = () => {
-  return Cards
+exports.addCard = async (title, href, background, TextColor, image, internal, user) => {
+  const key = datastore.key('Card')
+
+  try {
+    await datastore.save({
+      key,
+      data: [
+        { name: 'title', value: title },
+        { name: 'href', value: href },
+        { name: 'background', value: background },
+        { name: 'TextColor', value: TextColor },
+        { name: 'image', value: image },
+        { name: 'internal', value: internal },
+        { name: 'user', value: user },
+      ]
+    })
+    console.log(`Card ${key.id} added successfully.`)
+    return 200
+  } catch (err) {
+    console.error('Error when adding Card', err)
+    return 500
+  }
+}
+
+exports.getCards = async user => {
+  const query = datastore.createQuery('Card').filter('user', user),
+    [cards] = await datastore.runQuery(query)
+
+  let result = []
+
+  cards.forEach(card => {
+    result.push({
+      title: card.title,
+      href: card.href,
+      background: card.background,
+      textColor: card.textColor,
+      image: card.image,
+      internal: card.internal,
+      user: card.user,
+      id: card[datastore.KEY].id
+    })
+  })
+
+  console.log(`Listed cards from user ${user}`)
+
+  return result
 }

@@ -15,9 +15,11 @@ const model = {
       title: { type: GraphQLString },
       href: { type: GraphQLString },
       background: { type: GraphQLString },
-      image: { type: GraphQLString },
-      color: { type: GraphQLString },
+      textColor: { type: GraphQLString },
       internal: { type: GraphQLBoolean },
+      image: { type: GraphQLString },
+      user: { type: GraphQLString },
+      id: { type: GraphQLString }
     })
   })
 }

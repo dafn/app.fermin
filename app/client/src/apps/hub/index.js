@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import Card from './src/components/Card'
 import Add from './src/components/Add'
@@ -12,11 +12,9 @@ const App = props => {
 
   const [state, setState] = useState({ Card: '' })
 
-  console.log(state)
-
   if (!state.Cards)
     datastore.Cards({
-      onSuccess: response => setState({ Cards: response.Cards }),
+      onSuccess: response => { setState({ Cards: response.Cards }) },
       onError: err => console.log('Error fetching list of Cards', err)
     })
 
@@ -32,7 +30,7 @@ const App = props => {
               internal={card.internal}
               href={card.href}
               background={card.background}
-              color={card.color}
+              textColor={card.textColor}
               image={card.image} />
           )
         }
@@ -48,7 +46,7 @@ const App = props => {
               internal={card.internal}
               href={card.href}
               background={card.background}
-              color={card.color}
+              textColor={card.textColor}
               image={card.image} />
           )
         }

@@ -24,7 +24,7 @@ const query = new GraphQLObjectType({
     Cards: {
       type: new GraphQLList(Card),
       resolve: async (parent, args, req) => {
-        return await getCards()
+        return await getCards(req.user)
       }
     }
   }
