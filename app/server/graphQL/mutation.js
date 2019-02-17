@@ -1,6 +1,6 @@
 const
   { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull } = require('graphql'),
-  { addNote, updateNote, deleteNote } = require('../datastore')
+  { addNote, updateNote, deleteNote, addCard } = require('../datastore')
 
 const mutation = new GraphQLObjectType({
   name: 'Mutations',
@@ -25,6 +25,20 @@ const mutation = new GraphQLObjectType({
       },
       resolve: async (parent, args) => {
         return await deleteNote(args.id)
+      }
+    },
+    addCard: {
+      type: GraphQLInt,
+      args: {
+        title: { type: GraphQLNonNull(GraphQLString) },
+        href: { type: GraphQLNonNull(GraphQLString) },
+        background: { type: GraphQLNonNull(GraphQLString) },
+        textColor: { type: GraphQLNonNull(GraphQLString) },
+        internal: { type: GraphQLNonNull(GraphQLString) },
+        image: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve: async (parent, args, req) => {
+        return await addCard(args.title, args.href, arge.background, args.textColor, args.image, args.internal, req.user)
       }
     }
   }

@@ -103,7 +103,7 @@ exports.addCard = async (title, href, background, TextColor, image, internal, us
         { name: 'TextColor', value: TextColor },
         { name: 'image', value: image },
         { name: 'internal', value: internal },
-        { name: 'user', value: user },
+        { name: 'user', value: user }
       ]
     })
     console.log(`Card ${key.id} added successfully.`)
