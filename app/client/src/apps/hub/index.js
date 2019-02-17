@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Card from './src/components/Card'
 import Add from './src/components/Add'
@@ -12,11 +12,12 @@ const App = props => {
 
   const [state, setState] = useState({ Card: '' })
 
-  if (!state.Cards)
+  useEffect(() => {
     datastore.Cards({
       onSuccess: response => { setState({ Cards: response.Cards }) },
       onError: err => console.log('Error fetching list of Cards', err)
     })
+  }, [state.Card])
 
   return (
     <div id='fermin_hub'>
@@ -26,12 +27,8 @@ const App = props => {
             card.internal &&
             <Card
               key={key}
-              title={card.title}
-              internal={card.internal}
-              href={card.href}
-              background={card.background}
-              textColor={card.textColor}
-              image={card.image} />
+              card={card}
+            />
           )
         }
         <Add />
@@ -42,12 +39,8 @@ const App = props => {
             !card.internal &&
             <Card
               key={key}
-              title={card.title}
-              internal={card.internal}
-              href={card.href}
-              background={card.background}
-              textColor={card.textColor}
-              image={card.image} />
+              card={card}
+            />
           )
         }
         <Add />

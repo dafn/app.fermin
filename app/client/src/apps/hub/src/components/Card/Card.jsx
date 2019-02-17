@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 
-const Card = ({ image, title, background, textColor, internal, href }) => {
+const Card = ({ card: {image, title, background, textColor, internal, href} }) => {
 
   const [state, setState] = useState({ mounted: '' })
 
@@ -15,7 +15,7 @@ const Card = ({ image, title, background, textColor, internal, href }) => {
       {
         internal
           ?
-          <Link to={href || '/'} className={`card ${state.mounted || ''}`} name={title} style={{ background: `${background ? background : 'white'}` }}>
+          <Link to={href || '/'} className={`card ${state.mounted || ''}`} name={title} style={{ background: `${background || 'white'}` }}>
             <div className='card_image' >
               <img src={image} />
             </div>
@@ -24,7 +24,7 @@ const Card = ({ image, title, background, textColor, internal, href }) => {
             </div>
           </Link>
           :
-          <a className={`card ${state.mounted || ''}`} href={href || '#'} name={title} target={href && '_blank'} style={{ background: `${background ? background : 'white'}` }}>
+          <a className={`card ${state.mounted || ''}`} href={href || '#'} name={title} target={href && '_blank'} style={{ background: `${background || 'white'}` }}>
             <div className='card_image'>
               <img src={image} />
             </div>
