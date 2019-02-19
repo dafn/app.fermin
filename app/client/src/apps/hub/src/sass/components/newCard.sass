@@ -1,0 +1,60 @@
+@import ../shared/mixins
+@import ../shared/constants
+
+  
+#newCard_main_container
+  position: absolute
+  z-index: 2
+  align-self: center
+  margin-top: 100pt
+  width: 800px
+  height: 540px
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)
+  border-radius: .28571429rem
+  background: white
+  h1
+    font: normal 18pt Helvetica
+    -webkit-font-smoothing: antialiased
+    letter-spacing: .05em
+    text-align: center
+  #newCard_makecard_container
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-content: center
+    #newCard_preview_container
+      flex: 1
+      display: flex
+      justify-content: center
+      align-items: center
+    #newCard_input_container
+      display: flex
+      justify-content: center
+      flex-direction: column
+      flex: 1
+      padding: 2em
+      input
+        margin: 1em 0 1em 0
+        border-radius: .28571429rem
+        border: 1px solid rgba(34,36,38,.15)
+        font: normal 90% Helvetica
+        letter-spacing: .05em
+        transition: box-shadow .2s, border-color .2s
+        padding: .67857143em 1em 
+        box-shadow: none
+        outline: 0
+        &:focus
+          border-color: #85b7d9
+  #newCard_button_container
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    #newCard_create_button
+      +button(white, $theme-green, '')
+      margin: .5em
+    #newCard_cancel_button
+      +button(white, darkgray, 'inverted')
+      margin: .5em
+
+
