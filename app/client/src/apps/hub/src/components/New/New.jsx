@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 
 import Card from '../Card'
 
-const NewCard = ({ onCancel }) => {
+const NewCard = ({ onCancel, onCreate }) => {
 
   const [state, setState] = useState({
     title: '',
-    href: '',
-    background: '',
-    textColor: '',
-    image: 'f',
+    href: '#',
+    background: 'white',
+    textColor: 'black',
+    image: '',
     internal: false
   })
 
@@ -33,7 +33,7 @@ const NewCard = ({ onCancel }) => {
         </div>
       </div>
       <div id='newCard_button_container'>
-        <div id='newCard_create_button'>Create</div>
+        <div id='newCard_create_button' onClick={() => onCreate(state)}>Create</div>
         <div id='newCard_cancel_button' onClick={onCancel}>Cancel</div>
       </div>
     </article>

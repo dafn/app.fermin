@@ -102,7 +102,6 @@ exports.addCard = async (title, href, background, TextColor, image, internal, us
         { name: 'background', value: background },
         { name: 'TextColor', value: TextColor },
         { name: 'image', value: image },
-        { name: 'internal', value: internal },
         { name: 'user', value: user }
       ]
     })

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Card from './src/components/Card'
 import Add from './src/components/Add'
 import Section from './src/components/Section'
-import NewCard from './src/components/NewCard'
+import New from './src/components/New'
 
 import { datastore } from './src/api'
 
@@ -36,18 +36,12 @@ const App = props => {
       </Section>
       <Section title='External Applications'>
         {
-          state.Cards && state.Cards.map((card, key) =>
-            !card.internal &&
-            <Card
-              key={key}
-              card={card}
-            />
-          )
+          state.Cards && state.Cards.map((card, key) => <Card key={key} card={card} />)
         }
         <Add onClick={() => setState({ ...state, newCard: true })} />
       </Section>
       {
-        state.newCard && <NewCard onCancel={() => setState({ ...state, newCard: false })}/>
+        state.newCard && <New onCreate={card => datastore.addCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
       }
     </div>
   )
