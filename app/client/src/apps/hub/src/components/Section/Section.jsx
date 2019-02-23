@@ -6,7 +6,7 @@ const Section = props => {
       <header>
         <h2> { props.title } </h2>
       </header>
-      <section id='section_card_container'>
+      <section className='section_card_container'>
         { props.children }
       </section>
     </section>

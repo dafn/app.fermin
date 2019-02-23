@@ -17,16 +17,16 @@ const Card = ({ card: {image, title, background, textColor, internal, href} }) =
           ?
           <Link to={href || '/'} className={`card ${state.mounted || ''}`} name={title} style={{ background: `${background || 'white'}` }}>
             <div className='card_image' >
-              <img src={image} />
+              <img src={image} alt='card image' />
             </div>
             <div className='card_text'>
               <p style={{ color: `${textColor || '#333333'}` }}>{title}</p>
             </div>
           </Link>
           :
-          <a className={`card ${state.mounted || ''}`} href={href || '#'} name={title} target={href && '_blank'} style={{ background: `${background || 'white'}` }}>
+          <a className={`card ${state.mounted || ''}`} href={href || '#'} name={title} target={href && '_blank'} style={{ background: `${background || 'white'}` }} rel='noopener'>
             <div className='card_image'>
-              <img src={image} />
+              <img src={image} alt='card image'/>
             </div>
             <div className='card_text'>
               <p style={{ color: `${textColor || '#333333'}` }}>{title}</p>
