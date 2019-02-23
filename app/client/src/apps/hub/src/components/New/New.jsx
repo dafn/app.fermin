@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Card from '../Card'
 
-const NewCard = ({ onCancel, onCreate }) => {
+const NewCard = ({ onCancel, onCreate, className }) => {
 
   const [state, setState] = useState({
     title: '',
@@ -12,9 +12,9 @@ const NewCard = ({ onCancel, onCreate }) => {
     image: '',
     internal: false
   })
-
+  
   return (
-    <article id='newCard_main_container'>
+    <article id='newCard_main_container' className={className}>
       <h1>
         Create New Card
       </h1>

@@ -40,9 +40,8 @@ const App = props => {
         }
         <Add onClick={() => setState({ ...state, newCard: true })} />
       </Section>
-      {
-        state.newCard && <New onCreate={card => datastore.addCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
-      }
+      
+      <New className={state.newCard && 'visible' || ''} onCreate={card => datastore.addCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
     </div>
   )
 }
