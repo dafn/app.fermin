@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Card from './src/components/Card'
 import Add from './src/components/Add'
 import Section from './src/components/Section'
+import Loader from './src/components/Loader'
 import New from './src/components/New'
 
 import { datastore } from './src/api'
@@ -11,7 +12,7 @@ import './src/sass/main.sass'
 
 const App = props => {
 
-  const [state, setState] = useState({ Card: '', newCard: false })
+  const [state, setState] = useState({ Card: '', newCard: false, loading: true })
 
   useEffect(() => {
     datastore.Cards({
@@ -36,11 +37,14 @@ const App = props => {
       </Section>
       <Section title='External Applications'>
         {
+          state.loading && <Loader />
+        }
+        {
           state.Cards && state.Cards.map((card, key) => <Card key={key} card={card} />)
         }
         <Add onClick={() => setState({ ...state, newCard: true })} />
       </Section>
-      
+
       <New className={state.newCard && 'visible' || ''} onCreate={card => datastore.addCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
     </div>
   )

@@ -1,66 +1,55 @@
-@import ../shared/mixins
-@import ../shared/constants
-
-  
 #newCard_main_container
+  display: flex
   visibility: hidden
   opacity: 0
+  flex-direction: row
   position: absolute
-  z-index: 2
   align-self: center
-  margin-top: 100pt
-  width: 800px
-  height: 470px
+  background: white
+  top: 300px
+  width: 700px
   transition: visibility 0s, opacity .1s
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)
   border-radius: .28571429rem
-  background: white
   &.visible
     visibility: visible
     opacity: 1
-  h1
-    font: normal 18pt Helvetica
-    -webkit-font-smoothing: antialiased
-    letter-spacing: .05em
-    text-align: center
-  #newCard_makecard_container
+  #newCard_left_container    
+    flex: 1
     display: flex
-    flex-direction: row
-    justify-content: center
-    align-content: center
-    #newCard_preview_container
-      flex: 1
-      display: flex
-      justify-content: center
-      align-items: center
+    flex-direction: column
     #newCard_input_container
       display: flex
-      justify-content: center
       flex-direction: column
-      flex: 1
-      padding: 0 2em 0 2em
       input
-        margin: 1em 0 1em 0
+        margin: 1em
         border-radius: .28571429rem
-        border: 1px solid rgba(34,36,38,.15)
+        border: none
+        border-bottom: 1px solid rgba(34,36,38,.15)
         font: normal 90% Helvetica
         letter-spacing: .05em
-        transition: box-shadow .2s, border-color .2s
+        transition: border-color .1s
         padding: .67857143em 1em 
         box-shadow: none
         outline: 0
         &:focus
           border-color: #85b7d9
-  #newCard_button_container
+    #newCard_button_container
+      text-align: -webkit-center
+      #newCard_create_button
+        +button(white, $theme-green, '')
+        margin: .5em
+      #newCard_cancel_button
+        +button(white, darkgray, 'inverted')
+        margin: .5em
+  #newCard_right_container
+    flex: 1
     display: flex
-    flex-direction: row
     align-items: center
-    padding-left: 2em
-    #newCard_create_button
-      +button(white, $theme-green, '')
-      margin: .5em
-    #newCard_cancel_button
-      +button(white, darkgray, 'inverted')
-      margin: .5em
-
-
+    justify-content: center
+    background: #333333
+    border-radius: 0 .28571429rem .28571429rem 0
+    article
+      margin: 1em
+      a
+        margin: 0
