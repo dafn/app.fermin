@@ -1,7 +1,4 @@
 # Deployment config for Google App Engine
 
-service: fermin-notes
-runtime: custom
-env: flex
-automatic_scaling:
-   min_num_instances: 1
+service: app-fermin
+runtime: nodejs10

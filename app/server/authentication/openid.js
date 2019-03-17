@@ -12,7 +12,7 @@ const params = {
   access_type: 'offline',
   scope: 'openid email',
   redirect_uri: process.env.NODE_ENV === 'production'
-    ? 'https://fermin-notes-dot-no-fermin.appspot.com/auth/cb'
+    ? 'https://app-fermin-dot-no-fermin.appspot.com/auth/cb'
     : 'http://localhost:8002/auth/cb'
 }
 

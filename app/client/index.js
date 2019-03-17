@@ -10,7 +10,6 @@ import { HashRouter, Route } from 'react-router-dom'
 import './src/sass/main.sass'
 
 const App = () => {
-
   return (
     <div id='fermin_main_container' >
       <Header />
@@ -25,6 +24,7 @@ const App = () => {
 }
 
 reactDom.render(<App />, document.getElementById('app'))
+
 /*
 if ('serviceWorker' in navigator)
   window.addEventListener('load', () => {

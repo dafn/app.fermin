@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "NODE_ENV=production node app/server/app.js",
     "serve": "rm -rf app/client/dist && parcel watch app/client/index.pug -d app/client/dist & NODE_ENV=development nodemon app/server/app.js",
     "build": "rm -rf app/client/dist && parcel build app/client/index.pug -d app/client/dist",
     "build:run": "yarn build &&  NODE_ENV=production node app/server/app.js",
@@ -7,7 +8,7 @@
     "docker:run": "docker run -p 8002:8002 fermin-notes",
     "docker:kill": "docker kill $(docker ps -q)",
     "docker:prune": "docker system prune -a",
-    "deploy": "gcloud app deploy"
+    "deploy": "yarn build && gcloud app deploy"
   },
   "dependencies": {
     "@google-cloud/datastore": "^2.0.0",
