@@ -16,7 +16,6 @@ const model = {
       href: { type: GraphQLString },
       background: { type: GraphQLString },
       textColor: { type: GraphQLString },
-      internal: { type: GraphQLBoolean },
       image: { type: GraphQLString },
       user: { type: GraphQLString },
       id: { type: GraphQLString }

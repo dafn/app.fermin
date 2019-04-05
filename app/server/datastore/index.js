@@ -90,8 +90,12 @@ exports.listNotes = async user => {
   return result
 }
 
-exports.addCard = async (title, href, background, TextColor, image, internal, user) => {
+exports.addCard = async (title, href, background, TextColor, image, user) => {
   const key = datastore.key('Card')
+
+  console.log(
+    title, href, background, TextColor, image, user
+  )
 
   try {
     await datastore.save({
@@ -126,7 +130,6 @@ exports.getCards = async user => {
       background: card.background,
       textColor: card.textColor,
       image: card.image,
-      internal: card.internal,
       user: card.user,
       id: card[datastore.KEY].id
     })

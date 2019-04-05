@@ -21,6 +21,15 @@ const App = props => {
     })
   }, [state.Card])
 
+  const handleOnAddCard = card => {
+    datastore.addCard(card, () => {
+      datastore.Cards({
+        onSuccess: response => { setState({ Cards: response.Cards, newCard: false }) },
+        onError: err => console.log('Error fetching list of Cards', err)
+      })
+    })
+  }
+
   return (
     <div id='fermin_hub'>
       <Section title='Internal Applications'>
@@ -45,7 +54,7 @@ const App = props => {
         <Add onClick={() => setState({ ...state, newCard: true })} />
       </Section>
 
-      <New className={state.newCard && 'visible' || ''} onCreate={card => datastore.addCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
+      <New className={state.newCard && 'visible' || ''} onCreate={card => handleOnAddCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
     </div>
   )
 }
