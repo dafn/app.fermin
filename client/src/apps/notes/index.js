@@ -9,7 +9,7 @@ import Context, { store } from './src/context'
 import { database } from './src/api'
 
 import 'react-quill/dist/quill.snow.css'
-import './src/sass/main.sass'
+import './sass/main.sass'
 
 const App = () => {
 
@@ -54,9 +54,11 @@ const App = () => {
     }
   }
 
-  if (state.updateList)
+  state.updateList &&
     database.getNotes({
-      onSuccess: response => setState({ ...state, updateList: false, notes: response.Notes }),
+      onSuccess: response => {
+        setState({ ...state, updateList: false, notes: response.Notes.length !== 0 ? response.Notes : [{id: '', content: ''}] })
+      },
       onError: err => setState({ ...state, saving: false, updateList: false })
     })
 

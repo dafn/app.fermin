@@ -1,6 +1,6 @@
 const
   { authenticate, isAuthenticated } = require('./authentication/openid'),
-  { session_store_key } = require('../../keys/session-store'),
+  { session_store_key } = require('../keys/session-store'),
   express = require('express'),
   session = require('express-session'),
   memorystore = require('memorystore')(session),

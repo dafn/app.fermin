@@ -4,11 +4,11 @@ import Card from './src/components/Card'
 import Add from './src/components/Add'
 import Section from './src/components/Section'
 import Loader from './src/components/Loader'
-import New from './src/components/New'
+import NewCard from './src/components/NewCard'
 
 import { datastore } from './src/api'
 
-import './src/sass/main.sass'
+import './sass/main.sass'
 
 const App = props => {
 
@@ -23,6 +23,7 @@ const App = props => {
 
   const handleOnAddCard = card => {
     datastore.addCard(card, () => {
+      setState({ loading: true })
       datastore.Cards({
         onSuccess: response => { setState({ Cards: response.Cards, newCard: false }) },
         onError: err => console.log('Error fetching list of Cards', err)
@@ -54,7 +55,7 @@ const App = props => {
         <Add onClick={() => setState({ ...state, newCard: true })} />
       </Section>
 
-      <New className={state.newCard && 'visible' || ''} onCreate={card => handleOnAddCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
+      <NewCard className={state.newCard && 'visible' || ''} onCreate={card => handleOnAddCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
     </div>
   )
 }
