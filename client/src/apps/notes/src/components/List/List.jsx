@@ -1,29 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Element from '../Element'
 import Context from '../../context'
 
 const List = props => {
+
+  const { store: { notes, activeKey }, actions: { addNewNote } } = useContext(Context)
+
   return (
-    <Context.Consumer>
+    <nav id='List_main_container'>
       {
-        ({ store: { notes, activeKey }, actions: { addNewNote } }) => {
-          return (
-            <nav id='List_main_container'>
-              {
-                notes.map((value, key) =>
-                  <Element key={key} index={key} value={value.content} active={key === activeKey} />
-                )
-              }
-              <div id='List_add_element_button_container'>
-                <div id='List_add_element_button' onClick={addNewNote}>
-                  +
-                </div>
-              </div>
-            </nav>
-          )
-        }
+        notes.map((value, key) =>
+          <Element key={key} index={key} value={value.content} active={key === activeKey} />
+        )
       }
-    </Context.Consumer>
+      <div id='List_add_element_button_container'>
+        <div id='List_add_element_button' onClick={addNewNote}>
+          +
+      </div>
+      </div>
+    </nav>
   )
 }
 
