@@ -35,14 +35,7 @@ const App = props => {
     <div id='fermin_hub'>
       <Section title='Internal Applications'>
         <Card
-          card={{
-            title: 'Notes',
-            href: '/app/notes',
-            background: '#333333',
-            textColor: 'white',
-            image: require(`./assets/notes.png`),
-            internal: true
-          }}
+          card={{ title: 'Notes', href: '/app/notes', background: '#333333', textColor: 'white', image: require(`./assets/notes.png`), internal: true }}
         />
       </Section>
       <Section title='External Applications'>

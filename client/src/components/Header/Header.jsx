@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { auth } from '../../api'
 
 const Header = props => {
@@ -16,4 +16,4 @@ const Header = props => {
   )
 }
 
-export default Header
+export default memo(Header)
