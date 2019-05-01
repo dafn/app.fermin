@@ -5,7 +5,7 @@ export const auth = {
         navigator.serviceWorker.getRegistrations().then(registrations => {
           for (let registration of registrations)
             registration.unregister()
-          window.location.reload(true)
+          window.location = "/auth/login"
         })
       )
       .catch(err => console.error('Could not logout', err))

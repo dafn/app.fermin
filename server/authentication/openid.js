@@ -45,23 +45,13 @@ router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureR
 module.exports = {
   authenticate: router,
   isAuthenticated: (req, res, next) => {
-    if (process.env.NODE_ENV === 'testing') {
-      console.log(`${Terminal.BLUE} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
-      next()
-    }
-    if (req.originalUrl.endsWith('.webmanifest')) {
+    if (req.isAuthenticated()) {
       console.log(`${Terminal.OK} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
       next()
     }
     else {
-      if (req.isAuthenticated()) {
-        console.log(`${Terminal.OK} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
-        next()
-      }
-      else {
-        console.log(`${Terminal.WARNING} Denied ${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
-        res.redirect('/auth/login')
-      }
+      console.log(`${Terminal.WARNING} Denied ${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
+      res.sendStatus(401)
     }
   }
 }
