@@ -12,7 +12,7 @@ exports.addNote = async (user, content) => {
       key,
       data: [
         { name: 'user', value: user },
-        { name: 'content', value: content }
+        { name: 'content', value: content, excludeFromIndexes: true, }
       ]
     })
     console.log(`Note ${key.id} added successfully.`)
@@ -31,13 +31,13 @@ exports.updateNote = async (id, content) => {
     const key = datastore.key(['Note', parseInt(id)])
 
     await transaction.run()
+    
     const [task] = await transaction.get(key)
     task.content = content
-    transaction.save({
-      key,
-      data: task,
-    })
+    transaction.save({ key, data: task, excludeFromIndexes: ['content']})
+
     await transaction.commit()
+    
     console.log(`Note ${id} updated successfully.`)
     return 200
   } catch (err) {
