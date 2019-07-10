@@ -38,7 +38,7 @@ app.use(passport.session())
 app.use('/auth', authenticate)
 app.use('/gql', isAuthenticated, require('express-graphql')({ schema, graphiql: true }))
 
-app.use(express.static(path.resolve(__dirname, '../client/dist/'), {
+app.use(isAuthenticated, express.static(path.resolve(__dirname, '../client/dist/'), {
   setHeaders: res => {
     res.set('X-XSS-Protection', '1; mode=block')
     res.set('X-Frame-Options', 'DENY')

@@ -1,5 +1,5 @@
-@import ../shared/constants
-@import ../shared/mixins
+@import ../../../../sass/shared/mixins
+@import ../../../../sass/shared/constants
 
 #List_main_container
   display: flex
@@ -20,3 +20,7 @@
     &:hover
       background: $theme-color none
       color: $theme-green
+
+@media screen and (max-width: 411px)
+  #List_main_container
+    display: none

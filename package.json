@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "NODE_ENV=production node server/app.js",
-    "serve": "rm -rf client/dist && parcel watch client/index.pug -d client/dist & NODE_ENV=development nodemon server/app.js",
+    "dev": "rm -rf client/dist && parcel watch client/index.pug -d client/dist & NODE_ENV=development nodemon server/app.js",
     "build": "rm -rf client/dist && parcel build client/index.pug -d client/dist",
     "build:run": "yarn build &&  NODE_ENV=production node server/app.js",
     "docker:build": "docker build -t fermin-notes .",

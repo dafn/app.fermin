@@ -28,12 +28,7 @@ const OIDC_RP = new Issuer({
 
 const client = new OIDC_RP.Client({ client_id: clientId, client_secret: clientSecret })
 
-passport.use('oidc', new Strategy({ client, params },
-  (tokenset, userinfo, done) => {
-    if (userinfo)
-      return done(null, userinfo.email)
-    return done(null, false)
-  }))
+passport.use('oidc', new Strategy({ client, params }, (_, userinfo, done) => userinfo ? done(null, userinfo.email) : done(null, false) ))
 
 router.get('/login', passport.authenticate('oidc'))
 router.get('/logout', (req, res, next) => {
@@ -48,6 +43,9 @@ module.exports = {
     if (req.isAuthenticated()) {
       console.log(`${Terminal.OK} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
       next()
+    }
+    else if (req.originalUrl.endsWith('/')) {
+      res.redirect('/auth/login/')
     }
     else {
       console.log(`${Terminal.WARNING} Denied ${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
