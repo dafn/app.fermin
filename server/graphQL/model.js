@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean } = require('graphql')
+const { GraphQLObjectType, GraphQLString } = require('graphql')
 
 const model = {
   Note: new GraphQLObjectType({
