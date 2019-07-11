@@ -11,15 +11,15 @@ import './src/sass/main.sass'
 
 const App = () => {
   return (
-    <div id='fermin_main_container' >
+    <>
       <Header />
       <HashRouter>
-        <div id='fermin_apps_container'>
+        <section id='fermin_apps_container'>
           <Route exact path="/" component={Hub} />
           <Route exact path="/app/notes" component={Notes} />
-        </div>
+        </section>
       </HashRouter>
-    </div>
+    </>
   )
 }
 
