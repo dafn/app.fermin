@@ -4,6 +4,8 @@ import ReactQuill from 'react-quill'
 
 import Context from '../../context'
 
+import './Note.sass'
+
 const Note = props => {
 
   const [note, setNote] = useState(),

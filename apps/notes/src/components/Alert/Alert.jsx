@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './Alert.sass'
+
 const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative, activeKey }) => {
   return (
     <section id='Alert_main_container'>

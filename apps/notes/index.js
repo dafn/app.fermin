@@ -9,7 +9,7 @@ import Context, { store } from './src/context'
 import { database } from './src/api'
 
 import 'react-quill/dist/quill.snow.css'
-import './sass/main.sass'
+import './index.sass'
 
 const App = () => {
 

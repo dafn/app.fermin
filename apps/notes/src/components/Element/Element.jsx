@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import Context from '../../context';
 import ReactQuill from 'react-quill'
 
+import './Element.sass'
+
 const Element = ({ index, value, active }) => {
 
   const { actions: { setActiveKey, showModal } } = useContext(Context)

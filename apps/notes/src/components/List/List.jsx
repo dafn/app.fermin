@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import Element from '../Element'
 import Context from '../../context'
 
+import './List.sass'
+
 const List = props => {
 
   const { store: { notes, activeKey }, actions: { addNewNote } } = useContext(Context)
