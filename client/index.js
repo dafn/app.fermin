@@ -2,8 +2,8 @@ import React from 'react'
 import reactDom from 'react-dom'
 
 import Header from './src/components/Header'
-import Notes from './src/apps/notes'
-import Hub from './src/apps/hub'
+import Notes from '../apps/notes'
+import Hub from '../apps/hub'
 
 import { HashRouter, Route } from 'react-router-dom'
 
