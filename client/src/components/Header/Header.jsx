@@ -7,10 +7,8 @@ const Header = props => {
       <a href='/#' >
         <h1>FERMIN</h1>
       </a>
-      <div onClick={() => auth.logout()}>
-        <div id='Header_logout_button'>
-          Log out
-        </div>
+      <div id='Header_logout_button' onClick={() => auth.logout()}>
+        Log out
       </div>
     </header>
   )

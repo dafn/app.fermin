@@ -2,7 +2,7 @@ import React from 'react'
 
 const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative, activeKey }) => {
   return (
-    <div id='Alert_main_container'>
+    <section id='Alert_main_container'>
       <div id='Alert_dark_screen' onClick={onNegative}></div>
       <div id='Alert_content_container'>
         <img src={require('../../../assets/alert.png')} />
@@ -18,7 +18,7 @@ const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, on
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

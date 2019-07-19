@@ -14,7 +14,7 @@ const Element = ({ index, value, active }) => {
     content = title ? value.replace(title[0], '').replace(value.match(/<p><br><\/p>/), '') : ''
 
   return (
-    <div className={`ListElement_main_container ${active ? 'active' : ''}`} onClick={() => setActiveKey(index)}>
+    <section className={`ListElement_main_container ${active ? 'active' : ''}`} onClick={() => setActiveKey(index)}>
       <div className='ListElement_text_container'>
         <div className='ListElement_title_container'>
           <ReactQuill className='ListElement_editor' value={title && title[0] !== 'br>' ? title[0] : 'Untitled Note'} readOnly modules={modules} />
@@ -26,7 +26,7 @@ const Element = ({ index, value, active }) => {
       <div className='ListElement_delete_button' >
         <p onClick={event => { event.stopPropagation(); showModal() }}>x</p>
       </div>
-    </div>
+    </section>
   )
 }
 
