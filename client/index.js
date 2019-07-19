@@ -7,7 +7,7 @@ import Hub from '../apps/hub'
 
 import { HashRouter, Route } from 'react-router-dom'
 
-import './src/sass/main.sass'
+import './index.sass'
 
 const App = () => {
   return (

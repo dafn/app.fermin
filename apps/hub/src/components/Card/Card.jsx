@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from 'react'
-
 import { Link } from 'react-router-dom'
+
+import './Card.sass'
 
 const Card = ({ card: { image, title, background, textColor, internal, href } }) => {
 

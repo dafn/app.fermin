@@ -1,6 +1,8 @@
 import React, { memo } from 'react'
 import { auth } from '../../api'
 
+import './header.sass'
+
 const Header = props => {
   return (
     <header id='fermin_header'>

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './Add.sass'
+
 const Add = ({ onClick }) => {
   return (
     <article id='add_container' onClick={onClick}>

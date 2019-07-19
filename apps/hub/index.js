@@ -8,7 +8,7 @@ import NewCard from './src/components/NewCard'
 
 import { datastore } from './src/api'
 
-import './sass/main.sass'
+import './index.sass'
 
 const App = props => {
 

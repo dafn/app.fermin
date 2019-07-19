@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './Section.sass'
+
 const Section = props => {
   return (
     <section className='section_container' >
