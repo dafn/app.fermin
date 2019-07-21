@@ -4,19 +4,19 @@ import Context from '../../context'
 
 import './List.sass'
 
-const List = props => {
+const List = () => {
 
-  const { store: { notes, activeKey }, actions: { addNewNote } } = useContext(Context)
+  const { state, actions } = useContext(Context)
 
   return (
     <nav id='List_main_container'>
       {
-        notes.map((value, key) =>
-          <Element key={key} index={key} value={value.content} active={key === activeKey} />
+        state.notes.map((value, key) =>
+          <Element key={key} index={key} value={value.content} active={key === state.activeKey} />
         )
       }
       <div id='List_add_element_button_container'>
-        <div id='List_add_element_button' onClick={addNewNote}>
+        <div id='List_add_element_button' onClick={() => actions.addNote()}>
           +
       </div>
       </div>

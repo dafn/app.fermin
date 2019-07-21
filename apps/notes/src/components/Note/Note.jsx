@@ -9,7 +9,7 @@ import './Note.sass'
 const Note = props => {
 
   const [note, setNote] = useState(),
-    { store, store: { activeKey, saving, saved }, setStore, actions } = useContext(Context)
+    { state, actions } = useContext(Context)
 
   useEffect(() => {
     setNote(props.Note)
@@ -24,14 +24,17 @@ const Note = props => {
     ],
   }
 
-  const handleOnSaveClick = () => !saving && !saved && actions.saveNote(activeKey, note.content)
+  const handleOnSaveClick = () =>
+    !state.saving
+    && !state.saved
+    && actions.upsertNote(state.notes[state.activeKey].id, note.content)
 
-  saved && window.setTimeout(() => actions.endAlert(), 1000)
+  state.saved && window.setTimeout(() => actions.endAlert(), 1000)
 
   return (
     <section id='Note_main_container'>
-      <div id='Note_save_button_button' className={`${saving ? 'saving' : ''} ${saved ? 'saved' : ''}`} onClick={handleOnSaveClick}>
-        { saved ? 'Saved' : 'Save' }
+      <div id='Note_save_button_button' className={`${state.saving ? 'saving' : ''} ${state.saved ? 'saved' : ''}`} onClick={handleOnSaveClick}>
+        {state.saved ? 'Saved' : 'Save'}
       </div>
       {
         note &&
@@ -40,7 +43,7 @@ const Note = props => {
           onChange={value => {
             if (value === note.content) return
             setNote({ ...note, id: props.Note.id, content: value })
-            setStore(update(store, { notes: { [activeKey]: { content: { $set: value } } } }))
+            actions.setState(update(state, { notes: { [state.activeKey]: { content: { $set: value } } } }))
           }}
           modules={modules} />
       }
