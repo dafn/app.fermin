@@ -19,7 +19,7 @@ export default (dispatch) => {
       dispatch({ type: types.SAVING })
     },
     upsertNote: (id, content) => {
-      database.setNote2(id, content)
+      database.upsertNote(id, content)
       .then(response => {
         dispatch({ type: types.UPSERT_NOTE, payload: { saving: false, saved: true, updateList: true } })
       })
@@ -30,7 +30,7 @@ export default (dispatch) => {
     },
     deleteNote: (id, notes, activeKey) => {
       if (id)
-        database.deleteNote2(id)
+        database.deleteNote(id)
         .then(() => {
           notes.splice(activeKey, 1)
           dispatch({ type: types.DELETE_NOTE, payload: { notes, alert: false, activeKey: activeKey - 1 > 0 ? activeKey - 1 : 0 } })
@@ -44,7 +44,7 @@ export default (dispatch) => {
       }
     },
     updateList: () => {
-      database.getNotes2()
+      database.updateList()
         .then(response =>
           dispatch({
             type: types.SET_STATE,

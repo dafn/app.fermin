@@ -4,7 +4,6 @@ import reactDom from 'react-dom'
 import Header from './src/components/Header'
 import Notes from '../apps/notes'
 import Hub from '../apps/hub'
-import Test from '../apps/test'
 
 import { HashRouter, Route } from 'react-router-dom'
 
@@ -18,7 +17,6 @@ const App = () => {
         <section id='fermin_apps_container'>
           <Route exact path="/" component={Hub} />
           <Route exact path="/app/notes" component={Notes} />
-          <Route exact path="/app/test" component={Test} />
         </section>
       </HashRouter>
     </>
