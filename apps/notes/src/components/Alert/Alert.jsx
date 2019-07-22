@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import './Alert.sass'
 
@@ -24,4 +24,4 @@ const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, on
   )
 }
 
-export default Alert
+export default memo(Alert)
