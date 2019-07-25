@@ -3,7 +3,7 @@ import { auth } from '../../api'
 
 import './header.sass'
 
-const Header = props => {
+const Header = () => {
   return (
     <header id='fermin_header'>
       <a href='/#' >
