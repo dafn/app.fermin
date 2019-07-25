@@ -1,4 +1,4 @@
-export const types = {
+export const actionTypes = {
   END_ALERT: 'endAlert',
   TOGGLE_ALERT: 'toggleAlert',
   ADD_NOTE: 'addNote',

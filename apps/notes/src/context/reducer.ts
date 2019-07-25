@@ -1,4 +1,5 @@
-import { types } from './types'
+import { actionTypes } from './actionTypes'
+import { State } from './types'
 import update from 'immutability-helper'
 
 export const initialState = {
@@ -13,25 +14,25 @@ export const initialState = {
   alert: false
 }
 
-export const reducer = (state, action) => {
+export const reducer = (state: State, action) => {
   switch (action.type) { 
-    case types.END_ALERT:
+    case actionTypes.END_ALERT:
       return { ...state, saved: false }
-    case types.TOGGLE_ALERT:
+    case actionTypes.TOGGLE_ALERT:
       return { ...state, alert: action.payload.alert }
-    case types.ADD_NOTE:
+    case actionTypes.ADD_NOTE:
       return update(state, { notes: { $push: [{ id: '', content: '' }] } })
-    case types.SET_ACTIVE_KEY:
+    case actionTypes.SET_ACTIVE_KEY:
       return { ...state, activeKey: action.payload.key }
-    case types.SAVING:
+    case actionTypes.SAVING:
       return { ...state, saving: true }
-    case types.UPSERT_NOTE:
+    case actionTypes.UPSERT_NOTE:
       return { ...state, saving: action.payload.saving, saved: action.payload.saved, updateList: action.payload.updateList }
-    case types.DELETE_NOTE:
+    case actionTypes.DELETE_NOTE:
       return { ...state, notes: action.payload.notes, alert: action.payload.alert, activeKey: action.payload.activeKey }
-    case types.UPDATE_LIST:
+    case actionTypes.UPDATE_LIST:
       return { ...state, notes: action.payload.notes, updateList: action.payload.updateList }
-    case types.SET_STATE:
+    case actionTypes.SET_STATE:
       return { ...state, ...action.payload }
     default:
       throw new Error();
