@@ -1,8 +1,10 @@
 import React, { memo } from 'react'
 
+import { AlertProps } from './types'
+
 import './Alert.sass'
 
-const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative, activeKey }) => {
+const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative, activeKey }: AlertProps) => {
   return (
     <section id='Alert_main_container'>
       <div id='Alert_dark_screen' onClick={onNegative}></div>

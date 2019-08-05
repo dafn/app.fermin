@@ -1,8 +1,7 @@
-import { actionTypes } from './actionTypes'
-import { State } from './types'
+import { State, Action } from './types'
 import update from 'immutability-helper'
 
-export const initialState = {
+export const initialState: State = {
   notes: [{
     id: '',
     content: ''
@@ -14,25 +13,25 @@ export const initialState = {
   alert: false
 }
 
-export const reducer = (state: State, action) => {
+export const reducer = (state: State, action: Action) => {
   switch (action.type) { 
-    case actionTypes.END_ALERT:
+    case 'END_ALERT':
       return { ...state, saved: false }
-    case actionTypes.TOGGLE_ALERT:
+    case 'TOGGLE_ALERT':
       return { ...state, alert: action.payload.alert }
-    case actionTypes.ADD_NOTE:
+    case 'ADD_NOTE':
       return update(state, { notes: { $push: [{ id: '', content: '' }] } })
-    case actionTypes.SET_ACTIVE_KEY:
+    case 'SET_ACTIVE_KEY':
       return { ...state, activeKey: action.payload.key }
-    case actionTypes.SAVING:
+    case 'SAVING':
       return { ...state, saving: true }
-    case actionTypes.UPSERT_NOTE:
+    case 'UPSERT_NOTE':
       return { ...state, saving: action.payload.saving, saved: action.payload.saved, updateList: action.payload.updateList }
-    case actionTypes.DELETE_NOTE:
+    case 'DELETE_NOTE':
       return { ...state, notes: action.payload.notes, alert: action.payload.alert, activeKey: action.payload.activeKey }
-    case actionTypes.UPDATE_LIST:
+    case 'UPDATE_LIST':
       return { ...state, notes: action.payload.notes, updateList: action.payload.updateList }
-    case actionTypes.SET_STATE:
+    case 'SET_STATE':
       return { ...state, ...action.payload }
     default:
       throw new Error();

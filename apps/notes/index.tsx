@@ -7,7 +7,6 @@ import Alert from './src/components/Alert'
 import Context from './src/context'
 import Actions from './src/context/actions'
 import { reducer, initialState } from './src/context/reducer'
-import { actionTypes } from './src/context/actionTypes'
 
 import 'react-quill/dist/quill.snow.css'
 import './index.sass'
@@ -19,7 +18,7 @@ const App = () => {
   state.updateList && actions.updateList()
 
   return (
-    <Context.Provider value={{ state, actionTypes, actions }}>
+    <Context.Provider value={{ state, actions }}>
       <div id="fermin_notes">
         <List />
         <Note Note={state.notes[state.activeKey]} />

@@ -10,7 +10,7 @@ export const database = {
       graphQL.request(` mutation { deleteNote(id: "${id}") } `)
         .then(response => resolve(response))
         .catch(err => {
-          if (err.response.status === 401) window.location = "/auth/login"
+          if (err.response.status === 401) window.location.href = "/auth/login"
           else reject(err)
         })
 
@@ -20,14 +20,14 @@ export const database = {
       graphQL.request(` mutation { setNote(id: "${encodeURI(id)}", content: "${encodeURI(content)}") } `)
         .then(response => resolve(response))
         .catch(err => {
-          if (err.response.status === 401) window.location = "/auth/login"
+          if (err.response.status === 401) window.location.href = "/auth/login"
           else reject(err)
         })
     else
       graphQL.request(` mutation { setNote(content: "${encodeURI(content)}") } `)
         .then(response => resolve(response))
         .catch(err => {
-          if (err.response.status === 401) window.location = "/auth/login"
+          if (err.response.status === 401) window.location.href = "/auth/login"
           else reject(err)
         })
   }),
@@ -35,7 +35,7 @@ export const database = {
     graphQL.request(` { Notes { id, content } } `)
       .then(response => resolve(response))
       .catch(err => {
-        if (err.response.status === 401) window.location = "/auth/login"
+        if (err.response.status === 401) window.location.href = "/auth/login"
         else reject(err)
       })
   })

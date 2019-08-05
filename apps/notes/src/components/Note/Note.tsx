@@ -4,11 +4,14 @@ import ReactQuill from 'react-quill'
 
 import Context from '../../context'
 
+import { NoteProps } from './types'
+
 import './Note.sass'
+import { Note } from '../../context/types';
 
-const Note = props => {
+const Note = (props: NoteProps) => {
 
-  const [note, setNote] = useState(),
+  const [note, setNote] = useState<Note>(),
     { state, actions } = useContext(Context)
 
   useEffect(() => {
