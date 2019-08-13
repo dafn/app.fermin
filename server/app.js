@@ -17,7 +17,6 @@ if (process.env.NODE_ENV === 'production') {
     ? res.redirect('https://' + req.hostname + req.baseUrl)
     : next()
   )
-
 }
 
 app.use(require('compression')())
