@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import Context from '../../context';
 import ReactQuill from 'react-quill'
+import { ElementProps } from './types'
 
 import './Element.sass'
 
-const Element = ({ index, value, active }) => {
+const Element = ({ index, value, active }: ElementProps) => {
 
   const { actions } = useContext(Context)
 
