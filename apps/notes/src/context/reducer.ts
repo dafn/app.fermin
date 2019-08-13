@@ -1,4 +1,4 @@
-import { State, Action } from './types'
+import { State, ActionType } from './types'
 import update from 'immutability-helper'
 
 export const initialState: State = {
@@ -13,7 +13,7 @@ export const initialState: State = {
   alert: false
 }
 
-export const reducer = (state: State, action: Action) => {
+export const reducer = (state: State, action: ActionType) => {
   switch (action.type) { 
     case 'END_ALERT':
       return { ...state, saved: false }

@@ -1,8 +1,8 @@
 import { database } from '../api'
 import { Dispatch } from 'react';
-import { Action } from './types';
+import { ActionType } from './types';
 
-export default (dispatch: Dispatch<Action>) => {
+export default (dispatch: Dispatch<ActionType>) => {
   return {
     endAlert: () => {
       dispatch({ type: 'END_ALERT' })
@@ -20,7 +20,7 @@ export default (dispatch: Dispatch<Action>) => {
       dispatch({ type: 'SAVING' })
     },
     upsertNote: (id, content) => {
-      database.upsertNote(id, content)
+      database.upsertNote(content, id)
       .then(response => {
         dispatch({ type: 'UPSERT_NOTE', payload: { saving: false, saved: true, updateList: true } })
       })

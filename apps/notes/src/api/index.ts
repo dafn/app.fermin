@@ -15,7 +15,7 @@ export const database = {
         })
 
   }),
-  upsertNote: (id: string, content: string) => new Promise((resolve, reject) => {
+  upsertNote: (content: string, id?: string) => new Promise((resolve, reject) => {
     if (id)
       graphQL.request(` mutation { setNote(id: "${encodeURI(id)}", content: "${encodeURI(content)}") } `)
         .then((response: Response) => resolve(response))

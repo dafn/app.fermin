@@ -12,19 +12,17 @@ export type State = {
   alert: boolean
 }
 
-export type Actions =
-| 'END_ALERT'
-| 'TOGGLE_ALERT'
-| 'ADD_NOTE'
-| 'SET_ACTIVE_KEY'
-| 'SAVING'
-| 'UPSERT_NOTE' 
-| 'DELETE_NOTE'
-| 'UPDATE_LIST'
-| 'SET_STATE'
-
-export type Action = {
-  type: Actions,
+export type ActionType = {
+  type:
+  | 'END_ALERT'
+  | 'TOGGLE_ALERT'
+  | 'ADD_NOTE'
+  | 'SET_ACTIVE_KEY'
+  | 'SAVING'
+  | 'UPSERT_NOTE'
+  | 'DELETE_NOTE'
+  | 'UPDATE_LIST'
+  | 'SET_STATE',
   payload?: any
 }
 

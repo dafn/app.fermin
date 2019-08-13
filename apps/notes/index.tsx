@@ -20,9 +20,7 @@ const App = () => {
   return (
     <Context.Provider value={{ state, actions }}>
       <div id="fermin_notes">
-        <List
-          
-        />
+        <List/>
         <Note Note={state.notes[state.activeKey]} />
         {
           state.alert &&
