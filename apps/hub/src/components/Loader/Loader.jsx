@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Loader.sass'
 
-const Loader  = props => {
+const Loader = () => {
   return <div className='loader'></div>
 }
 

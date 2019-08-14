@@ -28,7 +28,7 @@ const NewCard = ({ onCancel, onCreate, className }) => {
         </div>
         <div id='newCard_button_container'>
           <div id='newCard_create_button' onClick={() => { onCreate(state); setState(defaultState) }}>Create</div>
-          <div id='newCard_cancel_button' onClick={onCancel}>Cancel</div>
+          <div id='newCard_cancel_button' onClick={() => { onCancel(); setState(defaultState) }}>Cancel</div>
         </div>
       </div>
       <div id='newCard_right_container'>

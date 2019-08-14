@@ -4,16 +4,12 @@ const graphQL = new GraphQLClient("/gql", { credentials: "same-origin" })
 
 export const database = {
   deleteNote: (id: string) => new Promise((resolve, reject) => {
-    if (!id)
-      reject('Could not delete the Note. No id provided')
-    else
-      graphQL.request(` mutation { deleteNote(id: "${id}") } `)
-        .then((response: Response) => resolve(response))
-        .catch((err: any) => {
-          if (err.response.status === 401) window.location.href = "/auth/login"
-          else reject(err)
-        })
-
+    graphQL.request(` mutation { deleteNote(id: "${id}") } `)
+      .then((response: Response) => resolve(response))
+      .catch((err: any) => {
+        if (err.response.status === 401) window.location.href = "/auth/login"
+        else reject(err)
+      })
   }),
   upsertNote: (content: string, id?: string) => new Promise((resolve, reject) => {
     if (id)
@@ -35,7 +31,6 @@ export const database = {
     graphQL.request(` { Notes { id, content } } `)
       .then((response: Response) => resolve(response))
       .catch((err: any) => {
-        
         if (err.response.status === 401) window.location.href = "/auth/login"
         else reject(err)
       })
