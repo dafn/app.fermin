@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { AddProps } from './types'
 
@@ -12,4 +12,4 @@ const Add = ({ onClick }: AddProps) => {
   )
 }
 
-export default Add
+export default memo(Add)

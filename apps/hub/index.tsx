@@ -13,22 +13,24 @@ import './index.sass'
 
 const App = () => {
 
-  const [state, setState] = useState<AppStateType>({})
+  const [state, setState] = useState<AppStateType>({
+    loading: true
+  })
 
   useEffect(() => {
-    datastore.Cards({
-      onSuccess: response => { setState({ ...state, Cards: response.Cards, loading: false }) },
-      onError: err => console.log('Error fetching list of Cards', err)
-    })
+    datastore.Cards(
+      response => { setState({ ...state, Cards: response.Cards, loading: false }) },
+      err => console.log('Error fetching list of Cards', err)
+    )
   }, [])
 
   const handleOnAddCard = (card: CardType) => {
     datastore.addCard(card, () => {
       setState({ ...state, loading: true })
-      datastore.Cards({
-        onSuccess: response => { setState({ ...state, Cards: response.Cards, newCard: false, loading: false }) },
-        onError: err => console.log('Error fetching list of Cards', err)
-      })
+      datastore.Cards(
+        response => { setState({ ...state, Cards: response.Cards, newCard: false, loading: false }) },
+        err => console.log('Error fetching list of Cards', err)
+      )
     })
   }
 
@@ -44,7 +46,7 @@ const App = () => {
           state.loading && <Loader />
         }
         {
-          state.Cards && state.Cards.map((card, key) => <Card key={key} card={card} />)
+          state.Cards && state.Cards.map((card: CardType, key: number) => <Card key={key} card={card} />)
         }
         <Add onClick={() => setState({ ...state, newCard: true })} />
       </Section>

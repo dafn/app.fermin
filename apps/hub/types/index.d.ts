@@ -1,5 +1,5 @@
 export type CardType = {
-  id: string;
+  id?: string;
   title: string;
   href: string;
   image: string;
