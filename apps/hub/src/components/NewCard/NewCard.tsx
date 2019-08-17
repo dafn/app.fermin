@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import Card from '../Card'
 
 import { CardType } from '../../../types'
@@ -48,4 +48,4 @@ const NewCard = ({ onCancel, onCreate, className }: NewCardProps) => {
   )
 }
 
-export default NewCard
+export default memo(NewCard)

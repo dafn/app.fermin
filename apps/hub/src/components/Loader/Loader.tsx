@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import './Loader.sass'
 
 const Loader = () => {
-  return <section className='loader'></section>
+  return <section className='loader' />
 }
 
-export default Loader
+export default memo(Loader)
