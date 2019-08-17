@@ -7,32 +7,33 @@ import Loader from './src/components/Loader'
 import NewCard from './src/components/NewCard'
 
 import { datastore } from './src/api'
+import { AppStateType, CardType } from './types'
 
 import './index.sass'
 
-const App = props => {
+const App = () => {
 
-  const [state, setState] = useState({ Card: '', newCard: false, loading: true })
+  const [state, setState] = useState<AppStateType>({})
 
   useEffect(() => {
     datastore.Cards({
-      onSuccess: response => { setState({ Cards: response.Cards }) },
+      onSuccess: response => { setState({ ...state, Cards: response.Cards, loading: false }) },
       onError: err => console.log('Error fetching list of Cards', err)
     })
-  }, [state.Card])
+  }, [])
 
-  const handleOnAddCard = card => {
+  const handleOnAddCard = (card: CardType) => {
     datastore.addCard(card, () => {
-      setState({ loading: true })
+      setState({ ...state, loading: true })
       datastore.Cards({
-        onSuccess: response => { setState({ Cards: response.Cards, newCard: false }) },
+        onSuccess: response => { setState({ ...state, Cards: response.Cards, newCard: false, loading: false }) },
         onError: err => console.log('Error fetching list of Cards', err)
       })
     })
   }
 
   return (
-    <div id='fermin_hub'>
+    <main id='fermin_hub'>
       <Section title='Internal Applications'>
         <Card
           card={{ title: 'Notes', href: '/app/notes', background: '#333333', textColor: 'white', image: require(`./assets/notes.png`), internal: true }}
@@ -49,7 +50,7 @@ const App = props => {
       </Section>
 
       <NewCard className={state.newCard && 'visible' || ''} onCreate={card => handleOnAddCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
-    </div>
+    </main>
   )
 }
 

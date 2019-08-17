@@ -29,14 +29,14 @@ export type ActionType = {
 export type Context = {
   state: State,
   actions: {
-    endAlert: () => void,
-    toggleAlert: (alert: boolean) => void,
-    addNote: () => void,
-    setActiveKey: (key: number | string) => void,
-    saving: () => void,
-    upsertNote: (id: number | string, content: string) => void,
-    deleteNote: (id: number | string, notes: Note[], activeKey: number | string) => void,
-    updateList: () => void,
-    setState: (payload: any) => void
+    endAlert: () => unknown,
+    toggleAlert: (alert: boolean) => unknown,
+    addNote: () => unknown,
+    setActiveKey: (key: number | string) => unknown,
+    saving: () => unknown,
+    upsertNote: (id: number | string, content: string) => unknown,
+    deleteNote: (id: number | string, notes: Note[], activeKey: number | string) => unknown,
+    updateList: () => unknown,
+    setState: (payload: any) => unknown
   }
 }

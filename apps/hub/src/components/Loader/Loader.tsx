@@ -3,7 +3,7 @@ import React from 'react'
 import './Loader.sass'
 
 const Loader = () => {
-  return <div className='loader'></div>
+  return <section className='loader'></section>
 }
 
 export default Loader

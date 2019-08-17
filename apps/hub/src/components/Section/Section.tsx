@@ -1,15 +1,17 @@
 import React from 'react'
 
+import { SectionProps } from './types'
+
 import './Section.sass'
 
-const Section = props => {
+const Section = ({ title, children }: SectionProps) => {
   return (
-    <section className='section_container' >
+    <section className='section_container'>
       <header>
-        <h2> { props.title } </h2>
+        <h2> { title } </h2>
       </header>
       <section className='section_card_container'>
-        { props.children }
+        { children }
       </section>
     </section>
   )
