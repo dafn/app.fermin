@@ -1,6 +1,7 @@
 node_modules
 .cache
 **/dist
-keys
+**/keys
+**/f-keys
 *.rdb
 *.log

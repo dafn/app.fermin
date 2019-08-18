@@ -1,6 +1,6 @@
 const
   { authenticate, isAuthenticated } = require('./authentication/openid'),
-  { session_store_key } = require('../keys/session-store'),
+  { session_store_key } = require('../f-keys/session-store'),
   express = require('express'),
   session = require('express-session'),
   memorystore = require('memorystore')(session),
@@ -38,7 +38,7 @@ app.use(passport.session())
 app.use('/auth', authenticate)
 app.use('/gql', isAuthenticated, require('express-graphql')({ schema, graphiql: true }))
 
-app.use(isAuthenticated, express.static(path.resolve(__dirname, '../dist'), {
+app.use(isAuthenticated, express.static(path.resolve('dist'), {
   setHeaders: res => {
     res.set('X-XSS-Protection', '1; mode=block')
     res.set('X-Frame-Options', 'DENY')

@@ -1,6 +1,6 @@
 datastore = new require('@google-cloud/datastore')({
   projectId: 'no-fermin',
-  keyFilename: 'keys/datastore-service-account-key.json'
+  keyFilename: 'packages/f-keys/datastore-service-account-key.json'
 })
 
 exports.addNote = async (user, content) => {

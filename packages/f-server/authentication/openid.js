@@ -3,7 +3,7 @@ const
   passport = require('passport'),
   { Terminal } = require('../terminal/colors'),
   { Issuer, Strategy } = require('openid-client'),
-  { clientId, clientSecret } = require('../../keys/gcp-iam')
+  { clientId, clientSecret } = require('../../f-keys/gcp-iam')
 
 passport.serializeUser((user, done) => done(null, user))
 passport.deserializeUser((user, done) => done(null, user))

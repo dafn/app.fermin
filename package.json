@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "start": "NODE_ENV=production node server/app.js",
-    "dev": "rm -rf dist && parcel watch client/index.pug & NODE_ENV=development nodemon server/app.js",
-    "build": "rm -rf dist && parcel build client/index.pug --no-source-maps",
-    "build:run": "yarn build &&  NODE_ENV=production node server/app.js",
-    "docker:build": "docker build -t fermin-notes .",
-    "docker:run": "docker run -p 8002:8002 fermin-notes",
+    "start": "NODE_ENV=production node packages/f-server/app.js",
+    "dev": "rm -rf dist && PARCEL_AUTOINSTALL=false parcel watch packages/f-app/index.pug & NODE_ENV=development nodemon packages/f-server/app.js",
+    "build": "rm -rf dist && parcel build packages/f-app/index.pug --no-source-maps",
+    "build:run": "yarn build &&  NODE_ENV=production node packages/f-server/app.js",
+    "docker:build": "docker build -t app.fermin .",
+    "docker:run": "docker run -p 8002:8002 app.fermin",
     "docker:kill": "docker kill $(docker ps -q)",
     "docker:prune": "docker system prune -a",
     "deploy": "yarn build && gcloud app deploy"
@@ -32,6 +32,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "lerna": "^3.16.4",
     "nodemon": "^1.18.9",
     "parcel-bundler": "^1.11.0",
     "parcel-plugin-sw-precache": "^1.0.3",
@@ -43,5 +44,10 @@
     "plugins": [
       "@babel/plugin-transform-react-jsx"
     ]
-  }
+  },
+  "alias": {
+    "f-app-hub": "packages/f-app-hub",
+    "f-app-notes": "packages/f-app-notes"
+  },
+  "name": "app.fermin"
 }

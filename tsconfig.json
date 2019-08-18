@@ -2,10 +2,10 @@
   "compilerOptions": {
     "jsx": "react",
     "esModuleInterop": true,
-    "baseUrl": "./client",
+    "baseUrl": "./packages",
     "paths": {
       "~*": ["./*"]
     },
   },
-  "include": ["client/**/*"]
+  "include": ["packages/**/*"]
 }
