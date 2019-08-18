@@ -2,8 +2,5 @@
   "name": "f-app-hub",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "undefined": "/Users/dafn/Documents/projects/app.fermin/packages/f-app-hub"
-  }
+  "license": "MIT"
 }
