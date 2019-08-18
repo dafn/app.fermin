@@ -50,8 +50,9 @@ const App = () => {
         }
         <Add onClick={() => setState({ ...state, newCard: true })} />
       </Section>
-
-      <NewCard className={state.newCard && 'visible' || ''} onCreate={card => handleOnAddCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
+      {
+        state.newCard && <NewCard onCreate={card => handleOnAddCard(card)} onCancel={() => setState({ ...state, newCard: false })} />
+      }
     </main>
   )
 }

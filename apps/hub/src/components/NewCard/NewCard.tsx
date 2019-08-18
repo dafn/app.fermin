@@ -6,7 +6,7 @@ import { NewCardProps } from './types'
 
 import './NewCard.sass'
 
-const NewCard = ({ onCancel, onCreate, className }: NewCardProps) => {
+const NewCard = ({ onCancel, onCreate, className = 'visible' }: NewCardProps) => {
 
   const defaultState: CardType = {
     id: '',

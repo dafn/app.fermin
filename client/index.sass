@@ -5,18 +5,19 @@ html
   overflow-x: hidden
 
 body
+  display: flex
   background-color: $theme-color
   min-height: 100vh
   margin: 0 auto
   overflow-x: hidden
   +animation_fade-in(0.5s)
 
-main
+#app
   display: flex
   flex-direction: column
-  min-height: 100vh
   max-height: 100vh
+  min-width: 100vw
 
 #fermin_apps_container
-  height: 100vh
+  flex: 1
   display: flex
