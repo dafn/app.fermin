@@ -36,9 +36,9 @@ const Note = (props: NoteProps) => {
 
   return (
     <section id='Note_main_container'>
-      <div id='Note_save_button_button' className={`${state.saving ? 'saving' : ''} ${state.saved ? 'saved' : ''}`} onClick={handleOnSaveClick}>
+      <button id='Note_save_button_button' className={`${state.saving ? 'saving' : ''} ${state.saved ? 'saved' : ''}`} onClick={handleOnSaveClick}>
         {state.saved ? 'Saved' : 'Save'}
-      </div>
+      </button>
       {
         note &&
         <ReactQuill id='editor'

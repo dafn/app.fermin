@@ -17,29 +17,29 @@ const Card = (props: CardProps) => {
   }, [mounted])
 
   return (
-    <section>
+    <>
       {
         internal
           ?
           <Link to={href || '/'} className={`card ${mounted || ''}`} name={title} style={{ background: `${background}` }}>
-            <div className='card_image' >
+            <section className='card_image' >
               <img src={image} alt='card image' />
-            </div>
-            <div className='card_text'>
+            </section>
+            <section className='card_text'>
               <p style={{ color: `${textColor}` }}>{title}</p>
-            </div>
+            </section>
           </Link>
           :
           <a className={`card ${mounted || ''}`} href={href || '#'} target={href && '_blank'} style={{ background: `${background}` }} rel='noopener'>
-            <div className='card_image'>
+            <section className='card_image'>
               <img src={image} alt='card image' className={imageHidden ? 'hidden': 'visible'} onLoad={() => setImageHidden(false)} onError={() => setImageHidden(true)}/>
-            </div>
-            <div className='card_text'>
+            </section>
+            <section className='card_text'>
               <p style={{ color: `${textColor}` }}>{title}</p>
-            </div>
+            </section>
           </a>
       }
-    </section>
+    </>
   )
 }
 

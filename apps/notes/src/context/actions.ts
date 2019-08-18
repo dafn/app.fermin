@@ -20,6 +20,7 @@ export default (dispatch: Dispatch<ActionType>) => {
       dispatch({ type: 'SAVING' })
     },
     upsertNote: (id, content) => {
+      dispatch({ type: 'SAVING' })
       database.upsertNote(content, id)
       .then(response => {
         dispatch({ type: 'UPSERT_NOTE', payload: { saving: false, saved: true, updateList: true } })
@@ -46,7 +47,7 @@ export default (dispatch: Dispatch<ActionType>) => {
     },
     updateList: () => {
       database.updateList()
-        .then(response =>
+        .then((response: any) =>
           dispatch({
             type: 'SET_STATE',
             payload: {

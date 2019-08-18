@@ -18,14 +18,14 @@ const Element = ({ index, value, active }: ElementProps) => {
 
   return (
     <section className={`ListElement_main_container ${active ? 'active' : ''}`} onClick={() => actions.setActiveKey(index) }>
-      <div className='ListElement_text_container'>
-        <div className='ListElement_title_container'>
+      <article className='ListElement_text_container'>
+        <h1 className='ListElement_title_container'>
           <ReactQuill className='ListElement_editor' value={title && title[0] !== 'br>' ? title[0] : 'Untitled Note'} readOnly modules={modules} />
-        </div>
+        </h1>
         <div className='ListElement_summary' >
           <ReactQuill className='ListElement_editor' value={content !== '<p><</p>' ? content : ''} readOnly modules={modules} />
         </div>
-      </div>
+      </article>
       <div className='ListElement_delete_button' >
         <p onClick={event => { event.stopPropagation(); actions.toggleAlert(true) }}>x</p>
       </div>

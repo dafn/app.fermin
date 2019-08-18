@@ -9,11 +9,14 @@
   text-shadow: none
   font: 700 90% $font-stack
   background: $background-color none
+  border: unset
   border-radius: .28571429rem
   line-height: 1em
   transition: all 0.1s
   &:hover
     background-color: darken($background-color, 10%)
+  &:focus
+    outline: none
   @if $type == inverted
     background: white none
     color: $background-color

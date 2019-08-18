@@ -14,12 +14,12 @@ const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, on
           {message}
         </p>
         <div id='Alert_buttons_container'>
-          <div id='Alert_content_delete_button' onClick={() => onPositive(activeKey)}>
+          <button id='Alert_content_delete_button' onClick={() => onPositive(activeKey)}>
             {positiveButtonText}
-          </div>
-          <div id='Alert_content_cancel_button' onClick={onNegative}>
+          </button>
+          <button id='Alert_content_cancel_button' onClick={onNegative}>
             {negativeButtonText}
-          </div>
+          </button>
         </div>
       </div>
     </section>
