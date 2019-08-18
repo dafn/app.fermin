@@ -14,10 +14,10 @@ const App = () => {
     <>
       <Header />
       <HashRouter>
-        <main id='fermin_apps_container'>
+        <>
           <Route exact path="/" component={Hub} />
           <Route exact path="/app/notes" component={Notes} />
-        </main>
+        </>
       </HashRouter>
     </>
   )
