@@ -28,8 +28,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   unset: 'destroy',
-  cookie: { secure: process.env.NODE_ENV === 'production' },
-  maxAge: 2628000
+  cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 86400000 },
+  maxAge: 86400000
 }))
 
 app.use(passport.initialize())
