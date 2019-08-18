@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, memo } from 'react'
 import Context from '../../context';
 import ReactQuill from 'react-quill'
 import { ElementProps } from './types'
@@ -33,4 +33,4 @@ const Element = ({ index, value, active }: ElementProps) => {
   )
 }
 
-export default Element
+export default memo(Element)
