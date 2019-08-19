@@ -1,7 +1,7 @@
 import React from 'react'
 import reactDom from 'react-dom'
 
-import Header from './src/components/Header'
+import Header from '../f-app-core/components/Header'
 import Notes from '../f-app-notes'
 import Hub from '../f-app-hub'
 

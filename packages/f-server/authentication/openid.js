@@ -40,7 +40,7 @@ router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureR
 module.exports = {
   authenticate: router,
   isAuthenticated: (req, res, next) => {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() || req.originalUrl.endsWith('.webmanifest')) {
       console.log(`${Terminal.OK} Granted${Terminal.RESET}`, `${req.protocol}://${req.get('host')}${req.originalUrl}`)
       next()
     }
