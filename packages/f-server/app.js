@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const
   { authenticate, isAuthenticated } = require('./authentication/openid'),
   { session_store_key } = require('../f-keys/session-store'),
