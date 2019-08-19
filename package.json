@@ -4,6 +4,7 @@
     "dev": "rm -rf dist && PARCEL_AUTOINSTALL=false parcel watch packages/f-app/index.pug & NODE_ENV=development nodemon packages/f-server/app.js",
     "build": "rm -rf dist && parcel build packages/f-app/index.pug --no-source-maps",
     "build:run": "yarn build &&  NODE_ENV=production node packages/f-server/app.js",
+    "clean": "rm -rf .cache rm -rf dist",
     "docker:build": "docker build -t app.fermin .",
     "docker:run": "docker run -p 8002:8002 app.fermin",
     "docker:kill": "docker kill $(docker ps -q)",
@@ -34,8 +35,8 @@
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "lerna": "^3.16.4",
     "nodemon": "^1.18.9",
-    "parcel-bundler": "^1.11.0",
-    "parcel-plugin-sw-precache": "^1.0.3",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-sw-precache": "^1.1.1",
     "pug": "^2.0.3",
     "sass": "^1.15.2",
     "typescript": "^3.5.3"
@@ -46,8 +47,9 @@
     ]
   },
   "alias": {
-    "f-app-hub": "packages/f-app-hub",
-    "f-app-notes": "packages/f-app-notes"
+    "f-app-core": "./packages/f-app-core/*",
+    "f-app-notes": "./packages/f-app-notes/*",
+    "f-app-nub": "./packages/f-app-nub/*"
   },
   "name": "app.fermin"
 }

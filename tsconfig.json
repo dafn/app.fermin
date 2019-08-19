@@ -2,10 +2,16 @@
   "compilerOptions": {
     "jsx": "react",
     "esModuleInterop": true,
-    "baseUrl": "./packages",
+    "baseUrl": ".",
     "paths": {
-      "~*": ["./*"]
+      "*": ["*", "packages/*"]
     },
   },
-  "include": ["packages/**/*"]
+  "include": [
+    "packages/**/*"
+  ],
+  "exclude": [
+    "packages/f-server",
+    "packages/f-keys"
+  ]
 }
