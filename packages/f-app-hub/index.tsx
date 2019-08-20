@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-import Card from './src/components/Card'
-import Add from './src/components/Add'
-import Section from './src/components/Section'
-import Loader from './src/components/Loader'
-import NewCard from './src/components/NewCard'
+import Card from './components/Card'
+import Add from './components/Add'
+import Section from './components/Section'
+import Loader from './components/Loader'
+import NewCard from './components/NewCard'
 
-import { datastore } from './src/api'
+import { datastore } from './api'
 import { AppStateType, CardType } from './types'
 
 import './index.sass'

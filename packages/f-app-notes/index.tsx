@@ -1,12 +1,12 @@
 import React, { useReducer } from 'react'
 
-import List from './src/components/List'
-import Note from './src/components/Note'
-import Alert from './src/components/Alert'
+import List from './components/List'
+import Note from './components/Note'
+import Alert from './components/Alert'
 
-import Context from './src/context'
-import Actions from './src/context/actions'
-import { reducer, initialState } from './src/context/reducer'
+import Context from './context'
+import Actions from './context/actions'
+import { reducer, initialState } from './context/reducer'
 
 import 'react-quill/dist/quill.snow.css'
 import './index.sass'

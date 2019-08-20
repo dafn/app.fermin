@@ -1,8 +1,7 @@
 import React, { useState, memo } from 'react'
 import Card from '../Card'
 
-import { CardType } from '../../../types'
-import { NewCardProps } from './types'
+import { NewCardProps, CardType } from './types'
 
 import './NewCard.sass'
 

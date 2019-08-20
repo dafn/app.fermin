@@ -1,4 +1,5 @@
-import { CardType } from '../../../../types'
+import { CardType } from '../../../types'
+export { CardType } from '../../../types'
 
 export type NewCardProps = {
   onCreate: (state: CardType) => unknown

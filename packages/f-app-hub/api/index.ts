@@ -1,10 +1,10 @@
 import { GraphQLClient } from "graphql-request"
-import { Card, onError, onSuccess } from './types'
+import { CardType, onErrorType, onSuccessType } from './types'
 
 const graphql = new GraphQLClient("/gql", { credentials: "same-origin" })
 
 export const datastore = {
-  addCard: ({ title, href, background, image, textColor }: Card, onSuccess?: onSuccess, onError?: onError ) => {
+  addCard: ({ title, href, background, image, textColor }: CardType, onSuccess?: onSuccessType, onError?: onErrorType ) => {
     graphql.request(`mutation { addCard(title: "${title}", href: "${href || '#'}", background: "${background || 'white'}", textColor: "${textColor || 'black'}", image: "${image}") }`)
       .then(response => { onSuccess && onSuccess(response) })
       .catch(err => {
@@ -12,7 +12,7 @@ export const datastore = {
         else onError && onError(err) || console.log(err)
       })
   },
-  Cards: (onSuccess?: onSuccess, onError?: onError) => {
+  Cards: (onSuccess?: onSuccessType, onError?: onErrorType) => {
     graphql.request(`{ Cards { title href background image textColor id } }`)
       .then(response => { onSuccess(response) })
       .catch(err => {
