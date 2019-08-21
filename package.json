@@ -47,9 +47,9 @@
     ]
   },
   "alias": {
-    "f-app-core": "./packages/f-app-core/*",
-    "f-app-notes": "./packages/f-app-notes/*",
-    "f-app-nub": "./packages/f-app-nub/*"
+    "f-app-core": "./packages/f-app-core",
+    "f-app-notes": "./packages/f-app-notes",
+    "f-app-nub": "./packages/f-app-nub"
   },
   "name": "app.fermin"
 }
