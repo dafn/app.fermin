@@ -1,5 +1,5 @@
 import { Note } from '../../../context/types'
 
-export type NoteProps = {
+export interface NoteProps {
   Note: Note
 }

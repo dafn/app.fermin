@@ -1,4 +1,4 @@
-export type AlertProps = {
+export interface AlertProps {
   message: string
   positiveButtonText: string
   negativeButtonText: string
