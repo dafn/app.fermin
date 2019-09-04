@@ -1,5 +1,5 @@
 import { CardType } from '../../types'
 
 export { CardType } from '../../types'
-export type onSuccessType = (response) => unknown
-export type onErrorType = (error) => unknown
+export type onSuccessType = (response) => void
+export type onErrorType = (error) => void

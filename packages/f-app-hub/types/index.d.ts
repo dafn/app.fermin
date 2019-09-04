@@ -1,4 +1,4 @@
-export type CardType = {
+export interface CardType {
   id?: string;
   title: string;
   href: string;
@@ -8,7 +8,7 @@ export type CardType = {
   internal?: boolean;
 }
 
-export type AppStateType = {
+export interface AppStateType {
   Cards?: CardType[];
   newCard?: boolean;
   loading?: boolean;
