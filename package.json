@@ -33,8 +33,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
-    "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/plugin-syntax-json-strings": "^7.7.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
     "nodemon": "^1.18.9",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-sw-precache": "^1.1.1",
