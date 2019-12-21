@@ -1,3 +1,3 @@
-export type AddProps = {
-  onClick: () => unknown
+export interface AddProps {
+  onClick: () => void
 }

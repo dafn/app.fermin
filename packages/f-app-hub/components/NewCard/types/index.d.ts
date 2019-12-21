@@ -1,8 +1,8 @@
 import { CardType } from '../../../types'
 export { CardType } from '../../../types'
 
-export type NewCardProps = {
-  onCreate: (state: CardType) => unknown
-  onCancel: () => unknown;
-  className?: string;
+export interface NewCardProps {
+  onCreate: (state: CardType) => void
+  onCancel: () => void
+  className?: string
 }

@@ -1,15 +1,30 @@
-export type Note = {
+export interface Note {
   id: string,
   content: string
 }
 
-export type State = {
+export interface State {
   notes: Note[],
   activeKey: number | string,
   updateList: boolean,
   saving: boolean,
   saved: boolean,
   alert: boolean
+}
+
+export interface Context {
+  state: State,
+  actions: {
+    endAlert: () => void,
+    toggleAlert: (alert: boolean) => void,
+    addNote: () => void,
+    setActiveKey: (key: number | string) => void,
+    saving: () => void,
+    upsertNote: (id: number | string, content: string) => void,
+    deleteNote: (id: number | string, notes: Note[], activeKey: number | string) => void,
+    updateList: () => void,
+    setState: (payload: any) => void
+  }
 }
 
 export type ActionType = {
@@ -24,19 +39,4 @@ export type ActionType = {
   | 'UPDATE_LIST'
   | 'SET_STATE',
   payload?: any
-}
-
-export type Context = {
-  state: State,
-  actions: {
-    endAlert: () => unknown,
-    toggleAlert: (alert: boolean) => unknown,
-    addNote: () => unknown,
-    setActiveKey: (key: number | string) => unknown,
-    saving: () => unknown,
-    upsertNote: (id: number | string, content: string) => unknown,
-    deleteNote: (id: number | string, notes: Note[], activeKey: number | string) => unknown,
-    updateList: () => unknown,
-    setState: (payload: any) => unknown
-  }
 }

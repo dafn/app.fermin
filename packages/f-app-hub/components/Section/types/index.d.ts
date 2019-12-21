@@ -1,4 +1,4 @@
-export type SectionProps = {
+export interface SectionProps {
   title: string;
-  children: React.ReactNode;
+  children: React.ReactNode
 }

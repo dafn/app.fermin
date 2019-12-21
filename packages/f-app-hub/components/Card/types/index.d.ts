@@ -1,5 +1,5 @@
 import { CardType } from '../../../types'
 
-export type CardProps = {
+export interface CardProps {
   card: CardType
 }
