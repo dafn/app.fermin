@@ -32,7 +32,7 @@ passport.use('oidc', new Strategy({ client, params }, (_, userinfo, done) => use
 
 router.get('/login', passport.authenticate('oidc'))
 router.get('/logout', (req, res, next) => {
-  req.logout()
+  req.logOut()
   res.redirect(client.endSessionUrl())
 })
 router.get('/cb', passport.authenticate('oidc', { successRedirect: '/', failureRedirect: '/error' }))
