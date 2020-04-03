@@ -5,7 +5,7 @@ export interface Note {
 
 export interface State {
   notes: Note[],
-  activeKey: number | string,
+  activeKey: number,
   updateList: boolean,
   saving: boolean,
   saved: boolean,
