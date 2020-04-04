@@ -37,6 +37,7 @@
     "@babel/plugin-syntax-json-strings": "^7.7.4",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "husky": "^4.2.3",
+    "lint-staged": "^10.1.1",
     "nodemon": "^1.18.9",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-bundle-visualiser": "^1.2.0",
@@ -53,8 +54,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettier:write"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "packages/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write .", "git add"
+    ]
   },
   "alias": {
     "f-app-core": "./packages/f-app-core",
