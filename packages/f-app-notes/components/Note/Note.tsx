@@ -7,7 +7,6 @@ import Context from '../../context'
 import { NoteProps } from './types'
 
 import './Note.sass'
-import { Note } from '../../context/types';
 
 let timer;
 
