@@ -1,20 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import { SectionProps } from './types'
+import { SectionProps } from "./types";
 
-import './Section.sass'
+import "./Section.sass";
 
 const Section = ({ title, children }: SectionProps) => {
   return (
-    <section className='section_container'>
+    <section className="section_container">
       <header>
-        <h2> { title } </h2>
+        <h2> {title} </h2>
       </header>
-      <section className='section_card_container'>
-        { children }
-      </section>
+      <section className="section_card_container">{children}</section>
     </section>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;

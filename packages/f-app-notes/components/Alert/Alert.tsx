@@ -1,29 +1,37 @@
-import React, { memo } from 'react'
+import React, { memo } from "react";
 
-import { AlertProps } from './types'
+import { AlertProps } from "./types";
 
-import './Alert.sass'
+import "./Alert.sass";
 
-const Alert = ({ message, positiveButtonText, negativeButtonText, onPositive, onNegative, activeKey }: AlertProps) => {
+const Alert = ({
+  message,
+  positiveButtonText,
+  negativeButtonText,
+  onPositive,
+  onNegative,
+  activeKey,
+}: AlertProps) => {
   return (
-    <section id='Alert_main_container'>
-      <div id='Alert_dark_screen' onClick={onNegative}></div>
-      <section id='Alert_content_container'>
-        <img src={require('../../assets/alert.png')} />
-        <p id='Alert_text'>
-          {message}
-        </p>
-        <section id='Alert_buttons_container'>
-          <button id='Alert_content_delete_button' onClick={() => onPositive(activeKey)}>
+    <section id="Alert_main_container">
+      <div id="Alert_dark_screen" onClick={onNegative}></div>
+      <section id="Alert_content_container">
+        <img src={require("../../assets/alert.png")} />
+        <p id="Alert_text">{message}</p>
+        <section id="Alert_buttons_container">
+          <button
+            id="Alert_content_delete_button"
+            onClick={() => onPositive(activeKey)}
+          >
             {positiveButtonText}
           </button>
-          <button id='Alert_content_cancel_button' onClick={onNegative}>
+          <button id="Alert_content_cancel_button" onClick={onNegative}>
             {negativeButtonText}
           </button>
         </section>
       </section>
     </section>
-  )
-}
+  );
+};
 
-export default memo(Alert)
+export default memo(Alert);

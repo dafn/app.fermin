@@ -1,3 +1,3 @@
-import NewCard from './NewCard'
+import NewCard from "./NewCard";
 
-export default NewCard
+export default NewCard;

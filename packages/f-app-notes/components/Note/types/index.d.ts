@@ -1,3 +1,3 @@
 export interface NoteProps {
-  Note: Note
+  Note: Note;
 }

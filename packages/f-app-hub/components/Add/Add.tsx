@@ -1,15 +1,15 @@
-import React, { memo } from 'react'
+import React, { memo } from "react";
 
-import { AddProps } from './types'
+import { AddProps } from "./types";
 
-import './Add.sass'
+import "./Add.sass";
 
 const Add = ({ onClick }: AddProps) => {
   return (
-    <section id='add_container' onClick={onClick}>
-      <h1 id='add_text'>+</h1>
+    <section id="add_container" onClick={onClick}>
+      <h1 id="add_text">+</h1>
     </section>
-  )
-}
+  );
+};
 
-export default memo(Add)
+export default memo(Add);

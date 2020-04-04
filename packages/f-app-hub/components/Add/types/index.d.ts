@@ -1,3 +1,3 @@
 export interface AddProps {
-  onClick: () => void
+  onClick: () => void;
 }

@@ -1,16 +1,16 @@
-const { GraphQLObjectType, GraphQLString } = require('graphql')
+const { GraphQLObjectType, GraphQLString } = require("graphql");
 
 const model = {
   Note: new GraphQLObjectType({
-    name: 'Note',
+    name: "Note",
     fields: () => ({
       id: { type: GraphQLString },
       content: { type: GraphQLString },
-      user: { type: GraphQLString }
-    })
+      user: { type: GraphQLString },
+    }),
   }),
   Card: new GraphQLObjectType({
-    name: 'Card',
+    name: "Card",
     fields: () => ({
       title: { type: GraphQLString },
       href: { type: GraphQLString },
@@ -18,9 +18,9 @@ const model = {
       textColor: { type: GraphQLString },
       image: { type: GraphQLString },
       user: { type: GraphQLString },
-      id: { type: GraphQLString }
-    })
-  })
-}
+      id: { type: GraphQLString },
+    }),
+  }),
+};
 
-module.exports = model
+module.exports = model;
