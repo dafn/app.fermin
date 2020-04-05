@@ -11,25 +11,24 @@ declare global {
     saved: boolean;
     alert: boolean;
   }
-}
-
-export interface Context {
-  state: State;
-  actions: {
-    endAlert: () => void;
-    toggleAlert: (alert: boolean) => void;
-    addNote: () => void;
-    setActiveKey: (key: number | string) => void;
-    saving: () => void;
-    upsertNote: (id: number | string, content: string) => void;
-    deleteNote: (
-      id: number | string,
-      notes: Note[],
-      activeKey: number | string
-    ) => void;
-    updateList: () => void;
-    setState: (payload: any) => void;
-  };
+  interface Context {
+    state: State;
+    actions: {
+      endAlert: () => void;
+      toggleAlert: (alert: boolean) => void;
+      addNote: () => void;
+      setActiveKey: (key: number | string) => void;
+      saving: () => void;
+      upsertNote: (id: number | string, content: string) => void;
+      deleteNote: (
+        id: number | string,
+        notes: Note[],
+        activeKey: number | string
+      ) => void;
+      updateList: () => void;
+      setState: (payload: any) => void;
+    };
+  }
 }
 
 export type ActionType = {
