@@ -50,6 +50,6 @@ export const reducer = (state: State, action: ActionType) => {
     case "SET_STATE":
       return { ...state, ...action.payload };
     default:
-      throw new Error();
+      throw new Error(`action of type ${action.type} is not a valid action`);
   }
 };
