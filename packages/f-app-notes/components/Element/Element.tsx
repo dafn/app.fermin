@@ -14,7 +14,7 @@ const Element = ({ index, value, active }: ElementProps) => {
 
   let title = value ? value.match(/[^<p>].*?(?=<)/g) : "",
     content = title
-      ? value.replace(title[0], "").replace(value.match(/<p><br><\/p>/), "")
+      ? value.replace(title[0], "").replace(/<p><br><\/p>/, "")
       : "";
 
   return (

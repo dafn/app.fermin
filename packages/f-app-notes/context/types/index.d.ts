@@ -3,15 +3,14 @@ declare global {
     id: string;
     content: string;
   }
-}
-
-export interface State {
-  notes: Note[];
-  activeKey: number;
-  updateList: boolean;
-  saving: boolean;
-  saved: boolean;
-  alert: boolean;
+  interface State {
+    notes: Note[];
+    activeKey: number;
+    updateList: boolean;
+    saving: boolean;
+    saved: boolean;
+    alert: boolean;
+  }
 }
 
 export interface Context {

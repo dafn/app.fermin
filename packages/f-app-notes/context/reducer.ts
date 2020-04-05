@@ -1,4 +1,4 @@
-import { State, ActionType } from "./types";
+import { ActionType } from "./types";
 import update from "immutability-helper";
 
 export const initialState: State = {

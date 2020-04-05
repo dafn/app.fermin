@@ -24,7 +24,7 @@ export const datastore = {
       })
       .catch((err) => {
         if (err.response.status === 401) window.location.href = "/auth/login";
-        else (onError && onError(err)) || console.log(err);
+        else onError ? onError(err) : console.log(err);
       });
   },
   Cards: (onSuccess?: onSuccessType, onError?: onErrorType) => {
@@ -35,7 +35,7 @@ export const datastore = {
       })
       .catch((err) => {
         if (err.response.status === 401) window.location.href = "/auth/login";
-        else (onError && onError(err)) || console.log(err);
+        else onError ? onError(err) : console.log(err);
       });
   },
 };
