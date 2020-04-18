@@ -1,5 +1,9 @@
-import { h } from 'preact';
+import { h } from "preact";
 
-const Page = () => <div>dashboard</div>;
+import style from "./index.module.scss";
+
+const Page = () => {
+  return <div> Dashboard </div>;
+};
 
 export default Page;

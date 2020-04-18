@@ -1,0 +1,30 @@
+:root {
+  --mdc-theme-primary: #1a73e8;
+  --mdc-theme-secondary: #174ea6;
+  --mdc-theme-background: #fff;
+  --mdc-theme-surface: #fff;
+
+  --fermin-theme-shadow: rgba(0,0,0,0.2);
+  --fermin-theme-white: white;
+}
+
+.mdc-theme--primary {
+  color: var(--mdc-theme-primary);
+};
+.mdc-theme--primary-bg {
+  background-color: var(--mdc-theme-primary);
+};
+
+.mdc-theme--secondary {
+  color: var(--mdc-theme-secondary);
+};
+.mdc-theme--secondary-bg {
+  background-color: var(--mdc-theme-secondary);
+};
+
+.mdc-theme--background {
+  background-color: var(--fermin-theme-white);
+};
+.mdc-theme--surface {
+  background-color: var(--fermin-theme-white);
+}

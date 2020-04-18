@@ -65,7 +65,7 @@ export default {
   input: "src/index.tsx",
   output: {
     dir: TARGET,
-    sourcemap: true,
+    sourcemap: !isDevelopment,
     format: "iife",
   },
   external: ["react", "react-proptypes"],

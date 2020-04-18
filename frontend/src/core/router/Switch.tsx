@@ -1,9 +1,12 @@
 import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
+import { root } from "src/core/router/navigate"
+
 interface Props {
   children: h.JSX.Element | h.JSX.Element[];
 }
+
 /**
  * The Router will render the first route that match the end of the url
  */
@@ -12,7 +15,7 @@ const Router = ({ children }: Props) => {
 
   useEffect(() => {
     if (window.location.href === window.location.origin + "/")
-      window.location.href = window.location.href + "#";
+      window.location.href = root
 
     window.onhashchange = () => {
       setUrl(window.location.href);
