@@ -1,4 +1,0 @@
-# Deployment config for Google App Engine
-
-service: app-fermin
-runtime: nodejs10

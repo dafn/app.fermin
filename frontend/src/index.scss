@@ -1,0 +1,22 @@
+@import "node_modules/@material/typography/mdc-typography";
+@import "node_modules/preact-material-components/style";
+
+.mdc-theme--primary {
+  color: #ff3e00 !important;
+};
+.mdc-theme--primary-bg {
+  background-color: #ff3e00 !important;
+};
+.mdc-theme--secondary {
+  color: #676778 !important;
+};
+.mdc-theme--secondary-bg {
+  background-color: #676778 !important;
+};
+
+.mdc-theme--background {
+  background-color: #fff !important;
+};
+.mdc-theme--surface {
+  background-color: #fff !important;
+}

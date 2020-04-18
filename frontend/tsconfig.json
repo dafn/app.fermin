@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "jsx": "react",
+    "module": "es6",
+    "moduleResolution": "node",
+    "target": "es6",
+    "jsxFactory": "h",
+    "types": ["@types/react"],
+    "baseUrl": "."
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
