@@ -1,0 +1,21 @@
+.bookmark {
+  display: block;
+  height: 8rem;
+  width: 6rem;
+  align-self: center;
+  justify-self: center;
+  transition: all .1s;
+  &:hover {
+    transform: translateY(-2%);
+  }
+  .card {
+    height: inherit;
+    width: inherit;
+    img {
+      height: inherit;
+      width: inherit;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+}

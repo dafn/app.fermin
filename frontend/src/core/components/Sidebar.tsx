@@ -8,8 +8,8 @@ import Button from "preact-material-components/Button";
 
 import { navigate } from "src/core/router/navigate";
 
-const Page = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(-1);
+const Sidebar = () => {
+  const [activeIndex, setActiveIndex] = useState<number>(1);
 
   const handleButtonClick = (index: number, route: Route) => {
     setActiveIndex(index);
@@ -40,4 +40,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Sidebar;

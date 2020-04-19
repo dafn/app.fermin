@@ -1,0 +1,19 @@
+.bookmarksCard {
+  height: 40vh;
+  min-height: 22rem;
+  width: 40vw;
+  min-width: 35rem;
+  padding: 1rem;
+  h2 {
+    margin: 0;
+  }
+  section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: .2rem;
+    row-gap: .2rem;
+    height: 100%;
+    width: 100%;
+  }
+}
