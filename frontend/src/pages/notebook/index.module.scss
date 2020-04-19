@@ -1,0 +1,8 @@
+.notebook {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100vw;
+  .notes {
+    background-color: red;
+  }
+}

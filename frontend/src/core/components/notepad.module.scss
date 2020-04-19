@@ -1,0 +1,20 @@
+.notepad {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  margin: 6rem;
+  input,
+  textarea {
+    padding: 1rem;
+    font-size: 12pt;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  input {
+    margin: 2rem 0;
+  }
+  textarea {
+    resize: none;
+  }
+}

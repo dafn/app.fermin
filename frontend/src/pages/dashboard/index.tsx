@@ -10,7 +10,7 @@ const Dashboard = () => {
     <main class={style.dashboard}>
       <BookmarksCard>
         <Bookmark
-          img="https://material-components-web.appspot.com/images/16-9.jpg"
+          img="https://www.fermin.no/favicon.71affc08.png"
           href="https://www.fermin.no/"
         />
       </BookmarksCard>
