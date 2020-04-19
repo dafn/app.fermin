@@ -1,5 +1,4 @@
 import typescript from "@rollup/plugin-typescript";
-import html from "@rollup/plugin-html";
 import closure from "@ampproject/rollup-plugin-closure-compiler";
 import resolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
@@ -10,7 +9,6 @@ import visualizer from "rollup-plugin-visualizer";
 import alias from "@rollup/plugin-alias";
 import commonjs from "@rollup/plugin-commonjs";
 import cssnano from "cssnano";
-import scss from "rollup-plugin-scss";
 import html2 from "rollup-plugin-html2";
 
 const isDevelopment = process.env.NODE_ENV === "development";

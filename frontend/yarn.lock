@@ -506,11 +506,6 @@
     magic-string "^0.25.2"
     resolve "^1.11.0"
 
-"@rollup/plugin-html@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-html/-/plugin-html-0.1.1.tgz#0af548c7bf379a654480f0cbc17697f405a4ac1d"
-  integrity sha512-CSrMUBAsNeQunUStd+H/a4zcrKswJq93XSCcUv8EXyhhDN9Xp4NKuUnag8i0pFvh+nq5Way+OzK6XVcgXR9adg==
-
 "@rollup/plugin-node-resolve@^7.1.3":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.3.tgz#80de384edfbd7bfc9101164910f86078151a3eca"
@@ -566,23 +561,10 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/prop-types@*":
-  version "15.7.3"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
-  integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
-
 "@types/q@^1.5.1":
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
-
-"@types/react@^16.9.34":
-  version "16.9.34"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.34.tgz#f7d5e331c468f53affed17a8a4d488cd44ea9349"
-  integrity sha512-8AJlYMOfPe1KGLKyHpflCg5z46n0b5DbRfqDksxBLBTUpB75ypDBAO9eCUcjNwE6LCUslwTz00yyG/X9gaVtow==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^2.2.0"
 
 "@types/resolve@0.0.8":
   version "0.0.8"
@@ -1300,11 +1282,6 @@ csso@^4.0.2:
   integrity sha512-NL3spysxUkcrOgnpsT4Xdl2aiEiBG6bXswAABQVHcMrfjjBisFOKwLDOmf4wf32aPdcJws1zds2B0Rg+jqMyHQ==
   dependencies:
     css-tree "1.0.0-alpha.39"
-
-csstype@^2.2.0:
-  version "2.6.10"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
-  integrity sha512-D34BqZU4cIlMCY93rZHbrq9pjTAQJ3U8S8rfBqjwHxkGPThWFjzZDQpgMJY0QViLxth6ZKYiwFBo14RdN44U/w==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -2664,7 +2641,7 @@ node-releases@^1.1.53:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.53.tgz#2d821bfa499ed7c5dffc5e2f28c88e78a08ee3f4"
   integrity sha512-wp8zyQVwef2hpZ/dJH7SfSrIPD6YoJz6BDQDpGEkcA0s3LpAQoxBIYmfIq6QAhC1DhwsyCgTaTTcONwX8qzCuQ==
 
-node-sass@4, node-sass@^4.13.1:
+node-sass@^4.13.1:
   version "4.13.1"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.13.1.tgz#9db5689696bb2eec2c32b98bfea4c7a2e992d0a3"
   integrity sha512-TTWFx+ZhyDx1Biiez2nB0L3YrCZ/8oHagaDalbuBSlqXgUPsdkUSzJsVxeDO9LtPB49+Fh3WQl3slABo6AotNw==
@@ -3767,14 +3744,6 @@ rollup-plugin-postcss@^2.6.2:
     safe-identifier "^0.4.1"
     style-inject "^0.3.0"
 
-rollup-plugin-scss@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-scss/-/rollup-plugin-scss-2.4.0.tgz#5206566644dd34e41282b7f8401c9d75cc1207ce"
-  integrity sha512-Op30FQ8NmumMxLT7pOK6WeU86zRbEwUnRhwe0CTDzLdymFcUca7pmuaCe7rfYKB4p0TndlSd86CUMNguxkxOpw==
-  dependencies:
-    node-sass "4"
-    rollup-pluginutils "2"
-
 rollup-plugin-serve@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-serve/-/rollup-plugin-serve-1.0.1.tgz#2da2a784a916c5564609c7696cd9dacdbf17f6cc"
@@ -3805,7 +3774,7 @@ rollup-plugin-visualizer@^4.0.4:
     source-map "^0.7.3"
     yargs "^15.0.0"
 
-rollup-pluginutils@2, rollup-pluginutils@^2.8.2:
+rollup-pluginutils@^2.8.2:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==

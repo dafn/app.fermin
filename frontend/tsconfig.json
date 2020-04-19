@@ -6,7 +6,6 @@
     "moduleResolution": "node",
     "target": "es6",
     "jsxFactory": "h",
-    "types": ["@types/react"],
     "baseUrl": "."
   },
   "exclude": [
