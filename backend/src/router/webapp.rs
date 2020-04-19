@@ -5,7 +5,6 @@ use std::path::{Path, PathBuf};
 #[get("/")]
 pub async fn index() -> Result<NamedFile> {
   let path = Path::new("../frontend/dist/").join("index.html");
-  println!("{}", path.display());
 	Ok(NamedFile::open(path)?)
 }
 
