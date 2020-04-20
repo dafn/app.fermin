@@ -4,10 +4,10 @@ declare global {
   type Route = "/" | "/notepad";
 
   interface Note {
-    id: number;
+    id?: number;
     title: string;
     content: string;
-    created: Date;
-    last_edited: Date;
+    created?: Date;
+    last_edited?: Date;
   }
 }

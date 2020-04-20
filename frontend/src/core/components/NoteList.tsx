@@ -10,7 +10,16 @@ import context from "src/pages/notebook/context";
 import style from "./notelist.module.scss";
 
 const Notelist = () => {
-  const { notes, activeIndex, setActiveIndex } = useContext(context);
+  const { notes, setNotes, activeIndex, setActiveIndex } = useContext(context);
+
+  const addNote = () => {
+    notes.push({
+      title: "",
+      content: "",
+    });
+    setNotes(notes);
+    setActiveIndex(notes.length - 1);
+  };
 
   return (
     <section class={style.notelist}>
@@ -23,7 +32,7 @@ const Notelist = () => {
           <p class="mdc-typography--body2"> {note.content} </p>
         </Card>
       ))}
-      <Fab ripple mini>
+      <Fab ripple mini onClick={addNote}>
         <Fab.Icon>add</Fab.Icon>
       </Fab>
     </section>
