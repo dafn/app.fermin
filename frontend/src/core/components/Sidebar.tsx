@@ -1,38 +1,41 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 
 import style from "./sidebar.module.scss";
 
 import Icon from "preact-material-components/Icon";
 import Button from "preact-material-components/Button";
 
-import { navigate } from "src/core/router/navigate";
+import {
+  navigate,
+  onNavigation,
+  getCurrentRoute,
+} from "src/core/router/navigator";
 
 const Sidebar = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(1);
+  const [route, setRoute] = useState<Route>(getCurrentRoute());
 
-  const handleButtonClick = (index: number, route: Route) => {
-    setActiveIndex(index);
+  const handleButtonClick = (route: Route) => {
     navigate(route);
   };
 
+  useEffect(() => {
+    onNavigation((route: Route) => {
+      setRoute(route);
+    });
+  }, []);
+
   return (
     <nav class={`${style.sidebar}`}>
-      <Button
-        secondary={activeIndex == 0}
-        onClick={() => handleButtonClick(0, "/")}
-      >
+      <Button secondary={route == "/"} onClick={() => handleButtonClick("/")}>
         <Icon>account_circle</Icon>
       </Button>
-      <Button
-        secondary={activeIndex == 1}
-        onClick={() => handleButtonClick(1, "/")}
-      >
+      <Button secondary={route == "/"} onClick={() => handleButtonClick("/")}>
         <Icon>dashboard</Icon>
       </Button>
       <Button
-        secondary={activeIndex == 2}
-        onClick={() => handleButtonClick(2, "notepad")}
+        secondary={route == "/notepad"}
+        onClick={() => handleButtonClick("/notepad")}
       >
         <Icon>create</Icon>
       </Button>

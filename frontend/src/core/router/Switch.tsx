@@ -1,7 +1,7 @@
 import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
-import { root } from "src/core/router/navigate"
+import { root } from "src/core/router/navigator";
 
 interface Props {
   children: h.JSX.Element | h.JSX.Element[];
@@ -15,7 +15,7 @@ const Router = ({ children }: Props) => {
 
   useEffect(() => {
     if (window.location.href === window.location.origin + "/")
-      window.location.href = root
+      window.location.href = root;
 
     window.onhashchange = () => {
       setUrl(window.location.href);
