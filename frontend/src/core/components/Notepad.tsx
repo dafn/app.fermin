@@ -1,31 +1,28 @@
 import { h } from "preact";
 
 import style from "./notepad.module.scss";
-import { useContext, useEffect, useState, useRef } from "preact/hooks";
+import { useContext, useEffect, useRef } from "preact/hooks";
 
 import context from "src/pages/notebook/context";
 
 let timer;
 
 const Notepad = () => {
-  const { notes, setNotes } = useContext(context);
-
-  const [index, setIndex] = useState<number>(null);
+  const { notes, setNotes, activeIndex } = useContext(context);
 
   const title = useRef(null);
   const content = useRef(null);
 
   useEffect(() => {
     if (notes.length) {
-      setIndex(0);
-      title.current["value"] = notes[0].title;
-      content.current["value"] = notes[0].content;
+      title.current["value"] = notes[activeIndex].title;
+      content.current["value"] = notes[activeIndex].content;
     }
-  }, [notes]);
+  }, [notes, activeIndex]);
 
   const saveNote = () => {
-    notes[index] = {
-      ...notes[index],
+    notes[activeIndex] = {
+      ...notes[activeIndex],
       title: title.current["value"],
       content: content.current["value"],
     };
