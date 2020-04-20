@@ -5,19 +5,33 @@
   background-color: var(--fermin-theme-tertiary);
   padding-top: 1rem;
   overflow-y: scroll;
+  min-width: 22rem;
   button {
     background-color: var(--fermin-theme-positive);
+  }
+  .header,
+  .card {
+    height: 5rem;
+    width: 20rem;
+    margin: 0 1rem 1rem 1rem;
+  }
+  .header {
+    position: relative;
+    box-sizing: border-box;
+    border-bottom: solid 2px var(--fermin-theme-shadow);
+    h2 {
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+    }
   }
   .card {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    height: 5rem;
-    width: 20rem;
-    padding: 1rem;
-    margin: 0 1rem 1rem 1rem;
     border-right: solid 2px var(--fermin-theme-white);
-    cursor: pointer;
+    padding: 1rem;
     transition: all 0.05s;
+    cursor: pointer;
     &:hover {
       transform: scale(0.99);
     }

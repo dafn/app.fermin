@@ -23,6 +23,9 @@ const Notelist = () => {
 
   return (
     <section class={style.notelist}>
+      <section class={style.header}>
+        <h2 class="mdc-typography--subtitle1">Notes</h2>
+      </section>
       {notes.map((note, index) => (
         <Card
           class={`${style.card} ${index === activeIndex ? style.active : ""}`}
