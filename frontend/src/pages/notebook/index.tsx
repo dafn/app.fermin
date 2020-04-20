@@ -1,5 +1,7 @@
 import { h } from "preact";
-import { useState, useEffect, StateUpdater } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
+
+import Snackbar from "preact-material-components/Snackbar";
 
 import style from "./index.module.scss";
 
@@ -14,6 +16,8 @@ const Notebook = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [init, setInit] = useState<boolean>(true);
   const [update, forceUpdate] = useState<boolean>(true);
+
+  let snackbar = useRef(null);
 
   useEffect(() => {
     if (init) {
@@ -34,12 +38,21 @@ const Notebook = () => {
         setNotes: (notes: Note[]) => {
           setNotes(notes);
           forceUpdate(!update);
+          snackbar["MDComponent"].show({
+            message: "Saved",
+          });
         },
       }}
     >
       <main class={style.notebook}>
         <Notelist />
         <Notepad />
+        <Snackbar
+          class={style.snackbar}
+          ref={(bar) => {
+            snackbar = bar;
+          }}
+        />
       </main>
     </Provider>
   );
