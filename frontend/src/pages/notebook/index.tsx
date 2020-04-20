@@ -11,6 +11,7 @@ import { Provider } from "./context";
 
 const Notebook = () => {
   const [notes, setNotes] = useState<Note[]>([]);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [init, setInit] = useState<boolean>(true);
   const [update, forceUpdate] = useState<boolean>(true);
 
@@ -28,6 +29,8 @@ const Notebook = () => {
     <Provider
       value={{
         notes,
+        activeIndex,
+        setActiveIndex,
         setNotes: (notes: Note[]) => {
           setNotes(notes);
           forceUpdate(!update);

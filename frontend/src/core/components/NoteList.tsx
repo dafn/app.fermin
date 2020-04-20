@@ -10,12 +10,15 @@ import context from "src/pages/notebook/context";
 import style from "./notelist.module.scss";
 
 const Notelist = () => {
-  const { notes, setNotes } = useContext(context);
+  const { notes, activeIndex, setActiveIndex } = useContext(context);
 
   return (
     <section class={style.notelist}>
-      {notes.map((note) => (
-        <Card class={style.card}>
+      {notes.map((note, index) => (
+        <Card
+          class={`${style.card} ${index === activeIndex ? style.active : ""}`}
+          onClick={() => index !== activeIndex && setActiveIndex(index)}
+        >
           <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
           <p class="mdc-typography--body2"> {note.content} </p>
         </Card>
