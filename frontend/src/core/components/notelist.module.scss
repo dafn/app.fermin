@@ -68,4 +68,13 @@
   .active {
     border-right: solid 2px var(--fermin-theme-positive);
   }
+  dialog {
+    background: var(--fermin-theme-shadow);
+    > :first-child {
+      width: auto;
+    }
+    > :last-child {
+      display: none;
+    }
+  }
 }
