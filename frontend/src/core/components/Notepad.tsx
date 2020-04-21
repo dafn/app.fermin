@@ -18,7 +18,14 @@ const Notepad = () => {
       title.current["value"] = notes[activeIndex].title;
       content.current["value"] = notes[activeIndex].content;
     }
-  }, [notes, activeIndex]);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (notes.length < 1) {
+      title.current["value"] = "";
+      content.current["value"] = "";
+    }
+  });
 
   const saveNote = () => {
     notes[activeIndex] = {
@@ -40,6 +47,7 @@ const Notepad = () => {
       <input
         type="text"
         ref={title}
+        value={notes.length > 0 ? notes[activeIndex].title : ""}
         placeholder="Title"
         class="mdc-typography--subtitle2"
         onInput={handleInput}

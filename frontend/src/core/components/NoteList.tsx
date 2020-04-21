@@ -11,7 +11,13 @@ import context from "src/pages/notebook/context";
 import style from "./notelist.module.scss";
 
 const Notelist = () => {
-  const { notes, setNotes, activeIndex, setActiveIndex } = useContext(context);
+  const {
+    notes,
+    setNotes,
+    activeIndex,
+    setActiveIndex,
+    deleteNote,
+  } = useContext(context);
 
   const addNote = () => {
     notes.push({
@@ -24,19 +30,27 @@ const Notelist = () => {
 
   return (
     <section class={style.notelist}>
-      <section class={style.header}>
-        <h2 class="mdc-typography--subtitle1">Notes</h2>
-      </section>
-      {notes.map((note, index) => (
-        <Card
-          class={`${style.card} ${index === activeIndex ? style.active : ""}`}
-          onClick={() => index !== activeIndex && setActiveIndex(index)}
-        >
-          <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
-          <p class="mdc-typography--body2"> {note.content} </p>
-          <Icon class={`${index === activeIndex ? style.show : ""}`} >clear</Icon>
-        </Card>
-      ))}
+      {notes.length ? (
+        notes.map((note, index) => (
+          <Card
+            class={`${style.card} ${index === activeIndex ? style.active : ""}`}
+            onClick={() => index !== activeIndex && setActiveIndex(index)}
+          >
+            <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
+            <p class="mdc-typography--body2"> {note.content} </p>
+            <Icon
+              class={`${index === activeIndex ? style.show : ""}`}
+              onClick={() => deleteNote(activeIndex)}
+            >
+              delete_outline
+            </Icon>
+          </Card>
+        ))
+      ) : (
+        <section class={style["empty-list"]}>
+          <h2 class="mdc-typography--subtitle2">Empty list</h2>
+        </section>
+      )}
       <Fab ripple mini onClick={addNote}>
         <Fab.Icon>add</Fab.Icon>
       </Fab>

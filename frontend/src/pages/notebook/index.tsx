@@ -8,7 +8,7 @@ import style from "./index.module.scss";
 import Notepad from "src/core/components/Notepad";
 import Notelist from "src/core/components/NoteList";
 
-import { get_all, post, put } from "src/api/notes";
+import { get_all, post, put, remove } from "src/api/notes";
 import { Provider } from "./context";
 
 const Notebook = () => {
@@ -31,6 +31,17 @@ const Notebook = () => {
 
   const actions = {
     setActiveIndex,
+    deleteNote: (index: number) => {
+      if (notes[index].id)
+        remove({ id: notes[index].id }).then(() => {
+          notes.splice(index, 1);
+          activeIndex ? setActiveIndex(0) : forceUpdate(!update);
+        });
+      else {
+        notes.splice(index, 1);
+        activeIndex ? setActiveIndex(0) : forceUpdate(!update);
+      }
+    },
     setNotes: (notes: Note[]) => {
       setNotes(notes);
 
@@ -38,14 +49,16 @@ const Notebook = () => {
       const { id, title, content } = notes[index];
       const _snackbar = snackbar["MDComponent"];
 
+      if (!title && !content) return forceUpdate(!update);
+
       const save = notes[index].id
         ? put({ id, title, content })
         : post({ title, content });
 
       save
         .then((response: Response) => response.json())
-        .then((note: Note) => {
-          notes[index].id = note.id;
+        .then((note: Note[]) => {
+          notes[index].id = note[0].id;
           setNotes(notes);
         })
         .catch(() => {})

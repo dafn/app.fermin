@@ -27,8 +27,8 @@ const Sidebar = () => {
 
   return (
     <nav class={`${style.sidebar}`}>
-      <Button secondary={route == "/"} onClick={() => handleButtonClick("/")}>
-        <Icon>account_circle</Icon>
+      <Button>
+        <Icon>vpn_key</Icon>
       </Button>
       <Button secondary={route == "/"} onClick={() => handleButtonClick("/")}>
         <Icon>dashboard</Icon>

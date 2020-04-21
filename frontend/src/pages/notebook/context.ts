@@ -5,6 +5,7 @@ interface Context {
   activeIndex: number,
   setActiveIndex: (index: number) => void
   setNotes: (notes: Note[]) => void;
+  deleteNote: (index: number) => void;
 }
 
 const context = createContext<Context>(null);
