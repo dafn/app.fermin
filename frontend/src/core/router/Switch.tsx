@@ -1,7 +1,7 @@
 import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
-import { root } from "src/core/router/navigator";
+import { root, getCurrentRoute } from "src/core/router/navigator";
 
 interface Props {
   children: h.JSX.Element | h.JSX.Element[];
@@ -11,21 +11,20 @@ interface Props {
  * The Router will render the first route that match the end of the url
  */
 const Router = ({ children }: Props) => {
-  const [url, setUrl] = useState(window.location.href);
+  const [url, setUrl] = useState<Route>(getCurrentRoute());
 
   useEffect(() => {
     if (window.location.href === window.location.origin + "/")
       window.location.href = root;
 
     window.onhashchange = () => {
-      if (window.location.href.endsWith("#")) setUrl("/");
-      else setUrl(window.location.href);
+      setUrl(getCurrentRoute());
     };
   }, []);
 
   if (Array.isArray(children))
     for (let child of children)
-      if (url.endsWith(child.props.path)) return <Fragment>{child}</Fragment>;
+      if (url === child.props.path) return <Fragment>{child}</Fragment>;
 };
 
 export default Router;
