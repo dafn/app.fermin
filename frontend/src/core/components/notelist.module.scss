@@ -11,12 +11,12 @@
   }
   .header,
   .card {
+    position: relative;
     height: 5rem;
     width: 20rem;
     margin: 0 1rem 1rem 1rem;
   }
   .header {
-    position: relative;
     box-sizing: border-box;
     border-bottom: solid 2px var(--fermin-theme-shadow);
     h2 {
@@ -28,7 +28,8 @@
   .card {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    border-right: solid 2px var(--fermin-theme-white);
+    border-right: solid 2px var(--mdc-theme-surface);
+    background-color: var(--mdc-theme-surface);
     padding: 1rem;
     transition: all 0.05s;
     cursor: pointer;
@@ -47,6 +48,20 @@
     }
     p {
       align-self: end;
+    }
+    i {
+      display: none;
+      position: absolute;
+      margin: 0.2rem;
+      font-size: 14pt;
+      right: 0;
+      cursor: pointer;
+      &.show {
+        display: block;
+      }
+      &:hover {
+        color: var(--fermin-theme-negative);
+      }
     }
   }
   .active {

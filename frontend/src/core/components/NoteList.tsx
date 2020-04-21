@@ -2,6 +2,7 @@ import { h } from "preact";
 
 import { useContext } from "preact/hooks";
 
+import Icon from "preact-material-components/Icon";
 import Card from "preact-material-components/Card";
 import Fab from "preact-material-components/Fab";
 
@@ -33,6 +34,7 @@ const Notelist = () => {
         >
           <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
           <p class="mdc-typography--body2"> {note.content} </p>
+          <Icon class={`${index === activeIndex ? style.show : ""}`} >clear</Icon>
         </Card>
       ))}
       <Fab ripple mini onClick={addNote}>

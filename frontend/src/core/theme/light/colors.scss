@@ -1,32 +1,33 @@
 :root {
-  --mdc-theme-primary: #1a73e8;
-  --mdc-theme-secondary: #174ea6;
-  --mdc-theme-background: #fff;
-  --mdc-theme-surface: #fff;
-
-  --fermin-theme-shadow: rgba(0,0,0,0.2);
+  --fermin-theme-shadow: rgba(0, 0, 0, 0.2);
   --fermin-theme-white: #fff;
   --fermin-theme-tertiary: #f0f8ff;
   --fermin-theme-positive: #32a852;
+  --fermin-theme-negative: #dd2c00;
+
+  --mdc-theme-primary: #1a73e8;
+  --mdc-theme-secondary: #174ea6;
+  --mdc-theme-background: var(--fermin-theme-white);
+  --mdc-theme-surface: var(--fermin-theme-white);
 }
 
 .mdc-theme--primary {
   color: var(--mdc-theme-primary);
-};
+}
 .mdc-theme--primary-bg {
   background-color: var(--mdc-theme-primary);
-};
+}
 
 .mdc-theme--secondary {
   color: var(--mdc-theme-secondary);
-};
+}
 .mdc-theme--secondary-bg {
   background-color: var(--mdc-theme-secondary);
-};
+}
 
 .mdc-theme--background {
-  background-color: var(--fermin-theme-white);
-};
+  background-color: var(--mdc-theme-surface);
+}
 .mdc-theme--surface {
-  background-color: var(--fermin-theme-white);
+  background-color: var(--mdc-theme-surface);
 }

@@ -1,11 +1,13 @@
 .notepad {
   display: grid;
   grid-template-rows: auto 1fr;
+  background-color: var(--mdc-theme-surface);
   margin: 6rem;
   input,
   textarea {
     padding: 1rem;
     border: none;
+    background-color: var(--mdc-theme-surface);
     &:focus {
       outline: none;
     }
