@@ -34,7 +34,7 @@ pub struct NewNoteWithoutLifetime {
 impl Note {
   pub fn get_all(connection: &PgConnection) -> Result<Vec<Note>, Error> {
     notes
-      .order(notes_schema::id.desc())
+      .order(notes_schema::id.asc())
       .load::<Note>(connection)
   }
 
@@ -42,10 +42,10 @@ impl Note {
     notes.find(_id).first::<Note>(connection)
   }
 
-  pub fn post<'a>(connection: &PgConnection, _note: &NewNoteWithoutLifetime) -> Result<usize, Error> {
+  pub fn post<'a>(connection: &PgConnection, _note: &NewNoteWithoutLifetime) -> Result<Vec<Note>, Error> {
     diesel::insert_into(notes_schema::table)
-      .values(&NewNote {  title: &_note.title, content: &_note.content })
-      .execute(connection)
+      .values(&NewNote { title: &_note.title, content: &_note.content })
+      .get_results(connection)
   }
 
   pub fn put<'a, 'b>(

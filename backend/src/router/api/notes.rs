@@ -1,4 +1,4 @@
-use crate::db::models::notes::{Note, NewNoteWithoutLifetime};
+use crate::db::models::notes::{NewNoteWithoutLifetime, Note};
 use crate::db::DBPool;
 
 use actix_web::{error, http::StatusCode, web, Error, HttpResponse};
@@ -25,7 +25,7 @@ pub async fn post(
   db: DBPool,
 ) -> Result<HttpResponse, Error> {
   match Note::post(&db.get().unwrap(), &new_note) {
-    Ok(_) => Ok(HttpResponse::new(StatusCode::CREATED)),
+    Ok(note) => Ok(HttpResponse::Ok().json(&note)),
     Err(_) => Err(error::ErrorNotFound("Not Found")),
   }
 }

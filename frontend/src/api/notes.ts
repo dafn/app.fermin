@@ -18,6 +18,9 @@ export const post = ({
 }: Pick<Note, "title" | "content">): Promise<void | Response> => {
   return fetch(endpoint, {
     method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       title,
       content,
@@ -32,6 +35,9 @@ export const put = ({
 }: Pick<Note, "id" | "title" | "content">): Promise<void | Response> => {
   return fetch(endpoint + id, {
     method: "put",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       title,
       content,
@@ -40,7 +46,7 @@ export const put = ({
 };
 
 export const remove = ({ id }: Pick<Note, "id">): Promise<void | Response> => {
-  return fetch(endpoint + id).catch((err) =>
-    console.error("Could not remove:", err)
-  );
+  return fetch(endpoint + id, {
+    method: "delete",
+  }).catch((err) => console.error("Could not remove:", err));
 };

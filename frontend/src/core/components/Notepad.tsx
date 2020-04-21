@@ -32,7 +32,7 @@ const Notepad = () => {
 
   const handleInput = () => {
     clearTimeout(timer);
-    timer = setTimeout(() => saveNote(), 1000);
+    timer = setTimeout(() => saveNote(), 500);
   };
 
   return (

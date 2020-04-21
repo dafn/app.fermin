@@ -8,7 +8,7 @@ import style from "./index.module.scss";
 import Notepad from "src/core/components/Notepad";
 import Notelist from "src/core/components/NoteList";
 
-import { get_all } from "src/api/notes";
+import { get_all, post, put } from "src/api/notes";
 import { Provider } from "./context";
 
 const Notebook = () => {
@@ -29,19 +29,41 @@ const Notebook = () => {
     }
   }, [update]);
 
+  const actions = {
+    setActiveIndex,
+    setNotes: (notes: Note[]) => {
+      setNotes(notes);
+
+      const index = activeIndex;
+      const { id, title, content } = notes[index];
+      const _snackbar = snackbar["MDComponent"];
+
+      const save = notes[index].id
+        ? put({ id, title, content })
+        : post({ title, content });
+
+      save
+        .then((response: Response) => response.json())
+        .then((note: Note) => {
+          notes[index].id = note.id;
+          setNotes(notes);
+        })
+        .catch(() => {})
+        .finally(() => {
+          forceUpdate(!update);
+          _snackbar.show({
+            message: "Saved",
+          });
+        });
+    },
+  };
+
   return (
     <Provider
       value={{
         notes,
         activeIndex,
-        setActiveIndex,
-        setNotes: (notes: Note[]) => {
-          setNotes(notes);
-          forceUpdate(!update);
-          snackbar["MDComponent"].show({
-            message: "Saved",
-          });
-        },
+        ...actions,
       }}
     >
       <main class={style.notebook}>
