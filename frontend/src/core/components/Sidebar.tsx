@@ -39,6 +39,12 @@ const Sidebar = () => {
       >
         <Icon>create</Icon>
       </Button>
+      <Button
+        secondary={route == "/calculator"}
+        onClick={() => handleButtonClick("/calculator")}
+      >
+        <Icon>functions</Icon>
+      </Button>
     </nav>
   );
 };

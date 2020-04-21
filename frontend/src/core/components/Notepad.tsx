@@ -18,7 +18,7 @@ const Notepad = () => {
       title.current["value"] = notes[activeIndex].title;
       content.current["value"] = notes[activeIndex].content;
     }
-  }, [activeIndex]);
+  }, [notes, activeIndex]);
 
   useEffect(() => {
     if (notes.length < 1) {
