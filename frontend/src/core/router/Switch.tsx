@@ -18,7 +18,8 @@ const Router = ({ children }: Props) => {
       window.location.href = root;
 
     window.onhashchange = () => {
-      setUrl(window.location.href);
+      if (window.location.href.endsWith("#")) setUrl("/");
+      else setUrl(window.location.href);
     };
   }, []);
 

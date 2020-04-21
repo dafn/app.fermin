@@ -1,7 +1,7 @@
 import { h, Fragment } from "preact";
 
 interface Props {
-  path: string;
+  path: Route;
   children: h.JSX.Element;
 }
 

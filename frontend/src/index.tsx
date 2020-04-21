@@ -14,11 +14,14 @@ const App = () => {
     <Fragment>
       <Sidebar />
       <Switch>
-        <Route path="#">
+        <Route path="/">
           <Dashboard />
         </Route>
         <Route path="/notepad">
           <Notebook />
+        </Route>
+        <Route path="/calculator">
+          <div> Calc </div>
         </Route>
       </Switch>
     </Fragment>

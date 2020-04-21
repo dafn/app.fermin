@@ -1,7 +1,7 @@
 export {};
 
 declare global {
-  type Route = "/" | "/notepad";
+  type Route = "/" | "/notepad" | "/calculator";
 
   interface Note {
     id?: number;
