@@ -39,10 +39,15 @@
   background-color: var(--fermin-theme-surface);
 }
 
-.mdc-text-field {
+.mdc-text-field,
+.mdc-notched-outline {
   input {
-    &:hover ~ .mdc-notched-outline__idle {
+    &:hover ~ .mdc-notched-outline__idle,
+    &:hover ~ .mdc-notched-outline--notched {
       border-color: var(--fermin-theme-primary) !important;
+      svg path {
+        stroke: var(--fermin-theme-primary) !important;
+      }
     }
   }
   &--focused {
