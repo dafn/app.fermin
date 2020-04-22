@@ -6,10 +6,7 @@
   width: 100%;
   > section {
     width: max-content;
-    .seperator {
-      height: 1px;
-      background-color: var(--fermin-theme-primary);
-      width: auto;
-    }
+    display: grid;
+    row-gap: 2rem;
   }
 }

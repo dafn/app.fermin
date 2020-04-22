@@ -10,14 +10,14 @@ const AccumulatedWealthCalculator = () => {
 
   return (
     <section class={style["accumulated-wealth-calculator"]}>
-      <h5 class="mdc-typography--headline5" >Accumulert formue </h5>
+      <h5 class="mdc-typography--headline5">Akkumulert formue </h5>
       <section class={style.inputs}>
-        <TextField label="Current wealth" outlined dense />
-        <TextField label="Annual deposit" outlined dense />
-        <TextField label="years of return" outlined dense />
-        <TextField label="interest per year" outlined dense />
+        <TextField label="Nåværende Formue" outlined dense />
+        <TextField label="Årlig invistering" outlined dense />
+        <TextField label="År med avkastning" outlined dense />
+        <TextField label="Avkastning per år i %" outlined dense />
       </section>
-      <p class="mdc-typography--body1" > NOK {calculation} </p>
+      <p class="mdc-typography--body1"> NOK {calculation} </p>
     </section>
   );
 };

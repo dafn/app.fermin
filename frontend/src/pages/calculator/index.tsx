@@ -10,7 +10,6 @@ const Calculator = () => {
     <main class={style.calculator}>
       <section>
         <AccumulatedWealthCalculator />
-        <div class={style.seperator} ></div>
         <IndependentIncomeCalculator />
       </section>
     </main>

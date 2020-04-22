@@ -10,11 +10,11 @@ const IndependentIncomeCalculator = () => {
 
   return (
     <section class={style["independent-income-calculator"]}>
-      <h5 class="mdc-typography--headline5" >Accumulert formue </h5>
+      <h5 class="mdc-typography--headline5" > Selvstendig Konsulent Overskudd </h5>
       <section class={style.inputs}>
-        <TextField label="Gross income" outlined dense />
-        <TextField label="Salary" outlined dense />
-        <TextField label="Personal income tax" outlined dense />
+        <TextField label="Brutto inntekt" outlined dense />
+        <TextField label="Lønn" outlined dense />
+        <TextField label="Skatt på lønn i %" outlined dense />
       </section>
       <p class="mdc-typography--body1" > NOK {calculation} </p>
     </section>
