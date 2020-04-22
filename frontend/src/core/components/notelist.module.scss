@@ -69,7 +69,7 @@
     border-right: solid 2px var(--fermin-theme-positive);
   }
   dialog {
-    background: var(--fermin-theme-shadow);
+    background: var(--fermin-theme-overlay);
     > :first-child {
       width: auto;
     }

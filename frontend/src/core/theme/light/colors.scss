@@ -1,13 +1,13 @@
 :root {
-  --fermin-theme-primary: #1a73e8;
-  --fermin-theme-secondary: #174ea6;
-  --fermin-theme-tertiary: #f0f8ff;
+  --fermin-theme-primary: #3f5e5a;
+  --fermin-theme-secondary: #2e4946;
+  --fermin-theme-tertiary: #c0cecc;
 
   --fermin-theme-positive: #32a852;
   --fermin-theme-negative: #dd2c00;
 
   --fermin-theme-icon: #fff;
-  --fermin-theme-shadow: #00000033;
+  --fermin-theme-overlay: #00000033;
   --fermin-theme-placeholder: #757575;
   --fermin-theme-background: #fff;
   --fermin-theme-surface: #fff;
@@ -39,20 +39,21 @@
   background-color: var(--fermin-theme-surface);
 }
 
+// input fields
 .mdc-text-field,
 .mdc-notched-outline {
   input {
     &:hover ~ .mdc-notched-outline__idle,
     &:hover ~ .mdc-notched-outline--notched {
-      border-color: var(--fermin-theme-primary) !important;
+      border-color: var(--fermin-theme-secondary) !important;
       svg path {
-        stroke: var(--fermin-theme-primary) !important;
+        stroke: var(--fermin-theme-secondary) !important;
       }
     }
   }
   &--focused {
     label {
-      color: var(--fermin-theme-primary) !important;
+      color: var(--fermin-theme-secondary) !important;
     }
   }
 }
