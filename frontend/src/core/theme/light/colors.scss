@@ -1,34 +1,49 @@
 :root {
-  --fermin-theme-white: #fff;
-  --fermin-theme-shadow: #00000033;
-  --fermin-theme-placeholder: #757575;
+  --fermin-theme-primary: #1a73e8;
+  --fermin-theme-secondary: #174ea6;
   --fermin-theme-tertiary: #f0f8ff;
+
   --fermin-theme-positive: #32a852;
   --fermin-theme-negative: #dd2c00;
 
-  --mdc-theme-primary: #1a73e8;
-  --mdc-theme-secondary: #174ea6;
-  --mdc-theme-background: var(--fermin-theme-white);
-  --mdc-theme-surface: var(--fermin-theme-white);
+  --fermin-theme-icon: #fff;
+  --fermin-theme-shadow: #00000033;
+  --fermin-theme-placeholder: #757575;
+  --fermin-theme-background: #fff;
+  --fermin-theme-surface: #fff;
+
+  --mdc-theme-primary: var(--fermin-theme-primary);
+  --mdc-theme-secondary: var(--fermin-theme-secondary);
+  --mdc-theme-background: var(--fermin-theme-background);
+  --mdc-theme-surface: var(--fermin-theme-surface);
 }
 
 .mdc-theme--primary {
-  color: var(--mdc-theme-primary);
+  color: var(--fermin-theme-primary);
 }
 .mdc-theme--primary-bg {
-  background-color: var(--mdc-theme-primary);
+  background-color: var(--fermin-theme-primary);
 }
 
 .mdc-theme--secondary {
-  color: var(--mdc-theme-secondary);
+  color: var(--fermin-theme-secondary);
 }
 .mdc-theme--secondary-bg {
-  background-color: var(--mdc-theme-secondary);
+  background-color: var(--fermin-theme-secondary);
 }
 
 .mdc-theme--background {
-  background-color: var(--mdc-theme-surface);
+  background-color: var(--fermin-theme-surface);
 }
 .mdc-theme--surface {
-  background-color: var(--mdc-theme-surface);
+  background-color: var(--fermin-theme-surface);
+}
+
+.mdc-text-field--focused {
+  input:hover {
+    border-color: var(--fermin-theme-primary) !important;
+  }
+  label {
+    color: var(--fermin-theme-primary) !important;
+  }
 }

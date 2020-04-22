@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--mdc-theme-primary);
+  background-color: var(--fermin-theme-primary);
   width: 4rem;
   button {
     height: 4rem;
     i {
-      color: var(--fermin-theme-white);
+      color: var(--fermin-theme-icon);
     }
   }
 }

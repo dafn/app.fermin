@@ -64,9 +64,10 @@ const Notebook = () => {
         .catch(() => {})
         .finally(() => {
           forceUpdate(!update);
-          _snackbar.show({
-            message: "Saved",
-          });
+          if (!_snackbar.foundation_.active_)
+            _snackbar.show({
+              message: "Saved",
+            });
         });
     },
   };

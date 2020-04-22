@@ -1,13 +1,13 @@
 .notepad {
   display: grid;
   grid-template-rows: auto 1fr;
-  background-color: var(--mdc-theme-surface);
+  background-color: var(--fermin-theme-surface);
   margin: 6rem;
   input,
   textarea {
     padding: 1rem;
     border: none;
-    background-color: var(--mdc-theme-surface);
+    background-color: var(--fermin-theme-surface);
     &:focus {
       outline: none;
     }

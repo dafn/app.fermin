@@ -2,6 +2,8 @@ import { h, render, Fragment } from "preact";
 
 import Dashboard from "src/pages/dashboard";
 import Notebook from "src/pages/notebook";
+import Calculator from "src/pages/calculator";
+
 import Switch from "src/core/router/Switch";
 import Route from "src/core/router/Route";
 
@@ -21,7 +23,7 @@ const App = () => {
           <Notebook />
         </Route>
         <Route path="/calculator">
-          <div> Calc </div>
+          <Calculator />
         </Route>
       </Switch>
     </Fragment>

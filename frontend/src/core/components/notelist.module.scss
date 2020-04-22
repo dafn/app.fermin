@@ -19,8 +19,8 @@
   }
   .card {
     grid-template-rows: 1fr 1fr;
-    border-right: solid 2px var(--mdc-theme-surface);
-    background-color: var(--mdc-theme-surface);
+    border-right: solid 2px var(--fermin-theme-surface);
+    background-color: var(--fermin-theme-surface);
     padding: 1rem;
     transition: all 0.05s;
     cursor: pointer;

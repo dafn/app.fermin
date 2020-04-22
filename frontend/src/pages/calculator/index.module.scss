@@ -1,0 +1,15 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  > section {
+    width: max-content;
+    .seperator {
+      height: 1px;
+      background-color: var(--fermin-theme-primary);
+      width: auto;
+    }
+  }
+}
