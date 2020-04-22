@@ -7,11 +7,5 @@
     display: grid;
     grid-template-columns: repeat(4, auto);
     column-gap: 1rem;
-    div {
-      > label {
-        color: rgba(0, 0, 0, 0.6);
-        color: red;
-      }
-    }
   }
 }
