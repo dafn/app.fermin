@@ -3,7 +3,6 @@ import closure from "@ampproject/rollup-plugin-closure-compiler";
 import resolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
-import serve from "rollup-plugin-serve";
 import reload from "rollup-plugin-livereload";
 import visualizer from "rollup-plugin-visualizer";
 import alias from "@rollup/plugin-alias";
@@ -72,11 +71,6 @@ const plugins = [
 
 if (isDevelopment) {
   plugins.push(
-    serve({
-      port: 8002,
-      contentBase: TARGET,
-      open: false,
-    }),
     reload({
       watch: TARGET,
     })
