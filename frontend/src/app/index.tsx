@@ -9,45 +9,36 @@ import Route from "src/core/router/Route";
 
 import Sidebar from "src/core/components/Sidebar";
 
-import t from "src/utils/i18n";
+import languageContext from "src/i18n/languageContext";
 
-import { contexts } from "./context";
-
-import "./index.scss";
 import { useState } from "preact/hooks";
 
+import "./index.scss";
+
 const App = () => {
-  const [lang, setLang] = useState<Language>("en");
+  const [lang, setLang] = useState<Language>("no");
 
   return (
     <Fragment>
-      <contexts.languageContext.Provider
+      <languageContext.Provider
         value={{
           lang,
           setLang,
         }}
       >
-        <contexts.languageContext.Consumer>
-          {({ lang }) => (
-            <contexts.translateContext.Provider
-              value={{ t: (key: string) => t(key, lang) }}
-            >
-              <Sidebar />
-              <Switch>
-                <Route path="/">
-                  <Dashboard />
-                </Route>
-                <Route path="/notepad">
-                  <Notebook />
-                </Route>
-                <Route path="/calculator">
-                  <Calculator />
-                </Route>
-              </Switch>
-            </contexts.translateContext.Provider>
-          )}
-        </contexts.languageContext.Consumer>
-      </contexts.languageContext.Provider>
+        <Sidebar />
+        <Switch>
+          <Route path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/notepad">
+            <Notebook />
+          </Route>
+          <Route path="/calculator">
+            <Calculator />
+          </Route>
+        </Switch>
+      </languageContext.Provider>
     </Fragment>
   );
 };
