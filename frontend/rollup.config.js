@@ -80,7 +80,7 @@ if (isDevelopment) {
 }
 
 export default {
-  input: "src/index.tsx",
+  input: "src/app/index.tsx",
   output: {
     dir: TARGET,
     sourcemap: !isDevelopment,

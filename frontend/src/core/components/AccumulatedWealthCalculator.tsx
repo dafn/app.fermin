@@ -3,7 +3,7 @@ import { h } from "preact";
 import TextField from "preact-material-components/TextField";
 
 import style from "./accumulatedWealthCalculator.module.scss";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, StateUpdater } from "preact/hooks";
 import { NOK } from "src/utils/currency";
 
 const calculate = (wealth = 0, investment = 0, years = 0, growth = 0) => {
@@ -15,7 +15,12 @@ const calculate = (wealth = 0, investment = 0, years = 0, growth = 0) => {
   return NOK(wealth);
 };
 
-const AccumulatedWealthCalculator = () => {
+interface Props {
+  t: Translator;
+  setLang: StateUpdater<Language>;
+}
+
+const AccumulatedWealthCalculator = ({ t, setLang }: Props) => {
   const [calculation, setCalculation] = useState("0");
 
   const [wealth, setWealth] = useState("");
@@ -36,7 +41,7 @@ const AccumulatedWealthCalculator = () => {
 
   return (
     <section class={style["accumulated-wealth-calculator"]}>
-      <h5 class="mdc-typography--headline5">Akkumulert formue </h5>
+      <h5 class="mdc-typography--headline5">{t("akkumulert_formue")}</h5>
       <section class={style.inputs}>
         <TextField
           label="Nåværende Formue"
@@ -76,6 +81,7 @@ const AccumulatedWealthCalculator = () => {
         />
       </section>
       <p class="mdc-typography--body1"> {calculation} </p>
+      <button onClick={() => setLang("no")}>Click Me!</button>
     </section>
   );
 };
