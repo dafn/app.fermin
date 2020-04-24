@@ -9,6 +9,7 @@ extern crate rustc_serialize;
 
 mod db;
 mod router;
+mod utils;
 
 use actix_web::{middleware, web, App, HttpServer};
 
@@ -31,9 +32,7 @@ async fn main() -> std::io::Result<()> {
 
     let server = HttpServer::new(|| {
         App::new()
-            .data(db::init_connection(
-                env::var("DATABASE_URL").expect("Could not find 'DATABASE_URL' in env"),
-            ))
+            .data(db::init_connection(utils::get_db_url()))
             .wrap(middleware::Compress::default())
             .wrap(middleware::Logger::new("%s | %U"))
             .service(webapp::index)
@@ -48,6 +47,7 @@ async fn main() -> std::io::Result<()> {
             .service(webapp::static_files)
     })
     .bind(format!("localhost:{}", port))?
+    .workers(1)
     .run();
 
     println!("Listening to port {}", port);

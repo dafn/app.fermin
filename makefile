@@ -15,8 +15,8 @@ build:
 	@cd backend; cargo build --release
 
 dev: 
-	@cd backend; cargo run
+	@cd backend; RUST_ENV=devlopment cargo run
 	@cd frontend; yarn dev
 
 prod:
-	@cd backend; cargo run
+	@cd backend; RUST_ENV=production cargo run
