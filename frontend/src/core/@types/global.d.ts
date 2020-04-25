@@ -1,7 +1,7 @@
 export {};
 
 declare global {
-  type Route = "/" | "/notepad" | "/calculator";
+  type Route = "/" | "/notepad" | "/calculator" | "/login";
 
   type Language = "en" | "no";
 
@@ -11,5 +11,10 @@ declare global {
     content: string;
     created?: Date;
     last_edited?: Date;
+  }
+
+  interface Login {
+    username: string,
+    password: string
   }
 }

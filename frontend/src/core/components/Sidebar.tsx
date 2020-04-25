@@ -27,7 +27,10 @@ const Sidebar = () => {
 
   return (
     <nav class={`${style.sidebar}`}>
-      <Button>
+      <Button
+        secondary={route == "/login"}
+        onClick={() => handleButtonClick("/login")}
+      >
         <Icon>vpn_key</Icon>
       </Button>
       <Button secondary={route == "/"} onClick={() => handleButtonClick("/")}>

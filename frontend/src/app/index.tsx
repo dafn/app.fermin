@@ -1,6 +1,7 @@
 import { h, render, Fragment } from "preact";
 
 import Dashboard from "src/pages/dashboard";
+import Login from "src/pages/login";
 import Notebook from "src/pages/notebook";
 import Calculator from "src/pages/calculator";
 
@@ -30,6 +31,9 @@ const App = () => {
         <Switch>
           <Route path="/">
             <Dashboard />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/notepad">
             <Notebook />
