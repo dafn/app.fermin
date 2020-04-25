@@ -11,6 +11,7 @@ import Route from "src/core/router/Route";
 import Sidebar from "src/core/components/Sidebar";
 
 import languageContext from "src/i18n/languageContext";
+import authContext from "src/auth/authContext";
 
 import { useState } from "preact/hooks";
 
@@ -18,31 +19,39 @@ import "./index.scss";
 
 const App = () => {
   const [lang, setLang] = useState<Language>("no");
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   return (
     <Fragment>
-      <languageContext.Provider
+      <authContext.Provider
         value={{
-          lang,
-          setLang,
+          isLoggedIn,
+          setIsLoggedIn,
         }}
       >
-        <Sidebar />
-        <Switch>
-          <Route path="/">
-            <Dashboard />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/notepad">
-            <Notebook />
-          </Route>
-          <Route path="/calculator">
-            <Calculator />
-          </Route>
-        </Switch>
-      </languageContext.Provider>
+        <languageContext.Provider
+          value={{
+            lang,
+            setLang,
+          }}
+        >
+          <Sidebar />
+          <Switch>
+            <Route path="/">
+              <Dashboard />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/notepad">
+              <Notebook />
+            </Route>
+            <Route path="/calculator">
+              <Calculator />
+            </Route>
+          </Switch>
+        </languageContext.Provider>
+      </authContext.Provider>
     </Fragment>
   );
 };
