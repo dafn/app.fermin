@@ -10,11 +10,13 @@ extern crate rustc_serialize;
 mod db;
 mod router;
 mod utils;
+mod constants;
 
 use actix_web::{middleware, web, App, HttpServer};
 
 use dotenv::dotenv;
 use router::{api, webapp};
+use utils::{get_db_url, get_ip, get_port};
 
 use std::env;
 
@@ -25,14 +27,11 @@ async fn main() -> std::io::Result<()> {
     env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
 
-    let port: String = match env::var("PORT") {
-        Ok(port) => port,
-        Err(_) => "8088".to_owned(),
-    };
+    let address = format!("{}:{}", get_ip(), get_port());
 
     let server = HttpServer::new(|| {
         App::new()
-            .data(db::init_connection(utils::get_db_url()))
+            .data(db::init_connection(get_db_url()))
             .wrap(middleware::Compress::default())
             .wrap(middleware::Logger::new("%s | %U"))
             .service(webapp::index)
@@ -46,11 +45,11 @@ async fn main() -> std::io::Result<()> {
             )
             .service(webapp::static_files)
     })
-    .bind(format!("localhost:{}", port))?
+    .bind(&address)?
     .workers(1)
     .run();
 
-    println!("Listening to port {}", port);
+    println!("Listening at {}", &address);
 
     server.await
 }
