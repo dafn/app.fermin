@@ -1,7 +1,8 @@
 import { h, Fragment } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useContext } from "preact/hooks";
 
-import { root, getCurrentRoute } from "src/core/router/navigator";
+import { root, getCurrentRoute, buildHref } from "src/core/router/navigator";
+import authContext from "src/auth/authContext";
 
 interface Props {
   children: h.JSX.Element | h.JSX.Element[];
@@ -12,12 +13,16 @@ interface Props {
  */
 const Router = ({ children }: Props) => {
   const [url, setUrl] = useState<Route>(getCurrentRoute());
+  const { isLoggedIn } = useContext(authContext);
 
   useEffect(() => {
     if (window.location.href === window.location.origin + "/")
       window.location.href = root;
 
+    if (!isLoggedIn) window.location.href = buildHref("/login");
+
     window.onhashchange = () => {
+      if (!isLoggedIn) window.location.href = buildHref("/login");
       setUrl(getCurrentRoute());
     };
   }, []);

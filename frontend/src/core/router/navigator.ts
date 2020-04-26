@@ -35,3 +35,7 @@ export const getCurrentRoute = (): Route => {
 
   return location as Route;
 };
+
+export const buildHref = (route: Route) => {
+  return root + route;
+};
