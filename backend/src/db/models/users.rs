@@ -27,14 +27,16 @@ pub struct Login {
 
 impl User {
   pub fn validate<'a>(connection: &PgConnection, _login: &'a Login) -> Result<User, Error> {
-    let mut hasher = Sha256::new();
-    hasher.input_str(&_login.password);
-
-    let password_hash = hasher.result_str();
-
     users
       .filter(users_schema::username.eq(&_login.username))
-      .filter(users_schema::hash.eq(&password_hash))
+      .filter(users_schema::hash.eq(&get_hash(&_login.password)))
       .first::<User>(connection)
   }
+}
+
+fn get_hash(value_to_hash: &str) -> String {
+  let mut hasher = Sha256::new();
+  hasher.input_str(value_to_hash);
+
+  hasher.result_str()
 }
