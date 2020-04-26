@@ -22,6 +22,8 @@ const Router = ({ children }: Props) => {
     if (!isLoggedIn) window.location.href = buildHref("/login");
 
     window.onhashchange = () => {
+      const { isLoggedIn } = useContext(authContext);
+
       if (!isLoggedIn) window.location.href = buildHref("/login");
       setUrl(getCurrentRoute());
     };
