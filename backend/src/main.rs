@@ -16,7 +16,8 @@ use actix_web::{middleware, web, App, HttpServer};
 
 use dotenv::dotenv;
 use router::{api, webapp};
-use utils::{get_db_url, get_ip, get_port};
+use utils::{get_db_url, get_port};
+use constants::defaults::DEFAULT_VALUE_IP;
 
 use std::env;
 
@@ -27,7 +28,7 @@ async fn main() -> std::io::Result<()> {
     env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
 
-    let address = format!("{}:{}", get_ip(), get_port());
+    let address = format!("{}:{}", DEFAULT_VALUE_IP, get_port());
 
     let server = HttpServer::new(|| {
         App::new()
