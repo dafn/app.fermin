@@ -1,7 +1,7 @@
 import { h, Fragment } from "preact";
 import { useState, useEffect, useContext } from "preact/hooks";
 
-import { root, getCurrentRoute, buildHref } from "src/core/router/navigator";
+import { root, getCurrentRoute, buildHref } from "src/router/navigator";
 import authContext from "src/auth/authContext";
 
 interface Props {

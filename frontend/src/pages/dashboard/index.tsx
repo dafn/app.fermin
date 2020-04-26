@@ -2,8 +2,8 @@ import { h } from "preact";
 
 import style from "./index.module.scss";
 
-import BookmarksCard from "src/core/components/BookmarksCard";
-import Bookmark from "src/core/components/Bookmark";
+import BookmarksCard from "src/components/BookmarksCard";
+import Bookmark from "src/components/Bookmark";
 
 const Dashboard = () => {
   return (

@@ -5,10 +5,10 @@ import Login from "src/pages/login";
 import Notebook from "src/pages/notebook";
 import Calculator from "src/pages/calculator";
 
-import Switch from "src/core/router/Switch";
-import Route from "src/core/router/Route";
+import Switch from "src/router/Switch";
+import Route from "src/router/Route";
 
-import Sidebar from "src/core/components/Sidebar";
+import Sidebar from "src/components/Sidebar";
 
 import languageContext from "src/i18n/languageContext";
 import authContext from "src/auth/authContext";

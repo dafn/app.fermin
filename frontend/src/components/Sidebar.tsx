@@ -10,7 +10,7 @@ import {
   navigate,
   onNavigation,
   getCurrentRoute,
-} from "src/core/router/navigator";
+} from "src/router/navigator";
 import authContext from "src/auth/authContext";
 
 const Sidebar = () => {

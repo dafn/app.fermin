@@ -5,8 +5,8 @@ import Snackbar from "preact-material-components/Snackbar";
 
 import style from "./index.module.scss";
 
-import Notepad from "src/core/components/Notepad";
-import Notelist from "src/core/components/NoteList";
+import Notepad from "src/components/Notepad";
+import Notelist from "src/components/NoteList";
 
 import { get_all, post, put, remove } from "src/api/notes";
 import { Provider } from "./context";
