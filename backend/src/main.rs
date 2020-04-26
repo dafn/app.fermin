@@ -6,6 +6,7 @@ extern crate actix_web;
 
 extern crate dotenv;
 extern crate rustc_serialize;
+extern crate crypto;
 
 mod constants;
 mod db;
@@ -16,7 +17,7 @@ use actix_web::{middleware, web, App, HttpServer};
 
 use constants::defaults::DEFAULT_VALUE_IP;
 use dotenv::dotenv;
-use router::{api, webapp};
+use router::{api, webapp, auth};
 use utils::{get_db_url, get_port};
 
 use std::env;
@@ -36,7 +37,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(middleware::Compress::default())
             .wrap(middleware::Logger::new("%s | %U"))
             .service(webapp::index)
-            .service(web::scope("/api/auth").service(api::auth::login))
+            .service(web::scope("/auth").service(auth::login))
             .service(
                 web::scope("/api/notes")
                     .service(api::notes::get_all)

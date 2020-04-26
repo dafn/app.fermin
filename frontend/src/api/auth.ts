@@ -1,6 +1,9 @@
 const endpoint = "/auth/";
 
-export const logIn = ({ username, password }: Login): Promise<JsonWebKey> => {
+export const logIn = ({
+  username,
+  password,
+}: Login): Promise<boolean | void> => {
   return fetch(endpoint + "login", {
     method: "post",
     headers: {
@@ -11,13 +14,12 @@ export const logIn = ({ username, password }: Login): Promise<JsonWebKey> => {
       password,
     }),
   })
-    .then((res) => res.json())
-    .catch((err) => console.error("Could not log in:", err));
+    .then((res) => res.ok)
+    .catch((err) => console.error("Error logging in:", err));
 };
-
 
 export const logOut = (): Promise<number> => {
   return fetch(endpoint + "logout")
     .then((res) => res.json())
-    .catch((err) => console.error("Could not log out:", err));
+    .catch((err) => console.error("Error logging out:", err));
 };
