@@ -27,10 +27,17 @@ pub struct Login {
 
 impl User {
   pub fn validate<'a>(connection: &PgConnection, _login: &'a Login) -> Result<User, Error> {
-    users
+    let user = users
       .filter(users_schema::username.eq(&_login.username))
-      .filter(users_schema::hash.eq(&get_hash(&_login.password)))
-      .first::<User>(connection)
+      .first::<User>(connection);
+
+    if let Ok(user) = user {
+      if user.hash == get_hash(&_login.password) {
+        return Ok(user);
+      }
+    }
+
+    Err(Error::NotFound)
   }
 }
 
