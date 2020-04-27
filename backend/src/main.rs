@@ -4,20 +4,22 @@ extern crate diesel;
 #[macro_use]
 extern crate actix_web;
 
+extern crate actix_identity;
+extern crate crypto;
 extern crate dotenv;
 extern crate rustc_serialize;
-extern crate crypto;
 
 mod constants;
 mod db;
 mod router;
 mod utils;
 
+use actix_identity::{CookieIdentityPolicy, IdentityService};
 use actix_web::{middleware, web, App, HttpServer};
 
 use constants::defaults::DEFAULT_VALUE_IP;
 use dotenv::dotenv;
-use router::{api, webapp, auth};
+use router::{api, auth, webapp};
 use utils::{get_db_url, get_port};
 
 use std::env;
@@ -35,6 +37,13 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .data(db::init_connection(get_db_url()))
             .wrap(middleware::Compress::default())
+            .wrap(IdentityService::new(
+                CookieIdentityPolicy::new(&[0; 32]) // TODO: make a super secret key
+                    .name("auth")
+                    .max_age_time(chrono::Duration::days(30))
+                    .secure(false),
+            ))
+            .data(web::JsonConfig::default())
             .wrap(middleware::Logger::new("%s | %U"))
             .service(webapp::index)
             .service(web::scope("/auth").service(auth::login))
