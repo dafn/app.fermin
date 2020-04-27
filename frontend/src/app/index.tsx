@@ -13,13 +13,13 @@ import Sidebar from "src/components/Sidebar";
 import languageContext from "src/i18n/languageContext";
 import authContext from "src/auth/authContext";
 
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 
 import "./index.scss";
 
 const App = () => {
   const [lang, setLang] = useState<Language>("no");
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(iwa_env.isLoggedIn);
 
   return (
     <Fragment>

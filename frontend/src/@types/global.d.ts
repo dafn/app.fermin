@@ -14,7 +14,11 @@ declare global {
   }
 
   interface Login {
-    username: string,
-    password: string
+    username: string;
+    password: string;
   }
+
+  const iwa_env: {
+    isLoggedIn: boolean;
+  };
 }
