@@ -25,8 +25,8 @@ pub struct NewNote<'a> {
   pub content: &'a str,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct NewNoteWithoutLifetime {
+#[derive(Deserialize)]
+pub struct SlimNote {
   pub title: String,
   pub content: String,
 }
@@ -42,7 +42,7 @@ impl Note {
     notes.find(_id).first::<Note>(connection)
   }
 
-  pub fn post<'a>(connection: &PgConnection, _note: &NewNoteWithoutLifetime) -> Result<Vec<Note>, Error> {
+  pub fn post<'a>(connection: &PgConnection, _note: &SlimNote) -> Result<Vec<Note>, Error> {
     diesel::insert_into(notes_schema::table)
       .values(&NewNote { title: &_note.title, content: &_note.content })
       .get_results(connection)
@@ -51,7 +51,7 @@ impl Note {
   pub fn put<'a, 'b>(
     connection: &PgConnection,
     _id: &'a i32,
-    _note: &'b NewNoteWithoutLifetime,
+    _note: &'b SlimNote,
   ) -> Result<Note, Error> {
     diesel::update(notes.find(_id))
       .set((

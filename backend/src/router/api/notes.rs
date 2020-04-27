@@ -1,4 +1,4 @@
-use crate::db::models::notes::{NewNoteWithoutLifetime, Note};
+use crate::db::models::notes::{SlimNote, Note};
 use crate::db::DBPool;
 
 use actix_web::{error, http::StatusCode, web, Error, HttpResponse};
@@ -21,7 +21,7 @@ pub async fn get_by_id(id: web::Path<i32>, db: DBPool) -> Result<HttpResponse, E
 
 #[post("/")]
 pub async fn post(
-  new_note: web::Json<NewNoteWithoutLifetime>,
+  new_note: web::Json<SlimNote>,
   db: DBPool,
 ) -> Result<HttpResponse, Error> {
   match Note::post(&db.get().unwrap(), &new_note) {
@@ -33,7 +33,7 @@ pub async fn post(
 #[put("/{id}")]
 pub async fn put(
   id: web::Path<i32>,
-  updated_note: web::Json<NewNoteWithoutLifetime>,
+  updated_note: web::Json<SlimNote>,
   db: DBPool,
 ) -> Result<HttpResponse, Error> {
   match Note::put(&db.get().unwrap(), &id, &updated_note) {

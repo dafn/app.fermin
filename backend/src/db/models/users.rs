@@ -19,7 +19,7 @@ pub struct User {
   pub salt: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Deserialize)]
 pub struct Login {
   pub username: String,
   pub password: String,
