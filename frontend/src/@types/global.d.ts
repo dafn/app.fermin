@@ -18,7 +18,9 @@ declare global {
     password: string;
   }
 
-  const iwa_env: {
-    isLoggedIn: boolean;
+  const env: {
+    initialAuthState: {
+      isLoggedIn: boolean;
+    };
   };
 }

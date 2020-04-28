@@ -9,16 +9,18 @@ pub fn template_with_identity(auth: Identity) -> String {
     "false"
   };
 
-  let iwa_env = format!(
-    "<script id=\"iwa\">
-      const iwa_env = {{
-        isLoggedIn: {}
+  let app_env = format!(
+    "<script id=\"env\">
+      env = {{
+        initialAuthState: {{
+          isLoggedIn: {}
+        }}
       }}",
     authenticated
   );
 
   let html = fs::read_to_string(Path::new("../frontend/dist/").join("index.html")).unwrap();
-  let html_split = html.split("<script id=\"iwa\">").collect::<Vec<&str>>();
+  let html_split = html.split("<script id=\"env\">").collect::<Vec<&str>>();
 
-  format!("{} {} {}", html_split[0], iwa_env, html_split[1])
+  format!("{} {} {}", html_split[0], app_env, html_split[1])
 }
