@@ -1,3 +1,5 @@
+pub mod templating;
+
 use std::env;
 
 use crate::constants::defaults::{DEFAULT_VALUE_PORT, DEFAULT_VALUE_RUST_ENV};
