@@ -5,9 +5,10 @@
 help:
 	@echo ""
 	@echo "Commands:"
-	@echo "  \033[38;5;75mbuild\033[0m: build project for production"
-	@echo "  \033[38;5;75mdev\033[0m: start project for development"
-	@echo "  \033[38;5;75mprod\033[0m: start project for production"
+	@echo "  \033[38;5;75mbuild_dev\033[0m: build project for development"
+	@echo "  \033[38;5;75mbuild_prod\033[0m: build project for production"
+	@echo "  \033[38;5;75mrun_dev\033[0m: start project for development"
+	@echo "  \033[38;5;75mrun_prd\033[0m: start project for production"
 	@echo "  \033[38;5;75mbackend_to_pi\033[0m: move backend, pre build, to pi"
 	@echo "  \033[38;5;75mfrontend_to_pi\033[0m: move frontend, post build (dist), to pi"
 	@echo "  \033[38;5;75menv_to_pi\033[0m: move .env and makefile to pi"
@@ -15,7 +16,7 @@ help:
 
 build_dev:
 	@cd frontend; yarn && yarn build
-	@cd backend; cargo build --release
+	@cd backend; cargo build
 
 build_prod:
 	@cd backend; cargo build --release
@@ -25,7 +26,7 @@ run_dev:
 	@cd frontend; yarn dev
 
 run_prod:
-	@cd backend; RUST_ENV=production cargo run
+	@cd backend; RUST_ENV=production cargo run --release
 
 backend_to_pi:
 	@scp -r ./backend pi@raspberrypi.local:app.fermin/
