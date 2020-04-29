@@ -6,10 +6,8 @@ use diesel::result::*;
 use crate::db::schema::users as users_schema;
 use crate::db::schema::users::dsl::users;
 
+use argonautica::Hasher;
 use serde::{Deserialize, Serialize};
-
-use crypto::digest::Digest;
-use crypto::sha2::Sha256;
 
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct User {
@@ -32,7 +30,7 @@ impl User {
       .first::<User>(connection);
 
     if let Ok(user) = user {
-      if user.hash == get_hash(&_login.password) {
+      if user.hash == get_hash(&_login.password, &user.salt) {
         return Ok(user);
       }
     }
@@ -41,9 +39,17 @@ impl User {
   }
 }
 
-fn get_hash(value_to_hash: &str) -> String {
-  let mut hasher = Sha256::new();
-  hasher.input_str(value_to_hash);
+lazy_static! {
+  static ref ARGON2_KEY: String =
+    std::env::var("ARGON2_KEY").expect("Could not find ARGON2_KEY envirtoment variable");
+}
 
-  hasher.result_str()
+fn get_hash(value_to_hash: &str, salt: &str) -> String {
+  let mut argon2_hasher = Hasher::default();
+  argon2_hasher
+    .with_password(value_to_hash)
+    .with_salt(salt)
+    .with_secret_key(ARGON2_KEY.as_str())
+    .hash()
+    .unwrap()
 }

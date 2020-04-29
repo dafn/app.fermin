@@ -4,10 +4,14 @@ extern crate diesel;
 #[macro_use]
 extern crate actix_web;
 
+#[macro_use]
+extern crate lazy_static;
+
 extern crate actix_identity;
 extern crate crypto;
 extern crate dotenv;
 extern crate rustc_serialize;
+extern crate argonautica;
 
 mod constants;
 mod db;
