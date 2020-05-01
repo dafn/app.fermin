@@ -5,6 +5,7 @@
 
   --fermin-theme-positive: #32a852;
   --fermin-theme-negative: #dd2c00;
+  --fermin-theme-alert: #F06543;
 
   --fermin-theme-icon: #fff;
   --fermin-theme-overlay: #00000033;
@@ -17,7 +18,6 @@
   --mdc-theme-background: var(--fermin-theme-background);
   --mdc-theme-surface: var(--fermin-theme-surface);
 }
-
 .mdc-theme--primary {
   color: var(--fermin-theme-primary);
 }
@@ -37,6 +37,12 @@
 }
 .mdc-theme--surface {
   background-color: var(--fermin-theme-surface);
+}
+
+.fermin-button--alert {
+  &.mdc-button {
+    background-color: var(--fermin-theme-alert);
+  }
 }
 
 // input fields

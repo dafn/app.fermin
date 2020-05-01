@@ -6,11 +6,7 @@ import style from "./sidebar.module.scss";
 import Icon from "preact-material-components/Icon";
 import Button from "preact-material-components/Button";
 
-import {
-  navigate,
-  onNavigation,
-  getCurrentRoute,
-} from "src/router/navigator";
+import { navigate, onNavigation, getCurrentRoute } from "src/router/navigator";
 import authContext from "src/auth/authContext";
 
 const Sidebar = () => {
@@ -30,27 +26,28 @@ const Sidebar = () => {
   return (
     <nav class={`${style.sidebar}`}>
       <Button
-        secondary={route == "/login"}
-        onClick={() => handleButtonClick("/login")}
+        secondary={route === "/login" || route === "/logout"}
+        onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
+        class={`${isLoggedIn ? "fermin-button--alert" : ""}`}
       >
         <Icon>vpn_key</Icon>
       </Button>
       {isLoggedIn && (
         <Fragment>
           <Button
-            secondary={route == "/"}
+            secondary={route === "/"}
             onClick={() => handleButtonClick("/")}
           >
             <Icon>dashboard</Icon>
           </Button>
           <Button
-            secondary={route == "/notepad"}
+            secondary={route === "/notepad"}
             onClick={() => handleButtonClick("/notepad")}
           >
             <Icon>create</Icon>
           </Button>
           <Button
-            secondary={route == "/calculator"}
+            secondary={route === "/calculator"}
             onClick={() => handleButtonClick("/calculator")}
           >
             <Icon>functions</Icon>

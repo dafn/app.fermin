@@ -43,6 +43,9 @@ const App = () => {
             <Route path="/login">
               <Login />
             </Route>
+            <Route path="/logout">
+              <Login />
+            </Route>
             <Route path="/notepad">
               <Notebook />
             </Route>

@@ -8,10 +8,10 @@ extern crate actix_web;
 extern crate lazy_static;
 
 extern crate actix_identity;
+extern crate argonautica;
 extern crate crypto;
 extern crate dotenv;
 extern crate rustc_serialize;
-extern crate argonautica;
 
 mod constants;
 mod db;
@@ -50,7 +50,11 @@ async fn main() -> std::io::Result<()> {
             .data(web::JsonConfig::default())
             .wrap(middleware::Logger::new("%s | %U"))
             .service(webapp::index)
-            .service(web::scope("/auth").service(auth::login))
+            .service(
+                web::scope("/auth")
+                    .service(auth::login)
+                    .service(auth::logout),
+            )
             .service(
                 web::scope("/api/notes")
                     .service(api::notes::get_all)

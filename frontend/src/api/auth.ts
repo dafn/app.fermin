@@ -1,6 +1,6 @@
 const endpoint = "/auth/";
 
-export const logIn = ({
+export const login = ({
   username,
   password,
 }: Login): Promise<boolean | void> => {
@@ -18,8 +18,6 @@ export const logIn = ({
     .catch((err) => console.error("Error logging in:", err));
 };
 
-export const logOut = (): Promise<number> => {
-  return fetch(endpoint + "logout")
-    .then((res) => res.json())
-    .catch((err) => console.error("Error logging out:", err));
+export const logout = (): Promise<boolean> => {
+  return fetch(endpoint + "logout").then((res) => res.ok);
 };

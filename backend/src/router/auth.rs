@@ -18,3 +18,9 @@ pub async fn login(
     Err(_) => Err(error::ErrorUnauthorized("Unauthorized")),
   }
 }
+
+#[get("/logout")]
+pub async fn logout(id: Identity) -> HttpResponse {
+  id.forget(); // <- remove identity
+  HttpResponse::Ok().finish()
+}

@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useContext, useRef, useState } from "preact/hooks";
+import { useContext, useRef, useState, useEffect } from "preact/hooks";
 
 import { TextField } from "preact-material-components/TextField";
 import { Button } from "preact-material-components/Button";
@@ -7,14 +7,31 @@ import { Button } from "preact-material-components/Button";
 import authContext from "src/auth/authContext";
 
 import style from "./index.module.scss";
-import { logIn } from "src/api/auth";
+import { login, logout } from "src/api/auth";
+import { getCurrentRoute, navigate } from "src/router/navigator";
 
 const Login = () => {
-  const { setIsLoggedIn } = useContext(authContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(authContext);
   const [disabled, setDisabled] = useState(false);
 
   let username = useRef(null);
   let password = useRef(null);
+
+  useEffect(() => {
+    if (getCurrentRoute() === "/logout") {
+      if (isLoggedIn) {
+        logout().then(() => {
+          setIsLoggedIn(false);
+        });
+      } else {
+        navigate("/login");
+      }
+    } else if (getCurrentRoute() === "/login") {
+      if (isLoggedIn) {
+        navigate("/");
+      }
+    }
+  });
 
   return (
     <main class={style.login}>
@@ -33,12 +50,13 @@ const Login = () => {
           disabled={disabled}
           onClick={() => {
             setDisabled(true);
-            logIn({
+            login({
               username: username.current["MDComponent"].value,
               password: password.current["MDComponent"].value,
             }).then((isLoggedIn) => {
               isLoggedIn && setIsLoggedIn(isLoggedIn);
               setDisabled(false);
+              navigate("/");
             });
           }}
         >
