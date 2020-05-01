@@ -21,6 +21,6 @@ pub async fn login(
 
 #[get("/logout")]
 pub async fn logout(id: Identity) -> HttpResponse {
-  id.forget(); // <- remove identity
+  id.forget();
   HttpResponse::Ok().finish()
 }

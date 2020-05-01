@@ -30,9 +30,7 @@ impl User {
       .first::<User>(connection);
 
     if let Ok(user) = user {
-      println!("{}", get_hash(&_login.password, &user.salt));
       if user.hash == get_hash(&_login.password, &user.salt) {
-
         return Ok(user);
       }
     }

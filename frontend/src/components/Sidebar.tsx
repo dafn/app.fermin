@@ -8,6 +8,7 @@ import Button from "preact-material-components/Button";
 
 import { navigate, onNavigation, getCurrentRoute } from "src/router/navigator";
 import authContext from "src/auth/authContext";
+import cn from "src/utils/cn";
 
 const Sidebar = () => {
   const [route, setRoute] = useState<Route>(getCurrentRoute());
@@ -28,7 +29,9 @@ const Sidebar = () => {
       <Button
         secondary={route === "/login" || route === "/logout"}
         onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
-        class={`${isLoggedIn ? "fermin-button--alert" : ""}`}
+        class={cn({
+          "fermin-button--alert": isLoggedIn,
+        })}
       >
         <Icon>vpn_key</Icon>
       </Button>
