@@ -30,7 +30,9 @@ impl User {
       .first::<User>(connection);
 
     if let Ok(user) = user {
+      println!("{}", get_hash(&_login.password, &user.salt));
       if user.hash == get_hash(&_login.password, &user.salt) {
+
         return Ok(user);
       }
     }
@@ -46,6 +48,10 @@ lazy_static! {
 
 fn get_hash(value_to_hash: &str, salt: &str) -> String {
   let mut argon2_hasher = Hasher::default();
+  argon2_hasher
+    .configure_hash_len(16)
+    .configure_memory_size(512)
+    .configure_iterations(16);
   argon2_hasher
     .with_password(value_to_hash)
     .with_salt(salt)
