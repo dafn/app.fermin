@@ -4,7 +4,6 @@ import style from "./index.module.scss";
 
 import BookmarksCard from "src/components/BookmarksCard";
 import Bookmark from "src/components/Bookmark";
-
 const Dashboard = () => {
   return (
     <main class={style.dashboard}>
@@ -14,6 +13,7 @@ const Dashboard = () => {
           href="https://www.fermin.no/"
         />
       </BookmarksCard>
+      <iframe src="https://bors.e24.no/#!/market/world"></iframe>
     </main>
   );
 };
