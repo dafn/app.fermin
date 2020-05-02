@@ -4,19 +4,33 @@
   --fermin-theme-tertiary: #c0cecc;
 
   --fermin-theme-positive: #32a852;
-  --fermin-theme-negative: #dd2c00;
-  --fermin-theme-alert: #f06543;
+  --fermin-theme-negative: #f44336;
+  --fermin-theme-alert: #ff9800;
+  --fermin-theme-info: #2196f3;
 
   --fermin-theme-icon: #fff;
   --fermin-theme-overlay: #00000033;
   --fermin-theme-placeholder: #757575;
   --fermin-theme-background: #fff;
   --fermin-theme-surface: #fff;
+  --fermin-theme-text: #202020;
+  --fermin-theme-text-inverted: #fff;
 
   --mdc-theme-primary: var(--fermin-theme-primary);
   --mdc-theme-secondary: var(--fermin-theme-secondary);
   --mdc-theme-background: var(--fermin-theme-background);
   --mdc-theme-surface: var(--fermin-theme-surface);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+textarea,
+input {
+  color: var(--fermin-theme-text);
 }
 
 .fermin-button--alert {

@@ -1,12 +1,11 @@
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 
-import Snackbar from "preact-material-components/Snackbar";
-
 import style from "./index.module.scss";
 
 import Notepad from "src/components/Notepad";
 import Notelist from "src/components/NoteList";
+import Snackbar from "src/components/core/Snackbar";
 
 import { get_all, post, put, remove } from "src/api/notes";
 import { Provider } from "./context";
@@ -16,8 +15,7 @@ const Notebook = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [init, setInit] = useState<boolean>(true);
   const [update, forceUpdate] = useState<boolean>(true);
-
-  let snackbar = useRef(null);
+  const [snackbar, showSnackbar] = useState<boolean>(false);
 
   useEffect(() => {
     if (init) {
@@ -47,7 +45,6 @@ const Notebook = () => {
 
       const index = activeIndex;
       const { id, title, content } = notes[index];
-      const _snackbar = snackbar["MDComponent"];
 
       if (!title && !content) return forceUpdate(!update);
 
@@ -64,10 +61,10 @@ const Notebook = () => {
         .catch(() => {})
         .finally(() => {
           forceUpdate(!update);
-          if (!_snackbar.foundation_.active_)
-            _snackbar.show({
-              message: "Saved",
-            });
+          showSnackbar(true);
+          setTimeout(() => {
+            showSnackbar(false);
+          }, 2000);
         });
     },
   };
@@ -83,13 +80,8 @@ const Notebook = () => {
       <main class={style.notebook}>
         <Notelist />
         <Notepad />
-        <Snackbar
-          class={style.snackbar}
-          ref={(bar) => {
-            snackbar = bar;
-          }}
-        />
       </main>
+      <Snackbar message="Saved!" show={snackbar} severity="info" />
     </Provider>
   );
 };
