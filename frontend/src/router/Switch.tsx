@@ -32,6 +32,8 @@ const Router = ({ children }: Props) => {
   if (Array.isArray(children))
     for (let child of children)
       if (url === child.props.path) return <Fragment>{child}</Fragment>;
+
+  return <Fragment>{children}</Fragment>;
 };
 
 export default Router;

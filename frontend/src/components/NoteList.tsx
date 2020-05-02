@@ -1,11 +1,13 @@
 import { h } from "preact";
 
-import { useContext, useRef } from "preact/hooks";
+import { useContext, useRef, useState } from "preact/hooks";
 
 import Icon from "preact-material-components/Icon";
 import Card from "preact-material-components/Card";
 import Fab from "preact-material-components/Fab";
-import Dialog from "preact-material-components/Dialog";
+import Button from "preact-material-components/Button";
+
+import Dialog from "./core/Dialog";
 
 import context from "src/pages/notebook/context";
 
@@ -20,7 +22,7 @@ const Notelist = () => {
     deleteNote,
   } = useContext(context);
 
-  let deletePromt = useRef(null);
+  const [dialog, showDialog] = useState(false);
 
   const addNote = () => {
     notes.push({
@@ -43,7 +45,7 @@ const Notelist = () => {
             <p class="mdc-typography--body2"> {note.content} </p>
             <Icon
               class={`${index === activeIndex ? style.show : ""}`}
-              onClick={() => deletePromt["MDComponent"].show()}
+              onClick={() => showDialog(true)}
             >
               delete_outline
             </Icon>
@@ -57,15 +59,19 @@ const Notelist = () => {
       <Fab ripple mini onClick={addNote}>
         <Fab.Icon>add</Fab.Icon>
       </Fab>
-      <Dialog
-        ref={(dialog) => (deletePromt = dialog)}
-        onAccept={() => deleteNote(activeIndex)}
-      >
-        <Dialog.Header>Er du sikker på at du vil slette notatet?</Dialog.Header>
-        <Dialog.Footer>
-          <Dialog.FooterButton cancel>Nei</Dialog.FooterButton>
-          <Dialog.FooterButton accept>Ja</Dialog.FooterButton>
-        </Dialog.Footer>
+      <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
+        <Button dense onClick={() => showDialog(false)}>
+          Cancel
+        </Button>
+        <Button
+          dense
+          onClick={() => {
+            deleteNote(activeIndex);
+            showDialog(false);
+          }}
+        >
+          Accept
+        </Button>
       </Dialog>
     </section>
   );

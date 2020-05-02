@@ -16,6 +16,7 @@ const Snackbar = ({ message, show, severity, ...rest }: Props) => {
         [style["visible"]]: show,
       })}`}
       {...rest}
+      aria-hidden={!show}
     >
       <div class={style[severity]}>
         <Icon></Icon>
