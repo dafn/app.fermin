@@ -28,11 +28,11 @@ run_dev:
 run_prod:
 	@cd backend; RUST_ENV=production cargo run --release
 
-backend_to_pi:
+back_to_pi:
 	@rm -rf ./backend/target
 	@scp -r ./backend pi@raspberrypi.local:app.fermin/
 
-frontend_to_pi:
+front_to_pi:
 	@cd frontend; yarn build; cd ..
 	@scp -r ./frontend/dist pi@raspberrypi.local:app.fermin/frontend/
 
