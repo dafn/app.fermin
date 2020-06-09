@@ -18,11 +18,9 @@ const Sidebar = () => {
     navigate(route);
   };
 
-  useEffect(() => {
-    onNavigation((route: Route) => {
-      setRoute(route);
-    });
-  }, []);
+  onNavigation((route) => {
+    setRoute(route);
+  });
 
   return (
     <nav class={`${style.sidebar}`}>
