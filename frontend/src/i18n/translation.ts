@@ -9,7 +9,9 @@ export default (key: string, language: Language) => {
   try {
     return translations[key.toLowerCase()][language.toLowerCase()];
   } catch (error) {
-    console.error(`Could not find "${key}" for language "${language}"`);
+    console.error(
+      `translation > default | Could not find "${key}" for language "${language}"`
+    );
     return null;
   }
 };

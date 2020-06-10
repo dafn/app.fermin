@@ -5,7 +5,7 @@ export const NOK = (number: number) => {
       currency: "NOK",
     }).format(number);
   } catch (error) {
-    console.error(error);
+    console.error(`currency > NOK |`, error);
     return "Unable to parse currency";
   }
 };

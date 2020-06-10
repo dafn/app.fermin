@@ -15,7 +15,7 @@ export const login = ({
     }),
   })
     .then((res) => res.ok)
-    .catch((err) => console.error("Error logging in:", err));
+    .catch((err) => console.error(`auth > login | Error logging in:`, err));
 };
 
 export const logout = (): Promise<boolean> => {
