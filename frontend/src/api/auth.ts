@@ -1,10 +1,10 @@
-const endpoint = "/auth/";
+import { urlBuilder } from "./helpers";
 
 export const login = ({
   username,
   password,
 }: Login): Promise<boolean | void> => {
-  return fetch(endpoint + "login", {
+  return fetch(urlBuilder.auth.login(), {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -19,5 +19,5 @@ export const login = ({
 };
 
 export const logout = (): Promise<boolean> => {
-  return fetch(endpoint + "logout").then((res) => res.ok);
+  return fetch(urlBuilder.auth.logout()).then((res) => res.ok);
 };

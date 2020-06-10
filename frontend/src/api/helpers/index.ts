@@ -1,6 +1,9 @@
 const endpoints = {
   notes: "/api/notes/",
-  auth: "/auth/",
+  auth: {
+    login: "/auth/login",
+    logout: "/auth/logout",
+  },
 };
 
 export const urlBuilder = {
@@ -11,5 +14,8 @@ export const urlBuilder = {
     put: (id: number) => endpoints.notes + id,
     removeById: (id: number) => endpoints.notes + id,
   },
-  auth: {},
+  auth: {
+    login: () => endpoints.auth.login,
+    logout: () => endpoints.auth.logout,
+  },
 };
