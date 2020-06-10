@@ -5,6 +5,7 @@ import TextField from "preact-material-components/TextField";
 import style from "./independentIncomeCalculator.module.scss";
 import { useState, useEffect } from "preact/hooks";
 import { NOK } from "src/utils/currency";
+import useTranslate from "src/i18n/useTranslate";
 
 interface Calculation {
   personalProfit: string;
@@ -45,6 +46,8 @@ const IndependentIncomeCalculator = () => {
   const [salary, setSalary] = useState("");
   const [salaryTax, setSalaryTax] = useState("");
 
+  const { t } = useTranslate();
+
   useEffect(() => {
     setCalculation(
       calculate(
@@ -57,10 +60,10 @@ const IndependentIncomeCalculator = () => {
 
   return (
     <section class={style["independent-income-calculator"]}>
-      <h5 class="mdc-typography--headline5">Selvstendig Konsulent Overskudd</h5>
+      <h5 class="mdc-typography--headline5">{t("independent_earnings")}</h5>
       <section class={style.inputs}>
         <TextField
-          label="Brutto inntekt"
+          label={t("gross_income")}
           outlined
           dense
           type="number"
@@ -69,7 +72,7 @@ const IndependentIncomeCalculator = () => {
           autocomplete="off"
         />
         <TextField
-          label="Lønn"
+          label={t("salary")}
           outlined
           dense
           type="number"
@@ -78,7 +81,7 @@ const IndependentIncomeCalculator = () => {
           autocomplete="off"
         />
         <TextField
-          label="Skatt på lønn i %"
+          label={t("tax_on_salary")}
           outlined
           dense
           type="number"
@@ -87,12 +90,14 @@ const IndependentIncomeCalculator = () => {
           autocomplete="off"
         />
       </section>
-      <p class="mdc-typography--body1">Total {calculation?.totalProfit}</p>
       <p class="mdc-typography--body1">
-        Corporate {calculation?.corporateProfit}
+        {t("total")} {calculation?.totalProfit}
       </p>
       <p class="mdc-typography--body1">
-        Personal {calculation?.personalProfit}
+        {t("corporate")} {calculation?.corporateProfit}
+      </p>
+      <p class="mdc-typography--body1">
+        {t("private")} {calculation?.personalProfit}
       </p>
     </section>
   );
