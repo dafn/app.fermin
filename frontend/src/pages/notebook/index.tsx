@@ -7,7 +7,7 @@ import Notepad from "src/components/Notepad";
 import Notelist from "src/components/NoteList";
 import Snackbar from "src/components/core/Snackbar";
 
-import { get_all, post, put, remove } from "src/api/notes";
+import { getAll, post, put, removeById } from "src/api/notes";
 import { Provider } from "./context";
 
 const Notebook = () => {
@@ -19,7 +19,7 @@ const Notebook = () => {
 
   useEffect(() => {
     if (init) {
-      get_all().then((notes) => {
+      getAll().then((notes) => {
         setNotes(notes);
       });
 
@@ -31,7 +31,7 @@ const Notebook = () => {
     setActiveIndex,
     deleteNote: (index: number) => {
       if (notes[index].id)
-        remove({ id: notes[index].id }).then(() => {
+        removeById({ id: notes[index].id }).then(() => {
           notes.splice(index, 1);
           activeIndex ? setActiveIndex(0) : forceUpdate(!update);
         });
