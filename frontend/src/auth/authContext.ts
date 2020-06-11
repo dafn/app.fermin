@@ -1,5 +1,5 @@
 import { createContext } from "preact";
-import { StateUpdater } from "preact/hooks/src";
+import { StateUpdater } from "preact/hooks";
 
 interface AuthContext {
   isLoggedIn: boolean;

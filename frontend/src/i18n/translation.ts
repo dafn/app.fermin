@@ -1,10 +1,4 @@
-interface Translations {
-  [key: string]: {
-    [key in Language]: string;
-  };
-}
-
-const translations: Translations = {
+const translations = {
   accumulated_wealth: {
     no: "Akkumulert formue",
     en: "Accumulated Wealth",
