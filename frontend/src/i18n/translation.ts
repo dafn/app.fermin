@@ -1,4 +1,10 @@
-const translations = {
+interface Translations {
+  [key: string]: {
+    [key in Language]: string;
+  };
+}
+
+const translations: Translations = {
   accumulated_wealth: {
     no: "Akkumulert formue",
     en: "Accumulated Wealth",
@@ -12,7 +18,7 @@ const translations = {
     en: "Corporate",
   },
   independent_earnings: {
-    no: "Selvstendig overskudd",
+    no: "Uavhenging overskudd",
     en: "Independent earnings",
   },
   gross_income: {
@@ -33,11 +39,11 @@ const translations = {
   },
 };
 
-export type TranslationKeys = keyof typeof translations;
+export type TranslationKey = keyof typeof translations;
 
-export default (key: TranslationKeys, language: Language) => {
+export default (key: TranslationKey, language: Language) => {
   try {
-    return translations[key.toLowerCase()][language.toLowerCase()];
+    return translations[key.toString().toLowerCase()][language.toLowerCase()];
   } catch (error) {
     console.error(
       `translation > default | Could not find "${key}" for language "${language}"`

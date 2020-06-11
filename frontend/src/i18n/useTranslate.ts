@@ -1,10 +1,10 @@
 import { useContext, StateUpdater } from "preact/hooks";
 
 import languageContext from "src/i18n/languageContext";
-import translation, { TranslationKeys } from "src/i18n/translation";
+import translation, { TranslationKey } from "src/i18n/translation";
 
 interface Translator {
-  t: (key: TranslationKeys) => string;
+  t: (key: TranslationKey) => string;
   lang: Language;
   setLang: StateUpdater<Language>;
 }
