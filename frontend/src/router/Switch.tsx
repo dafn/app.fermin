@@ -1,7 +1,7 @@
 import { h, Fragment } from "preact";
 import { useState, useEffect, useContext } from "preact/hooks";
 
-import { root, getCurrentRoute, buildHref } from "src/router/navigator";
+import { getCurrentRoute, navigate } from "src/router/navigator";
 import authContext from "src/auth/authContext";
 
 interface Props {
@@ -16,15 +16,14 @@ const Router = ({ children }: Props) => {
   const { isLoggedIn } = useContext(authContext);
 
   useEffect(() => {
-    if (window.location.href === window.location.origin + "/")
-      window.location.href = root;
+    if (window.location.href === window.location.origin + "/") navigate("/");
 
-    if (!isLoggedIn) window.location.href = buildHref("/login");
+    if (!isLoggedIn) navigate("/login");
 
     window.onhashchange = () => {
       const { isLoggedIn } = useContext(authContext);
 
-      if (!isLoggedIn) window.location.href = buildHref("/login");
+      if (!isLoggedIn) navigate("/login");
       setUrl(getCurrentRoute());
     };
   }, []);

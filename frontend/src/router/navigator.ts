@@ -1,21 +1,20 @@
-let previousLocation = window.location.href;
-
 interface Config {
   append?: boolean;
 }
 
-export const root = window.location.origin + "/#";
+const root = window.location.origin + "/#";
+let previousLocation = window.location.href;
 
 export const navigate = (route: Route, config?: Config) => {
   if (config?.append) {
-    window.location.href = window.location.href + `${route}`;
+    window.location.href = window.location.href + route;
   } else {
-    window.location.href = route === "/" ? root : root + `${route}`;
+    window.location.href = route === "/" ? root : root + route;
   }
 };
 
 export const onNavigation = (callback: (route: Route) => void) => {
-  window.addEventListener("popstate", (state) => {
+  window.addEventListener("popstate", () => {
     if (window.location.href === previousLocation) return;
 
     previousLocation = window.location.href;
