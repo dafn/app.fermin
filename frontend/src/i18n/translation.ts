@@ -1,5 +1,5 @@
 const translations = {
-  akkumulert_formue: {
+  accumulated_wealth: {
     no: "Akkumulert formue",
     en: "Accumulated Wealth",
   },
@@ -33,7 +33,9 @@ const translations = {
   },
 };
 
-export default (key: string, language: Language) => {
+export type TranslationKeys = keyof typeof translations;
+
+export default (key: TranslationKeys, language: Language) => {
   try {
     return translations[key.toLowerCase()][language.toLowerCase()];
   } catch (error) {
