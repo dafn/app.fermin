@@ -8,3 +8,59 @@ body {
   height: 100vh;
   margin: 0;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+textarea,
+input {
+  color: var(--fermin-theme-text);
+}
+
+.fermin-button--alert {
+  &.mdc-button {
+    background-color: var(--fermin-theme-alert);
+  }
+}
+
+.mdc-theme--primary {
+  color: var(--fermin-theme-primary);
+}
+.mdc-theme--primary-bg {
+  background-color: var(--fermin-theme-primary);
+}
+
+.mdc-theme--secondary {
+  color: var(--fermin-theme-secondary);
+}
+.mdc-theme--secondary-bg {
+  background-color: var(--fermin-theme-secondary);
+}
+
+.mdc-theme--background {
+  background-color: var(--fermin-theme-surface);
+}
+.mdc-theme--surface {
+  background-color: var(--fermin-theme-surface);
+}
+
+.mdc-text-field,
+.mdc-notched-outline {
+  input {
+    &:hover ~ .mdc-notched-outline__idle,
+    &:hover ~ .mdc-notched-outline--notched {
+      border-color: var(--fermin-theme-secondary) !important;
+      svg path {
+        stroke: var(--fermin-theme-secondary) !important;
+      }
+    }
+  }
+  &--focused {
+    label {
+      color: var(--fermin-theme-secondary) !important;
+    }
+  }
+}
