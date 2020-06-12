@@ -9,7 +9,7 @@ import alias from "@rollup/plugin-alias";
 import commonjs from "@rollup/plugin-commonjs";
 import cssnano from "cssnano";
 import html2 from "rollup-plugin-html2";
-import stil from "./plugin";
+import stil from "./plugins/rollup-plugin-stil";
 
 const template = `
   <!DOCTYPE html>
