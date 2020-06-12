@@ -6,7 +6,6 @@ import { Button } from "preact-material-components/Button";
 
 import authContext from "src/auth/authContext";
 
-import style from "./index.module.scss";
 import { login, logout } from "src/api/auth";
 import { getCurrentRoute, navigate } from "src/router/navigator";
 
@@ -34,7 +33,7 @@ const Login = () => {
   });
 
   return (
-    <main class={style.login}>
+    <main class={style["login"]}>
       <section>
         <TextField label="Brukernavn" outlined dense ref={username} />
         <TextField
@@ -68,3 +67,18 @@ const Login = () => {
 };
 
 export default Login;
+
+const style = `
+  .login {
+    display: grid;
+    width: 100%;
+    > section {
+      align-self: center;
+      justify-self: center;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      row-gap: 2rem;
+      width: 24rem;
+    }
+  }
+`

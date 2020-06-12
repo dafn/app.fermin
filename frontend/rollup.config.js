@@ -9,6 +9,7 @@ import alias from "@rollup/plugin-alias";
 import commonjs from "@rollup/plugin-commonjs";
 import cssnano from "cssnano";
 import html2 from "rollup-plugin-html2";
+import stil from "./plugin";
 
 const template = `
   <!DOCTYPE html>
@@ -43,6 +44,10 @@ const plugins = [
   resolve(),
   commonjs({ include: "node_modules/**", extensions: [".js", ".ts"] }),
   typescript(),
+  stil({
+    identifier: "style",
+    extension: "scss",
+  }),
   postcss({
     extract: true,
     plugins: isDevelopment

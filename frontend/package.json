@@ -17,6 +17,9 @@
   },
   "devDependencies": {
     "@ampproject/rollup-plugin-closure-compiler": "^0.25.2",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-syntax-jsx": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
     "@rollup/plugin-alias": "^3.1.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",

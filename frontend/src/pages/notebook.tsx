@@ -1,14 +1,12 @@
 import { h } from "preact";
-import { useState, useEffect, useRef } from "preact/hooks";
-
-import style from "./index.module.scss";
+import { useState, useEffect } from "preact/hooks";
 
 import Notepad from "src/components/Notepad";
 import Notelist from "src/components/NoteList";
 import Snackbar from "src/components/core/Snackbar";
 
 import { getAll, post, put, removeById } from "src/api/notes";
-import { Provider } from "./context";
+import { Provider } from "./context/notebookContext";
 
 const Notebook = () => {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -77,7 +75,7 @@ const Notebook = () => {
         ...actions,
       }}
     >
-      <main class={style.notebook}>
+      <main class={style["notebook"]}>
         <Notelist />
         <Notepad />
       </main>
@@ -87,3 +85,19 @@ const Notebook = () => {
 };
 
 export default Notebook;
+
+const style = `
+  .notebook {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100vw;
+    background-color: var(--fermin-theme-background);
+    .snackbar {
+      background-color: var(--fermin-theme-positive);
+      min-width: 0;
+      div {
+        padding: 0;
+      }
+    }
+  }
+`;

@@ -2,7 +2,6 @@ import { h } from "preact";
 
 import TextField from "preact-material-components/TextField";
 
-import style from "./accumulatedWealthCalculator.module.scss";
 import { useState, useEffect } from "preact/hooks";
 import { NOK } from "src/utils/currency";
 
@@ -37,7 +36,7 @@ const AccumulatedWealthCalculator = () => {
   return (
     <section class={style["accumulated-wealth-calculator"]}>
       <h5 class="mdc-typography--headline5">Akkumulart formue</h5>
-      <section class={style.inputs}>
+      <section class={style["inputs"]}>
         <TextField
           label="Nåværende Formue"
           outlined
@@ -81,3 +80,17 @@ const AccumulatedWealthCalculator = () => {
 };
 
 export default AccumulatedWealthCalculator;
+
+const style = `
+  .accumulated-wealth-calculator {
+    > h5,
+    > p {
+      margin: 1rem 0;
+    }
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      column-gap: 1rem;
+    }
+  }
+`

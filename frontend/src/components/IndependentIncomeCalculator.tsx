@@ -2,7 +2,6 @@ import { h } from "preact";
 
 import TextField from "preact-material-components/TextField";
 
-import style from "./independentIncomeCalculator.module.scss";
 import { useState, useEffect } from "preact/hooks";
 import { NOK } from "src/utils/currency";
 import useTranslate from "src/i18n/useTranslate";
@@ -104,3 +103,17 @@ const IndependentIncomeCalculator = () => {
 };
 
 export default IndependentIncomeCalculator;
+
+const style = `
+  .independent-income-calculator {
+    > h5,
+    > p {
+      margin: 1rem 0;
+    }
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      column-gap: 1rem;
+    }
+  }
+`

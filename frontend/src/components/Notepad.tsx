@@ -1,9 +1,8 @@
 import { h } from "preact";
 
-import style from "./notepad.module.scss";
 import { useContext, useEffect, useRef } from "preact/hooks";
 
-import context from "src/pages/notebook/context";
+import context from "src/pages/context/notebookContext";
 
 let timer;
 
@@ -43,7 +42,7 @@ const Notepad = () => {
   };
 
   return (
-    <section class={style.notepad}>
+    <section class={style["notepad"]}>
       <input
         type="text"
         ref={title}
@@ -64,3 +63,29 @@ const Notepad = () => {
 };
 
 export default Notepad;
+
+const style = `
+  .notepad {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: var(--fermin-theme-background);
+    margin: 6rem;
+    input,
+    textarea {
+      padding: 1rem;
+      border: none;
+      background-color: var(--fermin-theme-background);
+      &:focus {
+        outline: none;
+      }
+    }
+    input {
+      margin: 2rem 0;
+      font-size: 14pt;
+    }
+    textarea {
+      resize: none;
+      font-size: 11pt;
+    }
+  }
+`

@@ -1,7 +1,5 @@
 import { h, Fragment } from "preact";
-import { useState, useEffect, useContext } from "preact/hooks";
-
-import style from "./sidebar.module.scss";
+import { useState, useContext } from "preact/hooks";
 
 import Icon from "preact-material-components/Icon";
 import Button from "preact-material-components/Button";
@@ -23,7 +21,7 @@ const Sidebar = () => {
   });
 
   return (
-    <nav class={`${style.sidebar}`}>
+    <nav class={`${style["sidebar"]}`}>
       <Button
         secondary={route === "/login" || route === "/logout"}
         onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
@@ -60,3 +58,19 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+const style = `
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--fermin-theme-primary);
+    width: 4rem;
+    button {
+      height: 4rem;
+      i {
+        color: var(--fermin-theme-icon);
+      }
+    }
+  }
+`
