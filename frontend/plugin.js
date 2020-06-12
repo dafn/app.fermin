@@ -1,12 +1,14 @@
 import fs from "fs";
 import path from "path";
-// import rimraf from "rimraf";
+import rimraf from "rimraf";
 import * as babel from "@babel/core";
+import murmurhash3 from "murmurhash3";
 
 const tempDir = ".stil_temp";
 const dirname = path.resolve();
 
 let outputFileName;
+let outputFilePath;
 // let counter = 0;
 
 const presets = {
@@ -59,7 +61,7 @@ const transform = (filepath, identifier, raw) => {
   ast.program.body.splice(styleIndex, 1);
 
   const importcss = babel.transformSync(
-    `import ${identifier} from "${dirname}/${tempDir}/${outputFileName}.module.scss"`,
+    `import ${identifier} from "${dirname}/${outputFilePath}"`,
     {
       filename: filepath,
       babelrc: false,
@@ -95,9 +97,8 @@ export default function myPlugin(options = defaultOptions) {
       if (!supportedFormats.includes(path.extname(id))) return;
       if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
 
-      outputFileName = path.basename(id).replace(path.extname(id), "");
-
-      const filepath = `${tempDir}/${outputFileName}.module.${options.extension}`;
+      outputFileName = murmurhash3.murmur32HexSync(id);
+      outputFilePath = `${tempDir}/${outputFileName}.module.${options.extension}`;
 
       const transformedCode = transform(
         id,
@@ -107,7 +108,7 @@ export default function myPlugin(options = defaultOptions) {
 
       if (transformedCode) {
         // TODO: use this.emitFile
-        fs.writeFileSync(filepath, transformedCode.style);
+        fs.writeFileSync(outputFilePath, transformedCode.style);
       }
 
       return {
@@ -116,7 +117,7 @@ export default function myPlugin(options = defaultOptions) {
       };
     },
     buildEnd() {
-      // rimraf.sync(tempDir);
+      if (process.env.ROLLUP_WATCH !== "true") rimraf.sync(tempDir);
     },
   };
 }
