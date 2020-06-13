@@ -5,7 +5,7 @@ import IndependentIncomeCalculator from "src/components/IndependentIncomeCalcula
 
 const Calculator = () => {
   return (
-    <main class={style["calculator"]}>
+    <main class={css["calculator"]}>
       <section>
         <AccumulatedWealthCalculator />
         <IndependentIncomeCalculator />
@@ -16,7 +16,7 @@ const Calculator = () => {
 
 export default Calculator;
 
-const style = `
+css`
   .calculator {
     display: flex;
     flex-direction: column;

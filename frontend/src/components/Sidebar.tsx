@@ -21,7 +21,7 @@ const Sidebar = () => {
   });
 
   return (
-    <nav class={`${style["sidebar"]}`}>
+    <nav class={`${css["sidebar"]}`}>
       <Button
         secondary={route === "/login" || route === "/logout"}
         onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
@@ -59,7 +59,7 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-const style = `
+css`
   .sidebar {
     display: flex;
     flex-direction: column;

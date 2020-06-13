@@ -23,4 +23,7 @@ declare global {
       isLoggedIn: boolean;
     };
   };
+
+  // To remove the need for an import of stil
+  const css: (style: TemplateStringsArray) => void;
 }

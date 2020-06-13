@@ -42,7 +42,7 @@ const Notepad = () => {
   };
 
   return (
-    <section class={style["notepad"]}>
+    <section class={css["notepad"]}>
       <input
         type="text"
         ref={title}
@@ -64,7 +64,7 @@ const Notepad = () => {
 
 export default Notepad;
 
-const style = `
+css`
   .notepad {
     display: grid;
     grid-template-rows: auto 1fr;

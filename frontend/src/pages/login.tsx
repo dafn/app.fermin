@@ -33,7 +33,7 @@ const Login = () => {
   });
 
   return (
-    <main class={style["login"]}>
+    <main class={css["login"]}>
       <section>
         <TextField label="Brukernavn" outlined dense ref={username} />
         <TextField
@@ -68,7 +68,7 @@ const Login = () => {
 
 export default Login;
 
-const style = `
+css`
   .login {
     display: grid;
     width: 100%;

@@ -58,9 +58,9 @@ const IndependentIncomeCalculator = () => {
   }, [income, salary, salaryTax]);
 
   return (
-    <section class={style["independent-income-calculator"]}>
+    <section class={css["independent-income-calculator"]}>
       <h5 class="mdc-typography--headline5">{t("independent_earnings")}</h5>
-      <section class={style["inputs"]}>
+      <section class={css["inputs"]}>
         <TextField
           label={t("gross_income")}
           outlined
@@ -104,7 +104,7 @@ const IndependentIncomeCalculator = () => {
 
 export default IndependentIncomeCalculator;
 
-const style = `
+css`
   .independent-income-calculator {
     > h5,
     > p {

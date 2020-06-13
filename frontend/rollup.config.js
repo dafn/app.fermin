@@ -45,7 +45,6 @@ const plugins = [
   commonjs({ include: "node_modules/**", extensions: [".js", ".ts"] }),
   typescript(),
   stil({
-    identifier: "style",
     extension: "scss",
   }),
   postcss({

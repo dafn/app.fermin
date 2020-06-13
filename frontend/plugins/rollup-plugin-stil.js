@@ -37,7 +37,23 @@ const transform = (filepath, identifier, raw) => {
   let style, styleIndex;
 
   for (let [index, node] of Object.entries(ast.program.body)) {
-    if (node.type === "VariableDeclaration" && node.kind === "const") {
+    // css``
+    if (
+      node.type === "ExpressionStatement" &&
+      node.expression.type === "TaggedTemplateExpression" &&
+      node.expression.tag.name === "css"
+    ) {
+      if (node.expression.quasi.quasis.length > 1)
+        throw new Error(
+          `stil does not support string interpolation > ${filepath}:${node.expression.quasi.quasis[0].loc.start.line}:1`
+        );
+
+      styleIndex = index;
+      style = node.expression.quasi.quasis[0].value.raw;
+    }
+
+    // const style = ``;
+    /* if (node.type === "VariableDeclaration" && node.kind === "const") {
       for (let declaration of node.declarations) {
         if (declaration.id["name"] === identifier) {
           if (declaration.init.type !== "TemplateLiteral")
@@ -53,7 +69,7 @@ const transform = (filepath, identifier, raw) => {
           style = declaration.init.quasis[0].value.raw;
         }
       }
-    }
+    } */
   }
 
   if (typeof style !== "string") return undefined;
@@ -86,7 +102,7 @@ const transform = (filepath, identifier, raw) => {
 };
 
 const defaultOptions = {
-  identifier: "style",
+  identifier: "css",
   extension: ".css",
 };
 
@@ -96,6 +112,8 @@ export default function myPlugin(options = defaultOptions) {
     transform(code, id) {
       if (!supportedFormats.includes(path.extname(id))) return;
       if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
+
+      // if (!supportedFormats.includes(path.basename(id))) return;
 
       outputFileName = murmurhash3.murmur32HexSync(id);
       outputFilePath = `${tempDir}/${outputFileName}.module.${options.extension}`;

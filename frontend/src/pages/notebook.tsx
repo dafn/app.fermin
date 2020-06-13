@@ -75,7 +75,7 @@ const Notebook = () => {
         ...actions,
       }}
     >
-      <main class={style["notebook"]}>
+      <main class={css["notebook"]}>
         <Notelist />
         <Notepad />
       </main>
@@ -86,7 +86,7 @@ const Notebook = () => {
 
 export default Notebook;
 
-const style = `
+css`
   .notebook {
     display: grid;
     grid-template-columns: auto 1fr;

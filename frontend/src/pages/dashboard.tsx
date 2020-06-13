@@ -2,7 +2,7 @@ import { h } from "preact";
 
 const Dashboard = () => {
   return (
-    <main class={style["dashboard"]}>
+    <main class={css["dashboard"]}>
       <iframe src="https://bors.e24.no/#!/market/world"></iframe>
       <iframe src="https://finansavisen.no"></iframe>
     </main>
@@ -11,7 +11,7 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-const style = `
+css`
   .dashboard {
     display: grid;
     grid-template-columns: 1fr 1fr;

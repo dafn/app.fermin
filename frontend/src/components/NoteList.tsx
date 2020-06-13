@@ -32,19 +32,19 @@ const Notelist = () => {
   };
 
   return (
-    <section class={style["notelist"]}>
+    <section class={css["notelist"]}>
       {notes.length ? (
         notes.map((note, index) => (
           <Card
-            class={`${style["card"]} ${
-              index === activeIndex ? style["active"] : ""
+            class={`${css["card"]} ${
+              index === activeIndex ? css["active"] : ""
             }`}
             onClick={() => index !== activeIndex && setActiveIndex(index)}
           >
             <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
             <p class="mdc-typography--body2"> {note.content} </p>
             <Icon
-              class={`${index === activeIndex ? style["show"] : ""}`}
+              class={`${index === activeIndex ? css["show"] : ""}`}
               onClick={() => showDialog(true)}
             >
               delete_outline
@@ -52,7 +52,7 @@ const Notelist = () => {
           </Card>
         ))
       ) : (
-        <section class={style["empty-list"]}>
+        <section class={css["empty-list"]}>
           <h2 class="mdc-typography--subtitle2">Empty list</h2>
         </section>
       )}
@@ -79,7 +79,7 @@ const Notelist = () => {
 
 export default Notelist;
 
-const style = `
+css`
   .notelist {
     display: flex;
     flex-direction: column;
@@ -127,7 +127,7 @@ const style = `
         position: absolute;
         margin: 0.2rem;
         font-size: 14pt;
-        transition: color .05s;
+        transition: color 0.05s;
         right: 0;
         cursor: pointer;
         &.show {

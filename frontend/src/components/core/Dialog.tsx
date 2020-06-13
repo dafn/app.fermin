@@ -11,8 +11,8 @@ interface Props extends h.JSX.HTMLAttributes<HTMLDialogElement> {
 const Dialog = ({ children, message, show, ...rest }: Props) => {
   return (
     <dialog
-      class={`${style["dialog"]} ${cn({
-        [style["visible"]]: show,
+      class={`${css["dialog"]} ${cn({
+        [css["visible"]]: show,
       })}`}
       aria-hidden={!show}
       {...rest}
@@ -27,7 +27,7 @@ const Dialog = ({ children, message, show, ...rest }: Props) => {
 
 export default Dialog;
 
-const style = `
+css`
   .dialog {
     position: fixed;
     display: grid;

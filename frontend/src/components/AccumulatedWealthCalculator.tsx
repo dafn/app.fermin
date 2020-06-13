@@ -34,9 +34,9 @@ const AccumulatedWealthCalculator = () => {
   }, [wealth, investment, years, growth]);
 
   return (
-    <section class={style["accumulated-wealth-calculator"]}>
+    <section class={css["accumulated-wealth-calculator"]}>
       <h5 class="mdc-typography--headline5">Akkumulart formue</h5>
-      <section class={style["inputs"]}>
+      <section class={css["inputs"]}>
         <TextField
           label="Nåværende Formue"
           outlined
@@ -81,7 +81,7 @@ const AccumulatedWealthCalculator = () => {
 
 export default AccumulatedWealthCalculator;
 
-const style = `
+css`
   .accumulated-wealth-calculator {
     > h5,
     > p {
