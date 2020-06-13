@@ -19,7 +19,9 @@ import "./index.scss";
 
 const App = () => {
   const [lang, setLang] = useState<Language>("no");
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(env.initialAuthState.isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+    env.initialAuthState.isLoggedIn
+  );
 
   return (
     <Fragment>
