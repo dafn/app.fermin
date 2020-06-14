@@ -2,7 +2,6 @@ import { h } from "preact";
 
 import { useContext, useState } from "preact/hooks";
 
-import Icon from "preact-material-components/Icon";
 import Card from "preact-material-components/Card";
 import Fab from "preact-material-components/Fab";
 import Button from "preact-material-components/Button";
@@ -43,12 +42,12 @@ const Notelist = () => {
           >
             <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
             <p class="mdc-typography--body2"> {note.content} </p>
-            <Icon
+            <i
               class={`${index === activeIndex ? css["show"] : ""}`}
               onClick={() => showDialog(true)}
             >
-              delete_outline
-            </Icon>
+              &#xe804;
+            </i>
           </Card>
         ))
       ) : (
@@ -57,7 +56,7 @@ const Notelist = () => {
         </section>
       )}
       <Fab ripple mini onClick={addNote}>
-        <Fab.Icon>add</Fab.Icon>
+        <i>&#xe803;</i>
       </Fab>
       <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
         <Button dense onClick={() => showDialog(false)}>
@@ -125,8 +124,8 @@ css`
       i {
         display: none;
         position: absolute;
-        margin: 0.2rem;
-        font-size: 14pt;
+        margin: 0.3rem;
+        font-size: 12pt;
         transition: color 0.05s;
         right: 0;
         cursor: pointer;

@@ -1,7 +1,6 @@
 import { h, Fragment } from "preact";
 import { useState, useContext } from "preact/hooks";
 
-import Icon from "preact-material-components/Icon";
 import Button from "preact-material-components/Button";
 
 import { navigate, onNavigation, getCurrentRoute } from "src/router/navigator";
@@ -29,7 +28,7 @@ const Sidebar = () => {
           "fermin-button--alert": isLoggedIn,
         })}
       >
-        <Icon>vpn_key</Icon>
+        <i>&#xe800;</i>
       </Button>
       {isLoggedIn && (
         <Fragment>
@@ -37,19 +36,19 @@ const Sidebar = () => {
             secondary={route === "/"}
             onClick={() => handleButtonClick("/")}
           >
-            <Icon>dashboard</Icon>
+            <i>&#xe802;</i>
           </Button>
           <Button
             secondary={route === "/notepad"}
             onClick={() => handleButtonClick("/notepad")}
           >
-            <Icon>create</Icon>
+            <i>&#xe801;</i>
           </Button>
           <Button
             secondary={route === "/calculator"}
             onClick={() => handleButtonClick("/calculator")}
           >
-            <Icon>functions</Icon>
+            <i>&#xf01a;</i>
           </Button>
         </Fragment>
       )}
@@ -70,6 +69,7 @@ css`
       height: 4rem;
       i {
         color: var(--fermin-theme-icon);
+        font-size: 1.2rem;
       }
     }
   }
