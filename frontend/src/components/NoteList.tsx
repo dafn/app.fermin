@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import { useContext, useRef, useState } from "preact/hooks";
+import { useContext, useState } from "preact/hooks";
 
 import Icon from "preact-material-components/Icon";
 import Card from "preact-material-components/Card";

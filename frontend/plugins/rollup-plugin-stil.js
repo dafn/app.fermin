@@ -103,7 +103,7 @@ const transform = (filepath, identifier, raw) => {
 
 const defaultOptions = {
   identifier: "css",
-  extension: ".css",
+  extension: "css",
 };
 
 export default function myPlugin(options = defaultOptions) {
