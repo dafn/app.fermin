@@ -3,8 +3,8 @@ import { h } from "preact";
 import { useContext, useState } from "preact/hooks";
 
 import Card from "preact-material-components/Card";
-import Fab from "preact-material-components/Fab";
 import Button from "preact-material-components/Button";
+import Fab from "src/components/core/Fab";
 
 import Dialog from "./core/Dialog";
 
@@ -55,9 +55,7 @@ const Notelist = () => {
           <h2 class="mdc-typography--subtitle2">Empty list</h2>
         </section>
       )}
-      <Fab ripple mini onClick={addNote}>
-        <i>&#xe803;</i>
-      </Fab>
+      <Fab onClick={addNote}></Fab>
       <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
         <Button dense onClick={() => showDialog(false)}>
           Cancel
