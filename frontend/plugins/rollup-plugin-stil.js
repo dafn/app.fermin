@@ -116,11 +116,13 @@ export default function myPlugin(options = defaultOptions) {
       // if (!supportedFormats.includes(path.basename(id))) return;
 
       outputFileName = murmurhash3.murmur32HexSync(id);
-      outputFilePath = `${tempDir}/${outputFileName}.module.${options.extension}`;
+      outputFilePath = `${tempDir}/${outputFileName}.module.${
+        options.extension || defaultOptions.extension
+      }`;
 
       const transformedCode = transform(
         id,
-        options.identifier || "style",
+        options.identifier || defaultOptions.identifier,
         code
       );
 
