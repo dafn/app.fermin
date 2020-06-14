@@ -3,6 +3,11 @@
 
 @import "src/theme/light/colors";
 
+@font-face {
+  font-family: "fontello";
+  src: url("/assets/fonts/fontello.woff2");
+}
+
 body {
   display: flex;
   height: 100vh;

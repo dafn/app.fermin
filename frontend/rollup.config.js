@@ -1,14 +1,15 @@
-import typescript from "@rollup/plugin-typescript";
 import closure from "@ampproject/rollup-plugin-closure-compiler";
+import typescript from "@rollup/plugin-typescript";
 import resolve from "@rollup/plugin-node-resolve";
-import { terser } from "rollup-plugin-terser";
+import url from "@rollup/plugin-url";
+import commonjs from "@rollup/plugin-commonjs";
+import alias from "@rollup/plugin-alias";
 import postcss from "rollup-plugin-postcss";
 import reload from "rollup-plugin-livereload";
 import visualizer from "rollup-plugin-visualizer";
-import alias from "@rollup/plugin-alias";
-import commonjs from "@rollup/plugin-commonjs";
-import cssnano from "cssnano";
+import { terser } from "rollup-plugin-terser";
 import html2 from "rollup-plugin-html2";
+import cssnano from "cssnano";
 import stil from "./plugins/rollup-plugin-stil";
 
 const template = `

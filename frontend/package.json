@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "find dist -name \"*.*\" -maxdepth 1 -type f -delete",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "rimraf dist .stil_temp && NODE_ENV=development && rollup -w -c",
-    "build": "rimraf dist .stil_temp && NODE_ENV=production && rollup -c"
+    "dev": "yarn clean && NODE_ENV=development && rollup -w -c",
+    "build": "yarn clean && NODE_ENV=production && rollup -c"
   },
   "author": "",
   "license": "ISC",
@@ -30,7 +31,6 @@
     "murmurhash3": "^0.4.3",
     "node-sass": "^4.13.1",
     "prettier": "^2.0.4",
-    "rimraf": "^3.0.2",
     "rollup": "^2.6.1",
     "rollup-plugin-html2": "^1.1.0",
     "rollup-plugin-livereload": "^1.2.0",
