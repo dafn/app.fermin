@@ -55,7 +55,9 @@ const Notelist = () => {
           <h2 class="mdc-typography--subtitle2">Empty list</h2>
         </section>
       )}
-      <Fab onClick={addNote}></Fab>
+      <Fab onClick={addNote}>
+        <i>&#xe803;</i>
+      </Fab>
       <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
         <Button dense onClick={() => showDialog(false)}>
           Cancel

@@ -1,12 +1,14 @@
 import { h } from "preact";
 
-interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {}
+interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
+  children: h.JSX.Element | h.JSX.Element[];
+}
 
-const Fab = (props) => {
+const Fab = ({ children, ...rest }: Props) => {
   return (
-    <div class={css["fab"]} {...props}>
-      <i>&#xe803;</i>
-    </div>
+    <button class={css["fab"]} {...rest}>
+      {children}
+    </button>
   );
 };
 
