@@ -42,6 +42,7 @@ const plugins = [
   typescript(),
   stil({
     extension: "scss",
+    include: [".tsx"],
   }),
   postcss({
     extract: true,

@@ -61,9 +61,10 @@ const transform = (filepath, raw) => {
   };
 };
 
-export default (options = defaultOptions) => {
+export default (options) => {
   options = {
     extension: "css",
+    include: [".js", ".ts", ".jsx", ".tsx"],
     ...options,
   };
 
@@ -76,10 +77,8 @@ export default (options = defaultOptions) => {
       return extractedStyles[importee] && importee;
     },
     transform(code, id) {
-      if (!supportedFormats.includes(path.extname(id))) return;
+      if (!options.include.includes(path.extname(id))) return;
       if (id.replace(__dirname, "").startsWith("/node_modules")) return;
-
-      console.log(id.replace(__dirname, ""));
 
       const outputFileName = murmurhash3.murmur32HexSync(id);
       const outputFilePath = `${path.dirname(id)}/${outputFileName}.module.${
