@@ -91,7 +91,7 @@ css`
     button {
       height: 4rem;
       i {
-        color: var(--fermin-theme-icon);
+        color: var(--fermin-theme-icon-on-dark);
         font-size: 1.2rem;
       }
     }
@@ -107,7 +107,7 @@ css`
         align-items: center;
         i {
           text-align: center;
-          color: var(--fermin-theme-icon);
+          color: var(--fermin-theme-icon-on-dark);
           margin: 1rem;
         }
         .switch {

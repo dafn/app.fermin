@@ -128,6 +128,7 @@ css`
         margin: 0.3rem;
         font-size: 12pt;
         transition: color 0.05s;
+        color: var(--fermin-theme-icon-on-light);
         right: 0;
         cursor: pointer;
         &.show {

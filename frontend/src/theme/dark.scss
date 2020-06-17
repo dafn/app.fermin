@@ -1,19 +1,20 @@
 .fermin-theme-dark {
-  --fermin-theme-primary: red;
-  --fermin-theme-secondary: blue;
-  --fermin-theme-tertiary: green;
+  --fermin-theme-primary: #393741;
+  --fermin-theme-secondary: #201f24;
+  --fermin-theme-tertiary: #393741;
 
   --fermin-theme-positive: #32a852;
   --fermin-theme-negative: #f44336;
   --fermin-theme-alert: #ff9800;
   --fermin-theme-info: #2196f3;
 
-  --fermin-theme-icon: #fff;
+  --fermin-theme-icon-on-dark: #fff;
+  --fermin-theme-icon-on-light: #fff;
   --fermin-theme-overlay: #00000033;
   --fermin-theme-placeholder: #757575;
-  --fermin-theme-background: #fff;
-  --fermin-theme-surface: #fff;
-  --fermin-theme-text: #202020;
+  --fermin-theme-background: #393741;
+  --fermin-theme-surface: #494653;
+  --fermin-theme-text: #fff;
   --fermin-theme-text-inverted: #fff;
 
   --mdc-theme-primary: var(--fermin-theme-primary);

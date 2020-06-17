@@ -34,7 +34,7 @@ css`
       filter: brightness(85%);
     }
     i {
-      color: var(--fermin-theme-icon);
+      color: var(--fermin-theme-icon-on-dark);
     }
   }
 `;
