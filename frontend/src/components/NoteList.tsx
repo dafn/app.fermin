@@ -9,6 +9,7 @@ import Fab from "src/components/core/Fab";
 import Dialog from "./core/Dialog";
 
 import context from "src/pages/context/notebookContext";
+import cn from "src/utils/cn";
 
 const Notelist = () => {
   const {
@@ -35,19 +36,19 @@ const Notelist = () => {
       {notes.length ? (
         notes.map((note, index) => (
           <Card
-            class={`${css["card"]} ${
-              index === activeIndex ? css["active"] : ""
-            }`}
+            class={`${css["card"]} ${cn({
+              [css["active"]]: index === activeIndex,
+            })}`}
             onClick={() => index !== activeIndex && setActiveIndex(index)}
           >
             <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
             <p class="mdc-typography--body2"> {note.content} </p>
             <i
-              class={`${index === activeIndex ? css["show"] : ""}`}
+              class={`${cn({
+                [css["show"]]: index === activeIndex,
+              })} icon-trash`}
               onClick={() => showDialog(true)}
-            >
-              &#xe804;
-            </i>
+            />
           </Card>
         ))
       ) : (
@@ -56,7 +57,7 @@ const Notelist = () => {
         </section>
       )}
       <Fab onClick={addNote}>
-        <i>&#xe803;</i>
+        <i class="icon-plus" />
       </Fab>
       <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
         <Button dense onClick={() => showDialog(false)}>

@@ -80,3 +80,28 @@ i {
     }
   }
 }
+
+.icon-user:before {
+  content: "\e800";
+} /* '' */
+.icon-pencil:before {
+  content: "\e801";
+} /* '' */
+.icon-layout:before {
+  content: "\e802";
+} /* '' */
+.icon-plus:before {
+  content: "\e803";
+} /* '' */
+.icon-trash:before {
+  content: "\e804";
+} /* '' */
+.icon-sun-inv:before {
+  content: "\e805";
+} /* '' */
+.icon-moon-inv:before {
+  content: "\e806";
+} /* '' */
+.icon-math:before {
+  content: "\f01a";
+} /* '' */

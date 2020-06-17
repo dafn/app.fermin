@@ -38,7 +38,7 @@ const Sidebar = () => {
             "fermin-button--alert": isLoggedIn,
           })}
         >
-          <i>&#xe800;</i>
+          <i class="icon-user" />
         </Button>
         {isLoggedIn && (
           <Fragment>
@@ -46,19 +46,19 @@ const Sidebar = () => {
               secondary={route === "/"}
               onClick={() => handleButtonClick("/")}
             >
-              <i>&#xe802;</i>
+              <i class="icon-layout" />
             </Button>
             <Button
               secondary={route === "/notepad"}
               onClick={() => handleButtonClick("/notepad")}
             >
-              <i>&#xe801;</i>
+              <i class="icon-pencil" />
             </Button>
             <Button
               secondary={route === "/calculator"}
               onClick={() => handleButtonClick("/calculator")}
             >
-              <i>&#xf01a;</i>
+              <i class="icon-math" />
             </Button>
           </Fragment>
         )}
