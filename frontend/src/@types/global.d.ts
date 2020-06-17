@@ -5,6 +5,8 @@ declare global {
 
   type Language = "en" | "no";
 
+  type Theme = "fermin-theme-light" | "fermin-theme-dark";
+
   interface Note {
     id?: number;
     title: string;

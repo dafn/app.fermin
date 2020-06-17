@@ -2,6 +2,7 @@
 @import "node_modules/@material/typography/mdc-typography";
 
 @import "src/theme/light";
+@import "src/theme/dark";
 
 @font-face {
   font-family: "fontello";
@@ -12,6 +13,10 @@ body {
   display: flex;
   height: 100vh;
   margin: 0;
+  > section {
+    display: inherit;
+    width: 100vw;
+  }
 }
 
 h1,
@@ -52,7 +57,7 @@ i {
 }
 
 .mdc-theme--background {
-  background-color: var(--fermin-theme-surface);
+  background-color: var(--fermin-theme-background);
 }
 .mdc-theme--surface {
   background-color: var(--fermin-theme-surface);
