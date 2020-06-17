@@ -64,7 +64,15 @@ const Sidebar = () => {
         )}
       </section>
       <section class={css["bottom"]}>
-        <Switch class={css["switch"]} onClick={handleThemeSwitch} />
+        <div>
+          <i
+            class={cn({
+              "icon-sun-inv": theme === "fermin-theme-light",
+              "icon-moon-inv": theme === "fermin-theme-dark",
+            })}
+          />
+          <Switch class={css["switch"]} onClick={handleThemeSwitch} />
+        </div>
       </section>
     </nav>
   );
@@ -93,8 +101,18 @@ css`
       align-items: flex-start;
     }
     .bottom {
-      .switch {
-        height: 3rem;
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        i {
+          text-align: center;
+          color: var(--fermin-theme-icon);
+          margin: 1rem;
+        }
+        .switch {
+          height: 3rem;
+        }
       }
     }
   }
