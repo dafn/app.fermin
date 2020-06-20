@@ -1,6 +1,5 @@
 import path from "path";
 import * as babel from "@babel/core";
-import murmurhash3 from "murmurhash3";
 
 let extractedStyles = {};
 
@@ -80,8 +79,7 @@ export default (options) => {
       if (!options.include.includes(path.extname(id))) return;
       if (id.replace(__dirname, "").startsWith("/node_modules")) return;
 
-      const outputFileName = murmurhash3.murmur32HexSync(id);
-      const outputFilePath = `${path.dirname(id)}/${outputFileName}.module.${
+      const outputFilePath = `${id}.module.${
         options.extension
       }`;
 
