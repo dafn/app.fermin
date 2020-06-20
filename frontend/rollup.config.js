@@ -22,10 +22,6 @@ const template = `
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700"
       />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto+Mono"
-      />
       <title>app.fermin</title>
     </head>
     <body>
