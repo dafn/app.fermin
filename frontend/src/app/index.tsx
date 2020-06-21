@@ -19,7 +19,7 @@ import { useState } from "preact/hooks";
 import "./index.scss";
 
 const App = () => {
-  const [theme, setTheme] = useState<Theme>("fermin-theme-light");
+  const [theme, setTheme] = useState<Theme>("fermin-theme-dark");
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
     env.initialAuthState.isLoggedIn
   );
