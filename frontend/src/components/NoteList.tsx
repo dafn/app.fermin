@@ -2,7 +2,7 @@ import { h } from "preact";
 
 import { useContext, useState } from "preact/hooks";
 
-import Card from "preact-material-components/Card";
+import Card from "src/components/core/Card";
 import Button from "preact-material-components/Button";
 import Fab from "src/components/core/Fab";
 
@@ -36,7 +36,7 @@ const Notelist = () => {
       {notes.length ? (
         notes.map((note, index) => (
           <Card
-            class={`${css["card"]} ${cn({
+            className={`${css["card"]} ${cn({
               [css["active"]]: index === activeIndex,
             })}`}
             onClick={() => index !== activeIndex && setActiveIndex(index)}
@@ -95,8 +95,8 @@ css`
     .card {
       display: grid;
       position: relative;
-      height: 5rem;
-      width: 20rem;
+      height: 3rem;
+      width: 18rem;
       margin: 0 1rem 1rem 1rem;
     }
     .card {
