@@ -58,9 +58,9 @@ const IndependentIncomeCalculator = () => {
   }, [income, salary, salaryTax]);
 
   return (
-    <section class={css["independent-income-calculator"]}>
-      <h5 class="mdc-typography--headline5">{t("independent_earnings")}</h5>
-      <section class={css["inputs"]}>
+    <section className={css["independent-income-calculator"]}>
+      <h5 className="mdc-typography--headline5">{t("independent_earnings")}</h5>
+      <section className={css["inputs"]}>
         <TextField
           label={t("gross_income")}
           type="number"
@@ -83,13 +83,13 @@ const IndependentIncomeCalculator = () => {
           autocomplete="off"
         />
       </section>
-      <p class="mdc-typography--body1">
+      <p className="mdc-typography--body1">
         {t("total")} {calculation?.totalProfit}
       </p>
-      <p class="mdc-typography--body1">
+      <p className="mdc-typography--body1">
         {t("corporate")} {calculation?.corporateProfit}
       </p>
-      <p class="mdc-typography--body1">
+      <p className="mdc-typography--body1">
         {t("private")} {calculation?.personalProfit}
       </p>
     </section>

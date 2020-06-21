@@ -2,7 +2,7 @@ import { h } from "preact";
 
 const Dashboard = () => {
   return (
-    <main class={css["dashboard"]}>
+    <main className={css["dashboard"]}>
       <iframe src="https://bors.e24.no/#!/market/world"></iframe>
       <iframe src="https://finansavisen.no"></iframe>
     </main>

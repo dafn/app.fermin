@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <section class={theme}>
+      <section className={theme}>
         <authContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
           <languageContext.Provider value={{ lang, setLang }}>
             <Sidebar />

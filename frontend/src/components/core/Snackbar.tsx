@@ -10,14 +10,14 @@ interface Props extends h.JSX.HTMLAttributes<HTMLElement> {
 const Snackbar = ({ message, show, severity, ...rest }: Props) => {
   return (
     <aside
-      class={`${css["snackbar"]} ${cn({
+      className={`${css["snackbar"]} ${cn({
         [css["visible"]]: show,
       })}`}
       {...rest}
       aria-hidden={!show}
     >
-      <div class={css[severity]}>
-        <p class="mdc-typography--subtitle2"> {message} </p>
+      <div className={css[severity]}>
+        <p className="mdc-typography--subtitle2"> {message} </p>
       </div>
     </aside>
   );

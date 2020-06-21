@@ -4,7 +4,7 @@ interface Props extends h.JSX.HTMLAttributes<HTMLInputElement> {}
 
 const TextField = ({ label, ...rest }: Props) => {
   return (
-    <div class={css["textfield"]}>
+    <div className={css["textfield"]}>
       <label htmlFor="textfield"> {label} </label>
       <input {...rest} />
     </div>

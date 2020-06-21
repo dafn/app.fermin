@@ -5,7 +5,7 @@ import IndependentIncomeCalculator from "src/components/IndependentIncomeCalcula
 
 const Calculator = () => {
   return (
-    <main class={css["calculator"]}>
+    <main className={css["calculator"]}>
       <section>
         <AccumulatedWealthCalculator />
         <IndependentIncomeCalculator />

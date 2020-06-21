@@ -32,7 +32,7 @@ const Notelist = () => {
   };
 
   return (
-    <section class={css["notelist"]}>
+    <section className={css["notelist"]}>
       {notes.length ? (
         notes.map((note, index) => (
           <Card
@@ -41,10 +41,10 @@ const Notelist = () => {
             })}`}
             onClick={() => index !== activeIndex && setActiveIndex(index)}
           >
-            <h2 class="mdc-typography--subtitle2"> {note.title} </h2>
-            <p class="mdc-typography--body2"> {note.content} </p>
+            <h2 className="mdc-typography--subtitle2"> {note.title} </h2>
+            <p className="mdc-typography--body2"> {note.content} </p>
             <i
-              class={`${cn({
+              className={`${cn({
                 [css["show"]]: index === activeIndex,
               })} icon-trash`}
               onClick={() => showDialog(true)}
@@ -52,12 +52,12 @@ const Notelist = () => {
           </Card>
         ))
       ) : (
-        <section class={css["empty-list"]}>
-          <h2 class="mdc-typography--subtitle2">Empty list</h2>
+        <section className={css["empty-list"]}>
+          <h2 className="mdc-typography--subtitle2">Empty list</h2>
         </section>
       )}
       <Fab onClick={addNote}>
-        <i class="icon-plus" />
+        <i className="icon-plus" />
       </Fab>
       <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
         <Button dense onClick={() => showDialog(false)}>

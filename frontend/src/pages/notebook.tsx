@@ -75,7 +75,7 @@ const Notebook = () => {
         ...actions,
       }}
     >
-      <main class={css["notebook"]}>
+      <main className={css["notebook"]}>
         <Notelist />
         <Notepad />
       </main>

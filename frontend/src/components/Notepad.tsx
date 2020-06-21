@@ -42,20 +42,20 @@ const Notepad = () => {
   };
 
   return (
-    <section class={css["notepad"]}>
+    <section className={css["notepad"]}>
       <input
         type="text"
         ref={title}
         value={notes.length > 0 ? notes[activeIndex].title : ""}
         placeholder="Title"
-        class="mdc-typography--subtitle2"
+        className="mdc-typography--subtitle2"
         onInput={handleInput}
       />
       <textarea
         name="textarea"
         ref={content}
         placeholder="..."
-        class="mdc-typography--subtitle1"
+        className="mdc-typography--subtitle1"
         onInput={handleInput}
       ></textarea>
     </section>

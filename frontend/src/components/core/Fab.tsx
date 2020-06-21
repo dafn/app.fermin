@@ -6,7 +6,7 @@ interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
 
 const Fab = ({ children, ...rest }: Props) => {
   return (
-    <button class={css["fab"]} {...rest}>
+    <button className={css["fab"]} {...rest}>
       {children}
     </button>
   );

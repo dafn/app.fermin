@@ -29,16 +29,16 @@ const Sidebar = () => {
   });
 
   return (
-    <nav class={`${css["sidebar"]}`}>
-      <section class={css["top"]}>
+    <nav className={`${css["sidebar"]}`}>
+      <section className={css["top"]}>
         <Button
           secondary={route === "/login" || route === "/logout"}
           onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
-          class={cn({
+          className={cn({
             "fermin-button--alert": isLoggedIn,
           })}
         >
-          <i class="icon-user" />
+          <i className="icon-user" />
         </Button>
         {isLoggedIn && (
           <Fragment>
@@ -46,32 +46,32 @@ const Sidebar = () => {
               secondary={route === "/"}
               onClick={() => handleButtonClick("/")}
             >
-              <i class="icon-layout" />
+              <i className="icon-layout" />
             </Button>
             <Button
               secondary={route === "/notepad"}
               onClick={() => handleButtonClick("/notepad")}
             >
-              <i class="icon-pencil" />
+              <i className="icon-pencil" />
             </Button>
             <Button
               secondary={route === "/calculator"}
               onClick={() => handleButtonClick("/calculator")}
             >
-              <i class="icon-math" />
+              <i className="icon-math" />
             </Button>
           </Fragment>
         )}
       </section>
-      <section class={css["bottom"]}>
+      <section className={css["bottom"]}>
         <div>
           <i
-            class={cn({
+            className={cn({
               "icon-sun-inv": theme === "fermin-theme-light",
               "icon-moon-inv": theme === "fermin-theme-dark",
             })}
           />
-          <Switch class={css["switch"]} onClick={handleThemeSwitch} />
+          <Switch className={css["switch"]} onClick={handleThemeSwitch} />
         </div>
       </section>
     </nav>

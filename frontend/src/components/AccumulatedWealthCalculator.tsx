@@ -34,9 +34,9 @@ const AccumulatedWealthCalculator = () => {
   }, [wealth, investment, years, growth]);
 
   return (
-    <section class={css["accumulated-wealth-calculator"]}>
-      <h5 class="mdc-typography--headline5">Akkumulart formue</h5>
-      <section class={css["inputs"]}>
+    <section className={css["accumulated-wealth-calculator"]}>
+      <h5 className="mdc-typography--headline5">Akkumulart formue</h5>
+      <section className={css["inputs"]}>
         <TextField
           label="Nåværende Formue"
           type="number"
@@ -66,7 +66,7 @@ const AccumulatedWealthCalculator = () => {
           autocomplete="off"
         />
       </section>
-      <p class="mdc-typography--body1"> {calculation} </p>
+      <p className="mdc-typography--body1"> {calculation} </p>
     </section>
   );
 };

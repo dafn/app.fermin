@@ -33,7 +33,7 @@ const Login = () => {
   });
 
   return (
-    <main class={css["login"]}>
+    <main className={css["login"]}>
       <section>
         <TextField label="Brukernavn" ref={username} />
         <TextField label="Passord" type="password" ref={password} />

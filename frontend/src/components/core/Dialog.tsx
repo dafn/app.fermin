@@ -11,14 +11,14 @@ interface Props extends h.JSX.HTMLAttributes<HTMLDialogElement> {
 const Dialog = ({ children, message, show, ...rest }: Props) => {
   return (
     <dialog
-      class={`${css["dialog"]} ${cn({
+      className={`${css["dialog"]} ${cn({
         [css["visible"]]: show,
       })}`}
       aria-hidden={!show}
       {...rest}
     >
       <section>
-        <h1 class="mdc-typography--subtitle1">{message}</h1>
+        <h1 className="mdc-typography--subtitle1">{message}</h1>
         <div>{children}</div>
       </section>
     </dialog>
