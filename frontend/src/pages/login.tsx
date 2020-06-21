@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { useContext, useRef, useState, useEffect } from "preact/hooks";
 
-import { TextField } from "preact-material-components/TextField";
+import TextField from "src/components/core/TextField";
 import { Button } from "preact-material-components/Button";
 
 import authContext from "src/auth/authContext";
@@ -35,14 +35,8 @@ const Login = () => {
   return (
     <main class={css["login"]}>
       <section>
-        <TextField label="Brukernavn" outlined dense ref={username} />
-        <TextField
-          label="Passord"
-          outlined
-          dense
-          type="password"
-          ref={password}
-        />
+        <TextField label="Brukernavn" ref={username} />
+        <TextField label="Passord" type="password" ref={password} />
         <Button
           raised
           primary
@@ -50,8 +44,8 @@ const Login = () => {
           onClick={() => {
             setDisabled(true);
             login({
-              username: username.current["MDComponent"].value,
-              password: password.current["MDComponent"].value,
+              username: username.current.base.children[1].value,
+              password: password.current.base.children[1].value,
             }).then((isLoggedIn) => {
               isLoggedIn && setIsLoggedIn(isLoggedIn);
               setDisabled(false);
@@ -72,6 +66,7 @@ css`
   .login {
     display: grid;
     width: 100%;
+    background: var(--fermin-theme-background);
     > section {
       align-self: center;
       justify-self: center;
