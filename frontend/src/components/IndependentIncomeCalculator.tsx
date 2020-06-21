@@ -1,10 +1,10 @@
 import { h } from "preact";
 
-import TextField from "preact-material-components/TextField";
+import TextField from "src/components/core/TextField";
 
 import { useState, useEffect } from "preact/hooks";
-import { NOK } from "src/utils/currency";
 import useTranslate from "src/i18n/useTranslate";
+import { NOK } from "src/utils/currency";
 
 interface Calculation {
   personalProfit: string;
@@ -63,29 +63,23 @@ const IndependentIncomeCalculator = () => {
       <section class={css["inputs"]}>
         <TextField
           label={t("gross_income")}
-          outlined
-          dense
           type="number"
           value={income}
-          onInput={({ target }) => setIncome(target.value)}
+          onInput={({ target }) => setIncome(target["value"])}
           autocomplete="off"
         />
         <TextField
           label={t("salary")}
-          outlined
-          dense
           type="number"
           value={salary}
-          onInput={({ target }) => setSalary(target.value)}
+          onInput={({ target }) => setSalary(target["value"])}
           autocomplete="off"
         />
         <TextField
           label={t("tax_on_salary")}
-          outlined
-          dense
           type="number"
           value={salaryTax}
-          onInput={({ target }) => setSalaryTax(target.value)}
+          onInput={({ target }) => setSalaryTax(target["value"])}
           autocomplete="off"
         />
       </section>
@@ -108,7 +102,7 @@ css`
   .independent-income-calculator {
     > h5,
     > p {
-      margin: 1rem 0;
+      margin: 2rem 0;
     }
     .inputs {
       display: grid;

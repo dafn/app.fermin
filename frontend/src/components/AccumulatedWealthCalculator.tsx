@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import TextField from "preact-material-components/TextField";
+import TextField from "src/components/core/TextField";
 
 import { useState, useEffect } from "preact/hooks";
 import { NOK } from "src/utils/currency";
@@ -39,38 +39,30 @@ const AccumulatedWealthCalculator = () => {
       <section class={css["inputs"]}>
         <TextField
           label="Nåværende Formue"
-          outlined
-          dense
           type="number"
           value={wealth}
-          onInput={({ target }) => setWealth(target.value)}
+          onInput={({ target }) => setWealth(target["value"])}
           autocomplete="off"
         />
         <TextField
           label="Årlig invistering"
-          outlined
-          dense
           type="number"
           value={investment}
-          onInput={({ target }) => setInvestment(target.value)}
+          onInput={({ target }) => setInvestment(target["value"])}
           autocomplete="off"
         />
         <TextField
           label="År med avkastning"
-          outlined
-          dense
           type="number"
           value={years}
-          onInput={({ target }) => setYears(target.value)}
+          onInput={({ target }) => setYears(target["value"])}
           autocomplete="off"
         />
         <TextField
           label="Avkastning per år i %"
-          outlined
-          dense
           type="number"
           value={growth}
-          onInput={({ target }) => setGrowth(target.value)}
+          onInput={({ target }) => setGrowth(target["value"])}
           autocomplete="off"
         />
       </section>
@@ -85,7 +77,7 @@ css`
   .accumulated-wealth-calculator {
     > h5,
     > p {
-      margin: 1rem 0;
+      margin: 2rem 0;
     }
     .inputs {
       display: grid;
