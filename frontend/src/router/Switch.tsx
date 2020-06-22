@@ -3,9 +3,10 @@ import { useState, useEffect, useContext } from "preact/hooks";
 
 import { getCurrentRoute, navigate } from "src/router/navigator";
 import authContext from "src/auth/authContext";
+import { RouteComponent } from "src/router/Route";
 
 interface Props {
-  children: h.JSX.Element | h.JSX.Element[];
+  children: RouteComponent | RouteComponent[];
 }
 
 /**
@@ -28,11 +29,20 @@ const Router = ({ children }: Props) => {
     };
   }, []);
 
-  if (Array.isArray(children))
-    for (let child of children)
-      if (url === child.props.path) return <Fragment>{child}</Fragment>;
+  if (Array.isArray(children)) {
+    for (let child of children) {
+      if (Array.isArray(child.props.match)) {
+        for (let path of child.props.match)
+          if (url === path) {
+            return <Fragment>{child}</Fragment>;
+          }
+      } else if (url === child.props.match) {
+        return <Fragment>{child}</Fragment>;
+      }
+    }
+  }
 
-  return <Fragment>{children}</Fragment>;
+  return <h1>404</h1>;
 };
 
 export default Router;

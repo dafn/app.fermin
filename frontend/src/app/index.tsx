@@ -32,19 +32,16 @@ const App = () => {
           <languageContext.Provider value={{ lang, setLang }}>
             <Sidebar />
             <Switch>
-              <Route path="/">
+              <Route match="/">
                 <Dashboard />
               </Route>
-              <Route path="/login">
+              <Route match={["/login", "/logout"]}>
                 <Login />
               </Route>
-              <Route path="/logout">
-                <Login />
-              </Route>
-              <Route path="/notepad">
+              <Route match="/notepad">
                 <Notebook />
               </Route>
-              <Route path="/calculator">
+              <Route match="/calculator">
                 <Calculator />
               </Route>
             </Switch>
