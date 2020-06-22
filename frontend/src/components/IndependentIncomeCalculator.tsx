@@ -83,15 +83,17 @@ const IndependentIncomeCalculator = () => {
           autocomplete="off"
         />
       </section>
-      <p className="mdc-typography--body1">
-        {t("total")} {calculation?.totalProfit}
-      </p>
-      <p className="mdc-typography--body1">
-        {t("corporate")} {calculation?.corporateProfit}
-      </p>
-      <p className="mdc-typography--body1">
-        {t("private")} {calculation?.personalProfit}
-      </p>
+      <section>
+        <p className="mdc-typography--body1">
+          {t("total")} {calculation?.totalProfit}
+        </p>
+        <p className="mdc-typography--body1">
+          {t("corporate")} {calculation?.corporateProfit}
+        </p>
+        <p className="mdc-typography--body1">
+          {t("private")} {calculation?.personalProfit}
+        </p>
+      </section>
     </section>
   );
 };
@@ -100,9 +102,11 @@ export default IndependentIncomeCalculator;
 
 css`
   .independent-income-calculator {
-    > h5,
-    > p {
-      margin: 2rem 0;
+    section {
+      display: flex;
+      p {
+        margin: 1rem 2rem 0 0;
+      }
     }
     .inputs {
       display: grid;

@@ -75,9 +75,8 @@ export default AccumulatedWealthCalculator;
 
 css`
   .accumulated-wealth-calculator {
-    > h5,
-    > p {
-      margin: 2rem 0;
+    p {
+      margin: 1rem 2rem 0 0;
     }
     .inputs {
       display: grid;
