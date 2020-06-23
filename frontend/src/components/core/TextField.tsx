@@ -27,6 +27,7 @@ css`
       pointer-events: none;
       background: var(--fermin-theme-surface);
       transition: top 0.15s;
+      border-radius: 6px;
     }
     input {
       border: solid 1px var(--fermin-theme-input);
