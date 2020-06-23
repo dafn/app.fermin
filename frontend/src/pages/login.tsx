@@ -2,7 +2,7 @@ import { h } from "preact";
 import { useContext, useRef, useState, useEffect } from "preact/hooks";
 
 import TextField from "src/components/core/TextField";
-import { Button } from "preact-material-components/Button";
+import Button from "src/components/core/Button";
 
 import authContext from "src/auth/authContext";
 
@@ -38,7 +38,6 @@ const Login = () => {
         <TextField label="Brukernavn" ref={username} />
         <TextField label="Passord" type="password" ref={password} />
         <Button
-          raised
           primary
           disabled={disabled}
           onClick={() => {
