@@ -7,6 +7,7 @@ interface Props {
   secondary?: boolean;
   disabled?: boolean;
   className?: string;
+  contained?: boolean;
   onClick?: (event: h.JSX.TargetedEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
@@ -17,14 +18,17 @@ const Button = ({
   secondary,
   disabled,
   onClick,
+  contained,
 }: Props) => {
   return (
     <button
       type="button"
-      className={`${css["button"]} ${className} ${cn({
+      className={`${css["button"]} ${cn({
         [css["primary"]]: primary,
         [css["secondary"]]: secondary,
         [css["disabled"]]: disabled,
+        [css["contained"]]: contained,
+        className: !!className,
       })}`}
       disabled={disabled}
       onClick={onClick}
@@ -66,6 +70,12 @@ css`
     background-color: var(--fermin-theme-primary);
     border: solid 1px var(--fermin-theme-primary);
     color: var(--fermin-theme-text-inverted);
+    &.contained {
+      color: var(--fermin-theme-text);
+      &:hover {
+        color: var(--fermin-theme-text-inverted);
+      }
+    }
     &:hover,
     &:focus {
       background-color: var(--fermin-theme-secondary);
@@ -75,5 +85,10 @@ css`
   .disabled {
     cursor: default;
     pointer-events: none;
+  }
+  .contained {
+    border: none;
+    background: none;
+    box-shadow: none;
   }
 `;

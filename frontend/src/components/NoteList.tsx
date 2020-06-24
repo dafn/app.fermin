@@ -3,7 +3,7 @@ import { h } from "preact";
 import { useContext, useState } from "preact/hooks";
 
 import Card from "src/components/core/Card";
-import Button from "preact-material-components/Button";
+import Button from "src/components/core/Button";
 import Fab from "src/components/core/Fab";
 
 import Dialog from "./core/Dialog";
@@ -56,15 +56,16 @@ const Notelist = () => {
           <h2 className="mdc-typography--subtitle2">Empty list</h2>
         </section>
       )}
-      <Fab onClick={addNote}>
+      <Fab className={css["fab"]} onClick={addNote}>
         <i className="icon-plus" />
       </Fab>
       <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
-        <Button dense onClick={() => showDialog(false)}>
+        <Button primary contained onClick={() => showDialog(false)}>
           Cancel
         </Button>
         <Button
-          dense
+          primary
+          contained
           onClick={() => {
             deleteNote(activeIndex);
             showDialog(false);
@@ -88,7 +89,7 @@ css`
     padding-top: 1rem;
     overflow-y: scroll;
     min-width: 22rem;
-    button {
+    .fab {
       background-color: var(--fermin-theme-positive);
     }
     .empty-list,

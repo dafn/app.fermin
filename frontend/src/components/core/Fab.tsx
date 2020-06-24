@@ -1,12 +1,16 @@
 import { h } from "preact";
+import cn from "src/utils/cn";
 
 interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
   children: h.JSX.Element | h.JSX.Element[];
 }
 
-const Fab = ({ children, ...rest }: Props) => {
+const Fab = ({ children, className, ...rest }: Props) => {
   return (
-    <button className={css["fab"]} {...rest}>
+    <button
+      className={`${css["fab"]} ${cn({ className: !!className })}`}
+      {...rest}
+    >
       {children}
     </button>
   );
