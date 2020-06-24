@@ -10,7 +10,7 @@ interface Props {
 }
 
 /**
- * The Router will render the first route that match the end of the url
+ * The Router will render the first route that matches the end of the url
  */
 const Router = ({ children }: Props) => {
   const [url, setUrl] = useState<Route>(getCurrentRoute());

@@ -7,8 +7,7 @@ import { NOK } from "src/utils/currency";
 
 const calculate = (wealth = 0, investment = 0, years = 0, growth = 0) => {
   for (let i = 0; i < years; i++) {
-    wealth += (growth * wealth) / 100;
-    wealth += investment;
+    wealth += (growth * wealth) / 100 + investment;
   }
 
   return NOK(wealth);
