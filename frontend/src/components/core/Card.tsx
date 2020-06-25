@@ -2,13 +2,19 @@ import { h } from "preact";
 import cn from "src/utils/cn";
 
 interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
+  onClick?: (event: h.JSX.TargetedEvent<HTMLElement, MouseEvent>) => void;
   children: h.JSX.Element | h.JSX.Element[];
 }
 
-const Card = ({ children, className, ...rest }: Props) => {
+const Card = ({ children, className, onClick, ...rest }: Props) => {
   return (
     <section
       className={`${css["card"]} ${cn({ [className]: !!className })}`}
+      onClick={(event) => {
+        document.activeElement["blur"]();
+        onClick(event);
+      }}
+      tabIndex={0}
       {...rest}
     >
       {children}

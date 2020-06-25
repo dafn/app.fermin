@@ -47,7 +47,11 @@ const Notelist = () => {
               className={`${cn({
                 [css["show"]]: index === activeIndex,
               })} icon-trash`}
-              onClick={() => showDialog(true)}
+              tabIndex={0}
+              onClick={() => {
+                showDialog(true);
+                document.activeElement["blue"]();
+              }}
             />
           </Card>
         ))
@@ -107,8 +111,10 @@ css`
       padding: 1rem;
       transition: all 0.05s;
       cursor: pointer;
-      &:hover {
-        transform: scale(0.99);
+      &:hover,
+      &:focus {
+        outline: none;
+        transform: scale(0.98);
       }
       h2,
       p {
@@ -135,7 +141,8 @@ css`
         &.show {
           display: block;
         }
-        &:hover {
+        &:hover, &:focus {
+          outline: none;
           color: var(--fermin-theme-negative);
         }
       }
