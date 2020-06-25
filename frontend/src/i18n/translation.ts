@@ -3,6 +3,22 @@ const translations = {
     no: "Akkumulert formue",
     en: "Accumulated Wealth",
   },
+  current_savings: {
+    no: "Nåværende sparebeløp",
+    en: "Current savings",
+  },
+  yearly_deposit: {
+    no: "Arlig innskudd",
+    en: "Yearly deposit",
+  },
+  timespan: {
+    no: "Tidshorisont",
+    en: "Timespan",
+  },
+  interest_per_year_in_percent: {
+    no: "renter pr å i %",
+    en: "interest per year in percent",
+  },
   private: {
     no: "Privat",
     en: "Private",

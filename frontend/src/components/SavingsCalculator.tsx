@@ -4,6 +4,7 @@ import TextField from "src/components/core/TextField";
 
 import { useState, useEffect } from "preact/hooks";
 import { NOK } from "src/utils/currency";
+import useTranslate from "src/i18n/useTranslate";
 
 const calculate = (wealth = 0, investment = 0, years = 0, growth = 0) => {
   for (let i = 0; i < years; i++) {
@@ -32,33 +33,35 @@ const SavingsCalculator = () => {
     );
   }, [wealth, investment, years, growth]);
 
+  const { t } = useTranslate();
+
   return (
     <section className={css["accumulated-wealth-calculator"]}>
-      <h5 className="mdc-typography--headline5">Akkumulart formue</h5>
+      <h5 className="mdc-typography--headline5">{t("accumulated_wealth")}</h5>
       <section className={css["inputs"]}>
         <TextField
-          label="Nåværende Formue"
+          label={t("current_savings")}
           type="number"
           value={wealth}
           onInput={({ target }) => setWealth(target["value"])}
           autocomplete="off"
         />
         <TextField
-          label="Årlig invistering"
+          label={t("yearly_deposit")}
           type="number"
           value={investment}
           onInput={({ target }) => setInvestment(target["value"])}
           autocomplete="off"
         />
         <TextField
-          label="År med avkastning"
+          label={t("timespan")}
           type="number"
           value={years}
           onInput={({ target }) => setYears(target["value"])}
           autocomplete="off"
         />
         <TextField
-          label="Avkastning per år i %"
+          label={t("interest_per_year_in_percent")}
           type="number"
           value={growth}
           onInput={({ target }) => setGrowth(target["value"])}
