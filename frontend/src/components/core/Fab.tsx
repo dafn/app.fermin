@@ -9,7 +9,7 @@ interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
 const Fab = ({ children, className, onClick, ...rest }: Props) => {
   return (
     <button
-      className={`${css["fab"]} ${cn({ className: !!className })}`}
+      className={`${css["fab"]} ${cn({ [className]: !!className })}`}
       onClick={(event) => {
         document.activeElement["blur"]();
         onClick(event);

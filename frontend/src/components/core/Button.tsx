@@ -30,7 +30,7 @@ const Button = ({
         [css["flat"]]: flat,
         [css["disabled"]]: disabled,
         [css["contained"]]: contained,
-        className: !!className,
+        [className]: !!className,
       })}`}
       disabled={disabled}
       onClick={onClick}

@@ -8,7 +8,7 @@ interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
 const Card = ({ children, className, ...rest }: Props) => {
   return (
     <section
-      className={`${css["card"]} ${cn({ className: !!className })}`}
+      className={`${css["card"]} ${cn({ [className]: !!className })}`}
       {...rest}
     >
       {children}
