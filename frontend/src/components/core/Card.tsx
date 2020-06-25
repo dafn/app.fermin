@@ -1,4 +1,5 @@
 import { h } from "preact";
+import cn from "src/utils/cn";
 
 interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
   children: h.JSX.Element | h.JSX.Element[];
@@ -6,7 +7,10 @@ interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
 
 const Card = ({ children, className, ...rest }: Props) => {
   return (
-    <section className={`${css["card"]} ${className}`} {...rest}>
+    <section
+      className={`${css["card"]} ${cn({ className: !!className })}`}
+      {...rest}
+    >
       {children}
     </section>
   );
