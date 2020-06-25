@@ -1,14 +1,14 @@
 import { h } from "preact";
 
-import AccumulatedWealthCalculator from "src/components/AccumulatedWealthCalculator";
-import IndependentIncomeCalculator from "src/components/IndependentIncomeCalculator";
+import WealthCalculator from "src/components/WealthCalculator";
+import SurplusCalculator from "src/components/SurplusCalculator";
 
 const Calculator = () => {
   return (
     <main className={css["calculator"]}>
       <section>
-        <AccumulatedWealthCalculator />
-        <IndependentIncomeCalculator />
+        <WealthCalculator />
+        <SurplusCalculator />
       </section>
     </main>
   );

@@ -38,7 +38,7 @@ const calculate = (income = 0, salary = 0, salaryTax = 0): Calculation => {
   };
 };
 
-const IndependentIncomeCalculator = () => {
+const SurplusCalculator = () => {
   const [calculation, setCalculation] = useState<Calculation>(undefined);
 
   const [income, setIncome] = useState("");
@@ -98,7 +98,7 @@ const IndependentIncomeCalculator = () => {
   );
 };
 
-export default IndependentIncomeCalculator;
+export default SurplusCalculator;
 
 css`
   .independent-income-calculator {
