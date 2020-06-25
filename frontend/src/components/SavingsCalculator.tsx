@@ -13,7 +13,7 @@ const calculate = (wealth = 0, investment = 0, years = 0, growth = 0) => {
   return NOK(wealth);
 };
 
-const WealthCalculator = () => {
+const SavingsCalculator = () => {
   const [calculation, setCalculation] = useState("0");
 
   const [wealth, setWealth] = useState("");
@@ -70,7 +70,7 @@ const WealthCalculator = () => {
   );
 };
 
-export default WealthCalculator;
+export default SavingsCalculator;
 
 css`
   .accumulated-wealth-calculator {
