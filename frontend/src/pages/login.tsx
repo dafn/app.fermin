@@ -38,7 +38,7 @@ const Login = () => {
         <TextField label="Brukernavn" ref={username} />
         <TextField label="Passord" type="password" ref={password} />
         <Button
-          primary
+          variant="primary"
           disabled={disabled}
           onClick={() => {
             setDisabled(true);

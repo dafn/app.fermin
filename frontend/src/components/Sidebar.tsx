@@ -1,7 +1,7 @@
 import { h, Fragment } from "preact";
 import { useState, useContext } from "preact/hooks";
 
-import Button from "preact-material-components/Button";
+import Button from "src/components/core/Button";
 import Switch from "preact-material-components/Switch";
 
 import { navigate, onNavigation, getCurrentRoute } from "src/router/navigator";
@@ -32,7 +32,9 @@ const Sidebar = () => {
     <nav className={`${css["sidebar"]}`}>
       <section className={css["top"]}>
         <Button
-          secondary={route === "/login" || route === "/logout"}
+          variant="alert"
+          flat
+          active={route === "/login" || route === "/logout"}
           onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
           className={cn({
             "fermin-button--alert": isLoggedIn,
@@ -43,19 +45,25 @@ const Sidebar = () => {
         {isLoggedIn && (
           <Fragment>
             <Button
-              secondary={route === "/"}
+              variant="primary"
+              flat
+              active={route === "/"}
               onClick={() => handleButtonClick("/")}
             >
               <i className="icon-layout" />
             </Button>
             <Button
-              secondary={route === "/notepad"}
+              variant="primary"
+              flat
+              active={route === "/notepad"}
               onClick={() => handleButtonClick("/notepad")}
             >
               <i className="icon-pencil" />
             </Button>
             <Button
-              secondary={route === "/calculator"}
+              variant="primary"
+              flat
+              active={route === "/calculator"}
               onClick={() => handleButtonClick("/calculator")}
             >
               <i className="icon-math" />

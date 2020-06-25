@@ -60,11 +60,11 @@ const Notelist = () => {
         <i className="icon-plus" />
       </Fab>
       <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
-        <Button primary contained onClick={() => showDialog(false)}>
+        <Button variant="primary" contained onClick={() => showDialog(false)}>
           Cancel
         </Button>
         <Button
-          primary
+          variant="primary"
           contained
           onClick={() => {
             deleteNote(activeIndex);

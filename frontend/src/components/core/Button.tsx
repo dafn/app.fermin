@@ -3,19 +3,21 @@ import cn from "src/utils/cn";
 
 interface Props {
   children: h.JSX.Element | h.JSX.Element[] | string;
-  primary?: boolean;
-  secondary?: boolean;
+  variant: "default" | "primary" | "alert";
+  active?: boolean;
   disabled?: boolean;
   className?: string;
   contained?: boolean;
+  flat?: boolean;
   onClick?: (event: h.JSX.TargetedEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const Button = ({
   children,
   className,
-  primary,
-  secondary,
+  active,
+  variant,
+  flat,
   disabled,
   onClick,
   contained,
@@ -23,9 +25,9 @@ const Button = ({
   return (
     <button
       type="button"
-      className={`${css["button"]} ${cn({
-        [css["primary"]]: primary,
-        [css["secondary"]]: secondary,
+      className={`${css["button"]} ${css[variant]} ${cn({
+        [css["active"]]: active,
+        [css["flat"]]: flat,
         [css["disabled"]]: disabled,
         [css["contained"]]: contained,
         className: !!className,
@@ -41,6 +43,27 @@ const Button = ({
 export default Button;
 
 css`
+  @mixin button($color-base, $color-dark) {
+    background-color: var($color-base);
+    border: solid 1px var($color-base);
+    color: var(--fermin-theme-text-inverted);
+    &.contained {
+      color: var(--fermin-theme-text);
+      &:hover {
+        color: var(--fermin-theme-text-inverted);
+      }
+    }
+    &:hover,
+    &:focus {
+      background-color: var($color-dark);
+      border-color: var($color-dark);
+    }
+    &.active {
+      background-color: var($color-dark);
+      border-color: var($color-dark);
+    }
+  }
+
   .button {
     color: var(--fermin-theme-text);
     background-color: var(--fermin-theme-neutral);
@@ -67,20 +90,10 @@ css`
     }
   }
   .primary {
-    background-color: var(--fermin-theme-primary);
-    border: solid 1px var(--fermin-theme-primary);
-    color: var(--fermin-theme-text-inverted);
-    &.contained {
-      color: var(--fermin-theme-text);
-      &:hover {
-        color: var(--fermin-theme-text-inverted);
-      }
-    }
-    &:hover,
-    &:focus {
-      background-color: var(--fermin-theme-secondary);
-      border-color: var(--fermin-theme-secondary);
-    }
+    @include button(--fermin-theme-primary, --fermin-theme-primary-dark);
+  }
+  .alert {
+    @include button(--fermin-theme-alert, --fermin-theme-alert-dark);
   }
   .disabled {
     cursor: default;
@@ -90,5 +103,9 @@ css`
     border: none;
     background: none;
     box-shadow: none;
+  }
+  .flat {
+    box-shadow: none;
+    border-radius: 0;
   }
 `;
