@@ -7,12 +7,12 @@ import useTranslate from "src/i18n/useTranslate";
 import { NOK } from "src/utils/currency";
 
 interface Calculation {
-  personalProfit: string;
-  corporateProfit: string;
-  totalProfit: string;
+  salarySurplus: string;
+  incomeSurplus: string;
+  totalSurplus: string;
 }
 
-const calculate = (income = 0, salary = 0, salaryTax = 0): Calculation => {
+const calculate = (income = 0, salary = 0, salaryTaxRate = 0): Calculation => {
   const phoneSubscription = 7000,
     pc = 5000,
     phone = 2000,
@@ -22,19 +22,19 @@ const calculate = (income = 0, salary = 0, salaryTax = 0): Calculation => {
 
   const pension = (7 * salary) / 100;
 
-  const expences = phoneSubscription + pc + phone + transport + internet + aga,
-    taxableCorporateIncome = income - expences - salary - pension;
+  const utilities = phoneSubscription + pc + phone + transport + internet + aga,
+    taxableIncome = income - utilities - salary - pension;
 
-  const coperateIncomeTax = (22 * taxableCorporateIncome) / 100,
-    coperateProfits = taxableCorporateIncome - coperateIncomeTax;
+  const incomeTax = (22 * taxableIncome) / 100,
+    incomeSurplus = taxableIncome - incomeTax;
 
-  const personalIncomeTax = (salaryTax * salary) / 100,
-    postTaxSalary = salary - personalIncomeTax;
+  const salaryTax = (salaryTaxRate * salary) / 100,
+    salarySurplus = salary - salaryTax;
 
   return {
-    personalProfit: NOK(postTaxSalary),
-    corporateProfit: NOK(coperateProfits),
-    totalProfit: NOK(postTaxSalary + coperateProfits),
+    salarySurplus: NOK(salarySurplus),
+    incomeSurplus: NOK(incomeSurplus),
+    totalSurplus: NOK(salarySurplus + incomeSurplus),
   };
 };
 
@@ -85,13 +85,13 @@ const SurplusCalculator = () => {
       </section>
       <section>
         <p className="mdc-typography--body1">
-          {t("total")} {calculation?.totalProfit}
+          {t("total")} {calculation?.totalSurplus}
         </p>
         <p className="mdc-typography--body1">
-          {t("corporate")} {calculation?.corporateProfit}
+          {t("corporate")} {calculation?.incomeSurplus}
         </p>
         <p className="mdc-typography--body1">
-          {t("private")} {calculation?.personalProfit}
+          {t("private")} {calculation?.salarySurplus}
         </p>
       </section>
     </section>

@@ -1,6 +1,6 @@
 const translations = {
-  accumulated_wealth: {
-    no: "Akkumulert formue",
+  accumulated_savings: {
+    no: "Akkumulert sparebeløp",
     en: "Accumulated Wealth",
   },
   current_savings: {
@@ -8,7 +8,7 @@ const translations = {
     en: "Current savings",
   },
   yearly_deposit: {
-    no: "Arlig innskudd",
+    no: "Årlig innskudd",
     en: "Yearly deposit",
   },
   timespan: {
@@ -16,7 +16,7 @@ const translations = {
     en: "Timespan",
   },
   interest_per_year_in_percent: {
-    no: "renter pr å i %",
+    no: "renter pr år i %",
     en: "interest per year in percent",
   },
   private: {
@@ -56,7 +56,9 @@ export default (key: TranslationKey, language: Language) => {
     return translations[key.toString().toLowerCase()][language.toLowerCase()];
   } catch (error) {
     console.error(
-      `translation > default | Could not find "${key}" for language "${language}"`
+      `translation > default | Could not find "${key
+        .toString()
+        .toLowerCase()}" for language "${language.toLowerCase()}"`
     );
     return null;
   }

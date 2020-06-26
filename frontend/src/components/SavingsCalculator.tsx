@@ -6,65 +6,65 @@ import { useState, useEffect } from "preact/hooks";
 import { NOK } from "src/utils/currency";
 import useTranslate from "src/i18n/useTranslate";
 
-const calculate = (wealth = 0, investment = 0, years = 0, growth = 0) => {
-  for (let i = 0; i < years; i++) {
-    wealth += (growth * wealth) / 100 + investment;
+const calculate = (savings = 0, deposit = 0, timespan = 0, interest = 0) => {
+  for (let i = 0; i < timespan; i++) {
+    savings += (interest * savings) / 100 + deposit;
   }
 
-  return NOK(wealth);
+  return NOK(savings);
 };
 
 const SavingsCalculator = () => {
   const [calculation, setCalculation] = useState("0");
 
-  const [wealth, setWealth] = useState("");
-  const [investment, setInvestment] = useState("");
-  const [years, setYears] = useState("");
-  const [growth, setGrowth] = useState("");
+  const [savings, setSavings] = useState("");
+  const [deposit, setDeposit] = useState("");
+  const [timespan, setTimespan] = useState("");
+  const [interest, setInterest] = useState("");
 
   useEffect(() => {
     setCalculation(
       calculate(
-        wealth ? parseInt(wealth) : undefined,
-        investment ? parseInt(investment) : undefined,
-        years ? parseInt(years) : undefined,
-        growth ? parseInt(growth) : undefined
+        savings ? parseInt(savings) : undefined,
+        deposit ? parseInt(deposit) : undefined,
+        timespan ? parseInt(timespan) : undefined,
+        interest ? parseInt(interest) : undefined
       )
     );
-  }, [wealth, investment, years, growth]);
+  }, [savings, deposit, timespan, interest]);
 
   const { t } = useTranslate();
 
   return (
-    <section className={css["accumulated-wealth-calculator"]}>
-      <h5 className="mdc-typography--headline5">{t("accumulated_wealth")}</h5>
+    <section className={css["savings-calculator"]}>
+      <h5 className="mdc-typography--headline5">{t("accumulated_savings")}</h5>
       <section className={css["inputs"]}>
         <TextField
           label={t("current_savings")}
           type="number"
-          value={wealth}
-          onInput={({ target }) => setWealth(target["value"])}
+          value={savings}
+          onInput={({ target }) => setSavings(target["value"])}
           autocomplete="off"
         />
         <TextField
           label={t("yearly_deposit")}
           type="number"
-          value={investment}
-          onInput={({ target }) => setInvestment(target["value"])}
+          value={deposit}
+          onInput={({ target }) => setDeposit(target["value"])}
           autocomplete="off"
         />
         <TextField
           label={t("timespan")}
           type="number"
-          value={years}
-          onInput={({ target }) => setYears(target["value"])}
+          value={timespan}
+          onInput={({ target }) => setTimespan(target["value"])}
           autocomplete="off"
         />
         <TextField
           label={t("interest_per_year_in_percent")}
           type="number"
-          value={growth}
-          onInput={({ target }) => setGrowth(target["value"])}
+          value={interest}
+          onInput={({ target }) => setInterest(target["value"])}
           autocomplete="off"
         />
       </section>
@@ -76,7 +76,7 @@ const SavingsCalculator = () => {
 export default SavingsCalculator;
 
 css`
-  .accumulated-wealth-calculator {
+  .savings-calculator {
     p {
       margin: 1rem 2rem 0 0;
     }
