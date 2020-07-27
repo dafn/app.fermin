@@ -15,7 +15,7 @@ css`
   .dashboard {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     padding: 1rem;
     width: 100%;
     background-color: var(--fermin-theme-background);
