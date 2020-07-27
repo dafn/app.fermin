@@ -68,6 +68,14 @@ const Sidebar = () => {
             >
               <i className="icon-math" />
             </Button>
+            <Button
+              variant="primary"
+              flat
+              active={route === "/video-cutter"}
+              onClick={() => handleButtonClick("/video-cutter")}
+            >
+              <i className="icon-movie" />
+            </Button>
           </Fragment>
         )}
       </section>

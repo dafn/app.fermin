@@ -1,7 +1,7 @@
 export {};
 
 declare global {
-  type Route = "/" | "/notepad" | "/calculator" | "/login" | "/logout";
+  type Route = "/" | "/notepad" | "/calculator" | "/login" | "/logout" | "/video-cutter";
 
   type Language = "en" | "no";
 

@@ -53,6 +53,12 @@
       "css": "sun-inv",
       "code": 59397,
       "src": "iconic"
+    },
+    {
+      "uid": "eea613bc40c77b7eab137b29dba0c62f",
+      "css": "movie",
+      "code": 61504,
+      "src": "mfglabs"
     }
   ]
 }
