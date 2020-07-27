@@ -11,7 +11,7 @@ import Route from "src/router/Route";
 
 import Sidebar from "src/components/Sidebar";
 
-import ThemeContext from "src/theme/themeContext";
+import themeContext from "src/theme/themeContext";
 import languageContext from "src/i18n/languageContext";
 import authContext from "src/auth/authContext";
 
@@ -27,7 +27,7 @@ const App = () => {
   const [lang, setLang] = useState<Language>("no");
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <themeContext.Provider value={{ theme, setTheme }}>
       <section className={theme}>
         <authContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
           <languageContext.Provider value={{ lang, setLang }}>
@@ -52,7 +52,7 @@ const App = () => {
           </languageContext.Provider>
         </authContext.Provider>
       </section>
-    </ThemeContext.Provider>
+    </themeContext.Provider>
   );
 };
 
