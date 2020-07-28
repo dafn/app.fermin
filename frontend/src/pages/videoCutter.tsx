@@ -4,7 +4,6 @@ const VideoCutter = () => {
   return (
     <main className={css["video-cutter"]}>
       <iframe
-        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
         src="https://online-video-cutter.com/"
       ></iframe>
     </main>
