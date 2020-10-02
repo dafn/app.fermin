@@ -10,9 +10,10 @@ interface Calculation {
   salarySurplus: string;
   incomeSurplus: string;
   totalSurplus: string;
+  taxesAndExpenses: string;
 }
 
-const calculate = (income = 0, salary = 0, salaryTaxRate = 0): Calculation => {
+const calculate = (income = 0, salary = 0, salaryTaxRate = 0, investment = 0): Calculation => {
   const phoneSubscription = 7000,
     pc = 5000,
     phone = 2000,
@@ -35,6 +36,7 @@ const calculate = (income = 0, salary = 0, salaryTaxRate = 0): Calculation => {
     salarySurplus: NOK(salarySurplus),
     incomeSurplus: NOK(incomeSurplus),
     totalSurplus: NOK(salarySurplus + incomeSurplus),
+    taxesAndExpenses: NOK(income - (salarySurplus + incomeSurplus) )
   };
 };
 
@@ -44,6 +46,7 @@ const SurplusCalculator = () => {
   const [income, setIncome] = useState("");
   const [salary, setSalary] = useState("");
   const [salaryTax, setSalaryTax] = useState("");
+  const [investment, setInvestment] = useState("");
 
   const { t } = useTranslate();
 
@@ -52,7 +55,8 @@ const SurplusCalculator = () => {
       calculate(
         income ? parseInt(income) : undefined,
         salary ? parseInt(salary) : undefined,
-        salaryTax ? parseInt(salaryTax) : undefined
+        salaryTax ? parseInt(salaryTax) : undefined,
+        investment ? parseInt(investment) : undefined,
       )
     );
   }, [income, salary, salaryTax]);
@@ -82,6 +86,13 @@ const SurplusCalculator = () => {
           onInput={({ target }) => setSalaryTax(target["value"])}
           autocomplete="off"
         />
+        <TextField
+          label={t("investments_as_percent_of_surplus")}
+          type="number"
+          value={investment}
+          onInput={({ target }) => setInvestment(target["value"])}
+          autocomplete="off"
+        />
       </section>
       <section>
         <p className="mdc-typography--body1">
@@ -92,6 +103,9 @@ const SurplusCalculator = () => {
         </p>
         <p className="mdc-typography--body1">
           {t("private")} {calculation?.salarySurplus}
+        </p>
+        <p className="mdc-typography--body1">
+          {t("tax_and_expenses_as_percentage_of_total")} {calculation?.taxesAndExpenses}
         </p>
       </section>
     </section>
