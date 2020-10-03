@@ -9,8 +9,10 @@
   --fermin-theme-positive: #32a852;
   --fermin-theme-positive-dark: #298842;
   --fermin-theme-negative: #f44336;
+
   --fermin-theme-alert: #ff9800;
   --fermin-theme-alert-dark: #d88200;
+
   --fermin-theme-info: #2196f3;
 
   --fermin-theme-icon-on-dark: #fff;
@@ -21,11 +23,15 @@
   --fermin-theme-input: #bbbbbb;
 
   --fermin-theme-text: #202020;
+  --fermin-theme-text-reverse: #fff;
   --fermin-theme-text-inverted: #fff;
 
   --fermin-theme-overlay: #00000033;
   --fermin-theme-background: #fff;
   --fermin-theme-surface: #fff;
+
+  --fermin-light-on-dark: #393741;
+  --fermin-dark-on-light: #fff;
 
   --mdc-theme-primary: var(--fermin-theme-primary);
   --mdc-theme-secondary: var(--fermin-theme-secondary);

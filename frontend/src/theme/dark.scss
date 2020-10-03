@@ -23,11 +23,15 @@
   --fermin-theme-input: #afafaf80;
 
   --fermin-theme-text: #cccccc;
+  --fermin-theme-text-reverse: #000000;
   --fermin-theme-text-inverted: #cccccc;
 
   --fermin-theme-overlay: #00000033;
   --fermin-theme-background: #393741;
   --fermin-theme-surface: #393741;
+
+  --fermin-light-on-dark: #fff;
+  --fermin-dark-on-light: #393741;
 
   --mdc-theme-primary: var(--fermin-theme-primary);
   --mdc-theme-secondary: var(--fermin-theme-secondary);
