@@ -48,11 +48,11 @@ const translations = {
     en: "Total",
   },
   investments_as_percent_of_surplus: {
-    no: "Invisteringer som % av overskudd",
+    no: "Invisteringer som %",
     en: "Investments as % of surplus",
   },
   tax_and_expenses_as_percentage_of_total: {
-    no: "Skatt/Utgifter i %",
+    no: "Skatt & Utgifter i %",
     en: "Taxes and expenses in %",
   },
 };

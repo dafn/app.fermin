@@ -13,7 +13,12 @@ interface Calculation {
   taxesAndExpenses: string;
 }
 
-const calculate = (income = 0, salary = 0, salaryTaxRate = 0, investment = 0): Calculation => {
+const calculate = (
+  income = 0,
+  salary = 0,
+  salaryTaxRate = 0,
+  investment = 0
+): Calculation => {
   const phoneSubscription = 7000,
     pc = 5000,
     phone = 2000,
@@ -24,10 +29,13 @@ const calculate = (income = 0, salary = 0, salaryTaxRate = 0, investment = 0): C
   const pension = (7 * salary) / 100;
 
   const utilities = phoneSubscription + pc + phone + transport + internet + aga,
-    taxableIncome = income - utilities - salary - pension;
+  incomePostUtilities = income - utilities - salary - pension,
+  absoluteInvenstment = investment * incomePostUtilities / 100,
+  taxableIncome = incomePostUtilities - absoluteInvenstment;
+    
 
   const incomeTax = (22 * taxableIncome) / 100,
-    incomeSurplus = taxableIncome - incomeTax;
+    incomeSurplus = incomePostUtilities - incomeTax;
 
   const salaryTax = (salaryTaxRate * salary) / 100,
     salarySurplus = salary - salaryTax;
@@ -36,7 +44,10 @@ const calculate = (income = 0, salary = 0, salaryTaxRate = 0, investment = 0): C
     salarySurplus: NOK(salarySurplus),
     incomeSurplus: NOK(incomeSurplus),
     totalSurplus: NOK(salarySurplus + incomeSurplus),
-    taxesAndExpenses: NOK(income - (salarySurplus + incomeSurplus) )
+    taxesAndExpenses: (
+      ((income - (salarySurplus + incomeSurplus)) / income) *
+      100
+    ).toFixed(2),
   };
 };
 
@@ -56,10 +67,10 @@ const SurplusCalculator = () => {
         income ? parseInt(income) : undefined,
         salary ? parseInt(salary) : undefined,
         salaryTax ? parseInt(salaryTax) : undefined,
-        investment ? parseInt(investment) : undefined,
+        investment ? parseInt(investment) : undefined
       )
     );
-  }, [income, salary, salaryTax]);
+  }, [income, salary, salaryTax, investment]);
 
   return (
     <section className={css["independent-income-calculator"]}>
@@ -96,16 +107,17 @@ const SurplusCalculator = () => {
       </section>
       <section>
         <p className="mdc-typography--body1">
-          {t("total")} {calculation?.totalSurplus}
+          {t("total")} <strong>{calculation?.totalSurplus}</strong>
         </p>
         <p className="mdc-typography--body1">
-          {t("corporate")} {calculation?.incomeSurplus}
+          {t("corporate")} <strong>{calculation?.incomeSurplus}</strong>
         </p>
         <p className="mdc-typography--body1">
-          {t("private")} {calculation?.salarySurplus}
+          {t("private")} <strong>{calculation?.salarySurplus}</strong>
         </p>
         <p className="mdc-typography--body1">
-          {t("tax_and_expenses_as_percentage_of_total")} {calculation?.taxesAndExpenses}
+          {t("tax_and_expenses_as_percentage_of_total")}{" "}
+          <strong>{calculation?.taxesAndExpenses}</strong>
         </p>
       </section>
     </section>
@@ -124,7 +136,7 @@ css`
     }
     .inputs {
       display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(4, auto);
       column-gap: 1rem;
     }
   }
