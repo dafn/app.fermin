@@ -76,6 +76,14 @@ const Sidebar = () => {
             >
               <i className="icon-movie" />
             </Button>
+            <Button
+              variant="primary"
+              flat
+              active={route === "/cv"}
+              onClick={() => handleButtonClick("/cv")}
+            >
+              <i className="icon-doc-text-inv" />
+            </Button>
           </Fragment>
         )}
       </section>

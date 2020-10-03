@@ -5,6 +5,7 @@ import Login from "src/pages/login";
 import Notebook from "src/pages/notebook";
 import Calculator from "src/pages/calculator";
 import VideoCutter from "src/pages/videoCutter";
+import CV from "src/pages/cv";
 
 import Switch from "src/router/Switch";
 import Route from "src/router/Route";
@@ -47,6 +48,9 @@ const App = () => {
               </Route>
               <Route match="/video-cutter">
                 <VideoCutter />
+              </Route>
+              <Route match="/cv">
+                <CV />
               </Route>
             </Switch>
           </languageContext.Provider>
