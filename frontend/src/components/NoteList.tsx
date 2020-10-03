@@ -10,6 +10,7 @@ import Dialog from "./core/Dialog";
 
 import context from "src/pages/context/notebookContext";
 import cn from "src/utils/cn";
+import { isKeyboardTrigger } from "src/utils/keyboard";
 
 const Notelist = () => {
   const {
@@ -51,6 +52,12 @@ const Notelist = () => {
               onClick={() => {
                 showDialog(true);
                 document.activeElement["blue"]();
+              }}
+              onKeyUp={(event) => {
+                if (isKeyboardTrigger(event.code)) {
+                  showDialog(true);
+                  document.activeElement["blue"]();
+                }
               }}
             />
           </Card>
