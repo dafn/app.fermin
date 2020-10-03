@@ -2,15 +2,13 @@ import { h } from "preact";
 
 import { useContext, useState } from "preact/hooks";
 
-import Card from "src/components/core/Card";
 import Button from "src/components/core/Button";
 import Fab from "src/components/core/Fab";
 
 import Dialog from "./core/Dialog";
 
 import context from "src/pages/context/notebookContext";
-import cn from "src/utils/cn";
-import { isKeyboardTrigger } from "src/utils/keyboard";
+import ListElement from "./ListElement";
 
 const Notelist = () => {
   const {
@@ -36,31 +34,16 @@ const Notelist = () => {
     <section className={css["notelist"]}>
       {notes.length ? (
         notes.map((note, index) => (
-          <Card
-            className={`${css["card"]} ${cn({
-              [css["active"]]: index === activeIndex,
-            })}`}
+          <ListElement
+            className={css["list-element"]}
+            title={note.title}
+            content={note.content}
+            active={index === activeIndex}
             onClick={() => index !== activeIndex && setActiveIndex(index)}
-          >
-            <h2 className="mdc-typography--subtitle2"> {note.title} </h2>
-            <p className="mdc-typography--body2"> {note.content} </p>
-            <i
-              className={`${cn({
-                [css["show"]]: index === activeIndex,
-              })} icon-trash`}
-              tabIndex={0}
-              onClick={() => {
-                showDialog(true);
-                document.activeElement["blue"]();
-              }}
-              onKeyUp={(event) => {
-                if (isKeyboardTrigger(event.code)) {
-                  showDialog(true);
-                  document.activeElement["blue"]();
-                }
-              }}
-            />
-          </Card>
+            onDelete={() => {
+              showDialog(true);
+            }}
+          />
         ))
       ) : (
         <section className={css["empty-list"]}>
@@ -100,65 +83,18 @@ css`
     padding-top: 1rem;
     overflow-y: scroll;
     min-width: 22rem;
+    .list-element {
+      margin-bottom: 1rem;
+    }
     .fab {
       background-color: var(--fermin-theme-positive);
     }
-    .empty-list,
-    .card {
+    .empty-list {
       display: grid;
       position: relative;
       height: 3rem;
       width: 18rem;
       margin: 0 1rem 1rem 1rem;
-    }
-    .card {
-      grid-template-rows: 1fr 1fr;
-      border-right: solid 2px var(--fermin-theme-surface);
-      background-color: var(--fermin-theme-surface);
-      padding: 1rem;
-      transition: all 0.05s;
-      cursor: pointer;
-      &:hover,
-      &:focus {
-        outline: none;
-        transform: scale(0.98);
-      }
-      h2,
-      p {
-        margin: 0;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-      h2 {
-        align-self: baseline;
-      }
-      p {
-        align-self: end;
-      }
-      i {
-        display: none;
-        position: absolute;
-        margin: 0.3rem;
-        font-size: 12pt;
-        transition: color 0.05s;
-        color: var(--fermin-theme-icon-on-light);
-        right: 0;
-        cursor: pointer;
-        &.show {
-          display: block;
-        }
-        &:hover,
-        &:focus {
-          outline: none;
-          color: var(--fermin-theme-negative);
-        }
-      }
-      &.active {
-        border-right: solid 2px var(--fermin-theme-positive);
-      }
-    }
-    .empty-list {
       grid-row: 1fr;
       h2 {
         align-self: center;
