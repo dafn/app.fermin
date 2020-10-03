@@ -148,10 +148,14 @@ css`
         &.show {
           display: block;
         }
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           outline: none;
           color: var(--fermin-theme-negative);
         }
+      }
+      &.active {
+        border-right: solid 2px var(--fermin-theme-positive);
       }
     }
     .empty-list {
@@ -162,9 +166,6 @@ css`
         color: var(--fermin-theme-placeholder);
         margin: 0;
       }
-    }
-    .active {
-      border-right: solid 2px var(--fermin-theme-positive);
     }
   }
 `;
