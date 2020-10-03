@@ -53,7 +53,8 @@ const ListElement = ({
               [css["toggle"]]: true,
               [css["toggled-on"]]: toggleState,
             })}
-            onClick={() => {
+            onClick={(event) => {
+              event.stopImmediatePropagation();
               onToggle(!toggleState);
               setToggleState(!toggleState);
             }}
@@ -122,12 +123,12 @@ css`
         position: absolute;
         top: 0rem;
         right: 2rem;
-        padding-top: .3rem;
-        padding-bottom: .2rem;
+        padding-top: 0.3rem;
+        padding-bottom: 0.2rem;
         background: var(--fermin-theme-surface);
         color: var(--fermin-theme-text);
         border: 1px dotted var(--fermin-theme-text);
-        border-radius: 0 0px .25rem .25rem;
+        border-radius: 0 0px 0.25rem 0.25rem;
         &.toggled-on {
           background: var(--fermin-theme-positive);
           color: var(--fermin-light-on-dark);
