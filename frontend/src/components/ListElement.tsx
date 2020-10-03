@@ -3,7 +3,7 @@ import cn from "src/utils/cn";
 import Card from "./core/Card";
 import { isKeyboardTrigger } from "src/utils/keyboard";
 
-interface Props {
+interface Props extends h.JSX.HTMLAttributes<HTMLDivElement> {
   active: boolean;
   title: string;
   content: string;
@@ -17,11 +17,14 @@ const ListElement = ({
   active,
   title,
   content,
+  className,
   onClick = () => {},
   onDelete = () => {},
 }: Props) => {
   return (
-    <div className={css["card-container"]}>
+    <div
+      className={`${css["card-container"]} ${cn({ [className]: !!className })}`}
+    >
       <Card
         className={`${css["card"]} ${cn({
           [css["active"]]: active,
