@@ -2,13 +2,11 @@ import { h } from "preact";
 
 import { useContext, useState } from "preact/hooks";
 
-import Button from "src/components/core/Button";
-import Fab from "src/components/core/Fab";
-
-import Dialog from "./core/Dialog";
-
 import context from "src/pages/context/notebookContext";
-import ListElement from "./ListElement";
+
+import Fab from "src/components/core/Fab";
+import ListElement from "src/components/ListElement";
+import ChoiceDialog from "src/components/ChoiceDialog";
 
 const Notelist = () => {
   const {
@@ -53,21 +51,15 @@ const Notelist = () => {
       <Fab className={css["fab"]} onClick={addNote}>
         <i className="icon-plus" />
       </Fab>
-      <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
-        <Button variant="primary" contained onClick={() => showDialog(false)}>
-          Cancel
-        </Button>
-        <Button
-          variant="primary"
-          contained
-          onClick={() => {
-            deleteNote(activeIndex);
-            showDialog(false);
-          }}
-        >
-          Accept
-        </Button>
-      </Dialog>
+      <ChoiceDialog
+        message="Er du sikker på at du vil slette notatet?"
+        show={dialog}
+        onAccept={() => {
+          deleteNote(activeIndex);
+          showDialog(false);
+        }}
+        onDecline={() => showDialog(false)}
+      />
     </section>
   );
 };

@@ -106,6 +106,7 @@ css`
       grid-template-columns: auto 1fr;
       div {
         height: 4rem;
+        width: 4rem;
         align-self: center;
         margin-right: 2rem;
         img {

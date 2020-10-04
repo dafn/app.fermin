@@ -1,9 +1,10 @@
 import { h } from "preact";
+import { useRef } from "preact/hooks";
 import cn from "src/utils/cn";
 
 interface Props {
   children: h.JSX.Element | h.JSX.Element[] | string;
-  variant: "default" | "primary" | "alert";
+  variant: "default" | "primary" | "alert" | "positive";
   active?: boolean;
   disabled?: boolean;
   className?: string;
@@ -22,9 +23,13 @@ const Button = ({
   onClick,
   contained,
 }: Props) => {
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   return (
     <button
       type="button"
+      ref={buttonRef}
       className={`${css["button"]} ${css[variant]} ${cn({
         [css["active"]]: active,
         [css["flat"]]: flat,
@@ -33,7 +38,10 @@ const Button = ({
         [className]: !!className,
       })}`}
       disabled={disabled}
-      onClick={onClick}
+      onClick={(event) => {
+        buttonRef.current.blur();
+        onClick(event);
+      }}
     >
       {children}
     </button>
@@ -94,6 +102,9 @@ css`
   }
   .alert {
     @include button(--fermin-theme-alert, --fermin-theme-alert-dark);
+  }
+  .positive {
+    @include button(--fermin-theme-positive, --fermin-theme-positive-dark);
   }
   .disabled {
     cursor: default;

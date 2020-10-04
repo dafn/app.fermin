@@ -2,12 +2,9 @@ import { h } from "preact";
 
 import { useState } from "preact/hooks";
 
-import Button from "src/components/core/Button";
 import Fab from "src/components/core/Fab";
-
-import Dialog from "./core/Dialog";
-
-import ListElement from "./ListElement";
+import ChoiceDialog from "src/components/ChoiceDialog";
+import ListElement from "src/components/ListElement";
 
 const CVList = () => {
   const [dialog, showDialog] = useState(false);
@@ -30,15 +27,14 @@ const CVList = () => {
   const addCV = () => {
     cvs.push({
       title: `${new Date().getTime()}`,
-      content:
-      `${new Date().getTime()}${new Date().getTime()}`,
+      content: `${new Date().getTime()}${new Date().getTime()}`,
       src: "https://fomantic-ui.com/images/wireframe/image.png",
     });
   };
 
   const deleteCV = (index) => {
     delete cvs[index];
-  }
+  };
 
   return (
     <section className={css["notelist"]}>
@@ -50,7 +46,7 @@ const CVList = () => {
             content={cv.content}
             active={index === activeIndex}
             src={cv.src}
-            toggle="Eksporter"
+            toggle="Inkluder"
             onClick={() => index !== activeIndex && setActiveIndex(index)}
             onDelete={() => {
               showDialog(true);
@@ -65,21 +61,15 @@ const CVList = () => {
       <Fab className={css["fab"]} onClick={addCV}>
         <i className="icon-plus" />
       </Fab>
-      <Dialog message="Er du sikker på at vil slette notatet?" show={dialog}>
-        <Button variant="primary" contained onClick={() => showDialog(false)}>
-          Cancel
-        </Button>
-        <Button
-          variant="primary"
-          contained
-          onClick={() => {
-            deleteCV(activeIndex);
-            showDialog(false);
-          }}
-        >
-          Accept
-        </Button>
-      </Dialog>
+      <ChoiceDialog
+        message="Er du sikker på at vil slette cv-posten?"
+        show={dialog}
+        onAccept={() => {
+          deleteCV(activeIndex);
+          showDialog(false);
+        }}
+        onDecline={() => showDialog(false)}
+      />
     </section>
   );
 };
