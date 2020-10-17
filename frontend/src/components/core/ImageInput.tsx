@@ -19,7 +19,7 @@ const ImageInput = ({ src, className, onChange, iconClass }: Props) => {
         fileInput.current["click"]();
       }}
     >
-      <img src={src} alt="image" />
+      <img src={src || "https://fomantic-ui.com/images/avatar2/large/kristy.png"} alt="image" />
       <div className={css["add-image"]}>
         <i className={`${css["add-image-icon"]} ${iconClass || "icon-plus"}`} />
       </div>

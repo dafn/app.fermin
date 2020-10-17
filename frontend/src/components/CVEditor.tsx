@@ -1,26 +1,14 @@
 import { h } from "preact";
 
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useContext, useEffect, useRef } from "preact/hooks";
 import ImageInput from "./core/ImageInput";
+
+import context from "src/pages/context/cvContext";
 
 let timer;
 
 const CVEditor = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const cvs = [
-    {
-      title: "Telia",
-      content: "Telia er et telekomselskap som oppererer i hhele norden",
-      src: "https://fomantic-ui.com/images/avatar2/large/kristy.png",
-    },
-    {
-      title: "Buypass",
-      content:
-        "Buypass er nordens største TLS utgiver og har kontorer i 4 land",
-      src: "https://fomantic-ui.com/images/avatar2/large/molly.png",
-    },
-  ];
+  const { cvs, setCvs, activeIndex } = useContext(context);
 
   const title = useRef(null);
   const content = useRef(null);
@@ -40,7 +28,13 @@ const CVEditor = () => {
   });
 
   const saveNote = () => {
-    console.log("saved");
+    cvs[activeIndex] = {
+      ...cvs[activeIndex],
+      title: title.current["value"],
+      content: content.current["value"],
+    };
+
+    setCvs(cvs);
   };
 
   const handleInput = () => {
