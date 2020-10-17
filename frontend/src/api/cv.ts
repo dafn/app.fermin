@@ -51,10 +51,19 @@ export const getAll = (): Promise<CV[]> => {
 export const post = (cv: CV): Promise<CV> => {
   return new Promise((resolve) => {
 
-    cv.id = cvs.length;
+    const newCv: CV = {
+      id: cvs.length,
+      content: "",
+      start_date: null,
+      end_date: null,
+      src: "https://fomantic-ui.com/images/avatar2/large/kristy.png",
+      tags: "",
+      ...cv,
+    };
 
-    cvs.push(cv);
-    return resolve(cv);
+    cvs[cvs.length -1] = newCv;
+
+    return resolve(newCv);
   });
 
   /*

@@ -1,39 +1,26 @@
 import { h } from "preact";
 
-import { useState } from "preact/hooks";
+import { useContext, useState } from "preact/hooks";
 
 import Fab from "src/components/core/Fab";
 import ChoiceDialog from "src/components/ChoiceDialog";
 import ListElement from "src/components/ListElement";
+import context from "src/pages/context/cvContext";
 
 const CVList = () => {
-  const [dialog, showDialog] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { cvs, setCvs, activeIndex, setActiveIndex, deleteCv } = useContext(
+    context
+  );
 
-  const cvs = [
-    {
-      title: "Telia",
-      content: "Telia er et telekomselskap som oppererer i hhele norden",
-      src: "https://fomantic-ui.com/images/avatar2/large/kristy.png",
-    },
-    {
-      title: "Buypass",
-      content:
-        "Buypass er nordens største TLS utgiver og har kontorer i 4 land",
-      src: "https://fomantic-ui.com/images/avatar2/large/molly.png",
-    },
-  ];
+  const [dialog, showDialog] = useState(false);
 
   const addCV = () => {
     cvs.push({
-      title: `${new Date().getTime()}`,
-      content: `${new Date().getTime()}${new Date().getTime()}`,
-      src: "https://fomantic-ui.com/images/wireframe/image.png",
+      title: "",
+      content: "",
     });
-  };
-
-  const deleteCV = (index) => {
-    delete cvs[index];
+    setCvs(cvs);
+    setActiveIndex(cvs.length - 1);
   };
 
   return (
@@ -45,7 +32,7 @@ const CVList = () => {
             title={cv.title}
             content={cv.content}
             active={index === activeIndex}
-            src={cv.src}
+            src={cv.src || "https://fomantic-ui.com/images/avatar2/large/kristy.png"}
             toggle="Inkluder"
             onClick={() => index !== activeIndex && setActiveIndex(index)}
             onDelete={() => {
@@ -65,7 +52,7 @@ const CVList = () => {
         message="Er du sikker på at vil slette cv-posten?"
         show={dialog}
         onAccept={() => {
-          deleteCV(activeIndex);
+          deleteCv(activeIndex);
           showDialog(false);
         }}
         onDecline={() => showDialog(false)}
