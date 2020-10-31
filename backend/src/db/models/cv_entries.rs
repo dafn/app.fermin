@@ -22,18 +22,8 @@ pub struct CVEntry {
   pub last_modified: NaiveDateTime,
 }
 
-#[derive(Insertable)]
+#[derive(Insertable, Deserialize)]
 #[table_name = "cv_entries_schema"]
-pub struct NewCVEntry<'a> {
-  pub title: &'a str,
-  pub content: &'a str,
-  pub tags: &'a str,
-  pub src: &'a str,
-  pub start_date: Option<&'a NaiveDateTime>,
-  pub end_date: Option<&'a NaiveDateTime>,
-}
-
-#[derive(Deserialize)]
 pub struct SlimCVEntry {
   pub title: String,
   pub content: String,
@@ -44,7 +34,7 @@ pub struct SlimCVEntry {
 }
 
 #[derive(Deserialize)]
-pub struct SlimCVEntry2 {
+pub struct WebCVEntry {
   pub title: String,
   pub content: String,
   pub tags: String,
@@ -66,34 +56,10 @@ impl CVEntry {
 
   pub fn post<'a>(
     connection: &PgConnection,
-    _cv_entry: &SlimCVEntry2,
+    _cv_entry: &'a SlimCVEntry,
   ) -> Result<Vec<CVEntry>, Error> {
-
-    let start_date: Option<NaiveDateTime> = match &_cv_entry.start_date {
-      Some(string) => match NaiveDateTime::parse_from_str(&string, "%Y-%m-%d %H:%M:%S") {
-        Ok(date) => Some(date),
-        Err(_) => None
-      },
-      None => None
-    };
-
-    let end_date: Option<NaiveDateTime> = match &_cv_entry.end_date {
-      Some(string) => match NaiveDateTime::parse_from_str(&string, "%Y-%m-%d %H:%M:%S") {
-        Ok(date) => Some(date),
-        Err(_) => None
-      },
-      None => None
-    };
-
     diesel::insert_into(cv_entries_schema::table)
-      .values(&NewCVEntry {
-        title: &_cv_entry.title,
-        content: &_cv_entry.content,
-        tags: &_cv_entry.tags,
-        src: &_cv_entry.src,
-        start_date: start_date.as_ref(),
-        end_date: end_date.as_ref(),
-      })
+      .values(_cv_entry)
       .get_results(connection)
   }
 
