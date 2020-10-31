@@ -15,8 +15,9 @@ pub struct CVEntry {
   pub title: String,
   pub content: String,
   pub tags: String,
-  pub start_date: NaiveDateTime,
-  pub end_date: NaiveDateTime,
+  pub src: String,
+  pub start_date: Option<NaiveDateTime>,
+  pub end_date: Option<NaiveDateTime>,
   pub created: NaiveDateTime,
   pub last_modified: NaiveDateTime,
 }
@@ -27,8 +28,9 @@ pub struct NewCVEntry<'a> {
   pub title: &'a str,
   pub content: &'a str,
   pub tags: &'a str,
-  pub start_date: &'a NaiveDateTime,
-  pub end_date: &'a NaiveDateTime,
+  pub src: &'a str,
+  pub start_date: Option<&'a NaiveDateTime>,
+  pub end_date: Option<&'a NaiveDateTime>,
 }
 
 #[derive(Deserialize)]
@@ -36,8 +38,19 @@ pub struct SlimCVEntry {
   pub title: String,
   pub content: String,
   pub tags: String,
-  pub start_date: NaiveDateTime,
-  pub end_date: NaiveDateTime,
+  pub src: String,
+  pub start_date: Option<NaiveDateTime>,
+  pub end_date: Option<NaiveDateTime>,
+}
+
+#[derive(Deserialize)]
+pub struct SlimCVEntry2 {
+  pub title: String,
+  pub content: String,
+  pub tags: String,
+  pub src: String,
+  pub start_date: Option<String>,
+  pub end_date: Option<String>,
 }
 
 impl CVEntry {
@@ -53,16 +66,33 @@ impl CVEntry {
 
   pub fn post<'a>(
     connection: &PgConnection,
-    _cv_entry: &SlimCVEntry,
+    _cv_entry: &SlimCVEntry2,
   ) -> Result<Vec<CVEntry>, Error> {
+
+    let start_date: Option<NaiveDateTime> = match &_cv_entry.start_date {
+      Some(string) => match NaiveDateTime::parse_from_str(&string, "%Y-%m-%d %H:%M:%S") {
+        Ok(date) => Some(date),
+        Err(_) => None
+      },
+      None => None
+    };
+
+    let end_date: Option<NaiveDateTime> = match &_cv_entry.end_date {
+      Some(string) => match NaiveDateTime::parse_from_str(&string, "%Y-%m-%d %H:%M:%S") {
+        Ok(date) => Some(date),
+        Err(_) => None
+      },
+      None => None
+    };
+
     diesel::insert_into(cv_entries_schema::table)
       .values(&NewCVEntry {
         title: &_cv_entry.title,
         content: &_cv_entry.content,
         tags: &_cv_entry.tags,
-        start_date: &_cv_entry.start_date,
-        end_date: &_cv_entry.end_date
-
+        src: &_cv_entry.src,
+        start_date: start_date.as_ref(),
+        end_date: end_date.as_ref(),
       })
       .get_results(connection)
   }

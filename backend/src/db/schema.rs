@@ -4,8 +4,9 @@ table! {
         title -> Text,
         content -> Text,
         tags -> Text,
-        start_date -> Timestamp,
-        end_date -> Timestamp,
+        src -> Text,
+        start_date -> Nullable<Timestamp>,
+        end_date -> Nullable<Timestamp>,
         created -> Timestamp,
         last_modified -> Timestamp,
     }
