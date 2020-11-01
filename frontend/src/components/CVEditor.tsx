@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import { useContext, useEffect, useRef } from "preact/hooks";
+import { useContext, useRef } from "preact/hooks";
 import ImageInput from "./core/ImageInput";
 
 import context from "src/pages/context/cvContext";
@@ -12,26 +12,18 @@ const CVEditor = () => {
 
   const title = useRef(null);
   const content = useRef(null);
+  const start_date = useRef(null);
+  const end_date = useRef(null);
+  const tags = useRef(null);
 
-  useEffect(() => {
-    if (cvs.length) {
-      title.current["value"] = cvs[activeIndex].title;
-      content.current["value"] = cvs[activeIndex].content;
-    }
-  }, [cvs, activeIndex]);
-
-  useEffect(() => {
-    if (cvs.length < 1) {
-      title.current["value"] = "";
-      content.current["value"] = "";
-    }
-  });
-
-  const saveNote = () => {
+  const saveCv = () => {
     cvs[activeIndex] = {
       ...cvs[activeIndex],
       title: title.current["value"],
       content: content.current["value"],
+      start_date: start_date.current["value"],
+      end_date: end_date.current["value"],
+      tags: tags.current["value"],
     };
 
     setCvs(cvs);
@@ -39,7 +31,7 @@ const CVEditor = () => {
 
   const handleInput = () => {
     clearTimeout(timer);
-    timer = setTimeout(() => saveNote(), 500);
+    timer = setTimeout(() => saveCv(), 500);
   };
 
   return (
@@ -55,10 +47,10 @@ const CVEditor = () => {
         <input
           type="text"
           ref={title}
-          value={cvs.length > 0 ? cvs[activeIndex].title : ""}
           placeholder="Title"
           className="mdc-typography--subtitle2"
           onInput={handleInput}
+          value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].title}
         />
       </div>
       <textarea
@@ -67,22 +59,40 @@ const CVEditor = () => {
         placeholder="Description"
         className="mdc-typography--subtitle1"
         onInput={handleInput}
+        value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].content}
       ></textarea>
       <div className={css["details-container"]}>
         <input
           type="text"
+          ref={tags}
           placeholder="Tags"
           className="mdc-typography--subtitle1"
+          onInput={handleInput}
+          value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].tags}
         />
         <input
-          type="text"
+          type="date"
+          ref={start_date}
           placeholder="From"
           className="mdc-typography--subtitle1"
+          onInput={handleInput}
+          value={
+            !cvs.length || cvs.length < 1
+              ? null
+              : cvs[activeIndex].start_date?.toString()
+          }
         />
         <input
-          type="text"
+          type="date"
+          ref={end_date}
           placeholder="To"
           className="mdc-typography--subtitle1"
+          onInput={handleInput}
+          value={
+            !cvs.length || cvs.length < 1
+              ? null
+              : cvs[activeIndex].end_date?.toString()
+          }
         />
       </div>
     </section>
