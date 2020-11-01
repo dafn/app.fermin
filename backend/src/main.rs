@@ -48,7 +48,7 @@ async fn main() -> std::io::Result<()> {
                     .secure(false),
             ))
             .data(web::JsonConfig::default())
-            .wrap(middleware::Logger::new("%s | %U"))
+            .wrap(middleware::Logger::new("%s | %r"))
             .service(webapp::index)
             .service(
                 web::scope("/auth")
