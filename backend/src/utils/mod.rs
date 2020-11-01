@@ -1,5 +1,4 @@
 pub mod templating;
-pub mod cv_struct_converter;
 
 use std::env;
 

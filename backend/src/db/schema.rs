@@ -1,12 +1,12 @@
 table! {
     cv_entries (id) {
         id -> Int4,
-        title -> Text,
-        content -> Text,
-        tags -> Text,
-        src -> Text,
-        start_date -> Nullable<Timestamp>,
-        end_date -> Nullable<Timestamp>,
+        title -> Nullable<Text>,
+        content -> Nullable<Text>,
+        tags -> Nullable<Text>,
+        src -> Nullable<Text>,
+        start_date -> Nullable<Text>,
+        end_date -> Nullable<Text>,
         created -> Timestamp,
         last_modified -> Timestamp,
     }

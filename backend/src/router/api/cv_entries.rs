@@ -1,7 +1,5 @@
-use crate::db::models::cv_entries::{CVEntry, WebCVEntry};
+use crate::db::models::cv_entries::{CVEntry, SlimCVEntry};
 use crate::db::DBPool;
-
-use crate::utils::cv_struct_converter;
 
 use actix_identity::Identity;
 use actix_web::{error, http::StatusCode, web, Error, HttpResponse};
@@ -34,15 +32,12 @@ pub async fn get_by_id(
 
 #[post("/")]
 pub async fn post(
-  web_cv_entry: web::Json<WebCVEntry>,
+  web_cv_entry: web::Json<SlimCVEntry>,
   db: DBPool,
   auth: Identity,
 ) -> Result<HttpResponse, Error> {
   if let Some(_auth) = auth.identity() {
-    return match CVEntry::post(
-      &db.get().unwrap(),
-      &cv_struct_converter::web_to_slim(&web_cv_entry),
-    ) {
+    return match CVEntry::post(&db.get().unwrap(), &web_cv_entry) {
       Ok(cv_entry) => Ok(HttpResponse::Ok().json(&cv_entry)),
       Err(_) => Err(error::ErrorNotFound("Not Found")),
     };
@@ -54,19 +49,15 @@ pub async fn post(
 #[put("/{id}")]
 pub async fn put(
   id: web::Path<i32>,
-  web_cv_entry: web::Json<WebCVEntry>,
+  web_cv_entry: web::Json<SlimCVEntry>,
   db: DBPool,
   auth: Identity,
 ) -> Result<HttpResponse, Error> {
   if let Some(_auth) = auth.identity() {
-    return match CVEntry::put(
-      &db.get().unwrap(),
-      &id,
-      &cv_struct_converter::web_to_slim(&web_cv_entry),
-    ) {
+    return match CVEntry::put(&db.get().unwrap(), &id, &web_cv_entry) {
       Ok(_) => Ok(HttpResponse::new(StatusCode::OK)),
       Err(_) => Err(error::ErrorNotFound("Not Found")),
-    }
+    };
   }
   Err(error::ErrorUnauthorized("Unauthorized"))
 }

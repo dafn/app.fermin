@@ -12,12 +12,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct CVEntry {
   pub id: i32,
-  pub title: String,
-  pub content: String,
-  pub tags: String,
-  pub src: String,
-  pub start_date: Option<NaiveDateTime>,
-  pub end_date: Option<NaiveDateTime>,
+  pub title: Option<String>,
+  pub content: Option<String>,
+  pub tags: Option<String>,
+  pub src: Option<String>,
+  pub start_date: Option<String>,
+  pub end_date: Option<String>,
   pub created: NaiveDateTime,
   pub last_modified: NaiveDateTime,
 }
@@ -25,20 +25,10 @@ pub struct CVEntry {
 #[derive(Insertable, Deserialize)]
 #[table_name = "cv_entries_schema"]
 pub struct SlimCVEntry {
-  pub title: String,
-  pub content: String,
-  pub tags: String,
-  pub src: String,
-  pub start_date: Option<NaiveDateTime>,
-  pub end_date: Option<NaiveDateTime>,
-}
-
-#[derive(Deserialize)]
-pub struct WebCVEntry {
-  pub title: String,
-  pub content: String,
-  pub tags: String,
-  pub src: String,
+  pub title: Option<String>,
+  pub content: Option<String>,
+  pub tags: Option<String>,
+  pub src: Option<String>,
   pub start_date: Option<String>,
   pub end_date: Option<String>,
 }
@@ -74,6 +64,7 @@ impl CVEntry {
         cv_entries_schema::content.eq(&_cv_entry.content),
         cv_entries_schema::start_date.eq(&_cv_entry.start_date),
         cv_entries_schema::end_date.eq(&_cv_entry.end_date),
+        cv_entries_schema::tags.eq(&_cv_entry.tags),
         cv_entries_schema::last_modified.eq(chrono::offset::Utc::now().naive_local()),
       ))
       .get_result::<CVEntry>(connection)
