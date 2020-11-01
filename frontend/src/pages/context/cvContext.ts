@@ -4,7 +4,7 @@ interface Context {
   cvs: CV[];
   activeIndex: number;
   setActiveIndex: (index: number) => void;
-  setCvs: (notes: CV[]) => void;
+  setCvs: (cvs: CV[], newCV?: boolean) => void;
   deleteCv: (index: number) => void;
 }
 

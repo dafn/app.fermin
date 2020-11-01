@@ -29,38 +29,50 @@ const CV = () => {
   const actions = {
     setActiveIndex,
     deleteCv: (index: number) => {
-      if (cvs[index].id)
+      if (cvs[index].id) {
         removeById({ id: cvs[index].id }).then(() => {
           cvs.splice(index, 1);
-          activeIndex ? setActiveIndex(0) : forceUpdate(!update);
+          activeIndex
+            ? setActiveIndex(Math.max(0, activeIndex - 1))
+            : forceUpdate(!update);
         });
-      else {
+      } else {
         cvs.splice(index, 1);
-        activeIndex ? setActiveIndex(0) : forceUpdate(!update);
+        activeIndex
+          ? setActiveIndex(Math.max(0, activeIndex - 1))
+          : forceUpdate(!update);
       }
     },
-    setCvs: (cvs: CV[]) => {
-      setCvs(cvs);
+    setCvs: (cvs: CV[], newCV?: boolean) => {
+      const newCvEntry = {
+        title: "",
+        content: "",
+        src: "",
+        tags: "",
+      };
 
-      const index = activeIndex;
-      const { id, title, content, start_date, end_date, src, tags } = cvs[
-        index
-      ];
+      if (!cvs[activeIndex]) {
+        setCvs([...cvs, newCvEntry]);
+      }
 
-      if (!title && !content) return forceUpdate(!update);
+      let save: Promise<void | Response>;
 
-      const save = cvs[index].id
-        ? put({ id, title, content, start_date, end_date, src, tags })
-        : post({ title, content, start_date, end_date, src, tags });
+      if (newCV) {
+        cvs.push(newCvEntry);
+        save = post(cvs[cvs.length - 1]);
+      } else {
+        save = put(cvs[activeIndex]);
+      }
 
       save
-        .then((cv) => (cv: CV) => {
-          cv.id = cv[0].id;
+        .then((response: Response) => response.json())
+        .then((cv: CV) => {
+          cvs[cvs.length - 1].id = cv[0].id;
+          setActiveIndex(cvs.length - 1);
           setCvs(cvs);
         })
-        .catch(() => {})
+        .catch(() => forceUpdate(!update))
         .finally(() => {
-          forceUpdate(!update);
           showSnackbar(true);
           setTimeout(() => {
             showSnackbar(false);

@@ -14,15 +14,6 @@ const CVList = () => {
 
   const [dialog, showDialog] = useState(false);
 
-  const addCV = () => {
-    cvs.push({
-      title: "",
-      content: "",
-    });
-    setCvs(cvs);
-    setActiveIndex(cvs.length - 1);
-  };
-
   return (
     <section className={css["notelist"]}>
       {cvs.length ? (
@@ -32,7 +23,10 @@ const CVList = () => {
             title={cv.title}
             content={cv.content}
             active={index === activeIndex}
-            src={cv.src || "https://fomantic-ui.com/images/avatar2/large/kristy.png"}
+            src={
+              cv.src ||
+              "https://fomantic-ui.com/images/avatar2/large/kristy.png"
+            }
             toggle="Inkluder"
             onClick={() => index !== activeIndex && setActiveIndex(index)}
             onDelete={() => {
@@ -45,7 +39,7 @@ const CVList = () => {
           <h2 className="mdc-typography--subtitle2">Empty list</h2>
         </section>
       )}
-      <Fab className={css["fab"]} onClick={addCV}>
+      <Fab className={css["fab"]} onClick={() => setCvs(cvs, true)}>
         <i className="icon-plus" />
       </Fab>
       <ChoiceDialog
