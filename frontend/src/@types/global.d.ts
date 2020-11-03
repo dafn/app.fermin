@@ -24,7 +24,7 @@ declare global {
 
   interface CV {
     id?: number;
-    title: string;
+    title?: string;
     content?: string;
     tags?: string;
     src?: string;

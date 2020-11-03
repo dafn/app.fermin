@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import { useContext, useRef } from "preact/hooks";
+import { useContext } from "preact/hooks";
 import ImageInput from "./core/ImageInput";
 
 import context from "src/pages/context/cvContext";
@@ -10,72 +10,76 @@ let timer;
 const CVEditor = () => {
   const { cvs, setCvs, activeIndex } = useContext(context);
 
-  const title = useRef(null);
-  const content = useRef(null);
-  const start_date = useRef(null);
-  const end_date = useRef(null);
-  const tags = useRef(null);
-
-  const saveCv = () => {
+  const saveCv = (cv?: CV) => {
     cvs[activeIndex] = {
       ...cvs[activeIndex],
-      title: title.current["value"],
-      content: content.current["value"],
-      start_date: start_date.current["value"],
-      end_date: end_date.current["value"],
-      tags: tags.current["value"],
+      ...cv,
     };
 
     setCvs(cvs);
   };
 
-  const handleInput = () => {
+  const handleInput = (cv?: CV) => {
     clearTimeout(timer);
-    timer = setTimeout(() => saveCv(), 500);
+    timer = setTimeout(() => saveCv(cv), 500);
   };
 
   return (
     <section className={css["notepad"]}>
       <div className={css["title-image-container"]}>
         <ImageInput
-          src="https://fomantic-ui.com/images/wireframe/image.png"
+          src={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].src}
           className={css["cv-editor-image-input"]}
-          onChange={(name, file) => {
-            console.log(name, file);
+          onChange={(_, file) => {
+            handleInput({
+              src: file,
+            });
           }}
         />
         <input
           type="text"
-          ref={title}
           placeholder="Title"
           className="mdc-typography--subtitle2"
-          onInput={handleInput}
+          onInput={(event) => {
+            handleInput({
+              title: event.target["value"],
+            });
+          }}
           value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].title}
         />
       </div>
       <textarea
         name="textarea"
-        ref={content}
         placeholder="Description"
         className="mdc-typography--subtitle1"
-        onInput={handleInput}
+        onInput={(event) => {
+          handleInput({
+            content: event.target["value"],
+          });
+        }}
         value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].content}
       ></textarea>
       <div className={css["details-container"]}>
         <input
           type="text"
-          ref={tags}
           placeholder="Tags"
           className="mdc-typography--subtitle1"
-          onInput={handleInput}
+          onInput={(event) => {
+            handleInput({
+              tags: event.target["value"],
+            });
+          }}
           value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].tags}
         />
         <input
           type="date"
-          ref={start_date}
           placeholder="From"
           className="mdc-typography--subtitle1"
-          onInput={handleInput}
+          onInput={(event) => {
+            handleInput({
+              start_date: event.target["value"],
+            });
+          }}
           value={
             !cvs.length || cvs.length < 1
               ? null
@@ -84,10 +88,13 @@ const CVEditor = () => {
         />
         <input
           type="date"
-          ref={end_date}
           placeholder="To"
           className="mdc-typography--subtitle1"
-          onInput={handleInput}
+          onInput={(event) => {
+            handleInput({
+              end_date: event.target["value"],
+            });
+          }}
           value={
             !cvs.length || cvs.length < 1
               ? null
