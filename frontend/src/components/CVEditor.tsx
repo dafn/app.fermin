@@ -25,7 +25,7 @@ const CVEditor = () => {
   };
 
   return (
-    <section className={css["notepad"]}>
+    <section className={css["cv-editor"]}>
       <div className={css["title-image-container"]}>
         <ImageInput
           src={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].src}
@@ -109,7 +109,7 @@ const CVEditor = () => {
 export default CVEditor;
 
 css`
-  .notepad {
+  .cv-editor {
     display: grid;
     grid-template-rows: auto 1fr;
     background-color: var(--fermin-theme-background);
@@ -117,14 +117,10 @@ css`
     .title-image-container {
       display: grid;
       grid-template-columns: auto 1fr;
-      .cv-editor-image-input {
-        margin-right: 2rem;
-      }
     }
     .details-container {
       display: grid;
       grid-template-columns: 1fr auto auto;
-      grid-column-gap: 1rem;
       input {
         font-size: 11pt;
       }
@@ -132,14 +128,13 @@ css`
     input,
     textarea {
       padding: 1rem;
-      border: 1px dashed var(--fermin-light-on-dark);
+      border: 1px solid var(--fermin-light-on-dark);
       background-color: var(--fermin-theme-background);
       &:focus {
         outline: none;
       }
     }
     input {
-      margin: 2rem 0;
       font-size: 14pt;
     }
     textarea {

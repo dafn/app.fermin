@@ -51,15 +51,19 @@ css`
   .image-input {
     display: grid;
     position: relative;
+    border: 1px solid var(--fermin-light-on-dark);
     height: 4rem;
     width: 4rem;
     max-width: 4rem;
+    max-height: -webkit-fill-available;
     align-self: center;
     cursor: pointer;
     img {
       transition: opacity 0.1s;
+      justify-self: center;
       align-self: center;
-      max-width: inherit;
+      max-height: 3rem;
+      max-width: 3rem;
     }
     input {
       position: absolute;
@@ -74,7 +78,6 @@ css`
       transition: opacity 0.1s;
       height: 100%;
       width: 100%;
-      border: 1px dashed var(--fermin-light-on-dark);
       .add-image-icon {
         align-self: center;
         justify-self: center;
