@@ -53,12 +53,13 @@ css`
     position: relative;
     height: 4rem;
     width: 4rem;
+    max-width: 4rem;
     align-self: center;
     cursor: pointer;
     img {
       transition: opacity 0.1s;
-      height: 100%;
-      width: auto;
+      align-self: center;
+      max-width: inherit;
     }
     input {
       position: absolute;

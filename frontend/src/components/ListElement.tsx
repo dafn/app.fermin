@@ -42,7 +42,11 @@ const ListElement = ({
         onClick={onClick}
         onKeyUp={onClick}
       >
-        {src && <img src={src} />}
+        {src && (
+          <div className={css["image-container"]}>
+            <img src={src} />
+          </div>
+        )}
         <div>
           <h2 className="mdc-typography--subtitle2"> {title} </h2>
           <p className="mdc-typography--body2"> {content} </p>
@@ -86,6 +90,7 @@ css`
       position: relative;
       border-right: solid 2px var(--fermin-theme-surface);
       background-color: var(--fermin-theme-surface);
+      align-items: center;
       height: 3rem;
       width: 18rem;
       padding: 1rem;
@@ -96,10 +101,17 @@ css`
         outline: none;
         transform: scale(0.98);
       }
-      img {
-        height: 48px;
-        width: auto;
+      .image-container {
+        display: grid;
+        grid-template-rows: auto;
         margin-right: 1rem;
+        max-height: 3rem;
+        max-width: 4rem;
+        img {
+          align-self: center;
+          max-height: inherit;
+          max-width: inherit;
+        }
       }
       div {
         flex: 1;
