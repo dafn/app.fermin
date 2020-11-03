@@ -4,6 +4,9 @@ use crate::db::DBPool;
 use actix_identity::Identity;
 use actix_web::{error, http::StatusCode, web, Error, HttpResponse};
 
+use std::fs;
+use std::path::Path;
+
 #[get("/")]
 pub async fn get_all(db: DBPool, auth: Identity) -> Result<HttpResponse, Error> {
   if let Some(_auth) = auth.identity() {
@@ -32,11 +35,18 @@ pub async fn get_by_id(
 
 #[post("/")]
 pub async fn post(
-  web_cv_entry: web::Json<SlimCVEntry>,
+  mut web_cv_entry: web::Json<SlimCVEntry>,
   db: DBPool,
   auth: Identity,
 ) -> Result<HttpResponse, Error> {
   if let Some(_auth) = auth.identity() {
+
+    // WIP
+    if let Some(src) = &web_cv_entry.src {
+      fs::write(Path::new("../frontend/dist/assets/images/").join("oki.jpg"), src)?;
+      web_cv_entry.src = Some("../frontend/dist/assets/images/oki.jpg".to_owned());
+    }
+
     return match CVEntry::post(&db.get().unwrap(), &web_cv_entry) {
       Ok(cv_entry) => Ok(HttpResponse::Ok().json(&cv_entry)),
       Err(_) => Err(error::ErrorNotFound("Not Found")),
