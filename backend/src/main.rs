@@ -39,6 +39,7 @@ async fn main() -> std::io::Result<()> {
 
     let server = HttpServer::new(|| {
         App::new()
+            .app_data(web::JsonConfig::default().limit(1 * 1028 * 1028))
             .data(db::init_connection(get_db_url()))
             .wrap(middleware::Compress::default())
             .wrap(IdentityService::new(
@@ -47,7 +48,6 @@ async fn main() -> std::io::Result<()> {
                     .max_age_time(chrono::Duration::days(30))
                     .secure(false),
             ))
-            .data(web::JsonConfig::default())
             .wrap(middleware::Logger::new("%s | %r"))
             .service(webapp::index)
             .service(

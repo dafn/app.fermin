@@ -65,6 +65,7 @@ impl CVEntry {
         cv_entries_schema::start_date.eq(&_cv_entry.start_date),
         cv_entries_schema::end_date.eq(&_cv_entry.end_date),
         cv_entries_schema::tags.eq(&_cv_entry.tags),
+        cv_entries_schema::src.eq(&_cv_entry.src),
         cv_entries_schema::last_modified.eq(chrono::offset::Utc::now().naive_local()),
       ))
       .get_result::<CVEntry>(connection)
