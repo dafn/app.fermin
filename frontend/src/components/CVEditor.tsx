@@ -1,7 +1,9 @@
 import { h } from "preact";
 
 import { useContext } from "preact/hooks";
-import ImageInput from "./core/ImageInput";
+
+import ImageInput from "src/components/core/ImageInput";
+import Card from "src/components/core/Card";
 
 import context from "src/pages/context/cvContext";
 
@@ -25,7 +27,7 @@ const CVEditor = () => {
   };
 
   return (
-    <section className={css["cv-editor"]}>
+    <Card className={css["cv-editor"]}>
       <div className={css["title-image-container"]}>
         <ImageInput
           src={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].src}
@@ -102,7 +104,7 @@ const CVEditor = () => {
           }
         />
       </div>
-    </section>
+    </Card>
   );
 };
 
@@ -112,8 +114,9 @@ css`
   .cv-editor {
     display: grid;
     grid-template-rows: auto 1fr;
-    background-color: var(--fermin-theme-background);
-    margin: 6rem;
+    background-color: var(--fermin-theme-card-alt);
+    margin: 6rem 8rem;
+    padding: 1rem;
     .title-image-container {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -128,8 +131,8 @@ css`
     input,
     textarea {
       padding: 1rem;
-      border: 1px solid var(--fermin-light-on-dark);
-      background-color: var(--fermin-theme-background);
+      background-color: inherit;
+      border: none;
       &:focus {
         outline: none;
       }

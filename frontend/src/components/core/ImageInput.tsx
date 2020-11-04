@@ -51,7 +51,6 @@ css`
   .image-input {
     display: grid;
     position: relative;
-    border: 1px solid var(--fermin-light-on-dark);
     height: 4rem;
     width: 4rem;
     max-width: 4rem;
