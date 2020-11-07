@@ -134,13 +134,13 @@ css`
       button {
         position: absolute;
         top: 0rem;
-        right: 2rem;
+        left: 0;
         padding-top: 0.3rem;
         padding-bottom: 0.2rem;
         background: var(--fermin-surface);
         color: var(--fermin-surface-contrast);
         border: 1px dotted var(--fermin-surface-contrast);
-        border-radius: 0 0px 0.25rem 0.25rem;
+        border-radius: 0 0px 0.25rem 0;
         &.toggled-on {
           background: var(--fermin-positive-medium);
           color: var(--fermin-positive-medium-contrast);

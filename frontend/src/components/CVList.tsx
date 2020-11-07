@@ -27,7 +27,7 @@ const CVList = () => {
               cv.src ||
               "https://fomantic-ui.com/images/avatar2/large/kristy.png"
             }
-            toggle="Inkluder"
+            toggle="+"
             onClick={() => index !== activeIndex && setActiveIndex(index)}
             onDelete={() => {
               showDialog(true);
