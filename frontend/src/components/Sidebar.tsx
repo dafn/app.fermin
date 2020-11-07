@@ -2,7 +2,7 @@ import { h, Fragment } from "preact";
 import { useState, useContext } from "preact/hooks";
 
 import Button from "src/components/core/Button";
-import Switch from "preact-material-components/Switch";
+import Switch from "src/components/core/Switch";
 
 import { navigate, onNavigation, getCurrentRoute } from "src/router/navigator";
 import authContext from "src/auth/authContext";
@@ -132,7 +132,8 @@ css`
           margin: 1rem;
         }
         .switch {
-          height: 3rem;
+          transform: scale(.8);
+          margin-bottom: 2rem;
         }
       }
     }
