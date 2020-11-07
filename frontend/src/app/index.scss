@@ -25,7 +25,7 @@ p,
 textarea,
 label,
 input {
-  color: white;
+  color: var(--fermin-primary-medium-contrast);
   font-family: roboto, sans-serif;
 }
 
@@ -37,7 +37,7 @@ i {
 
 .fermin-typography-headline {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: normal;
 }
 
