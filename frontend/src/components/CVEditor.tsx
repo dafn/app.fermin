@@ -111,7 +111,6 @@ css`
     display: grid;
     grid-template-rows: auto 1fr;
     background-color: var(--fermin-surface);
-    margin: 6rem 8rem;
     padding: 1rem;
     .title-image-container {
       display: grid;

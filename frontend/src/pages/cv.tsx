@@ -84,10 +84,12 @@ const CV = () => {
     >
       <main className={css["cv"]}>
         <CVList />
-        <CVEditor />
-        <Button variant="positive" className={css["generate-pdf-button"]}>
-          Generer PDF
-        </Button>
+        <div className={css["editor-container"]}>
+          <Button variant="positive" className={css["generate-pdf-button"]}>
+            Generer PDF
+          </Button>
+          <CVEditor />
+        </div>
         <Snackbar message="Saved!" show={snackbar} severity="info" />
       </main>
     </Provider>
@@ -102,10 +104,15 @@ css`
     grid-template-columns: auto 1fr;
     width: 100%;
     background-color: var(--fermin-background);
-    .generate-pdf-button {
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
+    .editor-container {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      grid-row-gap: 2rem;
+      padding: 2rem 8rem 3rem;
+      .generate-pdf-button {
+        width: max-content;
+        justify-self: end;
+      }
     }
     .snackbar {
       background-color: var(--fermin-positive-medium);
