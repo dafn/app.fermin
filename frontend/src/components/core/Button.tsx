@@ -4,7 +4,7 @@ import cn from "src/utils/cn";
 
 interface Props {
   children: h.JSX.Element | h.JSX.Element[] | string;
-  variant: "default" | "primary" | "positive" | "alert" | "error";
+  variant: "default" | "primary" | "positive" | "warning" | "error";
   active?: boolean;
   disabled?: boolean;
   className?: string;
@@ -128,12 +128,12 @@ css`
       --fermin-positive-dark-contrast
     );
   }
-  .alert {
+  .warning {
     @include button(
-      --fermin-alert-medium,
-      --fermin-alert-medium-contrast,
-      --fermin-alert-dark,
-      --fermin-alert-dark-contrast
+      --fermin-warning-medium,
+      --fermin-warning-medium-contrast,
+      --fermin-warning-dark,
+      --fermin-warning-dark-contrast
     );
   }
   .error {

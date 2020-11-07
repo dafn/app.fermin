@@ -32,7 +32,7 @@ const Sidebar = () => {
     <nav className={`${css["sidebar"]}`}>
       <section className={css["top"]}>
         <Button
-          variant="alert"
+          variant="warning"
           flat
           active={route === "/login" || route === "/logout"}
           onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
@@ -112,7 +112,6 @@ css`
     button {
       height: 4rem;
       i {
-        color: var(--fermin-primary-medium-contrast);
         font-size: 1.2rem;
       }
     }
