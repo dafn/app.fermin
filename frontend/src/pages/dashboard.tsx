@@ -18,7 +18,7 @@ css`
     grid-template-rows: 1fr;
     padding: 1rem;
     width: 100%;
-    background-color: var(--fermin-theme-background);
+    background-color: var(--fermin-background);
     iframe {
       height: 100%;
       width: 100%;

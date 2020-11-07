@@ -4,11 +4,11 @@ import cn from "src/utils/cn";
 
 interface Props {
   children: h.JSX.Element | h.JSX.Element[] | string;
-  variant: "default" | "primary" | "alert" | "positive";
+  variant: "default" | "primary" | "positive" | "alert" | "error";
   active?: boolean;
   disabled?: boolean;
   className?: string;
-  contained?: boolean;
+  outlined?: boolean;
   flat?: boolean;
   onClick?: (event: h.JSX.TargetedEvent<HTMLButtonElement, MouseEvent>) => void;
 }
@@ -21,9 +21,8 @@ const Button = ({
   flat,
   disabled,
   onClick,
-  contained,
+  outlined,
 }: Props) => {
-
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
@@ -34,7 +33,7 @@ const Button = ({
         [css["active"]]: active,
         [css["flat"]]: flat,
         [css["disabled"]]: disabled,
-        [css["contained"]]: contained,
+        [css["outlined"]]: outlined,
         [className]: !!className,
       })}`}
       disabled={disabled}
@@ -51,37 +50,38 @@ const Button = ({
 export default Button;
 
 css`
-  @mixin button($color-base, $color-dark) {
+  @mixin button(
+    $color-base,
+    $color-base-contrast,
+    $color-dark,
+    $color-dark-contrast
+  ) {
     background-color: var($color-base);
     border: solid 1px var($color-base);
-    color: var(--fermin-theme-text-inverted);
-    &.contained {
-      color: var(--fermin-theme-text);
+    color: var($color-base-contrast);
+    &.outlined {
+      background-color: unset;
+      color: var($color-base);
       &:hover {
-        color: var(--fermin-theme-text-inverted);
+        color: var($color-base-contrast);
       }
     }
     &:hover,
-    &:focus {
-      background-color: var($color-dark);
-      border-color: var($color-dark);
-    }
+    &:focus,
     &.active {
       background-color: var($color-dark);
       border-color: var($color-dark);
+      outline: none;
     }
   }
 
   .button {
-    color: var(--fermin-theme-text);
-    background-color: var(--fermin-theme-neutral);
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
       0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    border: solid 1px var(--fermin-theme-neutral);
     font-size: 0.875rem;
     min-width: 64px;
     box-sizing: border-box;
-    transition: background-color 0.1s;
+    transition: background-color 0.1s, color 0.1s, border 0.1s;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     line-height: 1.75;
@@ -89,28 +89,13 @@ css`
     cursor: pointer;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
-    padding: 6px 16px;
-    &:hover,
-    &:focus {
-      background-color: gray;
-      border-color: gray;
-      outline: none;
-    }
-  }
-  .primary {
-    @include button(--fermin-theme-primary, --fermin-theme-primary-dark);
-  }
-  .alert {
-    @include button(--fermin-theme-alert, --fermin-theme-alert-dark);
-  }
-  .positive {
-    @include button(--fermin-theme-positive, --fermin-theme-positive-dark);
+    padding: 0.4rem 1rem;
   }
   .disabled {
     cursor: default;
     pointer-events: none;
   }
-  .contained {
+  .outlined {
     border: none;
     background: none;
     box-shadow: none;
@@ -118,5 +103,45 @@ css`
   .flat {
     box-shadow: none;
     border-radius: 0;
+  }
+  .default {
+    @include button(
+      --fermin-primary-medium,
+      --fermin-primary-medium-contrast,
+      --fermin-primary-dark,
+      --fermin-primary-dark-contrast
+    );
+  }
+  .primary {
+    @include button(
+      --fermin-primary-medium,
+      --fermin-primary-medium-contrast,
+      --fermin-primary-dark,
+      --fermin-primary-dark-contrast
+    );
+  }
+  .positive {
+    @include button(
+      --fermin-positive-medium,
+      --fermin-positive-medium-contrast,
+      --fermin-positive-dark,
+      --fermin-positive-dark-contrast
+    );
+  }
+  .alert {
+    @include button(
+      --fermin-alert-medium,
+      --fermin-alert-medium-contrast,
+      --fermin-alert-dark,
+      --fermin-alert-dark-contrast
+    );
+  }
+  .error {
+    @include button(
+      --fermin-error-medium,
+      --fermin-error-medium-contrast,
+      --fermin-error-dark,
+      --fermin-error-dark-contrast
+    );
   }
 `;

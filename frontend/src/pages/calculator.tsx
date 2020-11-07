@@ -23,7 +23,7 @@ css`
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: var(--fermin-theme-background);
+    background-color: var(--fermin-background);
     > section {
       width: max-content;
       display: grid;

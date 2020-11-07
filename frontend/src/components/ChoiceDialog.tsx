@@ -23,10 +23,10 @@ const ChoiceDialog = ({
 
   return (
     <Dialog message={message} show={show}>
-      <Button variant="primary" contained onClick={onDecline}>
+      <Button variant="error" onClick={onDecline}>
         {declineTitle || "Cancel"}
       </Button>
-      <Button variant="primary" contained onClick={onAccept}>
+      <Button variant="positive" onClick={onAccept}>
         {acceptTitle || "Accept"}
       </Button>
     </Dialog>

@@ -71,15 +71,12 @@ css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--fermin-theme-tertiary);
+    background-color: var(--fermin-primary-light);
     padding-top: 1rem;
     overflow-y: scroll;
     min-width: 22rem;
     .list-element {
       margin-bottom: 1rem;
-    }
-    .fab {
-      background-color: var(--fermin-theme-positive);
     }
     .empty-list {
       display: grid;
@@ -91,7 +88,6 @@ css`
       h2 {
         align-self: center;
         justify-self: center;
-        color: var(--fermin-theme-placeholder);
         margin: 0;
       }
     }

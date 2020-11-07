@@ -88,8 +88,8 @@ css`
     .card {
       display: flex;
       position: relative;
-      border-right: solid 2px var(--fermin-theme-surface);
-      background-color: var(--fermin-theme-surface);
+      border-right: solid 2px var(--fermin-surface);
+      background-color: var(--fermin-surface);
       align-items: center;
       height: 3rem;
       width: 18rem;
@@ -137,14 +137,14 @@ css`
         right: 2rem;
         padding-top: 0.3rem;
         padding-bottom: 0.2rem;
-        background: var(--fermin-theme-surface);
-        color: var(--fermin-theme-text);
-        border: 1px dotted var(--fermin-theme-text);
+        background: var(--fermin-surface);
+        color: var(--fermin-surface-contrast);
+        border: 1px dotted var(--fermin-surface-contrast);
         border-radius: 0 0px 0.25rem 0.25rem;
         &.toggled-on {
-          background: var(--fermin-theme-positive);
-          color: var(--fermin-light-on-dark);
-          border: solid 1px var(--fermin-theme-positive);
+          background: var(--fermin-positive-medium);
+          color: var(--fermin-positive-medium-contrast);
+          border: solid 1px var(--fermin-positive-medium);
         }
       }
       i {
@@ -153,7 +153,7 @@ css`
         margin: 0.3rem;
         font-size: 12pt;
         transition: color 0.05s;
-        color: var(--fermin-theme-icon-on-light);
+        color: var(--fermin-surface-contrast);
         top: 0;
         right: 0;
         cursor: pointer;
@@ -163,11 +163,11 @@ css`
         &:hover,
         &:focus {
           outline: none;
-          color: var(--fermin-theme-negative);
+          color: var(--fermin-error-medium);
         }
       }
       &.active {
-        border-right: solid 2px var(--fermin-theme-positive);
+        border-right: solid 2px var(--fermin-positive-medium);
       }
     }
   }

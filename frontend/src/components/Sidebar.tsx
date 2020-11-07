@@ -16,8 +16,8 @@ const Sidebar = () => {
   const { theme, setTheme } = useContext(themeContext);
 
   const handleThemeSwitch = () => {
-    if (theme === "fermin-theme-light") setTheme("fermin-theme-dark");
-    else setTheme("fermin-theme-light");
+    if (theme === "fermin-theme-dark") setTheme("fermin-theme-light");
+    else setTheme("fermin-theme-dark");
   };
 
   const handleButtonClick = (route: Route) => {
@@ -36,9 +36,6 @@ const Sidebar = () => {
           flat
           active={route === "/login" || route === "/logout"}
           onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
-          className={cn({
-            "fermin-button--alert": isLoggedIn,
-          })}
         >
           <i className="icon-user" />
         </Button>
@@ -110,12 +107,12 @@ css`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--fermin-theme-primary);
+    background-color: var(--fermin-primary-medium);
     width: 4rem;
     button {
       height: 4rem;
       i {
-        color: var(--fermin-theme-icon-on-dark);
+        color: var(--fermin-primary-medium-contrast);
         font-size: 1.2rem;
       }
     }
@@ -131,7 +128,7 @@ css`
         align-items: center;
         i {
           text-align: center;
-          color: var(--fermin-theme-icon-on-dark);
+          color: var(--fermin-primary-medium-contrast);
           margin: 1rem;
         }
         .switch {

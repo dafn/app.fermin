@@ -35,7 +35,7 @@ css`
     width: 100vw;
     top: 0;
     left: 0;
-    background-color: var(--fermin-theme-overlay);
+    background-color: var(--fermin-overlay);
     pointer-events: none;
     opacity: 0;
     transition: all 0.2s;
@@ -46,7 +46,7 @@ css`
       opacity: 1;
     }
     section {
-      background-color: var(--fermin-theme-surface);
+      background-color: var(--fermin-surface);
       justify-self: center;
       align-self: center;
       display: grid;

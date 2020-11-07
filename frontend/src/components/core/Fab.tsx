@@ -28,7 +28,7 @@ css`
     display: flex;
     height: 2.5rem;
     width: 2.5rem;
-    background: var(--fermin-theme-positive);
+    background: var(--fermin-positive-medium);
     border-radius: 50%;
     justify-content: center;
     align-items: center;
@@ -41,10 +41,10 @@ css`
     cursor: pointer;
     &:hover,
     &:focus {
-      background: var(--fermin-theme-positive-dark);
+      background: var(--fermin-positive-dark);
     }
     i {
-      color: var(--fermin-theme-icon-on-dark);
+      color: var(--fermin-positive-medium-contrast);
     }
   }
 `;

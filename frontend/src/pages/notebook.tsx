@@ -91,9 +91,9 @@ css`
     display: grid;
     grid-template-columns: auto 1fr;
     width: 100vw;
-    background-color: var(--fermin-theme-background);
+    background-color: var(--fermin-background);
     .snackbar {
-      background-color: var(--fermin-theme-positive);
+      background-color: var(--fermin-positive-medium);
       min-width: 0;
       div {
         padding: 0;

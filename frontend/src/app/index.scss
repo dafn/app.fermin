@@ -27,7 +27,7 @@ p,
 textarea,
 label,
 input {
-  color: var(--fermin-theme-text);
+  color: white;
   font-family: roboto, sans-serif;
 }
 
@@ -35,12 +35,6 @@ i {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
-}
-
-.fermin-button--alert {
-  &.mdc-button {
-    background-color: var(--fermin-theme-alert);
-  }
 }
 
 .mdc-theme--primary {

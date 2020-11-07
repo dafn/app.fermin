@@ -65,7 +65,7 @@ css`
   .login {
     display: grid;
     width: 100%;
-    background: var(--fermin-theme-background);
+    background: var(--fermin-background);
     > section {
       align-self: center;
       justify-self: center;

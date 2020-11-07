@@ -1,10 +1,16 @@
 import { h } from "preact";
+import cn from "src/utils/cn";
 
-interface Props extends h.JSX.HTMLAttributes<HTMLInputElement> {}
+interface Props extends Omit<h.JSX.HTMLAttributes<HTMLInputElement>, "class"> {
+  className?: string;
+}
 
-const TextField = ({ label, ...rest }: Props) => {
+const TextField = ({ label, className, ...rest }: Props) => {
   return (
-    <div className={css["textfield"]}>
+    <div className={cn({
+      [css["textfield"]]: true,
+      [className]: !!className
+    })}>
       <label htmlFor="textfield"> {label} </label>
       <input {...rest} />
     </div>
@@ -22,28 +28,28 @@ css`
       top: -0.8rem;
       left: 0.4rem;
       padding: 0 0.4rem;
-      color: var(--fermin-theme-label);
+      color: var(--fermin-primary-medium);
+      background-color: var(--fermin-background);
       position: absolute;
       pointer-events: none;
-      background: var(--fermin-theme-surface);
       transition: top 0.15s;
       border-radius: 6px;
     }
     input {
-      border: solid 1px var(--fermin-theme-input);
+      border: solid 1px var(--fermin-primary-medium);
+      background-color: var(--fermin-background);
       border-radius: 2px;
       padding: 0.8rem;
-      background: var(--fermin-theme-surface);
       transition: border-color 0.15s, box-shadow 0.15s;
       width: -webkit-fill-available;
       font-size: 1rem;
       &:hover,
       &:focus {
         outline: none;
-        border: solid 1px var(--fermin-theme-info);
+        border: solid 1px var(--fermin-info-medium);
       }
       &:focus {
-        box-shadow: 0 0 0 1px var(--fermin-theme-info);
+        box-shadow: 0 0 0 1px var(--fermin-info-medium);
       }
     }
   }

@@ -1,42 +1,45 @@
 .fermin-theme-light {
-  --fermin-theme-primary: #393741;
-  --fermin-theme-primary-dark: #201f24;
+  --fermin-primary-dark: #2d2c34;
+  --fermin-primary-medium: #393741;
+  --fermin-primary-light: #605e66;
+  --fermin-primary-dark-contrast: #ffffff;
+  --fermin-primary-medium-contrast: #ffffff;
+  --fermin-primary-light-contrast: #ffffff;
 
-  --fermin-theme-secondary: #7b7788;
-  --fermin-theme-tertiary: #e0e0e0;
-  --fermin-theme-neutral: #e0e0e0;
+  --fermin-positive-dark: #288641;
+  --fermin-positive-medium: #32a852;
+  --fermin-positive-light: #5ab974;
+  --fermin-positive-dark-contrast: #ffffff;
+  --fermin-positive-medium-contrast: #ffffff;
+  --fermin-positive-light-contrast: #ffffff;
 
-  --fermin-theme-positive: #32a852;
-  --fermin-theme-positive-dark: #298842;
-  --fermin-theme-negative: #f44336;
+  --fermin-info-dark: #1a78c2;
+  --fermin-info-medium: #2196f3;
+  --fermin-info-light: #4dabf5;
+  --fermin-info-dark-contrast: #ffffff;
+  --fermin-info-medium-contrast: #ffffff;
+  --fermin-info-light-contrast: #ffffff;
 
-  --fermin-theme-alert: #ff9800;
-  --fermin-theme-alert-dark: #d88200;
+  --fermin-warning-dark: #cc7900;
+  --fermin-warning-medium: #ff9800;
+  --fermin-warning-light: #ffac32;
+  --fermin-warning-dark-contrast: #ffffff;
+  --fermin-warning-medium-contrast: #ffffff;
+  --fermin-warning-light-contrast: #ffffff;
 
-  --fermin-theme-info: #2196f3;
+  --fermin-error-dark: #c3352b;
+  --fermin-error-medium: #f44336;
+  --fermin-error-light: #f6685e;
+  --fermin-error-dark-contrast: #ffffff;
+  --fermin-error-medium-contrast: #ffffff;
+  --fermin-error-light-contrast: #ffffff;
 
-  --fermin-theme-icon-on-dark: #fff;
-  --fermin-theme-icon-on-light: #000;
+  --fermin-overlay: #00000033;
+  --fermin-overlay-contrast: #ffffff;
 
-  --fermin-theme-placeholder: #a0a0a0;
-  --fermin-theme-label: #a0a0a0;
-  --fermin-theme-input: #bbbbbb;
+  --fermin-background: var(--fermin-primary-light);
+  --fermin-background-contrast: var(--fermin-primary-light-contrast);
 
-  --fermin-theme-text: #202020;
-  --fermin-theme-text-reverse: #fff;
-  --fermin-theme-text-inverted: #fff;
-
-  --fermin-theme-overlay: #00000033;
-  --fermin-theme-background: #fff;
-  --fermin-theme-surface: #fff;
-
-  --fermin-light-on-dark: #393741;
-  --fermin-dark-on-light: #fff;
-
-  --fermin-theme-card-alt: var(--fermin-theme-surface);
-
-  --mdc-theme-primary: var(--fermin-theme-primary);
-  --mdc-theme-secondary: var(--fermin-theme-secondary);
-  --mdc-theme-background: var(--fermin-theme-background);
-  --mdc-theme-surface: var(--fermin-theme-surface);
+  --fermin-surface: var(--fermin-primary-medium);
+  --fermin-surface-contrast: var(--fermin-primary-medium-contrast);
 }

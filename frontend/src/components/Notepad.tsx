@@ -68,13 +68,13 @@ css`
   .notepad {
     display: grid;
     grid-template-rows: auto 1fr;
-    background-color: var(--fermin-theme-background);
+    background-color: var(--fermin-background);
     margin: 6rem;
     input,
     textarea {
       padding: 1rem;
       border: none;
-      background-color: var(--fermin-theme-background);
+      background-color: var(--fermin-background);
       &:focus {
         outline: none;
       }

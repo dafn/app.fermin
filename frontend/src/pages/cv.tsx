@@ -82,14 +82,14 @@ const CV = () => {
         ...actions,
       }}
     >
-      <section className={css["cv"]}>
+      <main className={css["cv"]}>
         <CVList />
         <CVEditor />
         <Button variant="positive" className={css["generate-pdf-button"]}>
           Generer PDF
         </Button>
         <Snackbar message="Saved!" show={snackbar} severity="info" />
-      </section>
+      </main>
     </Provider>
   );
 };
@@ -101,14 +101,14 @@ css`
     display: grid;
     grid-template-columns: auto 1fr;
     width: 100%;
-    background-color: var(--fermin-theme-background);
+    background-color: var(--fermin-background);
     .generate-pdf-button {
       position: absolute;
       right: 1rem;
       top: 1rem;
     }
     .snackbar {
-      background-color: var(--fermin-theme-positive);
+      background-color: var(--fermin-positive-medium);
       min-width: 0;
       div {
         padding: 0;

@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useRef } from "preact/hooks";
+import cn from "src/utils/cn";
 
 type Base64 = string;
 interface Props {
@@ -14,12 +15,18 @@ const ImageInput = ({ src, className, onChange, iconClass }: Props) => {
 
   return (
     <section
-      className={`${className} ${css["image-input"]}`}
+      className={cn({
+        [css["image-input"]]: true,
+        [className]: !!className,
+      })}
       onClick={() => {
         fileInput.current["click"]();
       }}
     >
-      <img src={src || "https://fomantic-ui.com/images/avatar2/large/kristy.png"} alt="image" />
+      <img
+        src={src || "https://fomantic-ui.com/images/avatar2/large/kristy.png"}
+        alt="image"
+      />
       <div className={css["add-image"]}>
         <i className={`${css["add-image-icon"]} ${iconClass || "icon-plus"}`} />
       </div>
@@ -80,7 +87,7 @@ css`
       .add-image-icon {
         align-self: center;
         justify-self: center;
-        color: var(--fermin-light-on-dark);
+        color: var(--fermin-background-contrast);
       }
       & > * {
         grid-row: 1;

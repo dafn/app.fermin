@@ -50,27 +50,27 @@ css`
         margin: 0;
       }
       &.alert {
-        background-color: var(--fermin-theme-alert);
+        background-color: var(--fermin-alert-medium);
         p {
-          color: var(--fermin-theme-text-inverted);
+          color: var(--fermin-alert-medium-contrast);
         }
       }
       &.error {
-        background-color: var(--fermin-theme-negative);
+        background-color: var(--fermin-error-medium);
         p {
-          color: var(--fermin-theme-text-inverted);
+          color: var(--fermin-error-medium-contrast);
         }
       }
       &.info {
-        background-color: var(--fermin-theme-info);
+        background-color: var(--fermin-info-medium);
         p {
-          color: var(--fermin-theme-text-inverted);
+          color: var(--fermin-info-medium-contrast);
         }
       }
       &.success {
-        background-color: var(--fermin-theme-positive);
+        background-color: var(--fermin-positive-medium);
         p {
-          color: var(--fermin-theme-text-inverted);
+          color: var(--fermin-positive-medium-contrast);
         }
       }
     }
