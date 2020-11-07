@@ -44,21 +44,14 @@ const CV = () => {
       }
     },
     setCvs: (cvs: CV[], newCV?: boolean) => {
-      const newCvEntry = {
-        title: "",
-        content: "",
-        src: "",
-        tags: "",
-      };
-
       if (!cvs[activeIndex]) {
-        setCvs([...cvs, newCvEntry]);
+        setCvs([...cvs, {}]);
       }
 
       let save: Promise<void | Response>;
 
       if (newCV) {
-        cvs.push(newCvEntry);
+        cvs.push({});
         save = post(cvs[cvs.length - 1]);
       } else {
         save = put(cvs[activeIndex]);

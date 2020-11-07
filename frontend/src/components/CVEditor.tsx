@@ -82,11 +82,7 @@ const CVEditor = () => {
               start_date: event.target["value"],
             });
           }}
-          value={
-            !cvs.length || cvs.length < 1
-              ? null
-              : cvs[activeIndex].start_date?.toString()
-          }
+          value={cvs[activeIndex]?.start_date?.toString() || 0}
         />
         <input
           type="date"
@@ -99,8 +95,8 @@ const CVEditor = () => {
           }}
           value={
             !cvs.length || cvs.length < 1
-              ? null
-              : cvs[activeIndex].end_date?.toString()
+              ? 0
+              : cvs[activeIndex].end_date?.toString() || 0
           }
         />
       </div>
