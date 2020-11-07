@@ -106,10 +106,10 @@ css`
   }
   .default {
     @include button(
+      --fermin-primary-light,
+      --fermin-primary-light-contrast,
       --fermin-primary-medium,
-      --fermin-primary-medium-contrast,
-      --fermin-primary-dark,
-      --fermin-primary-dark-contrast
+      --fermin-primary-medium-contrast
     );
   }
   .primary {

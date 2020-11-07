@@ -32,7 +32,7 @@ const Sidebar = () => {
     <nav className={`${css["sidebar"]}`}>
       <section className={css["top"]}>
         <Button
-          variant="warning"
+          variant="primary"
           flat
           active={route === "/login" || route === "/logout"}
           onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
