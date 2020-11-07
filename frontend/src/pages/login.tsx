@@ -8,6 +8,7 @@ import authContext from "src/auth/authContext";
 
 import { login, logout } from "src/api/auth";
 import { getCurrentRoute, navigate } from "src/router/navigator";
+import { isKeyboardTrigger } from "src/utils/keyboard";
 
 const Login = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(authContext);
@@ -15,6 +16,7 @@ const Login = () => {
 
   let username = useRef(null);
   let password = useRef(null);
+  let submit = useRef(null);
 
   useEffect(() => {
     if (getCurrentRoute() === "/logout") {
@@ -34,12 +36,17 @@ const Login = () => {
 
   return (
     <main className={css["login"]}>
-      <section>
+      <section
+        onKeyUp={({ code }) =>
+          isKeyboardTrigger(code) ? submit.current["base"].click() : null
+        }
+      >
         <TextField label="Brukernavn" ref={username} />
         <TextField label="Passord" type="password" ref={password} />
         <Button
           variant="primary"
           disabled={disabled}
+          ref={submit}
           onClick={() => {
             setDisabled(true);
             login({

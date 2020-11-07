@@ -2,7 +2,7 @@ import { h } from "preact";
 import { useRef } from "preact/hooks";
 import cn from "src/utils/cn";
 
-interface Props {
+interface Props extends Omit<h.JSX.HTMLAttributes<HTMLButtonElement>, "class"> {
   children: h.JSX.Element | h.JSX.Element[] | string;
   variant: "default" | "primary" | "positive" | "warning" | "error";
   active?: boolean;
@@ -22,6 +22,7 @@ const Button = ({
   disabled,
   onClick,
   outlined,
+  ...rest
 }: Props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -41,6 +42,7 @@ const Button = ({
         buttonRef.current.blur();
         onClick(event);
       }}
+      {...rest}
     >
       {children}
     </button>
