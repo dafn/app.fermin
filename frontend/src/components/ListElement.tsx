@@ -48,8 +48,8 @@ const ListElement = ({
           </div>
         )}
         <div>
-          <h2 className="mdc-typography--subtitle2"> {title} </h2>
-          <p className="mdc-typography--body2"> {content} </p>
+          <h2 className="fermin-typography-subtitle"> {title} </h2>
+          <p className="fermin-typography-body"> {content} </p>
         </div>
         {toggle && (
           <button

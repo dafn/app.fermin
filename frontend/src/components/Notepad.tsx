@@ -48,14 +48,14 @@ const Notepad = () => {
         ref={title}
         value={notes.length > 0 ? notes[activeIndex].title : ""}
         placeholder="Title"
-        className="mdc-typography--subtitle2"
+        className="fermin-typography-headline"
         onInput={handleInput}
       />
       <textarea
         name="textarea"
         ref={content}
         placeholder="..."
-        className="mdc-typography--subtitle1"
+        className="fermin-typography-body"
         onInput={handleInput}
       ></textarea>
     </section>

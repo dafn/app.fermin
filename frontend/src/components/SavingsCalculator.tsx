@@ -37,7 +37,7 @@ const SavingsCalculator = () => {
 
   return (
     <section className={css["savings-calculator"]}>
-      <h5 className="mdc-typography--headline5">{t("accumulated_savings")}</h5>
+      <h5 className="fermin-typography-headline">{t("accumulated_savings")}</h5>
       <section className={css["inputs"]}>
         <TextField
           label={t("current_savings")}
@@ -68,7 +68,7 @@ const SavingsCalculator = () => {
           autocomplete="off"
         />
       </section>
-      <p className="mdc-typography--body1"> {calculation} </p>
+      <p className="fermin-typography-body"> {calculation} </p>
     </section>
   );
 };

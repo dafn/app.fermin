@@ -17,7 +17,7 @@ const Snackbar = ({ message, show, severity, ...rest }: Props) => {
       aria-hidden={!show}
     >
       <div className={css[severity]}>
-        <p className="mdc-typography--subtitle2"> {message} </p>
+        <p className="fermin-typography-subtitle"> {message} </p>
       </div>
     </aside>
   );

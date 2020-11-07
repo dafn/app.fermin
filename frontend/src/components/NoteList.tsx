@@ -45,7 +45,7 @@ const Notelist = () => {
         ))
       ) : (
         <section className={css["empty-list"]}>
-          <h2 className="mdc-typography--subtitle2">Empty list</h2>
+          <h2 className="fermin-typography-subtitle">Empty list</h2>
         </section>
       )}
       <Fab className={css["fab"]} onClick={addNote}>

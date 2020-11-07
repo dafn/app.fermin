@@ -74,7 +74,7 @@ const SurplusCalculator = () => {
 
   return (
     <section className={css["independent-income-calculator"]}>
-      <h5 className="mdc-typography--headline5">{t("independent_earnings")}</h5>
+      <h5 className="fermin-typography-headline">{t("independent_earnings")}</h5>
       <section className={css["inputs"]}>
         <TextField
           label={t("gross_income")}
@@ -106,16 +106,16 @@ const SurplusCalculator = () => {
         />
       </section>
       <section>
-        <p className="mdc-typography--body1">
+        <p className="fermin-typography-body">
           {t("total")} <strong>{calculation?.totalSurplus}</strong>
         </p>
-        <p className="mdc-typography--body1">
+        <p className="fermin-typography-body">
           {t("corporate")} <strong>{calculation?.incomeSurplus}</strong>
         </p>
-        <p className="mdc-typography--body1">
+        <p className="fermin-typography-body">
           {t("private")} <strong>{calculation?.salarySurplus}</strong>
         </p>
-        <p className="mdc-typography--body1">
+        <p className="fermin-typography-body">
           {t("tax_and_expenses_as_percentage_of_total")}{" "}
           <strong>{calculation?.taxesAndExpenses}</strong>
         </p>

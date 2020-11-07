@@ -41,7 +41,7 @@ const CVEditor = () => {
         <input
           type="text"
           placeholder="Title"
-          className="mdc-typography--subtitle2"
+          className="fermin-typography-headline"
           onInput={(event) => {
             handleInput({
               title: event.target["value"],
@@ -53,7 +53,7 @@ const CVEditor = () => {
       <textarea
         name="textarea"
         placeholder="Description"
-        className="mdc-typography--subtitle1"
+        className="fermin-typography-body"
         onInput={(event) => {
           handleInput({
             content: event.target["value"],
@@ -65,7 +65,7 @@ const CVEditor = () => {
         <input
           type="text"
           placeholder="Tags"
-          className="mdc-typography--subtitle1"
+          className="fermin-typography-body"
           onInput={(event) => {
             handleInput({
               tags: event.target["value"],
@@ -76,7 +76,7 @@ const CVEditor = () => {
         <input
           type="date"
           placeholder="From"
-          className="mdc-typography--subtitle1"
+          className="fermin-typography-body"
           onInput={(event) => {
             handleInput({
               start_date: event.target["value"],
@@ -87,7 +87,7 @@ const CVEditor = () => {
         <input
           type="date"
           placeholder="To"
-          className="mdc-typography--subtitle1"
+          className="fermin-typography-body"
           onInput={(event) => {
             handleInput({
               end_date: event.target["value"],

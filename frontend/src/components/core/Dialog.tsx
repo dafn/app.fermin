@@ -18,7 +18,7 @@ const Dialog = ({ children, message, show, ...rest }: Props) => {
       {...rest}
     >
       <section>
-        <h1 className="mdc-typography--subtitle1">{message}</h1>
+        <h1 className="fermin-typography-subtitle">{message}</h1>
         <div>{children}</div>
       </section>
     </dialog>
