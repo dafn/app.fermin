@@ -15,27 +15,51 @@ pub struct User {
   pub username: String,
   pub hash: String,
   pub salt: String,
+  pub src: Option<String>,
+}
+
+#[derive(Serialize)]
+pub struct SlimUser<'a> {
+  pub username: &'a String,
+  pub src: Option<&'a String>,
 }
 
 #[derive(Deserialize)]
 pub struct Login {
   pub username: String,
   pub password: String,
+  pub src: Option<String>,
 }
 
 impl User {
-  pub fn validate<'a>(connection: &PgConnection, _login: &'a Login) -> Result<User, Error> {
+  pub fn validate<'a>(connection: &PgConnection, login: &'a Login) -> Result<User, Error> {
     let user = users
-      .filter(users_schema::username.eq(&_login.username))
+      .filter(users_schema::username.eq(&login.username))
       .first::<User>(connection);
 
     if let Ok(user) = user {
-      if user.hash == get_hash(&_login.password, &user.salt) {
+      if user.hash == get_hash(&login.password, &user.salt) {
         return Ok(user);
       }
     }
 
     Err(Error::NotFound)
+  }
+
+  pub fn get<'a, 'b>(connection: &PgConnection, username: &'a str) -> Result<User, Error> {
+    users
+      .filter(users_schema::username.eq(&username))
+      .first::<User>(connection)
+  }
+
+  pub fn put<'a, 'b>(
+    connection: &PgConnection,
+    username: &'a str,
+    src: Option<String>,
+  ) -> Result<User, Error> {
+    diesel::update(users.filter(users_schema::username.eq(username)))
+      .set((users_schema::src.eq(&src),))
+      .get_result::<User>(connection)
   }
 }
 

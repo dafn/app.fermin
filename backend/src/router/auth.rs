@@ -1,4 +1,4 @@
-use crate::db::models::users::{Login, User};
+use crate::db::models::users::{Login, SlimUser, User};
 use crate::db::DBPool;
 
 use actix_identity::Identity;
@@ -13,7 +13,13 @@ pub async fn login(
   match User::validate(&db.get().unwrap(), &login) {
     Ok(user) => {
       id.remember(user.username.to_string());
-      Ok(HttpResponse::Ok().json(&user))
+
+      let slim_user = SlimUser {
+        username: &user.username,
+        src: user.src.as_ref(),
+      };
+
+      Ok(HttpResponse::Ok().json(&slim_user))
     }
     Err(_) => Err(error::ErrorUnauthorized("Unauthorized")),
   }

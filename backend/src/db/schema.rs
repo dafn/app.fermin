@@ -28,6 +28,7 @@ table! {
         username -> Text,
         hash -> Text,
         salt -> Text,
+        src -> Nullable<Text>,
     }
 }
 

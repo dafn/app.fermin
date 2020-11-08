@@ -56,6 +56,11 @@ async fn main() -> std::io::Result<()> {
                     .service(auth::logout),
             )
             .service(
+                web::scope("/api/profile")
+                    .service(api::profile::get)
+                    .service(api::profile::put),
+            )
+            .service(
                 web::scope("/api/notes")
                     .service(api::notes::get_all)
                     .service(api::notes::get_by_id)
