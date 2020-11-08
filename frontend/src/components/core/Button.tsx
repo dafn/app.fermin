@@ -73,6 +73,7 @@ css`
     &.active {
       background-color: var($color-dark);
       border-color: var($color-dark);
+      color: var($color-dark-contrast);
       outline: none;
     }
   }
