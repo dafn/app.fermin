@@ -57,6 +57,7 @@ const ListElement = ({
               [css["toggle"]]: true,
               [css["toggled-on"]]: toggleState,
             })}
+            title="toggle"
             onClick={(event) => {
               event.stopImmediatePropagation();
               onToggle(!toggleState);
@@ -135,16 +136,14 @@ css`
         position: absolute;
         top: 0rem;
         left: 0;
-        padding-top: 0.3rem;
-        padding-bottom: 0.2rem;
-        background: var(--fermin-surface);
+        background: none;
+        border: none;
         color: var(--fermin-surface-contrast);
-        border: 1px dotted var(--fermin-surface-contrast);
-        border-radius: 0 0px 0.25rem 0;
         &.toggled-on {
-          background: var(--fermin-positive-medium);
-          color: var(--fermin-positive-medium-contrast);
-          border: solid 1px var(--fermin-positive-medium);
+          color: var(--fermin-positive-medium);
+        }
+        &:focus {
+          outline: none;
         }
       }
       i {
