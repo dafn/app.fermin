@@ -115,6 +115,14 @@ css`
     .title-image-container {
       display: grid;
       grid-template-columns: auto 1fr;
+      .cv-editor-image-input {
+        height: 4rem;
+        width: 4rem;
+        img {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
     }
     .details-container {
       display: grid;

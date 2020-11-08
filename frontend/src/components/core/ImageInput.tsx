@@ -60,16 +60,14 @@ css`
     position: relative;
     height: 4rem;
     width: 4rem;
-    max-width: 4rem;
-    max-height: -webkit-fill-available;
     align-self: center;
     cursor: pointer;
     img {
       transition: opacity 0.1s;
       justify-self: center;
       align-self: center;
-      max-height: 3rem;
-      max-width: 3rem;
+      height: inherit;
+      width: inherit;
     }
     input {
       position: absolute;
