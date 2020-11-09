@@ -27,7 +27,7 @@ const Router = ({ children }: Props) => {
       if (!isLoggedIn) navigate("/login");
       setUrl(getCurrentRoute());
     };
-  }, []);
+  }, [isLoggedIn]);
 
   if (Array.isArray(children)) {
     for (let child of children) {

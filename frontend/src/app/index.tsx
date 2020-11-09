@@ -16,22 +16,36 @@ import Sidebar from "src/components/Sidebar";
 import themeContext from "src/theme/themeContext";
 import languageContext from "src/i18n/languageContext";
 import authContext from "src/auth/authContext";
+import { getOne } from "src/api/user";
 
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 import "./index.scss";
 
 const App = () => {
   const [theme, setTheme] = useState<Theme>("fermin-theme-dark");
+  const [user, setUser] = useState<User | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
     env.initialAuthState.isLoggedIn
   );
   const [lang, setLang] = useState<Language>("no");
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      user || getOne({ username: "dafn" }).then((json) => {
+        setUser(json);
+      });
+    } else {
+      setUser(null);
+    }
+  }, [isLoggedIn]);
+
   return (
     <themeContext.Provider value={{ theme, setTheme }}>
       <section className={theme}>
-        <authContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <authContext.Provider
+          value={{ user, setUser, isLoggedIn, setIsLoggedIn }}
+        >
           <languageContext.Provider value={{ lang, setLang }}>
             <Sidebar />
             <Switch>

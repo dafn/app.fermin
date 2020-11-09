@@ -1,6 +1,7 @@
 const endpoints = {
   notes: "/api/notes/",
   cv_entries: "/api/cv_entries/",
+  user: "/api/profile/",
   auth: {
     login: "/auth/login",
     logout: "/auth/logout",
@@ -21,6 +22,10 @@ export const urlBuilder = {
     post: () => endpoints.cv_entries,
     put: (id: number) => endpoints.cv_entries + id,
     removeById: (id: number) => endpoints.cv_entries + id,
+  },
+  user: {
+    getOne: (username: string) => endpoints.user + username,
+    put: () => endpoints.user,
   },
   auth: {
     login: () => endpoints.auth.login,

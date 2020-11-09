@@ -35,7 +35,11 @@ declare global {
 
   interface Login {
     username: string;
-    password: string;
+    password?: string;
+  }
+
+  interface User extends Login {
+    src?: string;
   }
 
   const env: {

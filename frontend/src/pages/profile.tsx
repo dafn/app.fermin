@@ -1,16 +1,41 @@
 import { h } from "preact";
+import { useContext } from "preact/hooks";
+import authContext from "src/auth/authContext";
 import Button from "src/components/core/Button";
 import ImageInput from "src/components/core/ImageInput";
+import { put } from "src/api/user";
+import { logout } from "src/api/auth";
 
 const Profile = () => {
+  const { user, setUser, setIsLoggedIn } = useContext(authContext);
+
+  const handleOnChange = (base64: string) => {
+    setUser({
+      ...user,
+      src: base64,
+    });
+    put({
+      src: base64,
+    });
+  };
+
   return (
     <main className={css["profile"]}>
       <div className={css["content-container"]}>
-        <ImageInput className={css["avatar"]} src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/1200px-Ski_trail_rating_symbol-green_circle.svg.png" />
+        <ImageInput
+          className={css["avatar"]}
+          src={user?.src}
+          onChange={(_, base64) => handleOnChange(base64)}
+        />
         <span className={css["divider"]} />
         <div className={css["right-hand-side"]}>
-          <p>dafn</p>
-          <Button className={css["button"]} variant="warning" outlined>
+          <p>{user?.username}</p>
+          <Button
+            className={css["button"]}
+            variant="warning"
+            outlined
+            onClick={() => logout().then(() => setIsLoggedIn(false))}
+          >
             Log out
           </Button>
         </div>
