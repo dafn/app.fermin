@@ -2,6 +2,7 @@ import { h, render } from "preact";
 
 import Dashboard from "src/pages/dashboard";
 import Login from "src/pages/login";
+import Profile from "src/pages/profile";
 import Notebook from "src/pages/notebook";
 import Calculator from "src/pages/calculator";
 import VideoCutter from "src/pages/videoCutter";
@@ -39,6 +40,9 @@ const App = () => {
               </Route>
               <Route match={["/login", "/logout"]}>
                 <Login />
+              </Route>
+              <Route match={"/profile"}>
+                <Profile />
               </Route>
               <Route match="/notepad">
                 <Notebook />

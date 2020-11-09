@@ -23,10 +23,7 @@ const CVList = () => {
             title={cv.title}
             content={cv.content}
             active={index === activeIndex}
-            src={
-              cv.src ||
-              "https://fomantic-ui.com/images/avatar2/large/kristy.png"
-            }
+            src={cv.src || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"}
             toggle="+"
             onClick={() => index !== activeIndex && setActiveIndex(index)}
             onDelete={() => {

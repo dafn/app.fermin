@@ -7,6 +7,7 @@ declare global {
     | "/calculator"
     | "/login"
     | "/logout"
+    | "/profile"
     | "/video-cutter"
     | "/cv";
 

@@ -35,7 +35,7 @@ const Sidebar = () => {
           variant="primary"
           flat
           active={route === "/login" || route === "/logout"}
-          onClick={() => handleButtonClick(isLoggedIn ? "/logout" : "/login")}
+          onClick={() => handleButtonClick(isLoggedIn ? "/profile" : "/login")}
         >
           <i className="icon-user" />
         </Button>

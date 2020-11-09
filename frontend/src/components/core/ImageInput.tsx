@@ -8,9 +8,16 @@ interface Props {
   onChange?: (name: string, base64: string) => void;
   className?: string;
   iconClass?: string;
+  placeholder?: string;
 }
 
-const ImageInput = ({ src, className, onChange, iconClass }: Props) => {
+const ImageInput = ({
+  src,
+  className,
+  onChange,
+  iconClass = "icon-plus",
+  placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png",
+}: Props) => {
   const fileInput = useRef(null);
 
   return (
@@ -23,12 +30,9 @@ const ImageInput = ({ src, className, onChange, iconClass }: Props) => {
         fileInput.current["click"]();
       }}
     >
-      <img
-        src={src || "https://fomantic-ui.com/images/avatar2/large/kristy.png"}
-        alt="image"
-      />
+      <img src={src || placeholder} alt="image" />
       <div className={css["add-image"]}>
-        <i className={`${css["add-image-icon"]} ${iconClass || "icon-plus"}`} />
+        <i className={`${css["add-image-icon"]} ${iconClass}`} />
       </div>
       <input
         type="file"
