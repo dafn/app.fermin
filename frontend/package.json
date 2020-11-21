@@ -12,9 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material/theme": "^5.1.0",
-    "preact": "^10.4.0",
-    "preact-material-components": "^1.6.1"
+    "preact": "^10.4.0"
   },
   "devDependencies": {
     "@ampproject/rollup-plugin-closure-compiler": "^0.25.2",
