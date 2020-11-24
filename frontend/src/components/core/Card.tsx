@@ -9,10 +9,11 @@ interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
 const Card = ({ children, className, onClick, ...rest }: Props) => {
   return (
     <section
-      className={`${css["card"]} ${cn({
-        [className]: !!className,
+      className={cn({
+        [css["card"]]: true,
         [css["no-outline"]]: true,
-      })}`}
+        [className]: !!className,
+      })}
       onClick={(event) => {
         onClick && onClick(event);
       }}
@@ -28,8 +29,8 @@ export default Card;
 
 css`
   .card {
-    display: block;
     border-radius: 0.2rem;
+    background-color: var(--fermin-surface);
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
       0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
