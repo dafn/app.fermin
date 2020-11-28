@@ -111,7 +111,7 @@ css`
         img {
           align-self: center;
           max-height: inherit;
-          max-width: inherit;
+          max-width: 3rem;
         }
       }
       div {

@@ -122,8 +122,10 @@ css`
         height: 4rem;
         width: 4rem;
         img {
-          height: 3rem;
-          width: 3rem;
+          max-height: 3rem;
+          max-width: 3rem;
+          height: auto;
+          width: auto;
         }
       }
     }
