@@ -2,13 +2,13 @@ import { h } from "preact";
 import cn from "src/utils/cn";
 
 import Bookmark from "src/components/core/Bookmark";
-import Card from "./core/Card";
+import Card from "src/components/core/Card";
 
-interface Props extends Omit<h.JSX.HTMLAttributes<HTMLDivElement>, "class"> {
+interface Props {
   className?: string;
 }
 
-const BookmarkHub = ({ children, className }: Props) => {
+const BookmarkHub = ({ className }: Props) => {
   return (
     <Card
       className={`${css["bookmark-hub"]} ${cn({
@@ -19,50 +19,50 @@ const BookmarkHub = ({ children, className }: Props) => {
         title={"Fiken"}
         href={"https://fiken.no/"}
         src={
-          "https://fiken.no/resources/fiken/29a2917ae7d7035ad27ef1b5398d798f/illustrasjoner/landingsside/superenkelt-regnskap.svg"
+          "/assets/images/fiken.png"
         }
       />
       <Bookmark
         title={"DB"}
         href={"https://danskebank.no/"}
         src={
-          "https://upload.wikimedia.org/wikipedia/commons/9/9f/Danske_Bank_logo.svg"
+          "/assets/images/dn.png"
         }
       />
       <Bookmark
         title={"Nordnet"}
         href={"https://www.nordnet.no/overview"}
         src={
-          "https://mk0corpsitebkr4w0d4u.kinstacdn.com/wp-content/uploads/2020/10/Nordnet_logo-504x55.png"
+          "/assets/images/nordnet.jpg"
         }
       />
       <Bookmark
         title={"E24"}
         href={"https://e24.no/"}
-        src={"https://e24.no/apple-touch-icon.png"}
+        src={"/assets/images/e24.png"}
       />
       <Bookmark
         title={"1 Password"}
         href={"https://1password.com/"}
-        src={"https://1password.com/img/redesign/logo-light-bg.svg"}
+        src={"/assets/images/1password.jpg"}
       />
       <Bookmark
         title={"Mega"}
         href={"https://mega.nz/"}
-        src={"https://cdn.worldvectorlogo.com/logos/mega-icon.svg"}
+        src={"/assets/images/mega.jpg"}
       />
       <Bookmark
         title={"日本語"}
         href={"https://www.japanesepod101.com/"}
         src={
-          "https://biblionyan.files.wordpress.com/2018/12/japanesepod101_300x300.png"
+          "/assets/images/japanese101.webp"
         }
       />
       <Bookmark
         title={"Reddit"}
         href={"https://www.reddit.com/"}
         src={
-          "https://www.redditstatic.com/desktop2x/img/id-cards/snoo-home@2x.png"
+          "/assets/images/reddit.webp"
         }
       />
     </Card>

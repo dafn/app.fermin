@@ -1,6 +1,5 @@
 import { h } from "preact";
 import cn from "src/utils/cn";
-import Card from "./Card";
 
 interface Props extends Omit<h.JSX.HTMLAttributes<HTMLDivElement>, "class"> {
   title: string;
@@ -33,9 +32,9 @@ export default Bookmark;
 css`
   .bookmark {
     text-decoration: none;
-    transition: all .1s;
+    transition: all 0.1s;
     &:hover {
-      transform: scale(.9);
+      transform: scale(0.9);
       cursor: pointer;
     }
     display: flex;
@@ -52,15 +51,21 @@ css`
       width: -webkit-fill-available;
       height: 100%;
       img {
+        position: relative;
+        display: inline-block;
+        border-radius: 0.8rem;
+        box-sizing: border-box;
         height: auto;
-        max-height: 2.8rem;
-        max-width: 100%;
+        max-height: 3rem;
+        max-width: 3rem;
       }
     }
     .title-container {
       align-items: flex-end;
+      height: auto;
       p {
         overflow: hidden;
+        font-size: 11pt;
         white-space: nowrap;
         text-overflow: ellipsis;
         margin: 0;
