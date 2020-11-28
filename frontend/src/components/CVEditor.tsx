@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import { useContext } from "preact/hooks";
+import { useContext, useEffect, useState } from "preact/hooks";
 
 import ImageInput from "src/components/core/ImageInput";
 import Card from "src/components/core/Card";
@@ -12,12 +12,19 @@ let timer;
 const CVEditor = () => {
   const { cvs, setCvs, activeIndex } = useContext(context);
 
+  const [cv, setCv] = useState<CV>({});
+
+  useEffect(() => {
+    cvs[activeIndex] && setCv(cvs[activeIndex]);
+  }, [activeIndex]);
+
   const saveCv = (cv?: CV) => {
     cvs[activeIndex] = {
       ...cvs[activeIndex],
       ...cv,
     };
 
+    setCv(cvs[activeIndex]);
     setCvs(cvs);
   };
 
@@ -30,7 +37,7 @@ const CVEditor = () => {
     <Card className={css["cv-editor"]}>
       <div className={css["title-image-container"]}>
         <ImageInput
-          src={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].src}
+          src={cv.src}
           className={css["cv-editor-image-input"]}
           onChange={(_, file) => {
             handleInput({
@@ -47,7 +54,7 @@ const CVEditor = () => {
               title: event.target["value"],
             });
           }}
-          value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].title}
+          value={cv.title}
         />
       </div>
       <textarea
@@ -59,7 +66,7 @@ const CVEditor = () => {
             content: event.target["value"],
           });
         }}
-        value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].content}
+        value={cv.content}
       ></textarea>
       <div className={css["details-container"]}>
         <input
@@ -71,7 +78,7 @@ const CVEditor = () => {
               tags: event.target["value"],
             });
           }}
-          value={!cvs.length || cvs.length < 1 ? null : cvs[activeIndex].tags}
+          value={cv.tags}
         />
         <input
           type="date"
@@ -82,7 +89,7 @@ const CVEditor = () => {
               start_date: event.target["value"],
             });
           }}
-          value={cvs[activeIndex]?.start_date?.toString() || 0}
+          value={cv.start_date?.toString() || 0}
         />
         <input
           type="date"
@@ -93,11 +100,7 @@ const CVEditor = () => {
               end_date: event.target["value"],
             });
           }}
-          value={
-            !cvs.length || cvs.length < 1
-              ? 0
-              : cvs[activeIndex].end_date?.toString() || 0
-          }
+          value={cv.end_date?.toString() || 0}
         />
       </div>
     </Card>

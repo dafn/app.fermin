@@ -13,14 +13,17 @@ const CV = () => {
   const [cvs, setCvs] = useState<CV[]>([]);
   const [init, setInit] = useState<boolean>(true);
   const [update, forceUpdate] = useState<boolean>(true);
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(-1);
   const [snackbar, showSnackbar] = useState<boolean>(false);
 
   useEffect(() => {
     if (init) {
-      getAll().then((cvs) => {
-        setCvs(cvs);
-      });
+      getAll()
+        .then((cvs) => {
+          setCvs(cvs);
+          setActiveIndex(0);
+        })
+        .catch(() => setActiveIndex(0));
 
       setInit(false);
     }
