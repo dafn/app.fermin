@@ -11,7 +11,7 @@ import themeContext from "src/theme/themeContext";
 
 const Sidebar = () => {
   const [route, setRoute] = useState<Route>(getCurrentRoute());
-  const { isLoggedIn } = useContext(authContext);
+  const { isLoggedIn, user } = useContext(authContext);
 
   const { theme, setTheme } = useContext(themeContext);
 
@@ -34,10 +34,20 @@ const Sidebar = () => {
         <Button
           variant="primary"
           flat
-          active={route === "/login" || route === "/logout"}
+          active={
+            route === "/login" || route === "/logout" || route === "/profile"
+          }
           onClick={() => handleButtonClick(isLoggedIn ? "/profile" : "/login")}
         >
-          <i className="icon-user" />
+          {isLoggedIn && user ? (
+            <img
+              className={css["profile-pic"]}
+              src={user.src}
+              alt="profilbilde"
+            />
+          ) : (
+            <i className="icon-user" />
+          )}
         </Button>
         {isLoggedIn && (
           <Fragment>
@@ -110,9 +120,16 @@ css`
     background-color: var(--fermin-primary-medium);
     width: 4rem;
     button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 4rem;
       i {
         font-size: 1.2rem;
+      }
+      .profile-pic {
+        height: 1.9rem;
+        width: auto;
       }
     }
     .top {
@@ -131,7 +148,7 @@ css`
           margin: 1rem;
         }
         .switch {
-          transform: scale(.8);
+          transform: scale(0.8);
           margin-bottom: 2rem;
         }
       }
