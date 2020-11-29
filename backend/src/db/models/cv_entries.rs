@@ -10,6 +10,7 @@ use crate::db::schema::cv_entries::dsl::cv_entries;
 use serde::{Deserialize, Serialize};
 
 #[derive(Queryable, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct CVEntry {
   pub id: i32,
   pub title: Option<String>,

@@ -20,7 +20,7 @@ declare global {
     title: string;
     content: string;
     created?: Date;
-    last_edited?: Date;
+    lastEdited?: Date;
   }
 
   interface CV {
@@ -29,8 +29,8 @@ declare global {
     content?: string;
     tags?: string;
     src?: string;
-    start_date?: Date;
-    end_date?: Date;
+    startDate?: Date;
+    endDate?: Date;
   }
 
   interface Login {

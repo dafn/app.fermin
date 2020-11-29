@@ -10,6 +10,7 @@ use crate::db::schema::notes::dsl::notes;
 use serde::{Deserialize, Serialize};
 
 #[derive(Queryable, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Note {
   pub id: i32,
   pub title: String,

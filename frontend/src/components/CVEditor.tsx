@@ -83,10 +83,10 @@ const CVEditor = () => {
           className="fermin-typography-body"
           onInput={(event) => {
             handleInput({
-              start_date: event.target["value"],
+              startDate: event.target["value"],
             });
           }}
-          value={cv.start_date?.toString() || 0}
+          value={cv.startDate?.toString() || 0}
         />
         <input
           type="date"
@@ -94,10 +94,10 @@ const CVEditor = () => {
           className="fermin-typography-body"
           onInput={(event) => {
             handleInput({
-              end_date: event.target["value"],
+              endDate: event.target["value"],
             });
           }}
-          value={cv.end_date?.toString() || 0}
+          value={cv.endDate?.toString() || 0}
         />
       </div>
     </Card>
