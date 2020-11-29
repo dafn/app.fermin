@@ -128,8 +128,8 @@ css`
         font-size: 1.2rem;
       }
       .profile-pic {
-        height: 1.9rem;
-        width: auto;
+        max-height: 1.9rem;
+        max-width: 1.9rem;
       }
     }
     .top {

@@ -62,10 +62,9 @@ css`
         justify-self: center;
       }
       .avatar {
-        height: 6rem;
+        height: auto;
         max-height: 6rem;
-        width: auto;
-        max-width: auto;
+        max-width: 6rem;
       }
       .divider {
         height: 4rem;
