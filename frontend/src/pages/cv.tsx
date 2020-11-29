@@ -64,7 +64,7 @@ const CV = () => {
         .then((response: Response) => response.json())
         .then((cv: CV) => {
           cvs[cvs.length - 1].id = cv[0].id;
-          setActiveIndex(cvs.length - 1);
+          newCV && setActiveIndex(cvs.length - 1);
           setCvs(cvs);
         })
         .catch(() => forceUpdate(!update))
