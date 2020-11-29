@@ -71,7 +71,6 @@ css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--fermin-primary-light);
     padding-top: 1rem;
     overflow-y: scroll;
     min-width: 22rem;
