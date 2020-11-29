@@ -16,13 +16,13 @@ pub async fn get_all(db: DBPool, auth: Identity) -> Result<HttpResponse, Error> 
 }
 
 #[get("/{id}")]
-pub async fn get_by_id(
+pub async fn get_one(
   id: web::Path<i32>,
   db: DBPool,
   auth: Identity,
 ) -> Result<HttpResponse, Error> {
   if let Some(_auth) = auth.identity() {
-    return match CVEntry::get_by_id(&db.get().unwrap(), &id) {
+    return match CVEntry::get_one(&db.get().unwrap(), &id) {
       Ok(cv_entry) => Ok(HttpResponse::Ok().json(&cv_entry)),
       Err(_) => Err(error::ErrorNotFound("Not Found")),
     };

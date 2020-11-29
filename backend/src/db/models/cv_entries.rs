@@ -40,7 +40,7 @@ impl CVEntry {
       .load::<CVEntry>(connection)
   }
 
-  pub fn get_by_id<'a>(connection: &PgConnection, _id: &'a i32) -> Result<CVEntry, Error> {
+  pub fn get_one<'a>(connection: &PgConnection, _id: &'a i32) -> Result<CVEntry, Error> {
     cv_entries.find(_id).first::<CVEntry>(connection)
   }
 

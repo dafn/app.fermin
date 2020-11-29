@@ -5,12 +5,12 @@ use actix_identity::Identity;
 use actix_web::{error, web, Error, HttpResponse};
 
 #[get("/{user}")]
-pub async fn get(
+pub async fn get_one(
   db: DBPool,
   _auth: Identity,
   username: web::Path<String>,
 ) -> Result<HttpResponse, Error> {
-  let get_user = User::get(&db.get().unwrap(), &username);
+  let get_user = User::get_one(&db.get().unwrap(), &username);
   return match get_user {
     Ok(user) => Ok(HttpResponse::Ok().json(SlimUser {
       username: &user.username,

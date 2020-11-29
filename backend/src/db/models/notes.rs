@@ -38,7 +38,7 @@ impl Note {
       .load::<Note>(connection)
   }
 
-  pub fn get_by_id<'a>(connection: &PgConnection, _id: &'a i32) -> Result<Note, Error> {
+  pub fn get_one<'a>(connection: &PgConnection, _id: &'a i32) -> Result<Note, Error> {
     notes.find(_id).first::<Note>(connection)
   }
 

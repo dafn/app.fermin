@@ -57,13 +57,13 @@ async fn main() -> std::io::Result<()> {
             )
             .service(
                 web::scope("/api/profile")
-                    .service(api::profile::get)
+                    .service(api::profile::get_one)
                     .service(api::profile::put),
             )
             .service(
                 web::scope("/api/notes")
                     .service(api::notes::get_all)
-                    .service(api::notes::get_by_id)
+                    .service(api::notes::get_one)
                     .service(api::notes::post)
                     .service(api::notes::put)
                     .service(api::notes::delete),
@@ -71,7 +71,7 @@ async fn main() -> std::io::Result<()> {
             .service(
                 web::scope("/api/cv_entries")
                     .service(api::cv_entries::get_all)
-                    .service(api::cv_entries::get_by_id)
+                    .service(api::cv_entries::get_one)
                     .service(api::cv_entries::post)
                     .service(api::cv_entries::put)
                     .service(api::cv_entries::delete),

@@ -46,7 +46,7 @@ impl User {
     Err(Error::NotFound)
   }
 
-  pub fn get<'a, 'b>(connection: &PgConnection, username: &'a str) -> Result<User, Error> {
+  pub fn get_one<'a, 'b>(connection: &PgConnection, username: &'a str) -> Result<User, Error> {
     users
       .filter(users_schema::username.eq(&username))
       .first::<User>(connection)
