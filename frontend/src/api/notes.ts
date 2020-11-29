@@ -1,10 +1,10 @@
 import { urlBuilder } from "src/api/helpers";
 
-export const getById = ({ id }: Pick<Note, "id">): Promise<Note> => {
-  return fetch(urlBuilder.notes.getById(id))
+export const getOne = ({ id }: Pick<Note, "id">): Promise<Note> => {
+  return fetch(urlBuilder.notes.getOne(id))
     .then((res) => res.json())
     .catch((err) =>
-      console.error(`notes > getById | Could not get note with id ${id}`, err)
+      console.error(`notes > getOne | Could not get note with id ${id}`, err)
     );
 };
 

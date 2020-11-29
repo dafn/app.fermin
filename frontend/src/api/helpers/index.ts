@@ -11,14 +11,14 @@ const endpoints = {
 export const urlBuilder = {
   notes: {
     getAll: () => endpoints.notes,
-    getById: (id: number) => endpoints.notes + id,
+    getOne: (id: number) => endpoints.notes + id,
     post: () => endpoints.notes,
     put: (id: number) => endpoints.notes + id,
     removeById: (id: number) => endpoints.notes + id,
   },
   cv_entries: {
     getAll: () => endpoints.cv_entries,
-    getById: (id: number) => endpoints.cv_entries + id,
+    getOne: (id: number) => endpoints.cv_entries + id,
     post: () => endpoints.cv_entries,
     put: (id: number) => endpoints.cv_entries + id,
     removeById: (id: number) => endpoints.cv_entries + id,

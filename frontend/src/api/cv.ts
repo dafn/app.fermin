@@ -1,10 +1,10 @@
 import { urlBuilder } from "src/api/helpers";
 
-export const getById = ({ id }: Pick<CV, "id">): Promise<CV | void> => {
-  return fetch(urlBuilder.cv_entries.getById(id))
+export const getOne = ({ id }: Pick<CV, "id">): Promise<CV | void> => {
+  return fetch(urlBuilder.cv_entries.getOne(id))
     .then((res) => res.json())
     .catch((err) =>
-      console.error(`notes > getById | Could not get note with id ${id}`, err)
+      console.error(`cv > getOne | Could not get note with id ${id}`, err)
     );
 };
 
@@ -12,7 +12,7 @@ export const getAll = (): Promise<CV[]> => {
   return fetch(urlBuilder.cv_entries.getAll())
     .then((res) => res.json())
     .catch((err) =>
-      console.error("notes > getAll | Could not get all notes", err)
+      console.error("cv > getAll | Could not get all notes", err)
     );
 };
 
@@ -23,7 +23,7 @@ export const post = (cv: CV): Promise<void | Response> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(cv),
-  }).catch((err) => console.error("notes > post | Could not post note", err));
+  }).catch((err) => console.error("cv > post | Could not post note", err));
 };
 
 export const put = (cv: CV): Promise<void | Response> => {
@@ -34,7 +34,7 @@ export const put = (cv: CV): Promise<void | Response> => {
     },
     body: JSON.stringify(cv),
   }).catch((err) =>
-    console.error(`notes > put | Could not put note with id '${cv.id}'`, err)
+    console.error(`cv > put | Could not put note with id '${cv.id}'`, err)
   );
 };
 
@@ -45,7 +45,7 @@ export const removeById = ({
     method: "delete",
   }).catch((err) =>
     console.error(
-      `notes > removeById | Could not remove note with id '${id}'`,
+      `cv > removeById | Could not remove note with id '${id}'`,
       err
     )
   );
