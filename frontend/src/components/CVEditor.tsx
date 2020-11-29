@@ -54,7 +54,7 @@ const CVEditor = () => {
               title: event.target["value"],
             });
           }}
-          value={cv.title}
+          value={cv.title || ""}
         />
       </div>
       <textarea
@@ -66,7 +66,7 @@ const CVEditor = () => {
             content: event.target["value"],
           });
         }}
-        value={cv.content}
+        value={cv.content || ""}
       ></textarea>
       <div className={css["details-container"]}>
         <input
@@ -78,7 +78,7 @@ const CVEditor = () => {
               tags: event.target["value"],
             });
           }}
-          value={cv.tags}
+          value={cv.tags || ""}
         />
         <input
           type="date"
