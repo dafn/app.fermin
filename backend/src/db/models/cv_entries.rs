@@ -25,6 +25,7 @@ pub struct CVEntry {
 
 #[derive(Insertable, Deserialize)]
 #[table_name = "cv_entries_schema"]
+#[serde(rename_all = "camelCase")]
 pub struct SlimCVEntry {
   pub title: Option<String>,
   pub content: Option<String>,
