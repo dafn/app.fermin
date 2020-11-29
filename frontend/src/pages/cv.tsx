@@ -55,18 +55,19 @@ const CV = () => {
 
       if (newCV) {
         cvs.push({});
-        save = post(cvs[cvs.length - 1]);
+
+        save = post(cvs[cvs.length - 1])
+          .then((response: Response) => response.json())
+          .then((cv: CV) => {
+            cvs[cvs.length - 1].id = cv[0].id;
+            newCV && setActiveIndex(cvs.length - 1);
+            setCvs(cvs);
+          });
       } else {
         save = put(cvs[activeIndex]);
       }
 
       save
-        .then((response: Response) => response.json())
-        .then((cv: CV) => {
-          cvs[cvs.length - 1].id = cv[0].id;
-          newCV && setActiveIndex(cvs.length - 1);
-          setCvs(cvs);
-        })
         .catch(() => forceUpdate(!update))
         .finally(() => {
           showSnackbar(true);

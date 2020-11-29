@@ -18,19 +18,16 @@ const CVEditor = () => {
     cvs[activeIndex] && setCv(cvs[activeIndex]);
   }, [activeIndex]);
 
-  const saveCv = (cv?: CV) => {
+  const handleInput = (cv?: CV) => {
     cvs[activeIndex] = {
       ...cvs[activeIndex],
       ...cv,
     };
 
     setCv(cvs[activeIndex]);
-    setCvs(cvs);
-  };
 
-  const handleInput = (cv?: CV) => {
     clearTimeout(timer);
-    timer = setTimeout(() => saveCv(cv), 500);
+    timer = setTimeout(() => setCvs(cvs), 500);
   };
 
   return (
