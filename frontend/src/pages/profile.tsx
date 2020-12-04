@@ -5,9 +5,11 @@ import Button from "src/components/core/Button";
 import ImageInput from "src/components/core/ImageInput";
 import { put } from "src/api/user";
 import { logout } from "src/api/auth";
+import themeContext from "src/theme/themeContext";
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useContext(authContext);
+  const { theme } = useContext(themeContext);
 
   const handleOnChange = (base64: string) => {
     setUser({
@@ -35,7 +37,7 @@ const Profile = () => {
           <Button
             className={css["button"]}
             variant="warning"
-            outlined
+            outlined={theme === "fermin-theme-dark"}
             onClick={() => logout().then(() => setIsLoggedIn(false))}
           >
             Log out
