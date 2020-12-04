@@ -42,6 +42,7 @@ css`
       padding: 0.8rem;
       transition: border-color 0.15s, box-shadow 0.15s;
       width: -webkit-fill-available;
+      width: -moz-available;
       font-size: 1rem;
       &:hover,
       &:focus {
