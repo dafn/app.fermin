@@ -1,6 +1,7 @@
 import { h } from "preact";
 import { useRef } from "preact/hooks";
 import cn from "src/utils/cn";
+import Image from "src/components/core/Image";
 
 type Base64 = string;
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   iconClass?: string;
   placeholder?: string;
   circle?: boolean;
+  frame?: boolean;
 }
 
 const ImageInput = ({
@@ -19,6 +21,7 @@ const ImageInput = ({
   iconClass = "icon-plus",
   placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png",
   circle,
+  frame
 }: Props) => {
   const fileInput = useRef(null);
 
@@ -32,10 +35,11 @@ const ImageInput = ({
         fileInput.current["click"]();
       }}
     >
-      <img
+      <Image
         src={src || placeholder}
         alt="image"
-        className={cn({ [css["circle"]]: circle })}
+        circle={circle}
+        frame={frame}
       />
       <div className={css["add-image"]}>
         <i className={`${css["add-image-icon"]} ${iconClass}`} />
@@ -74,13 +78,9 @@ css`
     cursor: pointer;
     img {
       transition: opacity 0.1s;
-      justify-self: center;
-      align-self: center;
       height: inherit;
       width: inherit;
-      &.circle {
-        border-radius: 50%;
-      }
+      object-fit: cover;
     }
     input {
       position: absolute;

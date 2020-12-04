@@ -27,6 +27,7 @@ const Profile = () => {
           src={user?.src}
           onChange={(_, base64) => handleOnChange(base64)}
           circle
+          frame
         />
         <span className={css["divider"]} />
         <div className={css["right-hand-side"]}>
@@ -63,7 +64,6 @@ css`
         justify-self: center;
       }
       .avatar {
-        height: auto;
         max-height: 6rem;
         max-width: 6rem;
       }

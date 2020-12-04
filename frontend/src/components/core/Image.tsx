@@ -10,11 +10,11 @@ interface Props extends Omit<h.JSX.HTMLAttributes<HTMLImageElement>, "class"> {
 const Image = ({ className, circle, frame, ...rest }: Props) => {
   return (
     <img
-      className={cn({
+      className={` ${css["image"]} ${cn({
         [css["circle"]]: circle,
         [css["frame"]]: frame,
         [className]: !!className,
-      })}
+      })}`}
       {...rest}
     />
   );
@@ -27,7 +27,7 @@ css`
     border-radius: 50%;
   }
   .frame {
-    padding: 0.1rem;
+    padding: 5%;
     background-color: var(--fermin-primary-medium-contrast);
   }
 `;

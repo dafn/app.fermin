@@ -123,16 +123,17 @@ css`
     background-color: var(--fermin-primary-medium);
     width: 4rem;
     button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: grid;
       height: 4rem;
       i {
         font-size: 1.2rem;
       }
       .profile-pic {
-        max-height: 1.9rem;
-        max-width: 1.9rem;
+        height: 1.9rem;
+        width: 1.9rem;
+        object-fit: cover;
+        align-self: center;
+        justify-self: center;
       }
     }
     .top {
