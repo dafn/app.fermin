@@ -26,6 +26,7 @@ const Profile = () => {
           className={css["avatar"]}
           src={user?.src}
           onChange={(_, base64) => handleOnChange(base64)}
+          circle
         />
         <span className={css["divider"]} />
         <div className={css["right-hand-side"]}>

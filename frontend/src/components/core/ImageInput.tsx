@@ -9,6 +9,7 @@ interface Props {
   className?: string;
   iconClass?: string;
   placeholder?: string;
+  circle?: boolean;
 }
 
 const ImageInput = ({
@@ -17,6 +18,7 @@ const ImageInput = ({
   onChange,
   iconClass = "icon-plus",
   placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png",
+  circle,
 }: Props) => {
   const fileInput = useRef(null);
 
@@ -30,7 +32,11 @@ const ImageInput = ({
         fileInput.current["click"]();
       }}
     >
-      <img src={src || placeholder} alt="image" />
+      <img
+        src={src || placeholder}
+        alt="image"
+        className={cn({ [css["circle"]]: circle })}
+      />
       <div className={css["add-image"]}>
         <i className={`${css["add-image-icon"]} ${iconClass}`} />
       </div>
@@ -72,6 +78,9 @@ css`
       align-self: center;
       height: inherit;
       width: inherit;
+      &.circle {
+        border-radius: 50%;
+      }
     }
     input {
       position: absolute;

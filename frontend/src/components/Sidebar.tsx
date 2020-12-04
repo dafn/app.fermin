@@ -41,7 +41,7 @@ const Sidebar = () => {
         >
           {isLoggedIn && user ? (
             <img
-              className={css["profile-pic"]}
+              className={`${css["profile-pic"]} ${css["circle"]}`}
               src={user.src}
               alt="profilbilde"
             />
@@ -130,12 +130,15 @@ css`
       .profile-pic {
         max-height: 1.9rem;
         max-width: 1.9rem;
+        &.circle {
+          border-radius: 50%;
+          padding: 0.1rem;
+          background-color: var(--fermin-primary-medium-contrast);
+        }
       }
     }
     .top {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      display: grid;
     }
     .bottom {
       div {
