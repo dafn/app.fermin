@@ -3,6 +3,7 @@ import { useState, useContext } from "preact/hooks";
 
 import Button from "src/components/core/Button";
 import Switch from "src/components/core/Switch";
+import Image from "src/components/core/Image";
 
 import { navigate, onNavigation, getCurrentRoute } from "src/router/navigator";
 import authContext from "src/auth/authContext";
@@ -40,10 +41,12 @@ const Sidebar = () => {
           onClick={() => handleButtonClick(isLoggedIn ? "/profile" : "/login")}
         >
           {isLoggedIn && user ? (
-            <img
-              className={`${css["profile-pic"]} ${css["circle"]}`}
+            <Image
+              className={`${css["profile-pic"]}`}
               src={user.src}
               alt="profilbilde"
+              circle
+              frame
             />
           ) : (
             <i className="icon-user" />
@@ -130,11 +133,6 @@ css`
       .profile-pic {
         max-height: 1.9rem;
         max-width: 1.9rem;
-        &.circle {
-          border-radius: 50%;
-          padding: 0.1rem;
-          background-color: var(--fermin-primary-medium-contrast);
-        }
       }
     }
     .top {
