@@ -87,7 +87,7 @@ export default {
   output: {
     dir: TARGET,
     sourcemap: !isDevelopment,
-    format: "iife",
+    format: "umd",
   },
   external: ["react", "react-proptypes"],
   plugins,
