@@ -81,6 +81,8 @@ css`
       height: inherit;
       width: inherit;
       object-fit: cover;
+      justify-self: center;
+      align-self: center;
     }
     input {
       position: absolute;

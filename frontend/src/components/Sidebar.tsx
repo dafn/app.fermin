@@ -125,6 +125,10 @@ css`
     button {
       display: grid;
       height: 4rem;
+      > * {
+        align-self: center;
+        justify-self: center;
+      }
       i {
         font-size: 1.2rem;
       }
@@ -132,8 +136,6 @@ css`
         height: 1.9rem;
         width: 1.9rem;
         object-fit: cover;
-        align-self: center;
-        justify-self: center;
       }
     }
     .top {
