@@ -6,6 +6,7 @@ import ImageInput from "src/components/core/ImageInput";
 import { put } from "src/api/user";
 import { logout } from "src/api/auth";
 import themeContext from "src/theme/themeContext";
+import Calender from "src/components/Calender";
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useContext(authContext);
@@ -24,6 +25,7 @@ const Profile = () => {
   return (
     <main className={css["profile"]}>
       <div className={css["content-container"]}>
+        <Calender />
         <ImageInput
           className={css["avatar"]}
           src={user?.src}
