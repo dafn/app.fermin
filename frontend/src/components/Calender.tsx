@@ -20,35 +20,38 @@ const Calender = ({ className }: Props) => {
   const currentMonth = useMemo(() => now.getMonth(), []);
   const currentQuarter = useMemo(() => getCurrentQuarter(now), []);
 
-  const weekendDays = weekendDaysOfMonth(currentMonth, 2020);
-
-  console.log(currentDay, currentMonth, currentQuarter);
-
   return (
     <Card
       className={` ${css["calender"]} ${cn({
         [className]: !!className,
       })}`}
     >
-      {currentQuarter.map((month) => (
-        <div>
-          <p className={css["title"]}> {months[month]} </p>
-          <div className={css["month"]}>
-            {new Array(daysInMonth(2020, month)).fill(0, 0, 32).map((_, i) => (
-              <div className={css["day"]}>
-                <p
-                  className={cn({
-                    [css["weekend"]]: weekendDays.includes(i + 1),
-                    [css["today"]]: month === currentMonth && i + 1 === currentDay,
-                  })}
-                >
-                  {i + 1}
-                </p>
-              </div>
-            ))}
+      {currentQuarter.map((month) => {
+        const weekendDays = weekendDaysOfMonth(month, 2020);
+
+        return (
+          <div>
+            <p className={css["title"]}> {months[month]} </p>
+            <div className={css["month"]}>
+              {new Array(daysInMonth(2020, month))
+                .fill(0, 0, 32)
+                .map((_, i) => (
+                  <div className={css["day"]}>
+                    <p
+                      className={cn({
+                        [css["weekend"]]: weekendDays.includes(i + 1),
+                        [css["today"]]:
+                          month === currentMonth && i + 1 === currentDay,
+                      })}
+                    >
+                      {i + 1}
+                    </p>
+                  </div>
+                ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </Card>
   );
 };
@@ -70,6 +73,7 @@ css`
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(7, 1fr);
+      border: 2px solid;
       .day {
         display: flex;
         align-items: center;
@@ -84,7 +88,7 @@ css`
             color: var(--fermin-error-medium);
           }
           &.today {
-            color: var(--fermin-positive-medium);
+            background-color: white;
           }
         }
       }

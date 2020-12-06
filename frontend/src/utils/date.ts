@@ -25,40 +25,31 @@ export const daysInMonth = (year: number, month: number): number => {
 };
 
 export const weekendDaysOfMonth = (month: number, year: number): number[] => {
-  const isWeekend = (dateOfDay: number) => dateOfDay === 0 || dateOfDay === 6;
+  const isWeekend = (day: number) => day === 0 || day === 6;
   const daysInThisMonth = daysInMonth(year, month);
-  const dateOfFirstDay = new Date(year, month, 0).getDay();
   const weekendDays = [];
 
-  let currentWeekendDay: number = 5;
+  let currentWeekendDay = 5;
 
-  for (let i = 0; i++; i < 5) {
-    if (isWeekend(dateOfFirstDay + i)) {
+  for (let i = 0; i < 5; i++) {
+    if (isWeekend(new Date(year, month, i).getDay())) {
       currentWeekendDay = i;
       break;
     }
   }
 
-  weekendDays.push(currentWeekendDay);
-
-  if (currentWeekendDay === 5) {
-    currentWeekendDay += 1;
-    weekendDays.push(currentWeekendDay);
-  }
-
   while (true) {
-    if (currentWeekendDay + 6 > daysInThisMonth) {
-      break;
-    }
-    currentWeekendDay += 6;
     weekendDays.push(currentWeekendDay);
-
-    if (currentWeekendDay + 1 > daysInThisMonth) {
-      break;
-    }
     currentWeekendDay += 1;
+
     weekendDays.push(currentWeekendDay);
+    currentWeekendDay += 6;
+
+    if (currentWeekendDay > daysInThisMonth) {
+      break;
+    }
   }
+
   return weekendDays;
 };
 
