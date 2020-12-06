@@ -16,7 +16,7 @@ interface Props {
 const Calender = ({ className }: Props) => {
   const now = useMemo(() => new Date(), []);
 
-  const currentDay = useMemo(() => now.getDay(), []);
+  const currentDay = useMemo(() => now.getDate(), []);
   const currentMonth = useMemo(() => now.getMonth(), []);
   const currentQuarter = useMemo(() => getCurrentQuarter(now), []);
 
@@ -39,7 +39,7 @@ const Calender = ({ className }: Props) => {
                 <p
                   className={cn({
                     [css["weekend"]]: weekendDays.includes(i + 1),
-                    [css["today"]]: month === currentMonth && i === currentDay,
+                    [css["today"]]: month === currentMonth && i + 1 === currentDay,
                   })}
                 >
                   {i + 1}
