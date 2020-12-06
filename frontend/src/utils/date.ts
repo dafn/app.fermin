@@ -24,7 +24,7 @@ export const daysInMonth = (year: number, month: number): number => {
   return new Date(year, month + 1, 0).getDate();
 };
 
-export const weekendDaysOfMonth = (month: number, year: number): number[] => {
+export const weekendDaysOfMonth = (year: number, month: number): number[] => {
   const isWeekend = (day: number) => day === 0 || day === 6;
   const daysInThisMonth = daysInMonth(year, month);
   const weekendDays = [];

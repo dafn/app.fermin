@@ -19,6 +19,7 @@ const Calender = ({ className }: Props) => {
   const currentDay = useMemo(() => now.getDate(), []);
   const currentMonth = useMemo(() => now.getMonth(), []);
   const currentQuarter = useMemo(() => getCurrentQuarter(now), []);
+  const currentYear = useMemo(() => now.getFullYear(), []);
 
   return (
     <Card
@@ -27,14 +28,14 @@ const Calender = ({ className }: Props) => {
       })}`}
     >
       {currentQuarter.map((month, index) => {
-        const weekendDays = weekendDaysOfMonth(month, 2020);
+        const weekendDays = weekendDaysOfMonth(currentYear, month);
 
         return (
           <Fragment>
             <div>
               <p className={css["title"]}> {months[month]} </p>
               <div className={css["month"]}>
-                {new Array(daysInMonth(2020, month))
+                {new Array(daysInMonth(currentYear, month))
                   .fill(0, 0, 32)
                   .map((_, i) => (
                     <div className={css["day"]}>
@@ -74,6 +75,7 @@ css`
     .title {
       text-align: center;
       margin-top: 0;
+      cursor: default;
     }
     .month {
       display: grid;
@@ -109,7 +111,7 @@ css`
       align-self: center;
       width: 1px;
       background: var(--fermin-surface-contrast);
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 `;
