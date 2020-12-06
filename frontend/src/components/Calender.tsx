@@ -1,7 +1,12 @@
 import { h } from "preact";
 import { useMemo } from "preact/hooks";
 import cn from "src/utils/cn";
-import { months, daysInMonth, weekendDaysOfMonth } from "src/utils/date";
+import {
+  months,
+  daysInMonth,
+  weekendDaysOfMonth,
+  getCurrentQuarter,
+} from "src/utils/date";
 import Card from "./core/Card";
 
 interface Props {
@@ -11,12 +16,13 @@ interface Props {
 const Calender = ({ className }: Props) => {
   const now = useMemo(() => new Date(), []);
 
-  const currentDay = now.getDay();
+  const currentDay = useMemo(() => now.getDay(), []);
+  const currentMonth = useMemo(() => now.getMonth(), []);
+  const currentQuarter = useMemo(() => getCurrentQuarter(now), []);
 
-  const currentMonth = now.getMonth();
   const weekendDays = weekendDaysOfMonth(currentMonth, 2020);
 
-  console.log(currentDay, currentMonth);
+  console.log(currentDay, currentMonth, currentQuarter);
 
   return (
     <Card
@@ -24,16 +30,16 @@ const Calender = ({ className }: Props) => {
         [className]: !!className,
       })}`}
     >
-      {[11].map((month) => (
+      {currentQuarter.map((month) => (
         <div>
-          <p className={css["title"]}> {months[currentMonth]} </p>
+          <p className={css["title"]}> {months[month]} </p>
           <div className={css["month"]}>
             {new Array(daysInMonth(2020, month)).fill(0, 0, 32).map((_, i) => (
               <div className={css["day"]}>
                 <p
                   className={cn({
                     [css["weekend"]]: weekendDays.includes(i + 1),
-                    [css["today"]]: i === currentDay,
+                    [css["today"]]: month === currentMonth && i === currentDay,
                   })}
                 >
                   {i + 1}
@@ -78,9 +84,7 @@ css`
             color: var(--fermin-error-medium);
           }
           &.today {
-            font-weight: 700;
-            transform: scale(1.2);
-            text-decoration: underline;
+            color: var(--fermin-positive-medium);
           }
         }
       }

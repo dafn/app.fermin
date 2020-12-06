@@ -13,31 +13,33 @@ export const months = [
   "Desember",
 ];
 
-export const daysInMonth = (year: number, month: number) => {
+export const quarters = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [9, 10, 11],
+];
+
+export const daysInMonth = (year: number, month: number): number => {
   return new Date(year, month + 1, 0).getDate();
 };
 
-export const isWeekend = (year, month, day) => {
-  const dateOfDay = new Date(year, month, day).getDay();
-  return dateOfDay === 0 || dateOfDay === 6;
-};
-
-export const weekendDaysOfMonth = (month: number, year: number) => {
+export const weekendDaysOfMonth = (month: number, year: number): number[] => {
+  const isWeekend = (dateOfDay: number) => dateOfDay === 0 || dateOfDay === 6;
   const daysInThisMonth = daysInMonth(year, month);
+  const dateOfFirstDay = new Date(year, month, 0).getDay();
   const weekendDays = [];
-  let currentWeekendDay: number;
+
+  let currentWeekendDay: number = 5;
 
   for (let i = 0; i++; i < 5) {
-    if (isWeekend(year, month, i)) {
+    if (isWeekend(dateOfFirstDay + i)) {
       currentWeekendDay = i;
       break;
     }
   }
 
-  if (typeof currentWeekendDay !== "number") {
-    currentWeekendDay = 5;
-    weekendDays.push(currentWeekendDay);
-  }
+  weekendDays.push(currentWeekendDay);
 
   if (currentWeekendDay === 5) {
     currentWeekendDay += 1;
@@ -58,4 +60,9 @@ export const weekendDaysOfMonth = (month: number, year: number) => {
     weekendDays.push(currentWeekendDay);
   }
   return weekendDays;
+};
+
+export const getCurrentQuarter = (date: Date): number[] => {
+  var month = date.getMonth() + 1;
+  return quarters[Math.ceil(month / 3) - 1];
 };
