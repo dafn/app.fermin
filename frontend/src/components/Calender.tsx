@@ -6,6 +6,7 @@ import {
   daysInMonth,
   weekendDaysOfMonth,
   getCurrentQuarter,
+  norwegianHolydays,
 } from "src/utils/date";
 import Card from "./core/Card";
 
@@ -45,6 +46,9 @@ const Calender = ({ className }: Props) => {
                       <p
                         className={cn({
                           [css["weekend"]]: weekendDays.includes(i + 1),
+                          [css["public-holyday"]]: norwegianHolydays[
+                            month
+                          ].includes(i + 1),
                         })}
                       >
                         {i + 1}
@@ -100,7 +104,8 @@ css`
           margin: 0;
           cursor: default;
           z-index: 1;
-          &.weekend {
+          &.weekend,
+          &.public-holyday {
             color: var(--fermin-error-medium);
           }
         }

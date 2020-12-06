@@ -20,6 +20,24 @@ export const quarters = [
   [9, 10, 11],
 ];
 
+/**
+ * for 2021
+ */
+export const norwegianHolydays = {
+  0: [1],
+  1: [],
+  2: [],
+  3: [1, 2, 4, 5],
+  4: [1, 13, 17, 23, 24],
+  5: [],
+  6: [],
+  7: [],
+  8: [],
+  9: [31],
+  10: [],
+  11: [24, 25, 26, 31],
+};
+
 export const daysInMonth = (year: number, month: number): number => {
   return new Date(year, month + 1, 0).getDate();
 };
