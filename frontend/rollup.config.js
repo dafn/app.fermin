@@ -21,7 +21,7 @@ const template = `
       <link
         rel="shortcut icon"
         type="image/svg+xml"
-        href="assets/favicon.svg"
+        href="assets/favicon.png"
       />
       <link
         rel="stylesheet"
