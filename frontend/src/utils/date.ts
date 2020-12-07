@@ -72,6 +72,5 @@ export const weekendDaysOfMonth = (year: number, month: number): number[] => {
 };
 
 export const getCurrentQuarter = (date: Date): number[] => {
-  var month = date.getMonth() + 1;
-  return quarters[Math.ceil(month / 3) - 1];
+  return quarters[Math.ceil((date.getMonth() + 1) / 3) - 1];
 };
