@@ -3,6 +3,8 @@ table! {
         id -> Int4,
         title -> Nullable<Text>,
         content -> Nullable<Text>,
+        summary -> Nullable<Text>,
+        category -> Nullable<Text>,
         tags -> Nullable<Text>,
         src -> Nullable<Text>,
         start_date -> Nullable<Text>,

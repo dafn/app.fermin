@@ -15,6 +15,8 @@ pub struct CVEntry {
   pub id: i32,
   pub title: Option<String>,
   pub content: Option<String>,
+  pub summary: Option<String>,
+  pub category: Option<String>,
   pub tags: Option<String>,
   pub src: Option<String>,
   pub start_date: Option<String>,
@@ -29,6 +31,8 @@ pub struct CVEntry {
 pub struct SlimCVEntry {
   pub title: Option<String>,
   pub content: Option<String>,
+  pub summary: Option<String>,
+  pub category: Option<String>,
   pub tags: Option<String>,
   pub src: Option<String>,
   pub start_date: Option<String>,
@@ -63,11 +67,13 @@ impl CVEntry {
     diesel::update(cv_entries.find(_id))
       .set((
         cv_entries_schema::title.eq(&_cv_entry.title),
+        cv_entries_schema::summary.eq(&_cv_entry.summary),
         cv_entries_schema::content.eq(&_cv_entry.content),
         cv_entries_schema::start_date.eq(&_cv_entry.start_date),
         cv_entries_schema::end_date.eq(&_cv_entry.end_date),
         cv_entries_schema::tags.eq(&_cv_entry.tags),
         cv_entries_schema::src.eq(&_cv_entry.src),
+        cv_entries_schema::category.eq(&_cv_entry.category),
         cv_entries_schema::last_modified.eq(chrono::offset::Utc::now().naive_local()),
       ))
       .get_result::<CVEntry>(connection)
