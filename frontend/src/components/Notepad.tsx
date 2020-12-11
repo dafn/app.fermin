@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import { useContext, useEffect, useRef } from "preact/hooks";
+import { useContext, useEffect, useState } from "preact/hooks";
 
 import context from "src/pages/context/notebookContext";
 
@@ -9,54 +9,52 @@ let timer;
 const Notepad = () => {
   const { notes, setNotes, activeIndex } = useContext(context);
 
-  const title = useRef(null);
-  const content = useRef(null);
-
-  useEffect(() => {
-    if (notes.length) {
-      title.current["value"] = notes[activeIndex].title;
-      content.current["value"] = notes[activeIndex].content;
-    }
-  }, [notes, activeIndex]);
-
-  useEffect(() => {
-    if (notes.length < 1) {
-      title.current["value"] = "";
-      content.current["value"] = "";
-    }
+  const [note, setNote] = useState<Note>({
+    title: "",
+    content: "",
   });
 
-  const saveNote = () => {
+  useEffect(() => {
+    notes[activeIndex] && setNote(notes[activeIndex]);
+  }, [activeIndex]);
+
+  const handleInput = (note?: Note) => {
     notes[activeIndex] = {
       ...notes[activeIndex],
-      title: title.current["value"],
-      content: content.current["value"],
+      ...note,
     };
 
-    setNotes(notes);
-  };
+    setNote(notes[activeIndex]);
 
-  const handleInput = () => {
     clearTimeout(timer);
-    timer = setTimeout(() => saveNote(), 500);
+    timer = setTimeout(() => setNotes(notes), 500);
   };
 
   return (
     <section className={css["notepad"]}>
       <input
         type="text"
-        ref={title}
-        value={notes.length > 0 ? notes[activeIndex].title : ""}
         placeholder="Title"
         className="fermin-typography-headline"
-        onInput={handleInput}
+        onInput={(event) => {
+          handleInput({
+            title: event.target["value"],
+            content: note.content,
+          });
+        }}
+        value={note.title}
       />
       <textarea
         name="textarea"
-        ref={content}
         placeholder="..."
         className="fermin-typography-body"
-        onInput={handleInput}
+        onInput={(event) => {
+          handleInput({
+            title: note.title,
+            content: event.target["value"],
+          });
+        }}
+        value={note.content}
       ></textarea>
     </section>
   );

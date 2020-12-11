@@ -10,16 +10,19 @@ import { Provider } from "./context/notebookContext";
 
 const Notebook = () => {
   const [notes, setNotes] = useState<Note[]>([]);
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(-1);
   const [init, setInit] = useState<boolean>(true);
   const [update, forceUpdate] = useState<boolean>(true);
   const [snackbar, showSnackbar] = useState<boolean>(false);
 
   useEffect(() => {
     if (init) {
-      getAll().then((notes) => {
-        setNotes(notes);
-      });
+      getAll()
+        .then((notes) => {
+          setNotes(notes);
+          setActiveIndex(0);
+        })
+        .catch(() => setActiveIndex(0));
 
       setInit(false);
     }
