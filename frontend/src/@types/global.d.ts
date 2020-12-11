@@ -27,6 +27,8 @@ declare global {
     id?: number;
     title?: string;
     content?: string;
+    summary?: string;
+    category?: string;
     tags?: string;
     src?: string;
     startDate?: Date;
