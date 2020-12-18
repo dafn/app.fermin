@@ -6,6 +6,7 @@ import Fab from "src/components/core/Fab";
 import ChoiceDialog from "src/components/ChoiceDialog";
 import ListElement from "src/components/ListElement";
 import context from "src/pages/context/cvContext";
+import ListSectionHeader from "./ListSectionHeader";
 
 const CVList = () => {
   const { cvs, setCvs, activeIndex, setActiveIndex, deleteCv } = useContext(
@@ -16,6 +17,7 @@ const CVList = () => {
 
   return (
     <section className={css["notelist"]}>
+      <ListSectionHeader text="Prosjekter" />
       {cvs.length ? (
         cvs.map((cv, index) => (
           <ListElement
@@ -23,7 +25,10 @@ const CVList = () => {
             title={cv.title}
             content={cv.content}
             active={index === activeIndex}
-            src={cv.src || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"}
+            src={
+              cv.src ||
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+            }
             toggle="+"
             onClick={() => index !== activeIndex && setActiveIndex(index)}
             onDelete={() => {
