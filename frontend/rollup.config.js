@@ -63,13 +63,6 @@ const plugins = [
   visualizer({
     filename: `${TARGET}/stats.html`,
   }),
-  alias({
-    entries: [
-      { find: "React", replacement: "preact" },
-      { find: "React.createElement", replacement: "preact.h" },
-      { find: "React.ProtoTypes", replacement: "{ func:{} }" },
-    ],
-  }),
 ];
 
 if (isDevelopment) {
