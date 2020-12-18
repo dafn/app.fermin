@@ -2,7 +2,6 @@ import closure from "@ampproject/rollup-plugin-closure-compiler";
 import typescript from "@rollup/plugin-typescript";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import alias from "@rollup/plugin-alias";
 import postcss from "rollup-plugin-postcss";
 import reload from "rollup-plugin-livereload";
 import visualizer from "rollup-plugin-visualizer";
@@ -72,7 +71,7 @@ if (isDevelopment) {
     })
   );
 } else {
-  plugins.push(terser({ sourcemap: true }));
+  plugins.push(terser());
 }
 
 export default {
