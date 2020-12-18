@@ -54,13 +54,9 @@ const plugins = [
           }),
         ],
   }),
-  closure(),
   html2({
     template,
     fileName: "index.html",
-  }),
-  visualizer({
-    filename: `${TARGET}/stats.html`,
   }),
 ];
 
@@ -71,16 +67,23 @@ if (isDevelopment) {
     })
   );
 } else {
+  plugins.push(closure());
   plugins.push(terser());
+  plugins.push(
+    visualizer({
+      filename: `${TARGET}/stats.html`,
+    })
+  );
 }
 
 export default {
   input: "src/app/index.tsx",
   output: {
-    dir: TARGET,
+    file: isDevelopment
+      ? `${TARGET}/index.js`
+      : `${TARGET}/index.${new Date().getTime()}.js`,
     sourcemap: !isDevelopment,
     format: "umd",
   },
-  external: ["react", "react-proptypes"],
   plugins,
 };
