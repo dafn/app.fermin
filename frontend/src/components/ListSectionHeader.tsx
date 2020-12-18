@@ -28,7 +28,7 @@ const ListSectionHeader = ({ text, className, toggled, onToggle }: Props) => {
           onToggle && onToggle(toggleState);
         }}
       >
-        {toggleState ? t("hide") : t("show")}
+        {toggleState ? t("show") : t("hide")}
       </p>
     </header>
   );
@@ -42,7 +42,7 @@ css`
     grid-template-columns: auto 1fr;
     grid-column-gap: 2rem;
     width: 100%;
-    padding: 0 1rem 0.5rem;
+    padding-bottom: 0.5rem;
     box-sizing: border-box;
     &:hover {
       .section-visibility-toggle {

@@ -1,13 +1,33 @@
 import { h } from "preact";
+import { useState } from "preact/hooks";
+import ListSectionHeader from "src/components/ListSectionHeader";
+import cn from "src/utils/cn";
 
 interface Props {
-  label: string;
+  header?: string;
+  children?: h.JSX.Element | h.JSX.Element[];
 }
 
-const ListSection = ({ label }: Props) => {
+const ListSection = ({ header, children }: Props) => {
+  const [visible, setVisible] = useState(true);
+
   return (
     <section className={css["list-section"]}>
-      <label>{label}</label>
+      {header && (
+        <ListSectionHeader
+          text={header}
+          onToggle={(toggled) => {
+            setVisible(toggled);
+          }}
+        />
+      )}
+      <div
+        className={` ${css["list-elements"]} ${cn({
+          [css["hidden"]]: !visible,
+        })}`}
+      >
+        {children}
+      </div>
     </section>
   );
 };
@@ -16,13 +36,17 @@ export default ListSection;
 
 css`
   .list-section {
-    font-size: 10pt;
-    width: -webkit-fill-available;
-    margin: 0 1rem 0.1rem 1rem;
-    padding-bottom: 0.3rem;
-    opacity: 0.5;
-    label {
-      color: var(--fermin-surface-contrast);
+    background-color: inherit;
+    .list-elements {
+      opacity: 1;
+      visibility: visible;
+      overflow: hidden;
+      max-height: min-content;
+      &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+      }
     }
   }
 `;

@@ -6,7 +6,7 @@ import Fab from "src/components/core/Fab";
 import ChoiceDialog from "src/components/ChoiceDialog";
 import ListElement from "src/components/ListElement";
 import context from "src/pages/context/cvContext";
-import ListSectionHeader from "./ListSectionHeader";
+import ListSection from "src/components/ListSection";
 
 const CVList = () => {
   const { cvs, setCvs, activeIndex, setActiveIndex, deleteCv } = useContext(
@@ -17,30 +17,31 @@ const CVList = () => {
 
   return (
     <section className={css["notelist"]}>
-      <ListSectionHeader text="Prosjekter" />
-      {cvs.length ? (
-        cvs.map((cv, index) => (
-          <ListElement
-            className={css["list-element"]}
-            title={cv.title}
-            content={cv.content}
-            active={index === activeIndex}
-            src={
-              cv.src ||
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
-            }
-            toggle="+"
-            onClick={() => index !== activeIndex && setActiveIndex(index)}
-            onDelete={() => {
-              showDialog(true);
-            }}
-          />
-        ))
-      ) : (
-        <section className={css["empty-list"]}>
-          <h2 className="fermin-typography-subtitle">Empty list</h2>
-        </section>
-      )}
+      <ListSection header="Prosjekter">
+        {cvs.length ? (
+          cvs.map((cv, index) => (
+            <ListElement
+              className={css["list-element"]}
+              title={cv.title}
+              content={cv.content}
+              active={index === activeIndex}
+              src={
+                cv.src ||
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+              }
+              toggle="+"
+              onClick={() => index !== activeIndex && setActiveIndex(index)}
+              onDelete={() => {
+                showDialog(true);
+              }}
+            />
+          ))
+        ) : (
+          <section className={css["empty-list"]}>
+            <h2 className="fermin-typography-subtitle">Empty list</h2>
+          </section>
+        )}
+      </ListSection>
       <Fab className={css["fab"]} onClick={() => setCvs(cvs, true)}>
         <i className="icon-plus" />
       </Fab>
