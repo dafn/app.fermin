@@ -27,6 +27,6 @@ css`
     border-radius: 50%;
   }
   .frame {
-    box-shadow: 0px 0px 0px .2rem var(--fermin-primary-medium-contrast);
+    box-shadow: 0px 0px 0px .2rem var(--fermin-positive-medium);
   }
 `;
