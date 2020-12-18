@@ -40,7 +40,7 @@ const Button = ({
       disabled={disabled}
       onClick={(event) => {
         buttonRef.current.blur();
-        onClick(event);
+        onClick && onClick(event);
       }}
       {...rest}
     >
