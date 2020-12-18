@@ -55,6 +55,14 @@ const translations = {
     no: "Skatt & Utgifter i %",
     en: "Taxes and expenses in %",
   },
+  show: {
+    no: "Vis",
+    en: "Show",
+  },
+  hide: {
+    no: "Gjem",
+    en: "Hide",
+  },
 };
 
 export type TranslationKey = keyof typeof translations;
