@@ -15,13 +15,13 @@ const ListSection = ({ header, className, children }: Props) => {
   const elementContainer = useRef(null);
 
   useEffect(() => {
-    // -.-
-    setTimeout(() => {
-      elementContainer.current.style.height = "min-content";
-      elementContainer.current.style.height =
-        elementContainer.current.scrollHeight + "px";
-    }, 100);
+    elementContainer.current.style.height = "min-content";
+    elementContainer.current.style.height =
+      elementContainer.current.scrollHeight + "px";
   }, [children]);
+
+  const containsNonNull = (array: any[]) =>
+    array.filter((item) => item !== null).length !== 0;
 
   return (
     <section
@@ -51,7 +51,7 @@ const ListSection = ({ header, className, children }: Props) => {
         ref={elementContainer}
         aria-hidden={!visible}
       >
-        {children ? (
+        {children !== null && containsNonNull(children as any[]) ? (
           children
         ) : (
           <section className={css["empty-list"]}>

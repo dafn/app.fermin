@@ -28,7 +28,7 @@ declare global {
     title?: string;
     content?: string;
     summary?: string;
-    category?: string;
+    category?: 'project' | 'education';
     tags?: string;
     src?: string;
     startDate?: Date;

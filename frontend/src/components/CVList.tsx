@@ -18,23 +18,25 @@ const CVList = () => {
   return (
     <section className={css["notelist"]}>
       <ListSection header="Prosjekter">
-        {cvs.map((cv, index) => (
-          <ListElement
-            className={css["list-element"]}
-            title={cv.title}
-            content={cv.content}
-            active={index === activeIndex}
-            src={
-              cv.src ||
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
-            }
-            toggle="+"
-            onClick={() => index !== activeIndex && setActiveIndex(index)}
-            onDelete={() => {
-              showDialog(true);
-            }}
-          />
-        ))}
+        {cvs.map((cv, index) =>
+          typeof cv.category !== "string" ? (
+            <ListElement
+              className={css["list-element"]}
+              title={cv.title}
+              content={cv.content}
+              active={index === activeIndex}
+              src={
+                cv.src ||
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+              }
+              toggle="+"
+              onClick={() => index !== activeIndex && setActiveIndex(index)}
+              onDelete={() => {
+                showDialog(true);
+              }}
+            />
+          ) : null
+        )}
       </ListSection>
       <Fab className={css["fab"]} onClick={() => setCvs(cvs, true)}>
         <i className="icon-plus" />
