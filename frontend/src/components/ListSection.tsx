@@ -51,7 +51,13 @@ const ListSection = ({ header, className, children }: Props) => {
         ref={elementContainer}
         aria-hidden={!visible}
       >
-        {children}
+        {children ? (
+          children
+        ) : (
+          <section className={css["empty-list"]}>
+            <h2 className="fermin-typography-subtitle">Empty list</h2>
+          </section>
+        )}
       </div>
     </section>
   );
@@ -68,6 +74,19 @@ css`
       overflow: hidden;
       &.hidden {
         visibility: hidden;
+      }
+    }
+    .empty-list {
+      display: grid;
+      position: relative;
+      height: 3rem;
+      width: 18rem;
+      margin: 0 1rem 1rem 1rem;
+      grid-row: 1fr;
+      h2 {
+        align-self: center;
+        justify-self: center;
+        margin: 0;
       }
     }
   }
