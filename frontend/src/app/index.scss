@@ -22,6 +22,7 @@ h3,
 h4,
 h5,
 p,
+i,
 textarea,
 label,
 input {
@@ -82,6 +83,12 @@ i {
 .icon-movie:before {
   content: "\f040";
 } /* '' */
+.icon-angle-down:before {
+  content: "\f107";
+} /* '' */
 .icon-doc-text-inv:before {
   content: "\f15c";
 } /* '' */
+.icon-calc:before {
+  content: "\f1ec";
+} /* '' */
