@@ -61,11 +61,20 @@ css`
     background-color: var($color-base);
     border: solid 1px var($color-base);
     color: var($color-base-contrast);
+    i {
+      color: var($color-base-contrast);
+    }
     &.outlined {
       background-color: unset;
       color: var($color-base);
+      i {
+        color: var($color-base);
+      }
       &:hover {
         color: var($color-base-contrast);
+        i {
+          color: var($color-base);
+        }
       }
     }
     &:hover,
