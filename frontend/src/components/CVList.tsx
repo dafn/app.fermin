@@ -7,6 +7,7 @@ import ChoiceDialog from "src/components/ChoiceDialog";
 import ListElement from "src/components/ListElement";
 import context from "src/pages/context/cvContext";
 import ListSection from "src/components/ListSection";
+import DropDown from "src/components/core/DropDown";
 
 const CVList = () => {
   const { cvs, setCvs, activeIndex, setActiveIndex, deleteCv } = useContext(
@@ -38,6 +39,7 @@ const CVList = () => {
           ) : null
         )}
       </ListSection>
+      <DropDown title="Legg til" items={["test", "test2"]} />
       <Fab className={css["fab"]} onClick={() => setCvs(cvs, true)}>
         <i className="icon-plus" />
       </Fab>
