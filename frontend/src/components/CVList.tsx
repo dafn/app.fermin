@@ -2,7 +2,6 @@ import { h } from "preact";
 
 import { useContext, useState } from "preact/hooks";
 
-import Fab from "src/components/core/Fab";
 import ChoiceDialog from "src/components/ChoiceDialog";
 import ListElement from "src/components/ListElement";
 import context from "src/pages/context/cvContext";
@@ -39,10 +38,11 @@ const CVList = () => {
           ) : null
         )}
       </ListSection>
-      <DropDown title="Legg til" items={["test", "test2"]} />
-      <Fab className={css["fab"]} onClick={() => setCvs(cvs, true)}>
-        <i className="icon-plus" />
-      </Fab>
+      <DropDown
+        title="Legg til"
+        items={["Prosjekt", "Utdannelse"]}
+        onChange={(chosenIndex) => setCvs(cvs, true)}
+      />
       <ChoiceDialog
         message="Er du sikker på at vil slette cv-posten?"
         show={dialog}

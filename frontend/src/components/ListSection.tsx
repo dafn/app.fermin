@@ -15,9 +15,11 @@ const ListSection = ({ header, className, children }: Props) => {
   const elementContainer = useRef(null);
 
   useEffect(() => {
-    elementContainer.current.style.height = "min-content";
-    elementContainer.current.style.height =
-      elementContainer.current.scrollHeight + "px";
+    if (visible) {
+      elementContainer.current.style.height = "min-content";
+      elementContainer.current.style.height =
+        elementContainer.current.scrollHeight + "px";
+    }
   }, [children]);
 
   const containsNonNull = (array: any[]) =>

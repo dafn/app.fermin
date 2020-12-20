@@ -3,13 +3,13 @@ import { Ref, useEffect, useRef, useState } from "preact/hooks";
 import cn from "src/utils/cn";
 
 interface Props {
-  className?: string;
   title?: string;
   items: string[];
-  onClick?: (event: h.JSX.TargetedEvent<HTMLElement, MouseEvent>) => void;
+  className?: string;
+  onChange?: (chosenIndex: number) => void;
 }
 
-const DropDown = ({ title, items, className }: Props) => {
+const DropDown = ({ title, items, className, onChange }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -33,7 +33,7 @@ const DropDown = ({ title, items, className }: Props) => {
 
   return (
     <div
-      className={`${css["drop-down"]} ${cn({
+      className={`${css["drop-down"]} ${css["positive"]} ${cn({
         [css["open"]]: showMenu,
         [className]: !!className,
       })}`}
@@ -57,6 +57,7 @@ const DropDown = ({ title, items, className }: Props) => {
             key={index}
             onClick={() => {
               setActiveIndex(index);
+              onChange(index);
             }}
           >
             <p>{item}</p>
@@ -77,11 +78,15 @@ css`
     position: relative;
     cursor: pointer;
     user-select: none;
-    background-color: var(--fermin-surface);
-    border: 1px solid var(--fermin-surface-contrast);
+    background-color: var(--fermin-positive-medium);
+    border: 1px solid var(--fermin-positive-medium);
     border-radius: 4px;
     padding: 0.4rem 1rem;
-    p, i {
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    p,
+    i {
+      color: var(--fermin-positive-medium-contrast);
       align-self: center;
       margin: 0;
     }
@@ -101,7 +106,7 @@ css`
       text-overflow: ellipsis;
       overflow: visible;
       background-color: inherit;
-      border: 1px solid var(--fermin-surface-contrast);
+      border: 1px solid var(--fermin-positive-medium);
       border-radius: 0 0 4px 4px;
       transition: opacity 0.3s;
       opacity: 0;
@@ -113,14 +118,16 @@ css`
       }
       .menu-item {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 28px;
+        padding: 0.4rem 1rem;
         p {
+          color: var(--fermin-positive-medium-contrast);
           margin: 0;
         }
         &:hover {
-          background-color: var(--fermin-error-dark);
+          p {
+            color: var(--fermin-positive-dark-contrast);
+          }
+          background-color: var(--fermin-positive-dark);
         }
       }
     }
