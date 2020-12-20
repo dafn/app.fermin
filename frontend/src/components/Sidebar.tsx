@@ -76,7 +76,7 @@ const Sidebar = () => {
               active={route === "/calculator"}
               onClick={() => handleButtonClick("/calculator")}
             >
-              <i className="icon-math" />
+              <i className="icon-calc" />
             </Button>
             <Button
               variant="primary"

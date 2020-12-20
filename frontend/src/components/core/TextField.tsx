@@ -28,7 +28,7 @@ css`
       top: -0.8rem;
       left: 0.4rem;
       padding: 0 0.4rem;
-      color: var(--fermin-primary-medium-contrast);
+      color: var(--fermin-background-contrast);
       background-color: var(--fermin-background);
       position: absolute;
       pointer-events: none;
@@ -36,7 +36,7 @@ css`
       border-radius: 6px;
     }
     input {
-      border: solid 1px var(--fermin-primary-medium-contrast);
+      border: solid 1px var(--fermin-background-contrast);
       background-color: var(--fermin-background);
       border-radius: 2px;
       padding: 0.8rem;
