@@ -31,8 +31,6 @@ css`
       color: var(--fermin-background-contrast);
       background-color: var(--fermin-background);
       position: absolute;
-      pointer-events: none;
-      transition: top 0.15s;
       border-radius: 6px;
     }
     input {
