@@ -1,6 +1,7 @@
 import { h } from "preact";
 import { Ref, useEffect, useRef, useState } from "preact/hooks";
 import cn from "src/utils/cn";
+import Card from "./Card";
 
 interface Props {
   title?: string;
@@ -16,7 +17,7 @@ const DropDown = ({ title, items, className, onChange }: Props) => {
   const dropdown = useRef(null);
 
   const clickListener = (e: any, ref: Ref<HTMLElement>) => {
-    if (!ref.current.contains(e.target)) {
+    if (!ref.current?.contains(e.target)) {
       setShowMenu(false);
     }
   };
@@ -34,25 +35,35 @@ const DropDown = ({ title, items, className, onChange }: Props) => {
   return (
     <div
       className={`${css["drop-down"]} ${css["positive"]} ${cn({
-        [css["open"]]: showMenu,
         [className]: !!className,
       })}`}
-      ref={dropdown}
-      role="select"
-      onClick={() => {
-        setShowMenu(!showMenu);
-      }}
     >
-      <p>{title ? title : items[activeIndex]}</p>
-      <i class="icon-angle-down"></i>
       <div
+        ref={dropdown}
+        role="select"
+        onClick={() => {
+          setShowMenu(!showMenu);
+        }}
+      >
+        <div
+          className={`${css["select"]} ${cn({
+            [css["open"]]: showMenu,
+          })}`}
+        >
+          <span>{title ? title : items[activeIndex]}</span>
+          <i class="icon-angle-down"></i>
+        </div>
+      </div>
+      <Card
         className={`${css["menu"]} ${cn({
           [css["open"]]: showMenu,
         })}`}
       >
         {items.map((item, index) => (
           <div
-            className={css["menu-item"]}
+            className={`${css["menu-item"]} ${cn({
+              [css["chosen"]]: activeIndex === index,
+            })}`}
             role="option"
             key={index}
             onClick={() => {
@@ -63,7 +74,7 @@ const DropDown = ({ title, items, className, onChange }: Props) => {
             <p>{item}</p>
           </div>
         ))}
-      </div>
+      </Card>
     </div>
   );
 };
@@ -72,62 +83,56 @@ export default DropDown;
 
 css`
   .drop-down {
-    display: grid;
-    grid-template-columns: 1fr min-content;
-    column-gap: 1rem;
     position: relative;
-    cursor: pointer;
+    height: min-content;
     user-select: none;
-    background-color: var(--fermin-positive-medium);
-    border: 1px solid var(--fermin-positive-medium);
-    border-radius: 4px;
-    padding: 0.4rem 1rem;
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    p,
-    i {
-      color: var(--fermin-positive-medium-contrast);
-      align-self: center;
-      margin: 0;
-    }
-    &.open {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+    .select {
+      display: flex;
+      background-color: var(--fermin-background);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      border-radius: 2px;
+      padding: 0.8rem;
+      cursor: pointer;
+      span {
+        color: var(--fermin-background-contrast);
+        pointer-events: none;
+        font-family: roboto, sans-serif;
+        margin-right: 1rem;
+      }
       i {
-        transform: rotate(-180deg);
+        transition: transform 0.3s;
+      }
+      &.open {
+        i {
+          transform: rotate(-180deg);
+        }
       }
     }
     .menu {
       display: none;
-      position: absolute;
-      top: 32px;
-      left: -1px;
-      right: -1px;
-      text-overflow: ellipsis;
-      overflow: visible;
-      background-color: inherit;
-      border: 1px solid var(--fermin-positive-medium);
-      border-radius: 0 0 4px 4px;
-      transition: opacity 0.3s;
       opacity: 0;
+      position: absolute;
+      width: min-content;
+      transition: opacity 0.3s;
+      z-index: 1000;
+      top: 35px;
+      left: 12px;
       &.open {
-        display: flex;
-        flex-direction: column;
+        display: block;
         opacity: 1;
-        z-index: 1000;
       }
       .menu-item {
-        display: flex;
-        padding: 0.4rem 1rem;
-        p {
-          color: var(--fermin-positive-medium-contrast);
-          margin: 0;
-        }
-        &:hover {
+        &.chosen {
           p {
-            color: var(--fermin-positive-dark-contrast);
+            background-color: var(--fermin-background);
           }
-          background-color: var(--fermin-positive-dark);
+        }
+        p {
+          cursor: pointer;
+          padding: 0.6rem;
+          &:hover {
+            background-color: var(--fermin-background);
+          }
         }
       }
     }
