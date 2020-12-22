@@ -91,17 +91,18 @@ css`
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
       0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     font-size: 0.875rem;
-    min-width: 64px;
+    min-width: 4rem;
+    height: 2.2rem;
     box-sizing: border-box;
     transition: background-color 0.1s, color 0.1s, border 0.1s;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     line-height: 1.75;
-    border-radius: 4px;
+    border-radius: .2rem;
     cursor: pointer;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
-    padding: 0.4rem 1rem;
+    padding: 0 1rem;
   }
   .disabled {
     cursor: default;

@@ -8,6 +8,7 @@ import { getAll, post, put, removeById } from "src/api/cv";
 import Snackbar from "src/components/core/Snackbar";
 
 import { Provider } from "./context/cvContext";
+import DropDown from "src/components/core/DropDown";
 
 const CV = () => {
   const [cvs, setCvs] = useState<CV[]>([]);
@@ -89,10 +90,15 @@ const CV = () => {
       <main className={css["cv"]}>
         <CVList />
         <div className={css["editor-container"]}>
+          <DropDown
+            className={css["dropdown"]}
+            items={["Prosjekt", "Utdannelse"]}
+            onChange={(chosenIndex) => console.log("hello")}
+          />
           <Button variant="positive" className={css["generate-pdf-button"]}>
             Generer PDF
           </Button>
-          <CVEditor />
+          <CVEditor className={css["editor"]} />
         </div>
         <Snackbar message="Saved!" show={snackbar} severity="info" />
       </main>
@@ -111,11 +117,20 @@ css`
     .editor-container {
       display: grid;
       grid-template-rows: auto 1fr;
+      grid-template-columns: 1fr auto;
+      grid-column-gap: 2rem;
       grid-row-gap: 2rem;
       padding: 2rem 8rem 3rem;
+      .dropdown {
+        justify-self: end;
+      }
       .generate-pdf-button {
         width: max-content;
         justify-self: end;
+      }
+      .editor {
+        grid-column-start: 1;
+        grid-column-end: 3;
       }
     }
     .snackbar {

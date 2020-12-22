@@ -6,10 +6,15 @@ import ImageInput from "src/components/core/ImageInput";
 import Card from "src/components/core/Card";
 
 import context from "src/pages/context/cvContext";
+import cn from "src/utils/cn";
 
 let timer;
 
-const CVEditor = () => {
+interface Props {
+  className?: string;
+}
+
+const CVEditor = ({ className }: Props) => {
   const { cvs, setCvs, activeIndex } = useContext(context);
 
   const [cv, setCv] = useState<CV>({});
@@ -31,7 +36,11 @@ const CVEditor = () => {
   };
 
   return (
-    <Card className={css["cv-editor"]}>
+    <Card
+      className={`${css["cv-editor"]} ${cn({
+        [className]: !!className,
+      })}`}
+    >
       <div className={css["title-image-container"]}>
         <ImageInput
           src={cv.src}

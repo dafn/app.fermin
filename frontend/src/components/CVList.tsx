@@ -6,7 +6,7 @@ import ChoiceDialog from "src/components/ChoiceDialog";
 import ListElement from "src/components/ListElement";
 import context from "src/pages/context/cvContext";
 import ListSection from "src/components/ListSection";
-import DropDown from "src/components/core/DropDown";
+import Fab from "src/components/core/Fab";
 
 const CVList = () => {
   const { cvs, setCvs, activeIndex, setActiveIndex, deleteCv } = useContext(
@@ -38,11 +38,9 @@ const CVList = () => {
           ) : null
         )}
       </ListSection>
-      <DropDown
-        title="Legg til"
-        items={["Prosjekt", "Utdannelse"]}
-        onChange={(chosenIndex) => setCvs(cvs, true)}
-      />
+      <Fab onClick={() => setCvs(cvs, true)}>
+        <i className="icon-plus" />
+      </Fab>
       <ChoiceDialog
         message="Er du sikker på at vil slette cv-posten?"
         show={dialog}

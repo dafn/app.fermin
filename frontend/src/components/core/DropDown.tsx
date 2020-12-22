@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { Ref, useEffect, useRef, useState } from "preact/hooks";
 import cn from "src/utils/cn";
-import Card from "./Card";
+import Card from "src/components/core/Card";
 
 interface Props {
   title?: string;
@@ -86,18 +86,19 @@ css`
     position: relative;
     height: min-content;
     user-select: none;
+    width: min-content;
     .select {
       display: flex;
       background-color: var(--fermin-background);
       transition: border-color 0.15s, box-shadow 0.15s;
       border-radius: 2px;
-      padding: 0.8rem;
+      padding: 0.6rem;
       cursor: pointer;
       span {
         color: var(--fermin-background-contrast);
         pointer-events: none;
         font-family: roboto, sans-serif;
-        margin-right: 1rem;
+        margin-right: .6rem;
       }
       i {
         transition: transform 0.3s;

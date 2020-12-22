@@ -1,12 +1,13 @@
 import { h } from "preact";
 import cn from "src/utils/cn";
 
-interface Props extends h.JSX.HTMLAttributes<HTMLButtonElement> {
+interface Props {
   onClick?: (event: h.JSX.TargetedEvent<HTMLButtonElement, MouseEvent>) => void;
+  className?: string;
   children: h.JSX.Element | h.JSX.Element[];
 }
 
-const Fab = ({ children, className, onClick, ...rest }: Props) => {
+const Fab = ({ children, className, onClick }: Props) => {
   return (
     <button
       className={`${css["fab"]} ${cn({ [className]: !!className })}`}
@@ -14,7 +15,6 @@ const Fab = ({ children, className, onClick, ...rest }: Props) => {
         document.activeElement["blur"]();
         onClick(event);
       }}
-      {...rest}
     >
       {children}
     </button>
