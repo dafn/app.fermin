@@ -29,10 +29,9 @@ const calculate = (
   const pension = (7 * salary) / 100;
 
   const utilities = phoneSubscription + pc + phone + transport + internet + aga,
-  incomePostUtilities = income - utilities - salary - pension,
-  absoluteInvenstment = investment * incomePostUtilities / 100,
-  taxableIncome = incomePostUtilities - absoluteInvenstment;
-    
+    incomePostUtilities = income - utilities - salary - pension,
+    absoluteInvenstment = (investment * incomePostUtilities) / 100,
+    taxableIncome = incomePostUtilities - absoluteInvenstment;
 
   const incomeTax = (22 * taxableIncome) / 100,
     incomeSurplus = incomePostUtilities - incomeTax;
@@ -74,7 +73,9 @@ const SurplusCalculator = () => {
 
   return (
     <section className={css["independent-income-calculator"]}>
-      <h5 className="fermin-typography-headline">{t("independent_earnings")}</h5>
+      <h5 className="fermin-typography-headline">
+        {t("independent_earnings")}
+      </h5>
       <section className={css["inputs"]}>
         <TextField
           label={t("gross_income")}
@@ -128,6 +129,9 @@ export default SurplusCalculator;
 
 css`
   .independent-income-calculator {
+    h5 {
+      margin-bottom: 2rem;
+    }
     section {
       display: flex;
       p {

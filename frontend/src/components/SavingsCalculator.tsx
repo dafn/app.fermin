@@ -77,6 +77,9 @@ export default SavingsCalculator;
 
 css`
   .savings-calculator {
+    h5 {
+      margin-bottom: 2rem;
+    }
     p {
       margin: 1rem 2rem 0 0;
     }

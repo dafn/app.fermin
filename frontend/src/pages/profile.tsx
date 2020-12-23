@@ -75,15 +75,10 @@ css`
         background: var(--fermin-background-contrast);
       }
       .right-hand-side {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
         p {
           margin-top: 0;
-        }
-        .button {
-          height: max-content;
-          width: max-content;
         }
       }
     }
