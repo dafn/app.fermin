@@ -23,12 +23,14 @@ declare global {
     lastEdited?: Date;
   }
 
+  type CVCategory = "project" | "education";
+
   interface CV {
     id?: number;
     title?: string;
     content?: string;
     summary?: string;
-    category?: 'project' | 'education';
+    category?: CVCategory;
     tags?: string;
     src?: string;
     startDate?: Date;

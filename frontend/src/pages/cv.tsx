@@ -10,6 +10,8 @@ import Snackbar from "src/components/core/Snackbar";
 import { Provider } from "./context/cvContext";
 import DropDown from "src/components/core/DropDown";
 
+const items: CVCategory[] = ["project", "education"];
+
 const CV = () => {
   const [cvs, setCvs] = useState<CV[]>([]);
   const [init, setInit] = useState<boolean>(true);
@@ -92,8 +94,16 @@ const CV = () => {
         <div className={css["editor-container"]}>
           <DropDown
             className={css["dropdown"]}
-            items={["Prosjekt", "Utdannelse"]}
-            onChange={(chosenIndex) => console.log("hello")}
+            items={items}
+            chosenIndex={items.indexOf(cvs[activeIndex]?.category) || 0}
+            onChange={(item, index) => {
+              cvs[activeIndex] = {
+                ...cvs[activeIndex],
+                ...{ category: item as CVCategory },
+              };
+
+              actions.setCvs(cvs);
+            }}
           />
           <Button variant="positive" className={css["generate-pdf-button"]}>
             Generer PDF

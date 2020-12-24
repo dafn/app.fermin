@@ -7,10 +7,11 @@ interface Props {
   title?: string;
   items: string[];
   className?: string;
-  onChange?: (chosenIndex: number) => void;
+  chosenIndex?: number;
+  onChange?: (item: string, index: number) => void;
 }
 
-const DropDown = ({ title, items, className, onChange }: Props) => {
+const DropDown = ({ title, items, chosenIndex, className, onChange }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -50,7 +51,7 @@ const DropDown = ({ title, items, className, onChange }: Props) => {
             [css["open"]]: showMenu,
           })}`}
         >
-          <span>{title ? title : items[activeIndex]}</span>
+          <span>{title ? title : items[chosenIndex ?? activeIndex]}</span>
           <i class="icon-angle-down"></i>
         </div>
       </div>
@@ -68,7 +69,7 @@ const DropDown = ({ title, items, className, onChange }: Props) => {
             key={index}
             onClick={() => {
               setActiveIndex(index);
-              onChange(index);
+              onChange(items[index], index);
             }}
           >
             <p>{item}</p>
@@ -98,7 +99,7 @@ css`
         color: var(--fermin-background-contrast);
         pointer-events: none;
         font-family: roboto, sans-serif;
-        margin-right: .6rem;
+        margin-right: 0.6rem;
       }
       i {
         transition: transform 0.3s;

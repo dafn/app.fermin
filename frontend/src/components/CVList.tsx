@@ -19,6 +19,48 @@ const CVList = () => {
     <section className={css["notelist"]}>
       <ListSection header="Prosjekter">
         {cvs.map((cv, index) =>
+          cv.category === "project" ? (
+            <ListElement
+              className={css["list-element"]}
+              title={cv.title}
+              content={cv.content}
+              active={index === activeIndex}
+              src={
+                cv.src ||
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+              }
+              toggle="+"
+              onClick={() => index !== activeIndex && setActiveIndex(index)}
+              onDelete={() => {
+                showDialog(true);
+              }}
+            />
+          ) : null
+        )}
+      </ListSection>
+      <ListSection header="Utdannelse">
+        {cvs.map((cv, index) =>
+          cv.category === "education" ? (
+            <ListElement
+              className={css["list-element"]}
+              title={cv.title}
+              content={cv.content}
+              active={index === activeIndex}
+              src={
+                cv.src ||
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+              }
+              toggle="+"
+              onClick={() => index !== activeIndex && setActiveIndex(index)}
+              onDelete={() => {
+                showDialog(true);
+              }}
+            />
+          ) : null
+        )}
+      </ListSection>
+      <ListSection header="Annet">
+        {cvs.map((cv, index) =>
           typeof cv.category !== "string" ? (
             <ListElement
               className={css["list-element"]}
